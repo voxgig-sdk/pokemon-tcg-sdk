@@ -1,0 +1,37 @@
+# Entity: rarity
+
+main: kit: entity: rarity: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "data"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "rarity"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/rarities"
+          parts: [
+            "rarities"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

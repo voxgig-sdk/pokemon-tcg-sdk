@@ -1,0 +1,37 @@
+# Entity: supertype
+
+main: kit: entity: supertype: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "data"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "supertype"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/supertypes"
+          parts: [
+            "supertypes"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

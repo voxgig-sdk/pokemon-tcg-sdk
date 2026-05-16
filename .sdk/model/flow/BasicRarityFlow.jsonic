@@ -1,0 +1,22 @@
+# BasicRarityFlow
+
+main: kit: flow: BasicRarityFlow:
+{
+  entity: "rarity",
+  kind: "basic",
+  name: "BasicRarityFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "rarity_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRarityFlow"
+}

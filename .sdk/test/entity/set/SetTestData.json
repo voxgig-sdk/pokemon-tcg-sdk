@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "set": {
+      "SET00": {
+        "data": {},
+        "id": "SET00",
+        "image": {},
+        "legality": {},
+        "name": "s72",
+        "printed_total": "s73",
+        "ptcgo_code": "s74",
+        "release_date": "s75",
+        "series": "s76",
+        "total": "s77",
+        "updated_at": "s78"
+      },
+      "SET01": {
+        "data": {},
+        "id": "SET01",
+        "image": {},
+        "legality": {},
+        "name": "se0",
+        "printed_total": "se1",
+        "ptcgo_code": "se2",
+        "release_date": "se3",
+        "series": "se4",
+        "total": "se5",
+        "updated_at": "se6"
+      },
+      "SET02": {
+        "data": {},
+        "id": "SET02",
+        "image": {},
+        "legality": {},
+        "name": "s14e",
+        "printed_total": "s14f",
+        "ptcgo_code": "s150",
+        "release_date": "s151",
+        "series": "s152",
+        "total": "s153",
+        "updated_at": "s154"
+      }
+    }
+  },
+  "new": {
+    "set": {
+      "set_ref01": {
+        "data": {},
+        "image": {},
+        "legality": {},
+        "name": "s1bc",
+        "printed_total": "s1bd",
+        "ptcgo_code": "s1be",
+        "release_date": "s1bf",
+        "series": "s1c0",
+        "total": "s1c1",
+        "updated_at": "s1c2"
+      }
+    }
+  }
+}

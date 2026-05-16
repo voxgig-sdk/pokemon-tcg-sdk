@@ -1,0 +1,67 @@
+<?php
+declare(strict_types=1);
+
+// PokemonTcg SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+PokemonTcgUtility::setRegistrar(function (PokemonTcgUtility $u): void {
+    $u->clean = [PokemonTcgClean::class, 'call'];
+    $u->done = [PokemonTcgDone::class, 'call'];
+    $u->make_error = [PokemonTcgMakeError::class, 'call'];
+    $u->feature_add = [PokemonTcgFeatureAdd::class, 'call'];
+    $u->feature_hook = [PokemonTcgFeatureHook::class, 'call'];
+    $u->feature_init = [PokemonTcgFeatureInit::class, 'call'];
+    $u->fetcher = [PokemonTcgFetcher::class, 'call'];
+    $u->make_fetch_def = [PokemonTcgMakeFetchDef::class, 'call'];
+    $u->make_context = [PokemonTcgMakeContext::class, 'call'];
+    $u->make_options = [PokemonTcgMakeOptions::class, 'call'];
+    $u->make_request = [PokemonTcgMakeRequest::class, 'call'];
+    $u->make_response = [PokemonTcgMakeResponse::class, 'call'];
+    $u->make_result = [PokemonTcgMakeResult::class, 'call'];
+    $u->make_point = [PokemonTcgMakePoint::class, 'call'];
+    $u->make_spec = [PokemonTcgMakeSpec::class, 'call'];
+    $u->make_url = [PokemonTcgMakeUrl::class, 'call'];
+    $u->param = [PokemonTcgParam::class, 'call'];
+    $u->prepare_auth = [PokemonTcgPrepareAuth::class, 'call'];
+    $u->prepare_body = [PokemonTcgPrepareBody::class, 'call'];
+    $u->prepare_headers = [PokemonTcgPrepareHeaders::class, 'call'];
+    $u->prepare_method = [PokemonTcgPrepareMethod::class, 'call'];
+    $u->prepare_params = [PokemonTcgPrepareParams::class, 'call'];
+    $u->prepare_path = [PokemonTcgPreparePath::class, 'call'];
+    $u->prepare_query = [PokemonTcgPrepareQuery::class, 'call'];
+    $u->result_basic = [PokemonTcgResultBasic::class, 'call'];
+    $u->result_body = [PokemonTcgResultBody::class, 'call'];
+    $u->result_headers = [PokemonTcgResultHeaders::class, 'call'];
+    $u->transform_request = [PokemonTcgTransformRequest::class, 'call'];
+    $u->transform_response = [PokemonTcgTransformResponse::class, 'call'];
+});

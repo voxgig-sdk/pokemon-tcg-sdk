@@ -1,0 +1,22 @@
+# BasicSupertypeFlow
+
+main: kit: flow: BasicSupertypeFlow:
+{
+  entity: "supertype",
+  kind: "basic",
+  name: "BasicSupertypeFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "supertype_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSupertypeFlow"
+}

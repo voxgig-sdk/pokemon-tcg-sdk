@@ -1,0 +1,22 @@
+{
+  "existing": {
+    "rarity": {
+      "RARITY00": {
+        "data": []
+      },
+      "RARITY01": {
+        "data": []
+      },
+      "RARITY02": {
+        "data": []
+      }
+    }
+  },
+  "new": {
+    "rarity": {
+      "rarity_ref01": {
+        "data": []
+      }
+    }
+  }
+}

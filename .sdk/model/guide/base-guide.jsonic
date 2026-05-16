@@ -1,0 +1,50 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 6
+  metrics: count: path: 8
+  metrics: count: method: 8
+
+  entity: card: {
+    path: "/cards": {
+      op: list: method: *GET
+    }
+    path: "/cards/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: rarity: {
+    path: "/rarities": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: set: {
+    path: "/sets": {
+      op: list: method: *GET
+    }
+    path: "/sets/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: subtype: {
+    path: "/subtypes": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: supertype: {
+    path: "/supertypes": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: type: {
+    path: "/types": {
+      op: list: method: *GET
+    }
+  }
+
+}

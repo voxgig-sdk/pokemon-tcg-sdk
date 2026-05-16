@@ -1,0 +1,26 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://docs.pokemontcg.io/"
+      }
+      description: "The Pokémon TCG API provides access to a variety of resources about Pokémon Trading Card Game cards, sets, types, subtypes, and rarities. It allows users to retrieve card details, search for cards, and access up-to-date information without requiring an API key, albeit with lower rate limits."
+      license: {
+        name: "MIT"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.pokemontcg.io/v2"
+        }
+      ]
+      title: "Pokémon TCG API"
+      version: "2.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,22 @@
+{
+  "existing": {
+    "subtype": {
+      "SUBTYPE00": {
+        "data": []
+      },
+      "SUBTYPE01": {
+        "data": []
+      },
+      "SUBTYPE02": {
+        "data": []
+      }
+    }
+  },
+  "new": {
+    "subtype": {
+      "subtype_ref01": {
+        "data": []
+      }
+    }
+  }
+}

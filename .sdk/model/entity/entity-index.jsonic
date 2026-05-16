@@ -1,0 +1,8 @@
+# Entity Models
+
+@"card.jsonic"
+@"rarity.jsonic"
+@"set.jsonic"
+@"subtype.jsonic"
+@"supertype.jsonic"
+@"type.jsonic"

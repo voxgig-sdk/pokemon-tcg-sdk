@@ -1,0 +1,792 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Pokémon TCG API",
+    "description": "The Pokémon TCG API provides access to a variety of resources about Pokémon Trading Card Game cards, sets, types, subtypes, and rarities. It allows users to retrieve card details, search for cards, and access up-to-date information without requiring an API key, albeit with lower rate limits.",
+    "version": "2.0.0",
+    "contact": {
+      "url": "https://docs.pokemontcg.io/"
+    },
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.pokemontcg.io/v2",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/cards": {
+      "get": {
+        "summary": "Search cards",
+        "description": "Search for Pokémon TCG cards with optional query parameters for filtering.",
+        "operationId": "searchCards",
+        "tags": [
+          "Cards"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query string for searching cards (e.g., 'name:charizard', 'types:fire')",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 250,
+              "maximum": 250
+            }
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "Field to order results by",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "description": "Comma-separated list of fields to return",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of cards",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Card"
+                      }
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "pageSize": {
+                      "type": "integer"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "totalCount": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {}
+        ]
+      }
+    },
+    "/cards/{id}": {
+      "get": {
+        "summary": "Get a card",
+        "description": "Retrieve a specific Pokémon TCG card by its ID.",
+        "operationId": "getCard",
+        "tags": [
+          "Cards"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier for the card",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with card details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Card"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Card not found"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {}
+        ]
+      }
+    },
+    "/sets": {
+      "get": {
+        "summary": "Search sets",
+        "description": "Search for Pokémon TCG sets with optional query parameters for filtering.",
+        "operationId": "searchSets",
+        "tags": [
+          "Sets"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query string for searching sets",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 250,
+              "maximum": 250
+            }
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "Field to order results by",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of sets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Set"
+                      }
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "pageSize": {
+                      "type": "integer"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "totalCount": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {}
+        ]
+      }
+    },
+    "/sets/{id}": {
+      "get": {
+        "summary": "Get a set",
+        "description": "Retrieve a specific Pokémon TCG set by its ID.",
+        "operationId": "getSet",
+        "tags": [
+          "Sets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier for the set",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with set details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Set"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Set not found"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {}
+        ]
+      }
+    },
+    "/types": {
+      "get": {
+        "summary": "Get types",
+        "description": "Retrieve a list of all Pokémon types available in the TCG.",
+        "operationId": "getTypes",
+        "tags": [
+          "Types"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {}
+        ]
+      }
+    },
+    "/subtypes": {
+      "get": {
+        "summary": "Get subtypes",
+        "description": "Retrieve a list of all Pokémon subtypes available in the TCG.",
+        "operationId": "getSubtypes",
+        "tags": [
+          "Subtypes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of subtypes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {}
+        ]
+      }
+    },
+    "/supertypes": {
+      "get": {
+        "summary": "Get supertypes",
+        "description": "Retrieve a list of all Pokémon supertypes available in the TCG.",
+        "operationId": "getSupertypes",
+        "tags": [
+          "Supertypes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of supertypes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {}
+        ]
+      }
+    },
+    "/rarities": {
+      "get": {
+        "summary": "Get rarities",
+        "description": "Retrieve a list of all card rarities available in the TCG.",
+        "operationId": "getRarities",
+        "tags": [
+          "Rarities"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of rarities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {}
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Card": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the card"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the card"
+          },
+          "supertype": {
+            "type": "string",
+            "description": "Supertype of the card (e.g., Pokémon, Trainer, Energy)"
+          },
+          "subtypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Subtypes of the card"
+          },
+          "hp": {
+            "type": "string",
+            "description": "Hit points of the Pokémon"
+          },
+          "types": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Energy types of the card"
+          },
+          "evolvesFrom": {
+            "type": "string",
+            "description": "The Pokémon this card evolves from"
+          },
+          "evolvesTo": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The Pokémon this card evolves to"
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Special rules for the card"
+          },
+          "attacks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "cost": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "convertedEnergyCost": {
+                  "type": "integer"
+                },
+                "damage": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Attacks the Pokémon can perform"
+          },
+          "weaknesses": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Weaknesses of the Pokémon"
+          },
+          "resistances": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Resistances of the Pokémon"
+          },
+          "retreatCost": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Retreat cost of the Pokémon"
+          },
+          "convertedRetreatCost": {
+            "type": "integer",
+            "description": "Numeric value of retreat cost"
+          },
+          "set": {
+            "$ref": "#/components/schemas/Set",
+            "description": "Set information for the card"
+          },
+          "number": {
+            "type": "string",
+            "description": "Card number within the set"
+          },
+          "artist": {
+            "type": "string",
+            "description": "Artist who illustrated the card"
+          },
+          "rarity": {
+            "type": "string",
+            "description": "Rarity of the card"
+          },
+          "flavorText": {
+            "type": "string",
+            "description": "Flavor text on the card"
+          },
+          "nationalPokedexNumbers": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "National Pokédex numbers"
+          },
+          "legalities": {
+            "type": "object",
+            "properties": {
+              "unlimited": {
+                "type": "string"
+              },
+              "standard": {
+                "type": "string"
+              },
+              "expanded": {
+                "type": "string"
+              }
+            },
+            "description": "Legality of the card in different formats"
+          },
+          "images": {
+            "type": "object",
+            "properties": {
+              "small": {
+                "type": "string",
+                "format": "uri"
+              },
+              "large": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "description": "Image URLs for the card"
+          },
+          "tcgplayer": {
+            "type": "object",
+            "description": "TCGPlayer market information"
+          },
+          "cardmarket": {
+            "type": "object",
+            "description": "Cardmarket information"
+          }
+        }
+      },
+      "Set": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the set"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the set"
+          },
+          "series": {
+            "type": "string",
+            "description": "Series the set belongs to"
+          },
+          "printedTotal": {
+            "type": "integer",
+            "description": "Number of cards printed in the set"
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of cards in the set including secret rares"
+          },
+          "legalities": {
+            "type": "object",
+            "properties": {
+              "unlimited": {
+                "type": "string"
+              },
+              "standard": {
+                "type": "string"
+              },
+              "expanded": {
+                "type": "string"
+              }
+            },
+            "description": "Legality of the set in different formats"
+          },
+          "ptcgoCode": {
+            "type": "string",
+            "description": "PTCGO code for the set"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Release date of the set"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last updated timestamp"
+          },
+          "images": {
+            "type": "object",
+            "properties": {
+              "symbol": {
+                "type": "string",
+                "format": "uri"
+              },
+              "logo": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "description": "Image URLs for the set"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key",
+        "description": "API key for authentication. Register at the Developer Portal for higher rate limits."
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Cards",
+      "description": "Operations related to Pokémon TCG cards"
+    },
+    {
+      "name": "Sets",
+      "description": "Operations related to Pokémon TCG sets"
+    },
+    {
+      "name": "Types",
+      "description": "Operations related to Pokémon types"
+    },
+    {
+      "name": "Subtypes",
+      "description": "Operations related to card subtypes"
+    },
+    {
+      "name": "Supertypes",
+      "description": "Operations related to card supertypes"
+    },
+    {
+      "name": "Rarities",
+      "description": "Operations related to card rarities"
+    }
+  ]
+}
