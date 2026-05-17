@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/pokemon-tcg-sdk/core"
+	"github.com/voxgig-sdk/pokemon-tcg-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/pokemon-tcg-sdk/go/utility/struct"
 )
 
 type RarityEntity struct {

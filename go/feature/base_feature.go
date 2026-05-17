@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/pokemon-tcg-sdk/core"
+	"github.com/voxgig-sdk/pokemon-tcg-sdk/go/core"
 )
 
 type BaseFeature struct {

@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/pokemon-tcg-sdk/core"
+import "github.com/voxgig-sdk/pokemon-tcg-sdk/go/core"
 
 func featureAddUtil(ctx *core.Context, f core.Feature) {
 	client := ctx.Client

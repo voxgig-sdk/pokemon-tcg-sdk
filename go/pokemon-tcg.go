@@ -1,10 +1,10 @@
 package voxgigpokemontcgsdk
 
 import (
-	"github.com/voxgig-sdk/pokemon-tcg-sdk/core"
-	"github.com/voxgig-sdk/pokemon-tcg-sdk/entity"
-	"github.com/voxgig-sdk/pokemon-tcg-sdk/feature"
-	_ "github.com/voxgig-sdk/pokemon-tcg-sdk/utility"
+	"github.com/voxgig-sdk/pokemon-tcg-sdk/go/core"
+	"github.com/voxgig-sdk/pokemon-tcg-sdk/go/entity"
+	"github.com/voxgig-sdk/pokemon-tcg-sdk/go/feature"
+	_ "github.com/voxgig-sdk/pokemon-tcg-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

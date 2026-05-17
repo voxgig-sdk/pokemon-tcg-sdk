@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/pokemon-tcg-sdk"
-	"github.com/voxgig-sdk/pokemon-tcg-sdk/core"
+	sdk "github.com/voxgig-sdk/pokemon-tcg-sdk/go"
+	"github.com/voxgig-sdk/pokemon-tcg-sdk/go/core"
 )
 
 func TestSupertypeDirect(t *testing.T) {

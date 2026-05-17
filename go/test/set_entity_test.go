@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/pokemon-tcg-sdk"
-	"github.com/voxgig-sdk/pokemon-tcg-sdk/core"
+	sdk "github.com/voxgig-sdk/pokemon-tcg-sdk/go"
+	"github.com/voxgig-sdk/pokemon-tcg-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/pokemon-tcg-sdk/go/utility/struct"
 )
 
 func TestSetEntity(t *testing.T) {
