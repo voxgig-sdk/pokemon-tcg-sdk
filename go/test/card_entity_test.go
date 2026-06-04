@@ -135,7 +135,6 @@ func cardBasicSetup(extra map[string]any) *entityTestSetup {
 		"POKEMONTCG_TEST_CARD_ENTID": idmap,
 		"POKEMONTCG_TEST_LIVE":      "FALSE",
 		"POKEMONTCG_TEST_EXPLAIN":   "FALSE",
-		"POKEMONTCG_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["POKEMONTCG_TEST_CARD_ENTID"])
@@ -146,7 +145,6 @@ func cardBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["POKEMONTCG_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["POKEMONTCG_APIKEY"],
 			},
 			extra,
 		})

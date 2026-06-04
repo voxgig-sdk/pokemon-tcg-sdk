@@ -123,14 +123,12 @@ function set_direct_setup($mockres)
     $env = Runner::env_override([
         "POKEMONTCG_TEST_SET_ENTID" => [],
         "POKEMONTCG_TEST_LIVE" => "FALSE",
-        "POKEMONTCG_APIKEY" => "NONE",
     ]);
 
     $live = $env["POKEMONTCG_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["POKEMONTCG_APIKEY"],
         ];
         $client = new PokemonTcgSDK($merged_opts);
         return [

@@ -120,7 +120,6 @@ function basicSetup(extra?: any) {
     'POKEMON_TCG_TEST_SET_ENTID': idmap,
     'POKEMON_TCG_TEST_LIVE': 'FALSE',
     'POKEMON_TCG_TEST_EXPLAIN': 'FALSE',
-    'POKEMON_TCG_APIKEY': 'NONE',
   })
 
   idmap = env['POKEMON_TCG_TEST_SET_ENTID']
@@ -130,7 +129,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new PokemonTcgSDK(merge([
       {
-        apikey: env.POKEMON_TCG_APIKEY,
       },
       extra
     ]))

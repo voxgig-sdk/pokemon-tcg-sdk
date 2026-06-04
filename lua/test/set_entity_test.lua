@@ -102,7 +102,6 @@ function set_basic_setup(extra)
     ["POKEMONTCG_TEST_SET_ENTID"] = idmap,
     ["POKEMONTCG_TEST_LIVE"] = "FALSE",
     ["POKEMONTCG_TEST_EXPLAIN"] = "FALSE",
-    ["POKEMONTCG_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -114,7 +113,6 @@ function set_basic_setup(extra)
   if env["POKEMONTCG_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["POKEMONTCG_APIKEY"],
       },
       extra or {},
     })

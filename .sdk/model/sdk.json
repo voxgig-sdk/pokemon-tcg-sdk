@@ -19,7 +19,22 @@
           }
         ],
         "title": "Pokémon TCG API",
-        "version": "2.0.0"
+        "version": "2.0.0",
+        "tagline": "Query Pokemon Trading Card Game cards, sets, types and rarities through a JSON REST API",
+        "homepage": "https://pokemontcg.io/",
+        "docs_url": "https://docs.pokemontcg.io/",
+        "license_short": "MIT-licensed SDK; card data and imagery are property of The Pokemon Company and used under fair use.",
+        "license_md": "- The Pokemon TCG SDK and related tooling are released under the MIT License.\n- Card text, set names, images and other game assets are trademarks of The Pokemon Company, Nintendo, Game Freak and Creatures Inc.\n- The API is provided by the community project at pokemontcg.io and is not an official Pokemon product.\n- Use of an `X-Api-Key` header is recommended for higher request quotas; check the docs for current limits.",
+        "about_md": "The [Pokemon TCG API](https://pokemontcg.io/) is a community-maintained REST API that exposes data from the Pokemon Trading Card Game, including every printed card, set, supertype, subtype, type and rarity. It is served from `https://api.pokemontcg.io/v2`.\n\nWhat you get from the API:\n\n- Card records with names, images, attacks, abilities, weaknesses, HP and set membership\n- Set metadata such as release date, total card count and series\n- Reference lists of valid `types`, `supertypes`, `subtypes` and `rarities` for use in filters\n- A query language (`q=` parameter) for filtering by attributes like `name`, `types`, `set.id` or `rarity`\n\nThe API is JSON over HTTPS. An `X-Api-Key` header is supported and recommended; anonymous requests work but are subject to lower rate limits. SDKs are published by the project for JavaScript, Python, Ruby, Go, C# and other languages.",
+        "entity_desc": {
+          "card": "An individual Pokemon trading card with name, images, attacks, abilities, HP, weaknesses and set linkage; available at `/v2/cards` and `/v2/cards/{id}`.",
+          "rarity": "A reference list of valid card rarity names (e.g. Common, Rare, Rare Holo) usable in card queries; exposed at `/v2/rarities`.",
+          "set": "A Pokemon TCG release set with series, release date and total card count; available at `/v2/sets` and `/v2/sets/{id}`.",
+          "subtype": "A reference list of card subtypes (e.g. Basic, Stage 1, EX, V) that further classify cards; exposed at `/v2/subtypes`.",
+          "supertype": "A reference list of top-level card categories (Pokemon, Trainer, Energy); exposed at `/v2/supertypes`.",
+          "type": "A reference list of Pokemon energy types (e.g. Fire, Water, Psychic) used to classify cards; exposed at `/v2/types`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -27,7 +42,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "card": {

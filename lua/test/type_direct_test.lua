@@ -63,14 +63,12 @@ function type_direct_setup(mockres)
   local env = runner.env_override({
     ["POKEMONTCG_TEST_TYPE_ENTID"] = {},
     ["POKEMONTCG_TEST_LIVE"] = "FALSE",
-    ["POKEMONTCG_APIKEY"] = "NONE",
   })
 
   local live = env["POKEMONTCG_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["POKEMONTCG_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

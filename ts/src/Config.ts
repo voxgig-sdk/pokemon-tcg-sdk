@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://api.pokemontcg.io/v2',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
