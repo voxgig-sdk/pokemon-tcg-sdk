@@ -93,12 +93,14 @@ func supertypeDirectSetup(mockres any) *supertypeDirectSetupResult {
 	env := envOverride(map[string]any{
 		"POKEMONTCG_TEST_SUPERTYPE_ENTID": map[string]any{},
 		"POKEMONTCG_TEST_LIVE":    "FALSE",
+		"POKEMONTCG_APIKEY":       "NONE",
 	})
 
 	live := env["POKEMONTCG_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["POKEMONTCG_APIKEY"],
 		}
 		client := sdk.NewPokemonTcgSDK(mergedOpts)
 

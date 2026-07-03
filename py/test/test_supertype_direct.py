@@ -61,12 +61,14 @@ def _supertype_direct_setup(mockres):
     env = runner.env_override({
         "POKEMONTCG_TEST_SUPERTYPE_ENTID": {},
         "POKEMONTCG_TEST_LIVE": "FALSE",
+        "POKEMONTCG_APIKEY": "NONE",
     })
 
     live = env.get("POKEMONTCG_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("POKEMONTCG_APIKEY"),
         }
         client = PokemonTcgSDK(merged_opts)
         return {

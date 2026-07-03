@@ -92,6 +92,7 @@ def _supertype_basic_setup(extra):
         "POKEMONTCG_TEST_SUPERTYPE_ENTID": idmap,
         "POKEMONTCG_TEST_LIVE": "FALSE",
         "POKEMONTCG_TEST_EXPLAIN": "FALSE",
+        "POKEMONTCG_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ def _supertype_basic_setup(extra):
     if env.get("POKEMONTCG_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("POKEMONTCG_APIKEY"),
             },
             extra or {},
         ])

@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://api.pokemontcg.io/v2',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -70,230 +74,232 @@ class Config {
     "card": {
       "fields": [
         {
+          "active": true,
           "name": "artist",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "attack",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "cardmarket",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "converted_retreat_cost",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "data",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "evolves_from",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "evolves_to",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 6
         },
         {
+          "active": true,
           "name": "flavor_text",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 7
         },
         {
+          "active": true,
           "name": "hp",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 8
         },
         {
+          "active": true,
           "name": "id",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 9
         },
         {
+          "active": true,
           "name": "image",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 10
         },
         {
+          "active": true,
           "name": "legality",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 11
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 12
         },
         {
+          "active": true,
           "name": "national_pokedex_number",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 13
         },
         {
+          "active": true,
           "name": "number",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 14
         },
         {
+          "active": true,
           "name": "rarity",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 15
         },
         {
+          "active": true,
           "name": "resistance",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 16
         },
         {
+          "active": true,
           "name": "retreat_cost",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 17
         },
         {
+          "active": true,
           "name": "rule",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 18
         },
         {
+          "active": true,
           "name": "set",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 19
         },
         {
+          "active": true,
           "name": "subtype",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 20
         },
         {
+          "active": true,
           "name": "supertype",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 21
         },
         {
+          "active": true,
           "name": "tcgplayer",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 22
         },
         {
+          "active": true,
           "name": "type",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 23
         },
         {
+          "active": true,
           "name": "weakness",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 24
         }
       ],
       "name": "card",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "order_by",
                     "orig": "order_by",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": 1,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "example": 250,
                     "kind": "query",
                     "name": "page_size",
                     "orig": "page_size",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "q",
                     "orig": "q",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "select",
                     "orig": "select",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -315,26 +321,26 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         },
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -353,11 +359,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -368,35 +372,35 @@ class Config {
     "rarity": {
       "fields": [
         {
+          "active": true,
           "name": "data",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 0
         }
       ],
       "name": "rarity",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/rarities",
               "parts": [
                 "rarities"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -407,124 +411,126 @@ class Config {
     "set": {
       "fields": [
         {
+          "active": true,
           "name": "data",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "id",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "image",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "legality",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "printed_total",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "ptcgo_code",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 6
         },
         {
+          "active": true,
           "name": "release_date",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 7
         },
         {
+          "active": true,
           "name": "series",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 8
         },
         {
+          "active": true,
           "name": "total",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 9
         },
         {
+          "active": true,
           "name": "updated_at",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 10
         }
       ],
       "name": "set",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "order_by",
                     "orig": "order_by",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": 1,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "example": 250,
                     "kind": "query",
                     "name": "page_size",
                     "orig": "page_size",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "q",
                     "orig": "q",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -545,26 +551,26 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         },
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -583,11 +589,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -598,35 +602,35 @@ class Config {
     "subtype": {
       "fields": [
         {
+          "active": true,
           "name": "data",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 0
         }
       ],
       "name": "subtype",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/subtypes",
               "parts": [
                 "subtypes"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -637,35 +641,35 @@ class Config {
     "supertype": {
       "fields": [
         {
+          "active": true,
           "name": "data",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 0
         }
       ],
       "name": "supertype",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/supertypes",
               "parts": [
                 "supertypes"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -676,35 +680,35 @@ class Config {
     "type": {
       "fields": [
         {
+          "active": true,
           "name": "data",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 0
         }
       ],
       "name": "type",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/types",
               "parts": [
                 "types"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },

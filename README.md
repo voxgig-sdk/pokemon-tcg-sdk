@@ -1,21 +1,8 @@
 # PokemonTcg SDK
 
-Query Pokemon Trading Card Game cards, sets, types and rarities through a JSON REST API
+Pokémon TCG API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Pokémon TCG API
-
-The [Pokemon TCG API](https://pokemontcg.io/) is a community-maintained REST API that exposes data from the Pokemon Trading Card Game, including every printed card, set, supertype, subtype, type and rarity. It is served from `https://api.pokemontcg.io/v2`.
-
-What you get from the API:
-
-- Card records with names, images, attacks, abilities, weaknesses, HP and set membership
-- Set metadata such as release date, total card count and series
-- Reference lists of valid `types`, `supertypes`, `subtypes` and `rarities` for use in filters
-- A query language (`q=` parameter) for filtering by attributes like `name`, `types`, `set.id` or `rarity`
-
-The API is JSON over HTTPS. An `X-Api-Key` header is supported and recommended; anonymous requests work but are subject to lower rate limits. SDKs are published by the project for JavaScript, Python, Ruby, Go, C# and other languages.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install pokemon-tcg-sdk
 luarocks install pokemon-tcg-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { PokemonTcgSDK } from 'pokemon-tcg'
 
-const client = new PokemonTcgSDK({})
+const client = new PokemonTcgSDK({
+  apikey: process.env.POKEMON-TCG_APIKEY,
+})
 
 // List all cards
 const cards = await client.Card().list()
+console.log(cards.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,12 +90,12 @@ The API exposes 6 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Card** | An individual Pokemon trading card with name, images, attacks, abilities, HP, weaknesses and set linkage; available at `/v2/cards` and `/v2/cards/{id}`. | `/cards` |
-| **Rarity** | A reference list of valid card rarity names (e.g. Common, Rare, Rare Holo) usable in card queries; exposed at `/v2/rarities`. | `/rarities` |
-| **Set** | A Pokemon TCG release set with series, release date and total card count; available at `/v2/sets` and `/v2/sets/{id}`. | `/sets` |
-| **Subtype** | A reference list of card subtypes (e.g. Basic, Stage 1, EX, V) that further classify cards; exposed at `/v2/subtypes`. | `/subtypes` |
-| **Supertype** | A reference list of top-level card categories (Pokemon, Trainer, Energy); exposed at `/v2/supertypes`. | `/supertypes` |
-| **Type** | A reference list of Pokemon energy types (e.g. Fire, Water, Psychic) used to classify cards; exposed at `/v2/types`. | `/types` |
+| **Card** |  | `/cards` |
+| **Rarity** |  | `/rarities` |
+| **Set** |  | `/sets` |
+| **Subtype** |  | `/subtypes` |
+| **Supertype** |  | `/supertypes` |
+| **Type** |  | `/types` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -116,17 +105,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from pokemontcg_sdk import PokemonTcgSDK
 
-client = PokemonTcgSDK({})
+client = PokemonTcgSDK({
+    "apikey": os.environ.get("POKEMON-TCG_APIKEY"),
+})
 
 # List all cards
-cards, err = client.Card(None).list(None, None)
+cards, err = client.Card().list()
+print(cards)
 
 # Load a specific card
-card, err = client.Card(None).load(
-    {"id": "example_id"}, None
-)
+card, err = client.Card().load({"id": "example_id"})
+print(card)
 ```
 
 ### PHP
@@ -135,15 +127,17 @@ card, err = client.Card(None).load(
 <?php
 require_once 'pokemontcg_sdk.php';
 
-$client = new PokemonTcgSDK([]);
+$client = new PokemonTcgSDK([
+    "apikey" => getenv("POKEMON-TCG_APIKEY"),
+]);
 
 // List all cards
-[$cards, $err] = $client->Card(null)->list(null, null);
+[$cards, $err] = $client->Card()->list();
+print_r($cards);
 
 // Load a specific card
-[$card, $err] = $client->Card(null)->load(
-    ["id" => "example_id"], null
-);
+[$card, $err] = $client->Card()->load(["id" => "example_id"]);
+print_r($card);
 ```
 
 ### Golang
@@ -151,10 +145,13 @@ $client = new PokemonTcgSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/pokemon-tcg-sdk/go"
 
-client := sdk.NewPokemonTcgSDK(map[string]any{})
+client := sdk.NewPokemonTcgSDK(map[string]any{
+    "apikey": os.Getenv("POKEMON-TCG_APIKEY"),
+})
 
 // List all cards
 cards, err := client.Card(nil).List(nil, nil)
+fmt.Println(cards)
 ```
 
 ### Ruby
@@ -162,15 +159,17 @@ cards, err := client.Card(nil).List(nil, nil)
 ```ruby
 require_relative "PokemonTcg_sdk"
 
-client = PokemonTcgSDK.new({})
+client = PokemonTcgSDK.new({
+  "apikey" => ENV["POKEMON-TCG_APIKEY"],
+})
 
 # List all cards
-cards, err = client.Card(nil).list(nil, nil)
+cards, err = client.Card().list
+puts cards
 
 # Load a specific card
-card, err = client.Card(nil).load(
-  { "id" => "example_id" }, nil
-)
+card, err = client.Card().load({ "id" => "example_id" })
+puts card
 ```
 
 ### Lua
@@ -178,15 +177,17 @@ card, err = client.Card(nil).load(
 ```lua
 local sdk = require("pokemon-tcg_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("POKEMON-TCG_APIKEY"),
+})
 
 -- List all cards
-local cards, err = client:Card(nil):list(nil, nil)
+local cards, err = client:Card():list()
+print(cards)
 
 -- Load a specific card
-local card, err = client:Card(nil):load(
-  { id = "example_id" }, nil
-)
+local card, err = client:Card():load({ id = "example_id" })
+print(card)
 ```
 
 ## Unit testing in offline mode
@@ -205,25 +206,21 @@ const result = await client.Card().load({ id: 'test01' })
 ### Python
 
 ```python
-client = PokemonTcgSDK.test(None, None)
-result, err = client.Card(None).load(
-    {"id": "test01"}, None
-)
+client = PokemonTcgSDK.test()
+result, err = client.Card().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = PokemonTcgSDK::test(null, null);
-[$result, $err] = $client->Card(null)->load(
-    ["id" => "test01"], null
-);
+$client = PokemonTcgSDK::test();
+[$result, $err] = $client->Card()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Card(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -232,19 +229,15 @@ result, err := client.Card(nil).Load(
 ### Ruby
 
 ```ruby
-client = PokemonTcgSDK.test(nil, nil)
-result, err = client.Card(nil).load(
-  { "id" => "test01" }, nil
-)
+client = PokemonTcgSDK.test
+result, err = client.Card().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Card(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Card():load({ id = "test01" })
 ```
 
 ## How it works
@@ -348,16 +341,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Pokémon TCG API
-
-- Upstream: [https://pokemontcg.io/](https://pokemontcg.io/)
-- API docs: [https://docs.pokemontcg.io/](https://docs.pokemontcg.io/)
-
-- The Pokemon TCG SDK and related tooling are released under the MIT License.
-- Card text, set names, images and other game assets are trademarks of The Pokemon Company, Nintendo, Game Freak and Creatures Inc.
-- The API is provided by the community project at pokemontcg.io and is not an official Pokemon product.
-- Use of an `X-Api-Key` header is recommended for higher request quotas; check the docs for current limits.
 
 ---
 

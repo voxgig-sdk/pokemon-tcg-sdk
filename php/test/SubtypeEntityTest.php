@@ -86,6 +86,7 @@ function subtype_basic_setup($extra)
         "POKEMONTCG_TEST_SUBTYPE_ENTID" => $idmap,
         "POKEMONTCG_TEST_LIVE" => "FALSE",
         "POKEMONTCG_TEST_EXPLAIN" => "FALSE",
+        "POKEMONTCG_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,6 +98,7 @@ function subtype_basic_setup($extra)
     if ($env["POKEMONTCG_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["POKEMONTCG_APIKEY"],
             ],
             $extra ?? [],
         ]);

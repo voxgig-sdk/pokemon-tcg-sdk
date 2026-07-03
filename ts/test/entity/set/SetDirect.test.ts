@@ -136,12 +136,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'POKEMONTCG_TEST_SET_ENTID': {},
     'POKEMONTCG_TEST_LIVE': 'FALSE',
+    'POKEMONTCG_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.POKEMONTCG_TEST_LIVE
 
   if (live) {
     const client = new PokemonTcgSDK({
+      apikey: env.POKEMONTCG_APIKEY,
     })
 
     let idmap: any = env['POKEMONTCG_TEST_SET_ENTID']
