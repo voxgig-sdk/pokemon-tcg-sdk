@@ -10,7 +10,7 @@ The PHP SDK for the PokemonTcg API — an entity-oriented client using PHP conve
 
 ## Install
 ```bash
-composer require voxgig/pokemon-tcg-sdk
+composer require voxgig-sdk/pokemon-tcg
 ```
 
 

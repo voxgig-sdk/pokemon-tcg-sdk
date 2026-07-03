@@ -10,13 +10,13 @@ The Ruby SDK for the PokemonTcg API — an entity-oriented client using idiomati
 
 ## Install
 ```bash
-gem install pokemon-tcg-sdk
+gem install voxgig-sdk-pokemon-tcg
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "pokemon-tcg-sdk"
+gem "voxgig-sdk-pokemon-tcg"
 ```
 
 Then run:

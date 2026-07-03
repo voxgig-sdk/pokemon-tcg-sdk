@@ -10,7 +10,7 @@ The Lua SDK for the PokemonTcg API — an entity-oriented client using Lua conve
 
 ## Install
 ```bash
-luarocks install pokemon-tcg-sdk
+luarocks install voxgig-sdk-pokemon-tcg
 ```
 
 If the module is not yet published, add the source directory to

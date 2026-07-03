@@ -8,12 +8,14 @@ source = {
   dir = "pokemon-tcg-sdk/lua"
 }
 description = {
-  summary = "PokemonTcg SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Pokémon TCG public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/pokemon-tcg-sdk",
+  issues_url = "https://github.com/voxgig-sdk/pokemon-tcg-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "pokemon-tcg" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

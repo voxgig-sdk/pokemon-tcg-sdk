@@ -10,7 +10,7 @@ The Python SDK for the PokemonTcg API — an entity-oriented client following Py
 
 ## Install
 ```bash
-pip install pokemon-tcg-sdk
+pip install voxgig-sdk-pokemon-tcg
 ```
 
 Or install from source:
