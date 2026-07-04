@@ -28,9 +28,11 @@ const client = new PokemonTcgSDK({
   apikey: process.env.POKEMON_TCG_APIKEY,
 })
 
-// List all cards
-const cards = await client.card.list()
-console.log(cards.data)
+// List all cards (returns Card[])
+const cards = await client.Card().list()
+for (const card of cards) {
+  console.log(card)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -93,12 +95,13 @@ client = PokemonTcgSDK({
     "apikey": os.environ.get("POKEMON_TCG_APIKEY"),
 })
 
-# List all cards
-cards = client.card.list()
-print(cards)
+# List all cards (returns a list, raises on error)
+cards = client.Card().list({})
+for card in cards:
+    print(card)
 
-# Load a specific card
-card = client.card.load({"id": "example_id"})
+# Load a specific card (returns the record, raises on error)
+card = client.Card().load({"id": "example_id"})
 print(card)
 ```
 
@@ -112,12 +115,12 @@ $client = new PokemonTcgSDK([
     "apikey" => getenv("POKEMON_TCG_APIKEY"),
 ]);
 
-// List all cards (throws on error)
-$cards = $client->card()->list();
+// List all cards (returns an array; throws on error)
+$cards = $client->Card()->list();
 print_r($cards);
 
-// Load a specific card
-$card = $client->card()->load(["id" => "example_id"]);
+// Load a specific card (returns the bare record; throws on error)
+$card = $client->Card()->load(["id" => "example_id"]);
 print_r($card);
 ```
 
@@ -144,12 +147,12 @@ client = PokemonTcgSDK.new({
   "apikey" => ENV["POKEMON_TCG_APIKEY"],
 })
 
-# List all cards
-cards = client.card.list
+# List all cards (returns an Array; raises on error)
+cards = client.Card.list
 puts cards
 
-# Load a specific card
-card = client.card.load({ "id" => "example_id" })
+# Load a specific card (returns the bare record; raises on error)
+card = client.Card.load({ "id" => "example_id" })
 puts card
 ```
 
@@ -163,11 +166,11 @@ local client = sdk.new({
 })
 
 -- List all cards
-local cards, err = client:card():list()
+local cards, err = client:Card():list()
 print(cards)
 
 -- Load a specific card
-local card, err = client:card():load({ id = "example_id" })
+local card, err = client:Card():load({ id = "example_id" })
 print(card)
 ```
 
@@ -180,22 +183,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = PokemonTcgSDK.test()
-const result = await client.card.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const card = await client.Card().load({ id: 'test01' })
+// card is a bare Card populated with mock data
+console.log(card)
 ```
 
 ### Python
 
 ```python
 client = PokemonTcgSDK.test()
-result = client.card.load({"id": "test01"})
+card = client.Card().load({"id": "test01"})
+print(card)
 ```
 
 ### PHP
 
 ```php
-$client = PokemonTcgSDK::test();
-$result = $client->card()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = PokemonTcgSDK::test([
+    "entity" => ["card" => ["test01" => ["id" => "test01"]]],
+]);
+$card = $client->Card()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -210,15 +218,18 @@ result, err := client.Card(nil).Load(
 ### Ruby
 
 ```ruby
-client = PokemonTcgSDK.test
-result = client.card.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = PokemonTcgSDK.test({
+  "entity" => { "card" => { "test01" => { "id" => "test01" } } },
+})
+card = client.Card.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:card():load({ id = "test01" })
+local result, err = client:Card():load({ id = "test01" })
 ```
 
 ## How it works
@@ -266,6 +277,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

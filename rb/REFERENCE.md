@@ -107,7 +107,7 @@ same parameters as `direct()`. Raises on error.
 ## CardEntity
 
 ```ruby
-card = client.card
+card = client.Card
 ```
 
 ### Fields
@@ -147,7 +147,7 @@ card = client.card
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.card.list(nil)
+results = client.Card.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -155,7 +155,7 @@ results = client.card.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.card.load({ "id" => "card_id" })
+result = client.Card.load({ "id" => "card_id" })
 ```
 
 ### Common Methods
@@ -191,7 +191,7 @@ Return the entity name.
 ## RarityEntity
 
 ```ruby
-rarity = client.rarity
+rarity = client.Rarity
 ```
 
 ### Fields
@@ -207,7 +207,7 @@ rarity = client.rarity
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.rarity.list(nil)
+results = client.Rarity.list(nil)
 ```
 
 ### Common Methods
@@ -243,7 +243,7 @@ Return the entity name.
 ## SetEntity
 
 ```ruby
-set = client.set
+set = client.Set
 ```
 
 ### Fields
@@ -269,7 +269,7 @@ set = client.set
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.set.list(nil)
+results = client.Set.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -277,7 +277,7 @@ results = client.set.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.set.load({ "id" => "set_id" })
+result = client.Set.load({ "id" => "set_id" })
 ```
 
 ### Common Methods
@@ -313,7 +313,7 @@ Return the entity name.
 ## SubtypeEntity
 
 ```ruby
-subtype = client.subtype
+subtype = client.Subtype
 ```
 
 ### Fields
@@ -329,7 +329,7 @@ subtype = client.subtype
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.subtype.list(nil)
+results = client.Subtype.list(nil)
 ```
 
 ### Common Methods
@@ -365,7 +365,7 @@ Return the entity name.
 ## SupertypeEntity
 
 ```ruby
-supertype = client.supertype
+supertype = client.Supertype
 ```
 
 ### Fields
@@ -381,7 +381,7 @@ supertype = client.supertype
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.supertype.list(nil)
+results = client.Supertype.list(nil)
 ```
 
 ### Common Methods
@@ -417,7 +417,7 @@ Return the entity name.
 ## TypeEntity
 
 ```ruby
-type = client.type
+type = client.Type
 ```
 
 ### Fields
@@ -433,7 +433,7 @@ type = client.type
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.type.list(nil)
+results = client.Type.list(nil)
 ```
 
 ### Common Methods

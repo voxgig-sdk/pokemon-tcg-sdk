@@ -220,105 +220,45 @@ class PokemonTcgSDK:
         }
 
 
-    @property
-    def card(self):
-        """Idiomatic facade: client.card.list() / client.card.load({"id": ...})."""
-        from entity.card_entity import CardEntity
-        cached = getattr(self, "_card", None)
-        if cached is None:
-            cached = CardEntity(self, None)
-            self._card = cached
-        return cached
-
-    def Card(self, data=None):
-        # Deprecated: use client.card instead.
+    def Card(self, data=None) -> "CardEntity":
+        """Entity factory: client.Card().list({}) / client.Card().load({"id": ...})."""
         from entity.card_entity import CardEntity
         return CardEntity(self, data)
 
 
-    @property
-    def rarity(self):
-        """Idiomatic facade: client.rarity.list() / client.rarity.load({"id": ...})."""
-        from entity.rarity_entity import RarityEntity
-        cached = getattr(self, "_rarity", None)
-        if cached is None:
-            cached = RarityEntity(self, None)
-            self._rarity = cached
-        return cached
-
-    def Rarity(self, data=None):
-        # Deprecated: use client.rarity instead.
+    def Rarity(self, data=None) -> "RarityEntity":
+        """Entity factory: client.Rarity().list({}) / client.Rarity().load({"id": ...})."""
         from entity.rarity_entity import RarityEntity
         return RarityEntity(self, data)
 
 
-    @property
-    def set(self):
-        """Idiomatic facade: client.set.list() / client.set.load({"id": ...})."""
-        from entity.set_entity import SetEntity
-        cached = getattr(self, "_set", None)
-        if cached is None:
-            cached = SetEntity(self, None)
-            self._set = cached
-        return cached
-
-    def Set(self, data=None):
-        # Deprecated: use client.set instead.
+    def Set(self, data=None) -> "SetEntity":
+        """Entity factory: client.Set().list({}) / client.Set().load({"id": ...})."""
         from entity.set_entity import SetEntity
         return SetEntity(self, data)
 
 
-    @property
-    def subtype(self):
-        """Idiomatic facade: client.subtype.list() / client.subtype.load({"id": ...})."""
-        from entity.subtype_entity import SubtypeEntity
-        cached = getattr(self, "_subtype", None)
-        if cached is None:
-            cached = SubtypeEntity(self, None)
-            self._subtype = cached
-        return cached
-
-    def Subtype(self, data=None):
-        # Deprecated: use client.subtype instead.
+    def Subtype(self, data=None) -> "SubtypeEntity":
+        """Entity factory: client.Subtype().list({}) / client.Subtype().load({"id": ...})."""
         from entity.subtype_entity import SubtypeEntity
         return SubtypeEntity(self, data)
 
 
-    @property
-    def supertype(self):
-        """Idiomatic facade: client.supertype.list() / client.supertype.load({"id": ...})."""
-        from entity.supertype_entity import SupertypeEntity
-        cached = getattr(self, "_supertype", None)
-        if cached is None:
-            cached = SupertypeEntity(self, None)
-            self._supertype = cached
-        return cached
-
-    def Supertype(self, data=None):
-        # Deprecated: use client.supertype instead.
+    def Supertype(self, data=None) -> "SupertypeEntity":
+        """Entity factory: client.Supertype().list({}) / client.Supertype().load({"id": ...})."""
         from entity.supertype_entity import SupertypeEntity
         return SupertypeEntity(self, data)
 
 
-    @property
-    def type(self):
-        """Idiomatic facade: client.type.list() / client.type.load({"id": ...})."""
-        from entity.type_entity import TypeEntity
-        cached = getattr(self, "_type", None)
-        if cached is None:
-            cached = TypeEntity(self, None)
-            self._type = cached
-        return cached
-
-    def Type(self, data=None):
-        # Deprecated: use client.type instead.
+    def Type(self, data=None) -> "TypeEntity":
+        """Entity factory: client.Type().list({}) / client.Type().load({"id": ...})."""
         from entity.type_entity import TypeEntity
         return TypeEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "PokemonTcgSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -338,3 +278,14 @@ class PokemonTcgSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.card_entity import CardEntity
+    from entity.rarity_entity import RarityEntity
+    from entity.set_entity import SetEntity
+    from entity.subtype_entity import SubtypeEntity
+    from entity.supertype_entity import SupertypeEntity
+    from entity.type_entity import TypeEntity

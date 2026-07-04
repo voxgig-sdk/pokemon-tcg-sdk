@@ -104,7 +104,7 @@ same parameters as `direct()`.
 ## CardEntity
 
 ```lua
-local card = client:card(nil)
+local card = client:Card(nil)
 ```
 
 ### Fields
@@ -144,7 +144,7 @@ local card = client:card(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:card():list()
+local results, err = client:Card():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -152,7 +152,7 @@ local results, err = client:card():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:card():load({ id = "card_id" })
+local result, err = client:Card():load({ id = "card_id" })
 ```
 
 ### Common Methods
@@ -188,7 +188,7 @@ Return the entity name.
 ## RarityEntity
 
 ```lua
-local rarity = client:rarity(nil)
+local rarity = client:Rarity(nil)
 ```
 
 ### Fields
@@ -204,7 +204,7 @@ local rarity = client:rarity(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:rarity():list()
+local results, err = client:Rarity():list()
 ```
 
 ### Common Methods
@@ -240,7 +240,7 @@ Return the entity name.
 ## SetEntity
 
 ```lua
-local set = client:set(nil)
+local set = client:Set(nil)
 ```
 
 ### Fields
@@ -266,7 +266,7 @@ local set = client:set(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:set():list()
+local results, err = client:Set():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -274,7 +274,7 @@ local results, err = client:set():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:set():load({ id = "set_id" })
+local result, err = client:Set():load({ id = "set_id" })
 ```
 
 ### Common Methods
@@ -310,7 +310,7 @@ Return the entity name.
 ## SubtypeEntity
 
 ```lua
-local subtype = client:subtype(nil)
+local subtype = client:Subtype(nil)
 ```
 
 ### Fields
@@ -326,7 +326,7 @@ local subtype = client:subtype(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:subtype():list()
+local results, err = client:Subtype():list()
 ```
 
 ### Common Methods
@@ -362,7 +362,7 @@ Return the entity name.
 ## SupertypeEntity
 
 ```lua
-local supertype = client:supertype(nil)
+local supertype = client:Supertype(nil)
 ```
 
 ### Fields
@@ -378,7 +378,7 @@ local supertype = client:supertype(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:supertype():list()
+local results, err = client:Supertype():list()
 ```
 
 ### Common Methods
@@ -414,7 +414,7 @@ Return the entity name.
 ## TypeEntity
 
 ```lua
-local type = client:type(nil)
+local type = client:Type(nil)
 ```
 
 ### Fields
@@ -430,7 +430,7 @@ local type = client:type(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:type():list()
+local results, err = client:Type():list()
 ```
 
 ### Common Methods

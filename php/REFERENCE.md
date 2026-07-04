@@ -106,7 +106,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CardEntity
 
 ```php
-$card = $client->card();
+$card = $client->Card();
 ```
 
 ### Fields
@@ -146,7 +146,7 @@ $card = $client->card();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->card()->list([]);
+$results = $client->Card()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -154,7 +154,7 @@ $results = $client->card()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->card()->load(["id" => "card_id"]);
+$result = $client->Card()->load(["id" => "card_id"]);
 ```
 
 ### Common Methods
@@ -190,7 +190,7 @@ Return the entity name.
 ## RarityEntity
 
 ```php
-$rarity = $client->rarity();
+$rarity = $client->Rarity();
 ```
 
 ### Fields
@@ -206,7 +206,7 @@ $rarity = $client->rarity();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->rarity()->list([]);
+$results = $client->Rarity()->list([]);
 ```
 
 ### Common Methods
@@ -242,7 +242,7 @@ Return the entity name.
 ## SetEntity
 
 ```php
-$set = $client->set();
+$set = $client->Set();
 ```
 
 ### Fields
@@ -268,7 +268,7 @@ $set = $client->set();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->set()->list([]);
+$results = $client->Set()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -276,7 +276,7 @@ $results = $client->set()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->set()->load(["id" => "set_id"]);
+$result = $client->Set()->load(["id" => "set_id"]);
 ```
 
 ### Common Methods
@@ -312,7 +312,7 @@ Return the entity name.
 ## SubtypeEntity
 
 ```php
-$subtype = $client->subtype();
+$subtype = $client->Subtype();
 ```
 
 ### Fields
@@ -328,7 +328,7 @@ $subtype = $client->subtype();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->subtype()->list([]);
+$results = $client->Subtype()->list([]);
 ```
 
 ### Common Methods
@@ -364,7 +364,7 @@ Return the entity name.
 ## SupertypeEntity
 
 ```php
-$supertype = $client->supertype();
+$supertype = $client->Supertype();
 ```
 
 ### Fields
@@ -380,7 +380,7 @@ $supertype = $client->supertype();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->supertype()->list([]);
+$results = $client->Supertype()->list([]);
 ```
 
 ### Common Methods
@@ -416,7 +416,7 @@ Return the entity name.
 ## TypeEntity
 
 ```php
-$type = $client->type();
+$type = $client->Type();
 ```
 
 ### Fields
@@ -432,7 +432,7 @@ $type = $client->type();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->type()->list([]);
+$results = $client->Type()->list([]);
 ```
 
 ### Common Methods

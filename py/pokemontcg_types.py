@@ -4,147 +4,137 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Card:
-    artist: Optional[str] = None
-    attack: Optional[list] = None
-    cardmarket: Optional[dict] = None
-    converted_retreat_cost: Optional[int] = None
-    data: Optional[dict] = None
-    evolves_from: Optional[str] = None
-    evolves_to: Optional[list] = None
-    flavor_text: Optional[str] = None
-    hp: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[dict] = None
-    legality: Optional[dict] = None
-    name: Optional[str] = None
-    national_pokedex_number: Optional[list] = None
-    number: Optional[str] = None
-    rarity: Optional[str] = None
-    resistance: Optional[list] = None
-    retreat_cost: Optional[list] = None
-    rule: Optional[list] = None
-    set: Optional[dict] = None
-    subtype: Optional[list] = None
-    supertype: Optional[str] = None
-    tcgplayer: Optional[dict] = None
-    type: Optional[list] = None
-    weakness: Optional[list] = None
+class Card(TypedDict, total=False):
+    artist: str
+    attack: list
+    cardmarket: dict
+    converted_retreat_cost: int
+    data: dict
+    evolves_from: str
+    evolves_to: list
+    flavor_text: str
+    hp: str
+    id: str
+    image: dict
+    legality: dict
+    name: str
+    national_pokedex_number: list
+    number: str
+    rarity: str
+    resistance: list
+    retreat_cost: list
+    rule: list
+    set: dict
+    subtype: list
+    supertype: str
+    tcgplayer: dict
+    type: list
+    weakness: list
 
 
-@dataclass
-class CardLoadMatch:
+class CardLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class CardListMatch:
-    artist: Optional[str] = None
-    attack: Optional[list] = None
-    cardmarket: Optional[dict] = None
-    converted_retreat_cost: Optional[int] = None
-    data: Optional[dict] = None
-    evolves_from: Optional[str] = None
-    evolves_to: Optional[list] = None
-    flavor_text: Optional[str] = None
-    hp: Optional[str] = None
-    id: Optional[str] = None
-    image: Optional[dict] = None
-    legality: Optional[dict] = None
-    name: Optional[str] = None
-    national_pokedex_number: Optional[list] = None
-    number: Optional[str] = None
-    rarity: Optional[str] = None
-    resistance: Optional[list] = None
-    retreat_cost: Optional[list] = None
-    rule: Optional[list] = None
-    set: Optional[dict] = None
-    subtype: Optional[list] = None
-    supertype: Optional[str] = None
-    tcgplayer: Optional[dict] = None
-    type: Optional[list] = None
-    weakness: Optional[list] = None
+class CardListMatch(TypedDict, total=False):
+    artist: str
+    attack: list
+    cardmarket: dict
+    converted_retreat_cost: int
+    data: dict
+    evolves_from: str
+    evolves_to: list
+    flavor_text: str
+    hp: str
+    id: str
+    image: dict
+    legality: dict
+    name: str
+    national_pokedex_number: list
+    number: str
+    rarity: str
+    resistance: list
+    retreat_cost: list
+    rule: list
+    set: dict
+    subtype: list
+    supertype: str
+    tcgplayer: dict
+    type: list
+    weakness: list
 
 
-@dataclass
-class Rarity:
-    data: Optional[list] = None
+class Rarity(TypedDict, total=False):
+    data: list
 
 
-@dataclass
-class RarityListMatch:
-    data: Optional[list] = None
+class RarityListMatch(TypedDict, total=False):
+    data: list
 
 
-@dataclass
-class Set:
-    data: Optional[dict] = None
-    id: Optional[str] = None
-    image: Optional[dict] = None
-    legality: Optional[dict] = None
-    name: Optional[str] = None
-    printed_total: Optional[int] = None
-    ptcgo_code: Optional[str] = None
-    release_date: Optional[str] = None
-    series: Optional[str] = None
-    total: Optional[int] = None
-    updated_at: Optional[str] = None
+class Set(TypedDict, total=False):
+    data: dict
+    id: str
+    image: dict
+    legality: dict
+    name: str
+    printed_total: int
+    ptcgo_code: str
+    release_date: str
+    series: str
+    total: int
+    updated_at: str
 
 
-@dataclass
-class SetLoadMatch:
+class SetLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class SetListMatch:
-    data: Optional[dict] = None
-    id: Optional[str] = None
-    image: Optional[dict] = None
-    legality: Optional[dict] = None
-    name: Optional[str] = None
-    printed_total: Optional[int] = None
-    ptcgo_code: Optional[str] = None
-    release_date: Optional[str] = None
-    series: Optional[str] = None
-    total: Optional[int] = None
-    updated_at: Optional[str] = None
+class SetListMatch(TypedDict, total=False):
+    data: dict
+    id: str
+    image: dict
+    legality: dict
+    name: str
+    printed_total: int
+    ptcgo_code: str
+    release_date: str
+    series: str
+    total: int
+    updated_at: str
 
 
-@dataclass
-class Subtype:
-    data: Optional[list] = None
+class Subtype(TypedDict, total=False):
+    data: list
 
 
-@dataclass
-class SubtypeListMatch:
-    data: Optional[list] = None
+class SubtypeListMatch(TypedDict, total=False):
+    data: list
 
 
-@dataclass
-class Supertype:
-    data: Optional[list] = None
+class Supertype(TypedDict, total=False):
+    data: list
 
 
-@dataclass
-class SupertypeListMatch:
-    data: Optional[list] = None
+class SupertypeListMatch(TypedDict, total=False):
+    data: list
 
 
-@dataclass
-class Type:
-    data: Optional[list] = None
+class Type(TypedDict, total=False):
+    data: list
 
 
-@dataclass
-class TypeListMatch:
-    data: Optional[list] = None
-
+class TypeListMatch(TypedDict, total=False):
+    data: list

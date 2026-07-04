@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:card():list() / client:card():load({ id = ... })
-function PokemonTcgSDK:card(data)
+-- Idiomatic facade: client:Card():list() / client:Card():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PokemonTcgSDK:Card(data)
   local EntityMod = require("entity.card_entity")
   if data == nil then
     if self._card == nil then
@@ -256,15 +257,10 @@ function PokemonTcgSDK:card(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:card() instead.
-function PokemonTcgSDK:Card(data)
-  local EntityMod = require("entity.card_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:rarity():list() / client:rarity():load({ id = ... })
-function PokemonTcgSDK:rarity(data)
+-- Idiomatic facade: client:Rarity():list() / client:Rarity():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PokemonTcgSDK:Rarity(data)
   local EntityMod = require("entity.rarity_entity")
   if data == nil then
     if self._rarity == nil then
@@ -275,15 +271,10 @@ function PokemonTcgSDK:rarity(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:rarity() instead.
-function PokemonTcgSDK:Rarity(data)
-  local EntityMod = require("entity.rarity_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:set():list() / client:set():load({ id = ... })
-function PokemonTcgSDK:set(data)
+-- Idiomatic facade: client:Set():list() / client:Set():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PokemonTcgSDK:Set(data)
   local EntityMod = require("entity.set_entity")
   if data == nil then
     if self._set == nil then
@@ -294,15 +285,10 @@ function PokemonTcgSDK:set(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:set() instead.
-function PokemonTcgSDK:Set(data)
-  local EntityMod = require("entity.set_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:subtype():list() / client:subtype():load({ id = ... })
-function PokemonTcgSDK:subtype(data)
+-- Idiomatic facade: client:Subtype():list() / client:Subtype():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PokemonTcgSDK:Subtype(data)
   local EntityMod = require("entity.subtype_entity")
   if data == nil then
     if self._subtype == nil then
@@ -313,15 +299,10 @@ function PokemonTcgSDK:subtype(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:subtype() instead.
-function PokemonTcgSDK:Subtype(data)
-  local EntityMod = require("entity.subtype_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:supertype():list() / client:supertype():load({ id = ... })
-function PokemonTcgSDK:supertype(data)
+-- Idiomatic facade: client:Supertype():list() / client:Supertype():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PokemonTcgSDK:Supertype(data)
   local EntityMod = require("entity.supertype_entity")
   if data == nil then
     if self._supertype == nil then
@@ -332,15 +313,10 @@ function PokemonTcgSDK:supertype(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:supertype() instead.
-function PokemonTcgSDK:Supertype(data)
-  local EntityMod = require("entity.supertype_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:type():list() / client:type():load({ id = ... })
-function PokemonTcgSDK:type(data)
+-- Idiomatic facade: client:Type():list() / client:Type():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PokemonTcgSDK:Type(data)
   local EntityMod = require("entity.type_entity")
   if data == nil then
     if self._type == nil then
@@ -348,12 +324,6 @@ function PokemonTcgSDK:type(data)
     end
     return self._type
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:type() instead.
-function PokemonTcgSDK:Type(data)
-  local EntityMod = require("entity.type_entity")
   return EntityMod.new(self, data)
 end
 
