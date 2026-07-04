@@ -9,12 +9,9 @@ The Lua SDK for the PokemonTcg API — an entity-oriented client using Lua conve
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-pokemon-tcg
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -32,14 +29,14 @@ loading a specific record.
 local sdk = require("pokemon-tcg_sdk")
 
 local client = sdk.new({
-  apikey = os.getenv("POKEMON-TCG_APIKEY"),
+  apikey = os.getenv("POKEMON_TCG_APIKEY"),
 })
 ```
 
 ### 2. List cards
 
 ```lua
-local result, err = client:Card():list()
+local result, err = client:card():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -53,7 +50,7 @@ end
 ### 3. Load a card
 
 ```lua
-local result, err = client:Card():load({ id = "example_id" })
+local result, err = client:card():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +98,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:PokemonTcg():load({ id = "test01" })
+local result, err = client:card():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -134,8 +131,8 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-POKEMON-TCG_TEST_LIVE=TRUE
-POKEMON-TCG_APIKEY=<your-key>
+POKEMON_TCG_TEST_LIVE=TRUE
+POKEMON_TCG_APIKEY=<your-key>
 ```
 
 Then run:
@@ -324,7 +321,7 @@ API path: `/types`
 
 ### Card
 
-Create an instance: `const card = client.Card()`
+Create an instance: `const card = client.card`
 
 #### Operations
 
@@ -366,19 +363,19 @@ Create an instance: `const card = client.Card()`
 #### Example: Load
 
 ```ts
-const card = await client.Card().load({ id: 'card_id' })
+const card = await client.card.load({ id: 'card_id' })
 ```
 
 #### Example: List
 
 ```ts
-const cards = await client.Card().list()
+const cards = await client.card.list()
 ```
 
 
 ### Rarity
 
-Create an instance: `const rarity = client.Rarity()`
+Create an instance: `const rarity = client.rarity`
 
 #### Operations
 
@@ -395,13 +392,13 @@ Create an instance: `const rarity = client.Rarity()`
 #### Example: List
 
 ```ts
-const raritys = await client.Rarity().list()
+const raritys = await client.rarity.list()
 ```
 
 
 ### Set
 
-Create an instance: `const set = client.Set()`
+Create an instance: `const set = client.set`
 
 #### Operations
 
@@ -429,19 +426,19 @@ Create an instance: `const set = client.Set()`
 #### Example: Load
 
 ```ts
-const set = await client.Set().load({ id: 'set_id' })
+const set = await client.set.load({ id: 'set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const sets = await client.Set().list()
+const sets = await client.set.list()
 ```
 
 
 ### Subtype
 
-Create an instance: `const subtype = client.Subtype()`
+Create an instance: `const subtype = client.subtype`
 
 #### Operations
 
@@ -458,13 +455,13 @@ Create an instance: `const subtype = client.Subtype()`
 #### Example: List
 
 ```ts
-const subtypes = await client.Subtype().list()
+const subtypes = await client.subtype.list()
 ```
 
 
 ### Supertype
 
-Create an instance: `const supertype = client.Supertype()`
+Create an instance: `const supertype = client.supertype`
 
 #### Operations
 
@@ -481,13 +478,13 @@ Create an instance: `const supertype = client.Supertype()`
 #### Example: List
 
 ```ts
-const supertypes = await client.Supertype().list()
+const supertypes = await client.supertype.list()
 ```
 
 
 ### Type
 
-Create an instance: `const type = client.Type()`
+Create an instance: `const type = client.type`
 
 #### Operations
 
@@ -504,7 +501,7 @@ Create an instance: `const type = client.Type()`
 #### Example: List
 
 ```ts
-const types = await client.Type().list()
+const types = await client.type.list()
 ```
 
 
@@ -579,11 +576,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local card = client:card()
+card:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- card:data_get() now returns the loaded card data
+-- card:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

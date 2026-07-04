@@ -50,8 +50,7 @@ class TestSupertypeEntity:
         supertype_ref01_ent = client.Supertype(None)
         supertype_ref01_match = {}
 
-        supertype_ref01_list_result, err = supertype_ref01_ent.list(supertype_ref01_match, None)
-        assert err is None
+        supertype_ref01_list_result = supertype_ref01_ent.list(supertype_ref01_match, None)
         assert isinstance(supertype_ref01_list_result, list)
 
 

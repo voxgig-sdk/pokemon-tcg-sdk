@@ -50,8 +50,7 @@ class SubtypeEntityTest extends TestCase
         $subtype_ref01_ent = $client->Subtype(null);
         $subtype_ref01_match = [];
 
-        [$subtype_ref01_list_result, $err] = $subtype_ref01_ent->list($subtype_ref01_match, null);
-        $this->assertNull($err);
+        $subtype_ref01_list_result = $subtype_ref01_ent->list($subtype_ref01_match, null);
         $this->assertIsArray($subtype_ref01_list_result);
 
     }

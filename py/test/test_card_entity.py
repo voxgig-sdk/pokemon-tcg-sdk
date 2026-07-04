@@ -50,16 +50,14 @@ class TestCardEntity:
         card_ref01_ent = client.Card(None)
         card_ref01_match = {}
 
-        card_ref01_list_result, err = card_ref01_ent.list(card_ref01_match, None)
-        assert err is None
+        card_ref01_list_result = card_ref01_ent.list(card_ref01_match, None)
         assert isinstance(card_ref01_list_result, list)
 
         # LOAD
         card_ref01_match_dt0 = {
             "id": card_ref01_data["id"],
         }
-        card_ref01_data_dt0_loaded, err = card_ref01_ent.load(card_ref01_match_dt0, None)
-        assert err is None
+        card_ref01_data_dt0_loaded = card_ref01_ent.load(card_ref01_match_dt0, None)
         card_ref01_data_dt0_load_result = helpers.to_map(card_ref01_data_dt0_loaded)
         assert card_ref01_data_dt0_load_result is not None
         assert card_ref01_data_dt0_load_result["id"] == card_ref01_data["id"]

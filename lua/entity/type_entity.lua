@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch TypeListMatch
+---@param ctrl? table
+---@return Type[]
+---@return string? err
 function TypeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

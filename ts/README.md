@@ -9,9 +9,12 @@ The TypeScript SDK for the PokemonTcg API — a type-safe, entity-oriented clien
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/pokemon-tcg
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { PokemonTcgSDK } from 'pokemon-tcg'
+import { PokemonTcgSDK } from '@voxgig-sdk/pokemon-tcg'
 
 const client = new PokemonTcgSDK({
-  apikey: process.env.POKEMON-TCG_APIKEY,
+  apikey: process.env.POKEMON_TCG_APIKEY,
 })
 ```
 
 ### 2. List cards
 
 ```ts
-const result = await client.Card().list()
+const result = await client.card.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +45,7 @@ if (result.ok) {
 ### 3. Load a card
 
 ```ts
-const result = await client.Card().load({ id: 'example_id' })
+const result = await client.card.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +94,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = PokemonTcgSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.card.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -108,7 +111,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.card
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -145,8 +148,8 @@ const client = new PokemonTcgSDK({
 Create a `.env.local` file at the project root:
 
 ```
-POKEMON-TCG_TEST_LIVE=TRUE
-POKEMON-TCG_APIKEY=<your-key>
+POKEMON_TCG_TEST_LIVE=TRUE
+POKEMON_TCG_APIKEY=<your-key>
 ```
 
 Then run:
@@ -367,7 +370,7 @@ API path: `/types`
 
 ### Card
 
-Create an instance: `const card = client.Card()`
+Create an instance: `const card = client.card`
 
 #### Operations
 
@@ -409,19 +412,19 @@ Create an instance: `const card = client.Card()`
 #### Example: Load
 
 ```ts
-const card = await client.Card().load({ id: 'card_id' })
+const card = await client.card.load({ id: 'card_id' })
 ```
 
 #### Example: List
 
 ```ts
-const cards = await client.Card().list()
+const cards = await client.card.list()
 ```
 
 
 ### Rarity
 
-Create an instance: `const rarity = client.Rarity()`
+Create an instance: `const rarity = client.rarity`
 
 #### Operations
 
@@ -438,13 +441,13 @@ Create an instance: `const rarity = client.Rarity()`
 #### Example: List
 
 ```ts
-const raritys = await client.Rarity().list()
+const raritys = await client.rarity.list()
 ```
 
 
 ### Set
 
-Create an instance: `const set = client.Set()`
+Create an instance: `const set = client.set`
 
 #### Operations
 
@@ -472,19 +475,19 @@ Create an instance: `const set = client.Set()`
 #### Example: Load
 
 ```ts
-const set = await client.Set().load({ id: 'set_id' })
+const set = await client.set.load({ id: 'set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const sets = await client.Set().list()
+const sets = await client.set.list()
 ```
 
 
 ### Subtype
 
-Create an instance: `const subtype = client.Subtype()`
+Create an instance: `const subtype = client.subtype`
 
 #### Operations
 
@@ -501,13 +504,13 @@ Create an instance: `const subtype = client.Subtype()`
 #### Example: List
 
 ```ts
-const subtypes = await client.Subtype().list()
+const subtypes = await client.subtype.list()
 ```
 
 
 ### Supertype
 
-Create an instance: `const supertype = client.Supertype()`
+Create an instance: `const supertype = client.supertype`
 
 #### Operations
 
@@ -524,13 +527,13 @@ Create an instance: `const supertype = client.Supertype()`
 #### Example: List
 
 ```ts
-const supertypes = await client.Supertype().list()
+const supertypes = await client.supertype.list()
 ```
 
 
 ### Type
 
-Create an instance: `const type = client.Type()`
+Create an instance: `const type = client.type`
 
 #### Operations
 
@@ -547,7 +550,7 @@ Create an instance: `const type = client.Type()`
 #### Example: List
 
 ```ts
-const types = await client.Type().list()
+const types = await client.type.list()
 ```
 
 
@@ -608,7 +611,7 @@ pokemon-tcg/
 Import the SDK from the package root:
 
 ```ts
-import { PokemonTcgSDK } from 'pokemon-tcg'
+import { PokemonTcgSDK } from '@voxgig-sdk/pokemon-tcg'
 ```
 
 ### Entity state
@@ -618,11 +621,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const card = client.card
+await card.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// card.data() now returns the loaded card data
+// card.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -43,8 +43,7 @@ class SubtypeEntityTest < Minitest::Test
     subtype_ref01_ent = client.Subtype(nil)
     subtype_ref01_match = {}
 
-    subtype_ref01_list_result, err = subtype_ref01_ent.list(subtype_ref01_match, nil)
-    assert_nil err
+    subtype_ref01_list_result = subtype_ref01_ent.list(subtype_ref01_match, nil)
     assert subtype_ref01_list_result.is_a?(Array)
 
   end

@@ -43,16 +43,14 @@ class SetEntityTest < Minitest::Test
     set_ref01_ent = client.Set(nil)
     set_ref01_match = {}
 
-    set_ref01_list_result, err = set_ref01_ent.list(set_ref01_match, nil)
-    assert_nil err
+    set_ref01_list_result = set_ref01_ent.list(set_ref01_match, nil)
     assert set_ref01_list_result.is_a?(Array)
 
     # LOAD
     set_ref01_match_dt0 = {
       "id" => set_ref01_data["id"],
     }
-    set_ref01_data_dt0_loaded, err = set_ref01_ent.load(set_ref01_match_dt0, nil)
-    assert_nil err
+    set_ref01_data_dt0_loaded = set_ref01_ent.load(set_ref01_match_dt0, nil)
     set_ref01_data_dt0_load_result = Helpers.to_map(set_ref01_data_dt0_loaded)
     assert !set_ref01_data_dt0_load_result.nil?
     assert_equal set_ref01_data_dt0_load_result["id"], set_ref01_data["id"]

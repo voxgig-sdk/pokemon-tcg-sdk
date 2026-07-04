@@ -9,9 +9,10 @@ The PHP SDK for the PokemonTcg API — an entity-oriented client using PHP conve
 
 
 ## Install
-```bash
-composer require voxgig-sdk/pokemon-tcg
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -26,30 +27,35 @@ loading a specific record.
 require_once 'pokemontcg_sdk.php';
 
 $client = new PokemonTcgSDK([
-    "apikey" => getenv("POKEMON-TCG_APIKEY"),
+    "apikey" => getenv("POKEMON_TCG_APIKEY"),
 ]);
 ```
 
 ### 2. List cards
 
 ```php
-[$result, $err] = $client->Card()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->card()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a card
 
 ```php
-[$result, $err] = $client->Card()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->card()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +66,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +104,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = PokemonTcgSDK::test();
 
-[$result, $err] = $client->PokemonTcg()->load(["id" => "test01"]);
+$result = $client->card()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +138,8 @@ $client = new PokemonTcgSDK([
 Create a `.env.local` file at the project root:
 
 ```
-POKEMON-TCG_TEST_LIVE=TRUE
-POKEMON-TCG_APIKEY=<your-key>
+POKEMON_TCG_TEST_LIVE=TRUE
+POKEMON_TCG_APIKEY=<your-key>
 ```
 
 Then run:
@@ -204,8 +213,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -319,7 +332,7 @@ API path: `/types`
 
 ### Card
 
-Create an instance: `const card = client.Card()`
+Create an instance: `const card = client.card`
 
 #### Operations
 
@@ -361,19 +374,19 @@ Create an instance: `const card = client.Card()`
 #### Example: Load
 
 ```ts
-const card = await client.Card().load({ id: 'card_id' })
+const card = await client.card.load({ id: 'card_id' })
 ```
 
 #### Example: List
 
 ```ts
-const cards = await client.Card().list()
+const cards = await client.card.list()
 ```
 
 
 ### Rarity
 
-Create an instance: `const rarity = client.Rarity()`
+Create an instance: `const rarity = client.rarity`
 
 #### Operations
 
@@ -390,13 +403,13 @@ Create an instance: `const rarity = client.Rarity()`
 #### Example: List
 
 ```ts
-const raritys = await client.Rarity().list()
+const raritys = await client.rarity.list()
 ```
 
 
 ### Set
 
-Create an instance: `const set = client.Set()`
+Create an instance: `const set = client.set`
 
 #### Operations
 
@@ -424,19 +437,19 @@ Create an instance: `const set = client.Set()`
 #### Example: Load
 
 ```ts
-const set = await client.Set().load({ id: 'set_id' })
+const set = await client.set.load({ id: 'set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const sets = await client.Set().list()
+const sets = await client.set.list()
 ```
 
 
 ### Subtype
 
-Create an instance: `const subtype = client.Subtype()`
+Create an instance: `const subtype = client.subtype`
 
 #### Operations
 
@@ -453,13 +466,13 @@ Create an instance: `const subtype = client.Subtype()`
 #### Example: List
 
 ```ts
-const subtypes = await client.Subtype().list()
+const subtypes = await client.subtype.list()
 ```
 
 
 ### Supertype
 
-Create an instance: `const supertype = client.Supertype()`
+Create an instance: `const supertype = client.supertype`
 
 #### Operations
 
@@ -476,13 +489,13 @@ Create an instance: `const supertype = client.Supertype()`
 #### Example: List
 
 ```ts
-const supertypes = await client.Supertype().list()
+const supertypes = await client.supertype.list()
 ```
 
 
 ### Type
 
-Create an instance: `const type = client.Type()`
+Create an instance: `const type = client.type`
 
 #### Operations
 
@@ -499,7 +512,7 @@ Create an instance: `const type = client.Type()`
 #### Example: List
 
 ```ts
-const types = await client.Type().list()
+const types = await client.type.list()
 ```
 
 
@@ -574,11 +587,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$card = $client->card();
+$card->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $card->dataGet() now returns the loaded card data
+// $card->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

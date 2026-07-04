@@ -43,8 +43,7 @@ class SupertypeEntityTest < Minitest::Test
     supertype_ref01_ent = client.Supertype(nil)
     supertype_ref01_match = {}
 
-    supertype_ref01_list_result, err = supertype_ref01_ent.list(supertype_ref01_match, nil)
-    assert_nil err
+    supertype_ref01_list_result = supertype_ref01_ent.list(supertype_ref01_match, nil)
     assert supertype_ref01_list_result.is_a?(Array)
 
   end

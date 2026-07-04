@@ -144,16 +144,23 @@ class PokemonTcgSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class PokemonTcgSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,40 +212,106 @@ class PokemonTcgSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def card(self):
+        """Idiomatic facade: client.card.list() / client.card.load({"id": ...})."""
+        from entity.card_entity import CardEntity
+        cached = getattr(self, "_card", None)
+        if cached is None:
+            cached = CardEntity(self, None)
+            self._card = cached
+        return cached
 
     def Card(self, data=None):
+        # Deprecated: use client.card instead.
         from entity.card_entity import CardEntity
         return CardEntity(self, data)
 
 
+    @property
+    def rarity(self):
+        """Idiomatic facade: client.rarity.list() / client.rarity.load({"id": ...})."""
+        from entity.rarity_entity import RarityEntity
+        cached = getattr(self, "_rarity", None)
+        if cached is None:
+            cached = RarityEntity(self, None)
+            self._rarity = cached
+        return cached
+
     def Rarity(self, data=None):
+        # Deprecated: use client.rarity instead.
         from entity.rarity_entity import RarityEntity
         return RarityEntity(self, data)
 
 
+    @property
+    def set(self):
+        """Idiomatic facade: client.set.list() / client.set.load({"id": ...})."""
+        from entity.set_entity import SetEntity
+        cached = getattr(self, "_set", None)
+        if cached is None:
+            cached = SetEntity(self, None)
+            self._set = cached
+        return cached
+
     def Set(self, data=None):
+        # Deprecated: use client.set instead.
         from entity.set_entity import SetEntity
         return SetEntity(self, data)
 
 
+    @property
+    def subtype(self):
+        """Idiomatic facade: client.subtype.list() / client.subtype.load({"id": ...})."""
+        from entity.subtype_entity import SubtypeEntity
+        cached = getattr(self, "_subtype", None)
+        if cached is None:
+            cached = SubtypeEntity(self, None)
+            self._subtype = cached
+        return cached
+
     def Subtype(self, data=None):
+        # Deprecated: use client.subtype instead.
         from entity.subtype_entity import SubtypeEntity
         return SubtypeEntity(self, data)
 
 
+    @property
+    def supertype(self):
+        """Idiomatic facade: client.supertype.list() / client.supertype.load({"id": ...})."""
+        from entity.supertype_entity import SupertypeEntity
+        cached = getattr(self, "_supertype", None)
+        if cached is None:
+            cached = SupertypeEntity(self, None)
+            self._supertype = cached
+        return cached
+
     def Supertype(self, data=None):
+        # Deprecated: use client.supertype instead.
         from entity.supertype_entity import SupertypeEntity
         return SupertypeEntity(self, data)
 
 
+    @property
+    def type(self):
+        """Idiomatic facade: client.type.list() / client.type.load({"id": ...})."""
+        from entity.type_entity import TypeEntity
+        cached = getattr(self, "_type", None)
+        if cached is None:
+            cached = TypeEntity(self, None)
+            self._type = cached
+        return cached
+
     def Type(self, data=None):
+        # Deprecated: use client.type instead.
         from entity.type_entity import TypeEntity
         return TypeEntity(self, data)
 

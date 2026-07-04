@@ -50,8 +50,7 @@ class TestSubtypeEntity:
         subtype_ref01_ent = client.Subtype(None)
         subtype_ref01_match = {}
 
-        subtype_ref01_list_result, err = subtype_ref01_ent.list(subtype_ref01_match, None)
-        assert err is None
+        subtype_ref01_list_result = subtype_ref01_ent.list(subtype_ref01_match, None)
         assert isinstance(subtype_ref01_list_result, list)
 
 

@@ -170,7 +170,7 @@ Alias for `PokemonTcgSDK.test()`.
 ## CardEntity
 
 ```ts
-const card = client.Card()
+const card = client.card
 ```
 
 ### Fields
@@ -210,7 +210,7 @@ const card = client.Card()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Card().list()
+const results = await client.card.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -218,7 +218,7 @@ const results = await client.Card().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Card().load({ id: 'card_id' })
+const result = await client.card.load({ id: 'card_id' })
 ```
 
 ### Common Methods
@@ -252,7 +252,7 @@ Return a copy of the entity options.
 ## RarityEntity
 
 ```ts
-const rarity = client.Rarity()
+const rarity = client.rarity
 ```
 
 ### Fields
@@ -268,7 +268,7 @@ const rarity = client.Rarity()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Rarity().list()
+const results = await client.rarity.list()
 ```
 
 ### Common Methods
@@ -302,7 +302,7 @@ Return a copy of the entity options.
 ## SetEntity
 
 ```ts
-const set = client.Set()
+const set = client.set
 ```
 
 ### Fields
@@ -328,7 +328,7 @@ const set = client.Set()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Set().list()
+const results = await client.set.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -336,7 +336,7 @@ const results = await client.Set().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Set().load({ id: 'set_id' })
+const result = await client.set.load({ id: 'set_id' })
 ```
 
 ### Common Methods
@@ -370,7 +370,7 @@ Return a copy of the entity options.
 ## SubtypeEntity
 
 ```ts
-const subtype = client.Subtype()
+const subtype = client.subtype
 ```
 
 ### Fields
@@ -386,7 +386,7 @@ const subtype = client.Subtype()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Subtype().list()
+const results = await client.subtype.list()
 ```
 
 ### Common Methods
@@ -420,7 +420,7 @@ Return a copy of the entity options.
 ## SupertypeEntity
 
 ```ts
-const supertype = client.Supertype()
+const supertype = client.supertype
 ```
 
 ### Fields
@@ -436,7 +436,7 @@ const supertype = client.Supertype()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Supertype().list()
+const results = await client.supertype.list()
 ```
 
 ### Common Methods
@@ -470,7 +470,7 @@ Return a copy of the entity options.
 ## TypeEntity
 
 ```ts
-const type = client.Type()
+const type = client.type
 ```
 
 ### Fields
@@ -486,7 +486,7 @@ const type = client.Type()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Type().list()
+const results = await client.type.list()
 ```
 
 ### Common Methods

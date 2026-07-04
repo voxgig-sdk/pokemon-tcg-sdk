@@ -245,31 +245,49 @@ func (sdk *PokemonTcgSDK) Direct(fetchargs map[string]any) (map[string]any, erro
 }
 
 
+// Card returns a Card entity bound to this client.
+// Idiomatic usage: client.Card(nil).List(nil, nil) or
+// client.Card(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PokemonTcgSDK) Card(data map[string]any) PokemonTcgEntity {
 	return NewCardEntityFunc(sdk, data)
 }
 
 
+// Rarity returns a Rarity entity bound to this client.
+// Idiomatic usage: client.Rarity(nil).List(nil, nil) or
+// client.Rarity(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PokemonTcgSDK) Rarity(data map[string]any) PokemonTcgEntity {
 	return NewRarityEntityFunc(sdk, data)
 }
 
 
+// Set returns a Set entity bound to this client.
+// Idiomatic usage: client.Set(nil).List(nil, nil) or
+// client.Set(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PokemonTcgSDK) Set(data map[string]any) PokemonTcgEntity {
 	return NewSetEntityFunc(sdk, data)
 }
 
 
+// Subtype returns a Subtype entity bound to this client.
+// Idiomatic usage: client.Subtype(nil).List(nil, nil) or
+// client.Subtype(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PokemonTcgSDK) Subtype(data map[string]any) PokemonTcgEntity {
 	return NewSubtypeEntityFunc(sdk, data)
 }
 
 
+// Supertype returns a Supertype entity bound to this client.
+// Idiomatic usage: client.Supertype(nil).List(nil, nil) or
+// client.Supertype(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PokemonTcgSDK) Supertype(data map[string]any) PokemonTcgEntity {
 	return NewSupertypeEntityFunc(sdk, data)
 }
 
 
+// Type returns a Type entity bound to this client.
+// Idiomatic usage: client.Type(nil).List(nil, nil) or
+// client.Type(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PokemonTcgSDK) Type(data map[string]any) PokemonTcgEntity {
 	return NewTypeEntityFunc(sdk, data)
 }

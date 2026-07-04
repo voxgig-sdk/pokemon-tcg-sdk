@@ -45,6 +45,7 @@ class SubtypeEntity
     end
   end
 
+  # @return [Subtype, Hash] the current Subtype data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class SubtypeEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Subtype fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class SubtypeEntity
   
 
   
+  # List Subtype items matching the given filter.
+  #
+  # @param reqmatch [SubtypeListMatch, Hash, nil] match filter (any subset of Subtype fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Subtype>, Array] the matching Subtype items; raises PokemonTcgError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

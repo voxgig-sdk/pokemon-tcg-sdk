@@ -50,8 +50,7 @@ class SupertypeEntityTest extends TestCase
         $supertype_ref01_ent = $client->Supertype(null);
         $supertype_ref01_match = [];
 
-        [$supertype_ref01_list_result, $err] = $supertype_ref01_ent->list($supertype_ref01_match, null);
-        $this->assertNull($err);
+        $supertype_ref01_list_result = $supertype_ref01_ent->list($supertype_ref01_match, null);
         $this->assertIsArray($supertype_ref01_list_result);
 
     }

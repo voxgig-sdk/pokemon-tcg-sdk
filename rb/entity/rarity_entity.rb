@@ -45,6 +45,7 @@ class RarityEntity
     end
   end
 
+  # @return [Rarity, Hash] the current Rarity data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class RarityEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Rarity fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class RarityEntity
   
 
   
+  # List Rarity items matching the given filter.
+  #
+  # @param reqmatch [RarityListMatch, Hash, nil] match filter (any subset of Rarity fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Rarity>, Array] the matching Rarity items; raises PokemonTcgError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

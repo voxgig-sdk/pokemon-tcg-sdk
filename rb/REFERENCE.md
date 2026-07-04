@@ -74,9 +74,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -90,14 +92,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -105,7 +107,7 @@ same parameters as `direct()`.
 ## CardEntity
 
 ```ruby
-card = client.Card
+card = client.card
 ```
 
 ### Fields
@@ -140,20 +142,20 @@ card = client.Card
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Card.list(nil)
+results = client.card.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Card.load({ "id" => "card_id" })
+result = client.card.load({ "id" => "card_id" })
 ```
 
 ### Common Methods
@@ -189,7 +191,7 @@ Return the entity name.
 ## RarityEntity
 
 ```ruby
-rarity = client.Rarity
+rarity = client.rarity
 ```
 
 ### Fields
@@ -200,12 +202,12 @@ rarity = client.Rarity
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Rarity.list(nil)
+results = client.rarity.list(nil)
 ```
 
 ### Common Methods
@@ -241,7 +243,7 @@ Return the entity name.
 ## SetEntity
 
 ```ruby
-set = client.Set
+set = client.set
 ```
 
 ### Fields
@@ -262,20 +264,20 @@ set = client.Set
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Set.list(nil)
+results = client.set.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Set.load({ "id" => "set_id" })
+result = client.set.load({ "id" => "set_id" })
 ```
 
 ### Common Methods
@@ -311,7 +313,7 @@ Return the entity name.
 ## SubtypeEntity
 
 ```ruby
-subtype = client.Subtype
+subtype = client.subtype
 ```
 
 ### Fields
@@ -322,12 +324,12 @@ subtype = client.Subtype
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Subtype.list(nil)
+results = client.subtype.list(nil)
 ```
 
 ### Common Methods
@@ -363,7 +365,7 @@ Return the entity name.
 ## SupertypeEntity
 
 ```ruby
-supertype = client.Supertype
+supertype = client.supertype
 ```
 
 ### Fields
@@ -374,12 +376,12 @@ supertype = client.Supertype
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Supertype.list(nil)
+results = client.supertype.list(nil)
 ```
 
 ### Common Methods
@@ -415,7 +417,7 @@ Return the entity name.
 ## TypeEntity
 
 ```ruby
-type = client.Type
+type = client.type
 ```
 
 ### Fields
@@ -426,12 +428,12 @@ type = client.Type
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Type.list(nil)
+results = client.type.list(nil)
 ```
 
 ### Common Methods

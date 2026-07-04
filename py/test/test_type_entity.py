@@ -50,8 +50,7 @@ class TestTypeEntity:
         type_ref01_ent = client.Type(None)
         type_ref01_match = {}
 
-        type_ref01_list_result, err = type_ref01_ent.list(type_ref01_match, None)
-        assert err is None
+        type_ref01_list_result = type_ref01_ent.list(type_ref01_match, None)
         assert isinstance(type_ref01_list_result, list)
 
 

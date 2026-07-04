@@ -9,21 +9,10 @@ The Ruby SDK for the PokemonTcg API — an entity-oriented client using idiomati
 
 
 ## Install
-```bash
-gem install voxgig-sdk-pokemon-tcg
-```
+This package is not yet published to RubyGems. Install it from the
+GitHub release tag (`rb/vX.Y.Z`):
 
-Or add to your `Gemfile`:
-
-```ruby
-gem "voxgig-sdk-pokemon-tcg"
-```
-
-Then run:
-
-```bash
-bundle install
-```
+- Releases: [https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -37,30 +26,35 @@ loading a specific record.
 require_relative "PokemonTcg_sdk"
 
 client = PokemonTcgSDK.new({
-  "apikey" => ENV["POKEMON-TCG_APIKEY"],
+  "apikey" => ENV["POKEMON_TCG_APIKEY"],
 })
 ```
 
 ### 2. List cards
 
 ```ruby
-result, err = client.Card().list
-raise err if err
-
-if result.is_a?(Array)
-  result.each do |item|
-    d = item.data_get
-    puts "#{d["id"]} #{d["name"]}"
+begin
+  result = client.card.list
+  if result.is_a?(Array)
+    result.each do |item|
+      d = item.data_get
+      puts "#{d["id"]} #{d["name"]}"
+    end
   end
+rescue => err
+  warn "list failed: #{err}"
 end
 ```
 
 ### 3. Load a card
 
 ```ruby
-result, err = client.Card().load({ "id" => "example_id" })
-raise err if err
-puts result
+begin
+  result = client.card.load({ "id" => "example_id" })
+  puts result
+rescue => err
+  warn "load failed: #{err}"
+end
 ```
 
 
@@ -71,32 +65,35 @@ puts result
 For endpoints not covered by entity methods:
 
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },
 })
-raise err if err
 
 if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
+else
+  warn result["err"]
 end
 ```
 
 ### Prepare a request without sending it
 
 ```ruby
-fetchdef, err = client.prepare({
-  "path" => "/api/resource/{id}",
-  "method" => "DELETE",
-  "params" => { "id" => "example" },
-})
-raise err if err
-
-puts fetchdef["url"]
-puts fetchdef["method"]
-puts fetchdef["headers"]
+begin
+  fetchdef = client.prepare({
+    "path" => "/api/resource/{id}",
+    "method" => "DELETE",
+    "params" => { "id" => "example" },
+  })
+  puts fetchdef["url"]
+  puts fetchdef["method"]
+  puts fetchdef["headers"]
+rescue => err
+  warn "prepare failed: #{err}"
+end
 ```
 
 ### Use test mode
@@ -106,7 +103,7 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = PokemonTcgSDK.test
 
-result, err = client.PokemonTcg().load({ "id" => "test01" })
+result = client.card.load({ "id" => "test01" })
 # result contains mock response data
 ```
 
@@ -137,8 +134,8 @@ client = PokemonTcgSDK.new({
 Create a `.env.local` file at the project root:
 
 ```
-POKEMON-TCG_TEST_LIVE=TRUE
-POKEMON-TCG_APIKEY=<your-key>
+POKEMON_TCG_TEST_LIVE=TRUE
+POKEMON_TCG_APIKEY=<your-key>
 ```
 
 Then run:
@@ -183,8 +180,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | --- | --- | --- |
 | `options_map` | `() -> Hash` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> [Hash, err]` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> [Hash, err]` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `Card` | `(data) -> CardEntity` | Create a Card entity instance. |
 | `Rarity` | `(data) -> RarityEntity` | Create a Rarity entity instance. |
 | `Set` | `(data) -> SetEntity` | Create a Set entity instance. |
@@ -198,11 +195,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> [any, err]` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> [any, err]` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> [any, err]` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> [any, err]` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> [any, err]` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -212,8 +209,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[any, err]`. The first value is a
-`Hash` with these keys:
+Entity operations return the result data directly. On failure they
+raise a `PokemonTcgError` (a `StandardError` subclass), so wrap
+calls in `begin`/`rescue` where you need to handle errors.
+
+The `direct` escape hatch is the exception: it never raises and instead
+returns a result `Hash` with these keys:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -221,8 +222,7 @@ Entity operations return `[any, err]`. The first value is a
 | `status` | `Integer` | HTTP status code. |
 | `headers` | `Hash` | Response headers. |
 | `data` | `any` | Parsed JSON response body. |
-
-On error, `ok` is `false` and `err` contains the error value.
+| `err` | `Error` | Present when `ok` is `false`. |
 
 ### Entities
 
@@ -327,7 +327,7 @@ API path: `/types`
 
 ### Card
 
-Create an instance: `const card = client.Card()`
+Create an instance: `const card = client.card`
 
 #### Operations
 
@@ -369,19 +369,19 @@ Create an instance: `const card = client.Card()`
 #### Example: Load
 
 ```ts
-const card = await client.Card().load({ id: 'card_id' })
+const card = await client.card.load({ id: 'card_id' })
 ```
 
 #### Example: List
 
 ```ts
-const cards = await client.Card().list()
+const cards = await client.card.list()
 ```
 
 
 ### Rarity
 
-Create an instance: `const rarity = client.Rarity()`
+Create an instance: `const rarity = client.rarity`
 
 #### Operations
 
@@ -398,13 +398,13 @@ Create an instance: `const rarity = client.Rarity()`
 #### Example: List
 
 ```ts
-const raritys = await client.Rarity().list()
+const raritys = await client.rarity.list()
 ```
 
 
 ### Set
 
-Create an instance: `const set = client.Set()`
+Create an instance: `const set = client.set`
 
 #### Operations
 
@@ -432,19 +432,19 @@ Create an instance: `const set = client.Set()`
 #### Example: Load
 
 ```ts
-const set = await client.Set().load({ id: 'set_id' })
+const set = await client.set.load({ id: 'set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const sets = await client.Set().list()
+const sets = await client.set.list()
 ```
 
 
 ### Subtype
 
-Create an instance: `const subtype = client.Subtype()`
+Create an instance: `const subtype = client.subtype`
 
 #### Operations
 
@@ -461,13 +461,13 @@ Create an instance: `const subtype = client.Subtype()`
 #### Example: List
 
 ```ts
-const subtypes = await client.Subtype().list()
+const subtypes = await client.subtype.list()
 ```
 
 
 ### Supertype
 
-Create an instance: `const supertype = client.Supertype()`
+Create an instance: `const supertype = client.supertype`
 
 #### Operations
 
@@ -484,13 +484,13 @@ Create an instance: `const supertype = client.Supertype()`
 #### Example: List
 
 ```ts
-const supertypes = await client.Supertype().list()
+const supertypes = await client.supertype.list()
 ```
 
 
 ### Type
 
-Create an instance: `const type = client.Type()`
+Create an instance: `const type = client.type`
 
 #### Operations
 
@@ -507,7 +507,7 @@ Create an instance: `const type = client.Type()`
 #### Example: List
 
 ```ts
-const types = await client.Type().list()
+const types = await client.type.list()
 ```
 
 
@@ -582,11 +582,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-moon = client.Moon
-moon.load({ "planet_id" => "earth", "id" => "luna" })
+card = client.card
+card.load({ "id" => "example_id" })
 
-# moon.data_get now returns the loaded moon data
-# moon.match_get returns the last match criteria
+# card.data_get now returns the loaded card data
+# card.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

@@ -43,8 +43,7 @@ class TypeEntityTest < Minitest::Test
     type_ref01_ent = client.Type(nil)
     type_ref01_match = {}
 
-    type_ref01_list_result, err = type_ref01_ent.list(type_ref01_match, nil)
-    assert_nil err
+    type_ref01_list_result = type_ref01_ent.list(type_ref01_match, nil)
     assert type_ref01_list_result.is_a?(Array)
 
   end

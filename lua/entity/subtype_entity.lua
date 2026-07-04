@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch SubtypeListMatch
+---@param ctrl? table
+---@return Subtype[]
+---@return string? err
 function SubtypeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

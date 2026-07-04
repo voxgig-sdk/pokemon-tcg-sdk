@@ -85,6 +85,27 @@ func (e *SupertypeEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Supertype; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *SupertypeEntity) DataTyped(data ...Supertype) Supertype {
+	if len(data) > 0 {
+		return typedFrom[Supertype](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Supertype](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Supertype (all fields
+// optional at the wire level).
+func (e *SupertypeEntity) MatchTyped(match ...Supertype) Supertype {
+	if len(match) > 0 {
+		return typedFrom[Supertype](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Supertype](e.Match())
+}
+
 func (e *SupertypeEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -108,6 +129,17 @@ func (e *SupertypeEntity) List(reqmatch map[string]any, ctrl map[string]any) (an
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// SupertypeListMatch and returns []Supertype. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *SupertypeEntity) ListTyped(reqmatch SupertypeListMatch, ctrl map[string]any) ([]Supertype, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Supertype](res), nil
 }
 
 

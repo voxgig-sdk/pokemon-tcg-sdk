@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'PokemonTcg_types'
+
 
 class PokemonTcgSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class PokemonTcgSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class PokemonTcgSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue PokemonTcgError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = PokemonTcgHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class PokemonTcgSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,46 +198,88 @@ class PokemonTcgSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.card.list / client.card.load({ "id" => ... })
+  def card
+    require_relative 'entity/card_entity'
+    @card ||= CardEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.card instead.
   def Card(data = nil)
     require_relative 'entity/card_entity'
     CardEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.rarity.list / client.rarity.load({ "id" => ... })
+  def rarity
+    require_relative 'entity/rarity_entity'
+    @rarity ||= RarityEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.rarity instead.
   def Rarity(data = nil)
     require_relative 'entity/rarity_entity'
     RarityEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.set.list / client.set.load({ "id" => ... })
+  def set
+    require_relative 'entity/set_entity'
+    @set ||= SetEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.set instead.
   def Set(data = nil)
     require_relative 'entity/set_entity'
     SetEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.subtype.list / client.subtype.load({ "id" => ... })
+  def subtype
+    require_relative 'entity/subtype_entity'
+    @subtype ||= SubtypeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.subtype instead.
   def Subtype(data = nil)
     require_relative 'entity/subtype_entity'
     SubtypeEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.supertype.list / client.supertype.load({ "id" => ... })
+  def supertype
+    require_relative 'entity/supertype_entity'
+    @supertype ||= SupertypeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.supertype instead.
   def Supertype(data = nil)
     require_relative 'entity/supertype_entity'
     SupertypeEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.type.list / client.type.load({ "id" => ... })
+  def type
+    require_relative 'entity/type_entity'
+    @type ||= TypeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.type instead.
   def Type(data = nil)
     require_relative 'entity/type_entity'
     TypeEntity.new(self, data)

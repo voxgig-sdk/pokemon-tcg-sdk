@@ -50,8 +50,7 @@ class TestRarityEntity:
         rarity_ref01_ent = client.Rarity(None)
         rarity_ref01_match = {}
 
-        rarity_ref01_list_result, err = rarity_ref01_ent.list(rarity_ref01_match, None)
-        assert err is None
+        rarity_ref01_list_result = rarity_ref01_ent.list(rarity_ref01_match, None)
         assert isinstance(rarity_ref01_list_result, list)
 
 

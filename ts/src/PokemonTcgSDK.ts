@@ -7,6 +7,8 @@ import { SubtypeEntity } from './entity/SubtypeEntity'
 import { SupertypeEntity } from './entity/SupertypeEntity'
 import { TypeEntity } from './entity/TypeEntity'
 
+export type * from './PokemonTcgTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -207,36 +209,84 @@ class PokemonTcgSDK {
 
 
 
+  _card?: CardEntity
+
+  // Idiomatic facade: `client.card.list()` / `client.card.load({ id })`.
+  get card(): CardEntity {
+    return (this._card ??= new CardEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.card` instead. */
   Card(data?: any) {
     const self = this
     return new CardEntity(self,data)
   }
 
 
+  _rarity?: RarityEntity
+
+  // Idiomatic facade: `client.rarity.list()` / `client.rarity.load({ id })`.
+  get rarity(): RarityEntity {
+    return (this._rarity ??= new RarityEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.rarity` instead. */
   Rarity(data?: any) {
     const self = this
     return new RarityEntity(self,data)
   }
 
 
+  _set?: SetEntity
+
+  // Idiomatic facade: `client.set.list()` / `client.set.load({ id })`.
+  get set(): SetEntity {
+    return (this._set ??= new SetEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.set` instead. */
   Set(data?: any) {
     const self = this
     return new SetEntity(self,data)
   }
 
 
+  _subtype?: SubtypeEntity
+
+  // Idiomatic facade: `client.subtype.list()` / `client.subtype.load({ id })`.
+  get subtype(): SubtypeEntity {
+    return (this._subtype ??= new SubtypeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.subtype` instead. */
   Subtype(data?: any) {
     const self = this
     return new SubtypeEntity(self,data)
   }
 
 
+  _supertype?: SupertypeEntity
+
+  // Idiomatic facade: `client.supertype.list()` / `client.supertype.load({ id })`.
+  get supertype(): SupertypeEntity {
+    return (this._supertype ??= new SupertypeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.supertype` instead. */
   Supertype(data?: any) {
     const self = this
     return new SupertypeEntity(self,data)
   }
 
 
+  _type?: TypeEntity
+
+  // Idiomatic facade: `client.type.list()` / `client.type.load({ id })`.
+  get type(): TypeEntity {
+    return (this._type ??= new TypeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.type` instead. */
   Type(data?: any) {
     const self = this
     return new TypeEntity(self,data)

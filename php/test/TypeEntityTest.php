@@ -50,8 +50,7 @@ class TypeEntityTest extends TestCase
         $type_ref01_ent = $client->Type(null);
         $type_ref01_match = [];
 
-        [$type_ref01_list_result, $err] = $type_ref01_ent->list($type_ref01_match, null);
-        $this->assertNull($err);
+        $type_ref01_list_result = $type_ref01_ent->list($type_ref01_match, null);
         $this->assertIsArray($type_ref01_list_result);
 
     }

@@ -50,8 +50,7 @@ class RarityEntityTest extends TestCase
         $rarity_ref01_ent = $client->Rarity(null);
         $rarity_ref01_match = [];
 
-        [$rarity_ref01_list_result, $err] = $rarity_ref01_ent->list($rarity_ref01_match, null);
-        $this->assertNull($err);
+        $rarity_ref01_list_result = $rarity_ref01_ent->list($rarity_ref01_match, null);
         $this->assertIsArray($rarity_ref01_list_result);
 
     }

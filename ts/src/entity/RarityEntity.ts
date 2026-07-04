@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Rarity,
+  RarityListMatch,
+} from '../PokemonTcgTypes'
 
 // TODO: needs Entity superclass
-class RarityEntity extends PokemonTcgEntityBase {
+class RarityEntity extends PokemonTcgEntityBase<Rarity> {
 
   constructor(client: PokemonTcgSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class RarityEntity extends PokemonTcgEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: RarityListMatch, ctrl?: Control): Promise<Rarity[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class RarityEntity extends PokemonTcgEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Rarity[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

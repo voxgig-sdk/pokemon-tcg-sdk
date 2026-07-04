@@ -43,8 +43,7 @@ class RarityEntityTest < Minitest::Test
     rarity_ref01_ent = client.Rarity(nil)
     rarity_ref01_match = {}
 
-    rarity_ref01_list_result, err = rarity_ref01_ent.list(rarity_ref01_match, nil)
-    assert_nil err
+    rarity_ref01_list_result = rarity_ref01_ent.list(rarity_ref01_match, nil)
     assert rarity_ref01_list_result.is_a?(Array)
 
   end
