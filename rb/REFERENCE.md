@@ -8,7 +8,7 @@ Complete API reference for the PokemonTcg Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'pokemon-tcg_sdk'
+require_relative 'PokemonTcg_sdk'
 
 client = PokemonTcgSDK.new(options)
 ```
@@ -114,40 +114,40 @@ card = client.Card
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `artist` | ``$STRING`` | No |  |
-| `attack` | ``$ARRAY`` | No |  |
-| `cardmarket` | ``$OBJECT`` | No |  |
-| `converted_retreat_cost` | ``$INTEGER`` | No |  |
-| `data` | ``$OBJECT`` | No |  |
-| `evolves_from` | ``$STRING`` | No |  |
-| `evolves_to` | ``$ARRAY`` | No |  |
-| `flavor_text` | ``$STRING`` | No |  |
-| `hp` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$OBJECT`` | No |  |
-| `legality` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `national_pokedex_number` | ``$ARRAY`` | No |  |
-| `number` | ``$STRING`` | No |  |
-| `rarity` | ``$STRING`` | No |  |
-| `resistance` | ``$ARRAY`` | No |  |
-| `retreat_cost` | ``$ARRAY`` | No |  |
-| `rule` | ``$ARRAY`` | No |  |
-| `set` | ``$OBJECT`` | No |  |
-| `subtype` | ``$ARRAY`` | No |  |
-| `supertype` | ``$STRING`` | No |  |
-| `tcgplayer` | ``$OBJECT`` | No |  |
-| `type` | ``$ARRAY`` | No |  |
-| `weakness` | ``$ARRAY`` | No |  |
+| `artist` | `String` | No |  |
+| `attack` | `Array` | No |  |
+| `cardmarket` | `Hash` | No |  |
+| `converted_retreat_cost` | `Integer` | No |  |
+| `data` | `Hash` | No |  |
+| `evolves_from` | `String` | No |  |
+| `evolves_to` | `Array` | No |  |
+| `flavor_text` | `String` | No |  |
+| `hp` | `String` | No |  |
+| `id` | `String` | No |  |
+| `image` | `Hash` | No |  |
+| `legality` | `Hash` | No |  |
+| `name` | `String` | No |  |
+| `national_pokedex_number` | `Array` | No |  |
+| `number` | `String` | No |  |
+| `rarity` | `String` | No |  |
+| `resistance` | `Array` | No |  |
+| `retreat_cost` | `Array` | No |  |
+| `rule` | `Array` | No |  |
+| `set` | `Hash` | No |  |
+| `subtype` | `Array` | No |  |
+| `supertype` | `String` | No |  |
+| `tcgplayer` | `Hash` | No |  |
+| `type` | `Array` | No |  |
+| `weakness` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Card.list(nil)
+results = client.Card.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -198,16 +198,16 @@ rarity = client.Rarity
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Rarity.list(nil)
+results = client.Rarity.list
 ```
 
 ### Common Methods
@@ -250,26 +250,26 @@ set = client.Set
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$OBJECT`` | No |  |
-| `legality` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `printed_total` | ``$INTEGER`` | No |  |
-| `ptcgo_code` | ``$STRING`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `series` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
+| `data` | `Hash` | No |  |
+| `id` | `String` | No |  |
+| `image` | `Hash` | No |  |
+| `legality` | `Hash` | No |  |
+| `name` | `String` | No |  |
+| `printed_total` | `Integer` | No |  |
+| `ptcgo_code` | `String` | No |  |
+| `release_date` | `String` | No |  |
+| `series` | `String` | No |  |
+| `total` | `Integer` | No |  |
+| `updated_at` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Set.list(nil)
+results = client.Set.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -320,16 +320,16 @@ subtype = client.Subtype
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Subtype.list(nil)
+results = client.Subtype.list
 ```
 
 ### Common Methods
@@ -372,16 +372,16 @@ supertype = client.Supertype
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Supertype.list(nil)
+results = client.Supertype.list
 ```
 
 ### Common Methods
@@ -424,16 +424,16 @@ type = client.Type
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Type.list(nil)
+results = client.Type.list
 ```
 
 ### Common Methods

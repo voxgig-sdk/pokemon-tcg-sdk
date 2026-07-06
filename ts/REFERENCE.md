@@ -177,31 +177,31 @@ const card = client.Card()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `artist` | ``$STRING`` | No |  |
-| `attack` | ``$ARRAY`` | No |  |
-| `cardmarket` | ``$OBJECT`` | No |  |
-| `converted_retreat_cost` | ``$INTEGER`` | No |  |
-| `data` | ``$OBJECT`` | No |  |
-| `evolves_from` | ``$STRING`` | No |  |
-| `evolves_to` | ``$ARRAY`` | No |  |
-| `flavor_text` | ``$STRING`` | No |  |
-| `hp` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$OBJECT`` | No |  |
-| `legality` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `national_pokedex_number` | ``$ARRAY`` | No |  |
-| `number` | ``$STRING`` | No |  |
-| `rarity` | ``$STRING`` | No |  |
-| `resistance` | ``$ARRAY`` | No |  |
-| `retreat_cost` | ``$ARRAY`` | No |  |
-| `rule` | ``$ARRAY`` | No |  |
-| `set` | ``$OBJECT`` | No |  |
-| `subtype` | ``$ARRAY`` | No |  |
-| `supertype` | ``$STRING`` | No |  |
-| `tcgplayer` | ``$OBJECT`` | No |  |
-| `type` | ``$ARRAY`` | No |  |
-| `weakness` | ``$ARRAY`` | No |  |
+| `artist` | `string` | No |  |
+| `attack` | `any[]` | No |  |
+| `cardmarket` | `Record<string, any>` | No |  |
+| `converted_retreat_cost` | `number` | No |  |
+| `data` | `Record<string, any>` | No |  |
+| `evolves_from` | `string` | No |  |
+| `evolves_to` | `any[]` | No |  |
+| `flavor_text` | `string` | No |  |
+| `hp` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `Record<string, any>` | No |  |
+| `legality` | `Record<string, any>` | No |  |
+| `name` | `string` | No |  |
+| `national_pokedex_number` | `any[]` | No |  |
+| `number` | `string` | No |  |
+| `rarity` | `string` | No |  |
+| `resistance` | `any[]` | No |  |
+| `retreat_cost` | `any[]` | No |  |
+| `rule` | `any[]` | No |  |
+| `set` | `Record<string, any>` | No |  |
+| `subtype` | `any[]` | No |  |
+| `supertype` | `string` | No |  |
+| `tcgplayer` | `Record<string, any>` | No |  |
+| `type` | `any[]` | No |  |
+| `weakness` | `any[]` | No |  |
 
 ### Operations
 
@@ -259,7 +259,7 @@ const rarity = client.Rarity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `any[]` | No |  |
 
 ### Operations
 
@@ -309,17 +309,17 @@ const set = client.Set()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$OBJECT`` | No |  |
-| `legality` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `printed_total` | ``$INTEGER`` | No |  |
-| `ptcgo_code` | ``$STRING`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `series` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
+| `data` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
+| `image` | `Record<string, any>` | No |  |
+| `legality` | `Record<string, any>` | No |  |
+| `name` | `string` | No |  |
+| `printed_total` | `number` | No |  |
+| `ptcgo_code` | `string` | No |  |
+| `release_date` | `string` | No |  |
+| `series` | `string` | No |  |
+| `total` | `number` | No |  |
+| `updated_at` | `string` | No |  |
 
 ### Operations
 
@@ -377,7 +377,7 @@ const subtype = client.Subtype()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `any[]` | No |  |
 
 ### Operations
 
@@ -427,7 +427,7 @@ const supertype = client.Supertype()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `any[]` | No |  |
 
 ### Operations
 
@@ -477,7 +477,7 @@ const type = client.Type()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `any[]` | No |  |
 
 ### Operations
 

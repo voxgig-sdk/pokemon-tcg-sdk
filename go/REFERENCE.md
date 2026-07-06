@@ -118,31 +118,31 @@ card := client.Card(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `artist` | ``$STRING`` | No |  |
-| `attack` | ``$ARRAY`` | No |  |
-| `cardmarket` | ``$OBJECT`` | No |  |
-| `converted_retreat_cost` | ``$INTEGER`` | No |  |
-| `data` | ``$OBJECT`` | No |  |
-| `evolves_from` | ``$STRING`` | No |  |
-| `evolves_to` | ``$ARRAY`` | No |  |
-| `flavor_text` | ``$STRING`` | No |  |
-| `hp` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$OBJECT`` | No |  |
-| `legality` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `national_pokedex_number` | ``$ARRAY`` | No |  |
-| `number` | ``$STRING`` | No |  |
-| `rarity` | ``$STRING`` | No |  |
-| `resistance` | ``$ARRAY`` | No |  |
-| `retreat_cost` | ``$ARRAY`` | No |  |
-| `rule` | ``$ARRAY`` | No |  |
-| `set` | ``$OBJECT`` | No |  |
-| `subtype` | ``$ARRAY`` | No |  |
-| `supertype` | ``$STRING`` | No |  |
-| `tcgplayer` | ``$OBJECT`` | No |  |
-| `type` | ``$ARRAY`` | No |  |
-| `weakness` | ``$ARRAY`` | No |  |
+| `artist` | `string` | No |  |
+| `attack` | `[]any` | No |  |
+| `cardmarket` | `map[string]any` | No |  |
+| `converted_retreat_cost` | `int` | No |  |
+| `data` | `map[string]any` | No |  |
+| `evolves_from` | `string` | No |  |
+| `evolves_to` | `[]any` | No |  |
+| `flavor_text` | `string` | No |  |
+| `hp` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `map[string]any` | No |  |
+| `legality` | `map[string]any` | No |  |
+| `name` | `string` | No |  |
+| `national_pokedex_number` | `[]any` | No |  |
+| `number` | `string` | No |  |
+| `rarity` | `string` | No |  |
+| `resistance` | `[]any` | No |  |
+| `retreat_cost` | `[]any` | No |  |
+| `rule` | `[]any` | No |  |
+| `set` | `map[string]any` | No |  |
+| `subtype` | `[]any` | No |  |
+| `supertype` | `string` | No |  |
+| `tcgplayer` | `map[string]any` | No |  |
+| `type` | `[]any` | No |  |
+| `weakness` | `[]any` | No |  |
 
 ### Operations
 
@@ -196,7 +196,7 @@ rarity := client.Rarity(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `[]any` | No |  |
 
 ### Operations
 
@@ -242,17 +242,17 @@ set := client.Set(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$OBJECT`` | No |  |
-| `legality` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `printed_total` | ``$INTEGER`` | No |  |
-| `ptcgo_code` | ``$STRING`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `series` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
+| `data` | `map[string]any` | No |  |
+| `id` | `string` | No |  |
+| `image` | `map[string]any` | No |  |
+| `legality` | `map[string]any` | No |  |
+| `name` | `string` | No |  |
+| `printed_total` | `int` | No |  |
+| `ptcgo_code` | `string` | No |  |
+| `release_date` | `string` | No |  |
+| `series` | `string` | No |  |
+| `total` | `int` | No |  |
+| `updated_at` | `string` | No |  |
 
 ### Operations
 
@@ -306,7 +306,7 @@ subtype := client.Subtype(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `[]any` | No |  |
 
 ### Operations
 
@@ -352,7 +352,7 @@ supertype := client.Supertype(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `[]any` | No |  |
 
 ### Operations
 
@@ -398,7 +398,7 @@ type := client.Type(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `[]any` | No |  |
 
 ### Operations
 

@@ -4,6 +4,8 @@
 
 The Lua SDK for the PokemonTcg API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Card()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -43,7 +45,7 @@ local cards, err = client:Card():list()
 if err then error(err) end
 
 for _, item in ipairs(cards) do
-  print(item["id"], item["name"])
+  print(item["id"], item["artist"])
 end
 ```
 
@@ -53,6 +55,28 @@ end
 local card, err = client:Card():load({ id = "example_id" })
 if err then error(err) end
 print(card)
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local cards, err = client:Card():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -98,8 +122,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Card():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Card():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -194,9 +218,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -211,7 +232,7 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
@@ -339,31 +360,31 @@ Create an instance: `local card = client:Card(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `artist` | ``$STRING`` |  |
-| `attack` | ``$ARRAY`` |  |
-| `cardmarket` | ``$OBJECT`` |  |
-| `converted_retreat_cost` | ``$INTEGER`` |  |
-| `data` | ``$OBJECT`` |  |
-| `evolves_from` | ``$STRING`` |  |
-| `evolves_to` | ``$ARRAY`` |  |
-| `flavor_text` | ``$STRING`` |  |
-| `hp` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$OBJECT`` |  |
-| `legality` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `national_pokedex_number` | ``$ARRAY`` |  |
-| `number` | ``$STRING`` |  |
-| `rarity` | ``$STRING`` |  |
-| `resistance` | ``$ARRAY`` |  |
-| `retreat_cost` | ``$ARRAY`` |  |
-| `rule` | ``$ARRAY`` |  |
-| `set` | ``$OBJECT`` |  |
-| `subtype` | ``$ARRAY`` |  |
-| `supertype` | ``$STRING`` |  |
-| `tcgplayer` | ``$OBJECT`` |  |
-| `type` | ``$ARRAY`` |  |
-| `weakness` | ``$ARRAY`` |  |
+| `artist` | `string` |  |
+| `attack` | `table` |  |
+| `cardmarket` | `table` |  |
+| `converted_retreat_cost` | `number` |  |
+| `data` | `table` |  |
+| `evolves_from` | `string` |  |
+| `evolves_to` | `table` |  |
+| `flavor_text` | `string` |  |
+| `hp` | `string` |  |
+| `id` | `string` |  |
+| `image` | `table` |  |
+| `legality` | `table` |  |
+| `name` | `string` |  |
+| `national_pokedex_number` | `table` |  |
+| `number` | `string` |  |
+| `rarity` | `string` |  |
+| `resistance` | `table` |  |
+| `retreat_cost` | `table` |  |
+| `rule` | `table` |  |
+| `set` | `table` |  |
+| `subtype` | `table` |  |
+| `supertype` | `string` |  |
+| `tcgplayer` | `table` |  |
+| `type` | `table` |  |
+| `weakness` | `table` |  |
 
 #### Example: Load
 
@@ -392,7 +413,7 @@ Create an instance: `local rarity = client:Rarity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `table` |  |
 
 #### Example: List
 
@@ -416,17 +437,17 @@ Create an instance: `local set = client:Set(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$OBJECT`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$OBJECT`` |  |
-| `legality` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `printed_total` | ``$INTEGER`` |  |
-| `ptcgo_code` | ``$STRING`` |  |
-| `release_date` | ``$STRING`` |  |
-| `series` | ``$STRING`` |  |
-| `total` | ``$INTEGER`` |  |
-| `updated_at` | ``$STRING`` |  |
+| `data` | `table` |  |
+| `id` | `string` |  |
+| `image` | `table` |  |
+| `legality` | `table` |  |
+| `name` | `string` |  |
+| `printed_total` | `number` |  |
+| `ptcgo_code` | `string` |  |
+| `release_date` | `string` |  |
+| `series` | `string` |  |
+| `total` | `number` |  |
+| `updated_at` | `string` |  |
 
 #### Example: Load
 
@@ -455,7 +476,7 @@ Create an instance: `local subtype = client:Subtype(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `table` |  |
 
 #### Example: List
 
@@ -478,7 +499,7 @@ Create an instance: `local supertype = client:Supertype(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `table` |  |
 
 #### Example: List
 
@@ -501,7 +522,7 @@ Create an instance: `local type = client:Type(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `table` |  |
 
 #### Example: List
 
@@ -510,12 +531,16 @@ local types, err = client:Type():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -532,8 +557,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -577,14 +603,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local card = client:Card()
-card:load({ id = "example_id" })
+card:list()
 
--- card:data_get() now returns the loaded card data
+-- card:data_get() now returns the card data from the last list
 -- card:match_get() returns the last match criteria
 ```
 

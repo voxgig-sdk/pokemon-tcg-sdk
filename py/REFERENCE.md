@@ -8,7 +8,7 @@ Complete API reference for the PokemonTcg Python SDK.
 ### Constructor
 
 ```python
-from pokemon-tcg_sdk import PokemonTcgSDK
+from pokemontcg_sdk import PokemonTcgSDK
 
 client = PokemonTcgSDK(options)
 ```
@@ -108,40 +108,40 @@ card = client.Card()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `artist` | ``$STRING`` | No |  |
-| `attack` | ``$ARRAY`` | No |  |
-| `cardmarket` | ``$OBJECT`` | No |  |
-| `converted_retreat_cost` | ``$INTEGER`` | No |  |
-| `data` | ``$OBJECT`` | No |  |
-| `evolves_from` | ``$STRING`` | No |  |
-| `evolves_to` | ``$ARRAY`` | No |  |
-| `flavor_text` | ``$STRING`` | No |  |
-| `hp` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$OBJECT`` | No |  |
-| `legality` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `national_pokedex_number` | ``$ARRAY`` | No |  |
-| `number` | ``$STRING`` | No |  |
-| `rarity` | ``$STRING`` | No |  |
-| `resistance` | ``$ARRAY`` | No |  |
-| `retreat_cost` | ``$ARRAY`` | No |  |
-| `rule` | ``$ARRAY`` | No |  |
-| `set` | ``$OBJECT`` | No |  |
-| `subtype` | ``$ARRAY`` | No |  |
-| `supertype` | ``$STRING`` | No |  |
-| `tcgplayer` | ``$OBJECT`` | No |  |
-| `type` | ``$ARRAY`` | No |  |
-| `weakness` | ``$ARRAY`` | No |  |
+| `artist` | `str` | No |  |
+| `attack` | `list` | No |  |
+| `cardmarket` | `dict` | No |  |
+| `converted_retreat_cost` | `int` | No |  |
+| `data` | `dict` | No |  |
+| `evolves_from` | `str` | No |  |
+| `evolves_to` | `list` | No |  |
+| `flavor_text` | `str` | No |  |
+| `hp` | `str` | No |  |
+| `id` | `str` | No |  |
+| `image` | `dict` | No |  |
+| `legality` | `dict` | No |  |
+| `name` | `str` | No |  |
+| `national_pokedex_number` | `list` | No |  |
+| `number` | `str` | No |  |
+| `rarity` | `str` | No |  |
+| `resistance` | `list` | No |  |
+| `retreat_cost` | `list` | No |  |
+| `rule` | `list` | No |  |
+| `set` | `dict` | No |  |
+| `subtype` | `list` | No |  |
+| `supertype` | `str` | No |  |
+| `tcgplayer` | `dict` | No |  |
+| `type` | `list` | No |  |
+| `weakness` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Card().list({})
+results = client.Card().list()
 for card in results:
     print(card)
 ```
@@ -193,16 +193,16 @@ rarity = client.Rarity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Rarity().list({})
+results = client.Rarity().list()
 for rarity in results:
     print(rarity)
 ```
@@ -246,26 +246,26 @@ set = client.Set()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$OBJECT`` | No |  |
-| `legality` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `printed_total` | ``$INTEGER`` | No |  |
-| `ptcgo_code` | ``$STRING`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `series` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
+| `data` | `dict` | No |  |
+| `id` | `str` | No |  |
+| `image` | `dict` | No |  |
+| `legality` | `dict` | No |  |
+| `name` | `str` | No |  |
+| `printed_total` | `int` | No |  |
+| `ptcgo_code` | `str` | No |  |
+| `release_date` | `str` | No |  |
+| `series` | `str` | No |  |
+| `total` | `int` | No |  |
+| `updated_at` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Set().list({})
+results = client.Set().list()
 for set in results:
     print(set)
 ```
@@ -317,16 +317,16 @@ subtype = client.Subtype()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Subtype().list({})
+results = client.Subtype().list()
 for subtype in results:
     print(subtype)
 ```
@@ -370,16 +370,16 @@ supertype = client.Supertype()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Supertype().list({})
+results = client.Supertype().list()
 for supertype in results:
     print(supertype)
 ```
@@ -423,16 +423,16 @@ type = client.Type()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Type().list({})
+results = client.Type().list()
 for type in results:
     print(type)
 ```

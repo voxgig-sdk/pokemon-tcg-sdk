@@ -42,8 +42,7 @@ type CardLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// CardListMatch mirrors the card fields as an all-optional match
-// filter (Go analog of Partial<Card>).
+// CardListMatch is the typed request payload for Card.ListTyped.
 type CardListMatch struct {
 	Artist *string `json:"artist,omitempty"`
 	Attack *[]any `json:"attack,omitempty"`
@@ -77,8 +76,7 @@ type Rarity struct {
 	Data *[]any `json:"data,omitempty"`
 }
 
-// RarityListMatch mirrors the rarity fields as an all-optional match
-// filter (Go analog of Partial<Rarity>).
+// RarityListMatch is the typed request payload for Rarity.ListTyped.
 type RarityListMatch struct {
 	Data *[]any `json:"data,omitempty"`
 }
@@ -103,8 +101,7 @@ type SetLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// SetListMatch mirrors the set fields as an all-optional match
-// filter (Go analog of Partial<Set>).
+// SetListMatch is the typed request payload for Set.ListTyped.
 type SetListMatch struct {
 	Data *map[string]any `json:"data,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -124,8 +121,7 @@ type Subtype struct {
 	Data *[]any `json:"data,omitempty"`
 }
 
-// SubtypeListMatch mirrors the subtype fields as an all-optional match
-// filter (Go analog of Partial<Subtype>).
+// SubtypeListMatch is the typed request payload for Subtype.ListTyped.
 type SubtypeListMatch struct {
 	Data *[]any `json:"data,omitempty"`
 }
@@ -135,8 +131,7 @@ type Supertype struct {
 	Data *[]any `json:"data,omitempty"`
 }
 
-// SupertypeListMatch mirrors the supertype fields as an all-optional match
-// filter (Go analog of Partial<Supertype>).
+// SupertypeListMatch is the typed request payload for Supertype.ListTyped.
 type SupertypeListMatch struct {
 	Data *[]any `json:"data,omitempty"`
 }
@@ -146,8 +141,7 @@ type Type struct {
 	Data *[]any `json:"data,omitempty"`
 }
 
-// TypeListMatch mirrors the type fields as an all-optional match
-// filter (Go analog of Partial<Type>).
+// TypeListMatch is the typed request payload for Type.ListTyped.
 type TypeListMatch struct {
 	Data *[]any `json:"data,omitempty"`
 }

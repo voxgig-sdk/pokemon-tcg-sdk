@@ -8,7 +8,7 @@ Complete API reference for the PokemonTcg PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/pokemon-tcg_sdk.php';
+require_once __DIR__ . '/pokemontcg_sdk.php';
 
 $client = new PokemonTcgSDK($options);
 ```
@@ -66,11 +66,11 @@ Create a new `SupertypeEntity` instance. Pass `null` for no initial data.
 
 Create a new `TypeEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): PokemonTcgUtility`
 
 Return a copy of the SDK utility object.
 
@@ -113,40 +113,40 @@ $card = $client->Card();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `artist` | ``$STRING`` | No |  |
-| `attack` | ``$ARRAY`` | No |  |
-| `cardmarket` | ``$OBJECT`` | No |  |
-| `converted_retreat_cost` | ``$INTEGER`` | No |  |
-| `data` | ``$OBJECT`` | No |  |
-| `evolves_from` | ``$STRING`` | No |  |
-| `evolves_to` | ``$ARRAY`` | No |  |
-| `flavor_text` | ``$STRING`` | No |  |
-| `hp` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$OBJECT`` | No |  |
-| `legality` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `national_pokedex_number` | ``$ARRAY`` | No |  |
-| `number` | ``$STRING`` | No |  |
-| `rarity` | ``$STRING`` | No |  |
-| `resistance` | ``$ARRAY`` | No |  |
-| `retreat_cost` | ``$ARRAY`` | No |  |
-| `rule` | ``$ARRAY`` | No |  |
-| `set` | ``$OBJECT`` | No |  |
-| `subtype` | ``$ARRAY`` | No |  |
-| `supertype` | ``$STRING`` | No |  |
-| `tcgplayer` | ``$OBJECT`` | No |  |
-| `type` | ``$ARRAY`` | No |  |
-| `weakness` | ``$ARRAY`` | No |  |
+| `artist` | `string` | No |  |
+| `attack` | `array` | No |  |
+| `cardmarket` | `array` | No |  |
+| `converted_retreat_cost` | `int` | No |  |
+| `data` | `array` | No |  |
+| `evolves_from` | `string` | No |  |
+| `evolves_to` | `array` | No |  |
+| `flavor_text` | `string` | No |  |
+| `hp` | `string` | No |  |
+| `id` | `string` | No |  |
+| `image` | `array` | No |  |
+| `legality` | `array` | No |  |
+| `name` | `string` | No |  |
+| `national_pokedex_number` | `array` | No |  |
+| `number` | `string` | No |  |
+| `rarity` | `string` | No |  |
+| `resistance` | `array` | No |  |
+| `retreat_cost` | `array` | No |  |
+| `rule` | `array` | No |  |
+| `set` | `array` | No |  |
+| `subtype` | `array` | No |  |
+| `supertype` | `string` | No |  |
+| `tcgplayer` | `array` | No |  |
+| `type` | `array` | No |  |
+| `weakness` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Card()->list([]);
+$results = $client->Card()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -159,19 +159,19 @@ $result = $client->Card()->load(["id" => "card_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -180,7 +180,7 @@ Set the entity match criteria.
 Create a new `CardEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -197,33 +197,33 @@ $rarity = $client->Rarity();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Rarity()->list([]);
+$results = $client->Rarity()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -232,7 +232,7 @@ Set the entity match criteria.
 Create a new `RarityEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -249,26 +249,26 @@ $set = $client->Set();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `image` | ``$OBJECT`` | No |  |
-| `legality` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `printed_total` | ``$INTEGER`` | No |  |
-| `ptcgo_code` | ``$STRING`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `series` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `updated_at` | ``$STRING`` | No |  |
+| `data` | `array` | No |  |
+| `id` | `string` | No |  |
+| `image` | `array` | No |  |
+| `legality` | `array` | No |  |
+| `name` | `string` | No |  |
+| `printed_total` | `int` | No |  |
+| `ptcgo_code` | `string` | No |  |
+| `release_date` | `string` | No |  |
+| `series` | `string` | No |  |
+| `total` | `int` | No |  |
+| `updated_at` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Set()->list([]);
+$results = $client->Set()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -281,19 +281,19 @@ $result = $client->Set()->load(["id" => "set_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -302,7 +302,7 @@ Set the entity match criteria.
 Create a new `SetEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -319,33 +319,33 @@ $subtype = $client->Subtype();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Subtype()->list([]);
+$results = $client->Subtype()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -354,7 +354,7 @@ Set the entity match criteria.
 Create a new `SubtypeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -371,33 +371,33 @@ $supertype = $client->Supertype();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Supertype()->list([]);
+$results = $client->Supertype()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -406,7 +406,7 @@ Set the entity match criteria.
 Create a new `SupertypeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -423,33 +423,33 @@ $type = $client->Type();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$ARRAY`` | No |  |
+| `data` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Type()->list([]);
+$results = $client->Type()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -458,7 +458,7 @@ Set the entity match criteria.
 Create a new `TypeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

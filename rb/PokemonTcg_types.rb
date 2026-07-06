@@ -122,7 +122,7 @@ CardLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Card#list (any subset of Card fields).
+# Request payload for Card#list.
 #
 # @!attribute [rw] artist
 #   @return [String, nil]
@@ -236,7 +236,7 @@ Rarity = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Rarity#list (any subset of Rarity fields).
+# Request payload for Rarity#list.
 #
 # @!attribute [rw] data
 #   @return [Array, nil]
@@ -303,7 +303,7 @@ SetLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Set#list (any subset of Set fields).
+# Request payload for Set#list.
 #
 # @!attribute [rw] data
 #   @return [Hash, nil]
@@ -361,7 +361,7 @@ Subtype = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Subtype#list (any subset of Subtype fields).
+# Request payload for Subtype#list.
 #
 # @!attribute [rw] data
 #   @return [Array, nil]
@@ -379,7 +379,7 @@ Supertype = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Supertype#list (any subset of Supertype fields).
+# Request payload for Supertype#list.
 #
 # @!attribute [rw] data
 #   @return [Array, nil]
@@ -397,7 +397,7 @@ Type = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Type#list (any subset of Type fields).
+# Request payload for Type#list.
 #
 # @!attribute [rw] data
 #   @return [Array, nil]

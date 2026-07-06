@@ -4,6 +4,8 @@
 
 The PHP SDK for the PokemonTcg API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Card()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,7 +40,7 @@ try {
     // list() returns an array of Card records — iterate directly.
     $cards = $client->Card()->list();
     foreach ($cards as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["id"] . " " . $item["artist"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -54,6 +56,37 @@ try {
     print_r($card);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $cards = $client->Card()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -77,7 +110,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -106,8 +142,8 @@ $client = PokemonTcgSDK::test([
     "entity" => ["card" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// load() returns the bare mock record (throws on error).
-$card = $client->Card()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$card = $client->Card()->list();
 print_r($card);
 ```
 
@@ -203,10 +239,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -348,31 +381,31 @@ Create an instance: `$card = $client->Card();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `artist` | ``$STRING`` |  |
-| `attack` | ``$ARRAY`` |  |
-| `cardmarket` | ``$OBJECT`` |  |
-| `converted_retreat_cost` | ``$INTEGER`` |  |
-| `data` | ``$OBJECT`` |  |
-| `evolves_from` | ``$STRING`` |  |
-| `evolves_to` | ``$ARRAY`` |  |
-| `flavor_text` | ``$STRING`` |  |
-| `hp` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$OBJECT`` |  |
-| `legality` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `national_pokedex_number` | ``$ARRAY`` |  |
-| `number` | ``$STRING`` |  |
-| `rarity` | ``$STRING`` |  |
-| `resistance` | ``$ARRAY`` |  |
-| `retreat_cost` | ``$ARRAY`` |  |
-| `rule` | ``$ARRAY`` |  |
-| `set` | ``$OBJECT`` |  |
-| `subtype` | ``$ARRAY`` |  |
-| `supertype` | ``$STRING`` |  |
-| `tcgplayer` | ``$OBJECT`` |  |
-| `type` | ``$ARRAY`` |  |
-| `weakness` | ``$ARRAY`` |  |
+| `artist` | `string` |  |
+| `attack` | `array` |  |
+| `cardmarket` | `array` |  |
+| `converted_retreat_cost` | `int` |  |
+| `data` | `array` |  |
+| `evolves_from` | `string` |  |
+| `evolves_to` | `array` |  |
+| `flavor_text` | `string` |  |
+| `hp` | `string` |  |
+| `id` | `string` |  |
+| `image` | `array` |  |
+| `legality` | `array` |  |
+| `name` | `string` |  |
+| `national_pokedex_number` | `array` |  |
+| `number` | `string` |  |
+| `rarity` | `string` |  |
+| `resistance` | `array` |  |
+| `retreat_cost` | `array` |  |
+| `rule` | `array` |  |
+| `set` | `array` |  |
+| `subtype` | `array` |  |
+| `supertype` | `string` |  |
+| `tcgplayer` | `array` |  |
+| `type` | `array` |  |
+| `weakness` | `array` |  |
 
 #### Example: Load
 
@@ -403,7 +436,7 @@ Create an instance: `$rarity = $client->Rarity();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `array` |  |
 
 #### Example: List
 
@@ -428,17 +461,17 @@ Create an instance: `$set = $client->Set();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$OBJECT`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$OBJECT`` |  |
-| `legality` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `printed_total` | ``$INTEGER`` |  |
-| `ptcgo_code` | ``$STRING`` |  |
-| `release_date` | ``$STRING`` |  |
-| `series` | ``$STRING`` |  |
-| `total` | ``$INTEGER`` |  |
-| `updated_at` | ``$STRING`` |  |
+| `data` | `array` |  |
+| `id` | `string` |  |
+| `image` | `array` |  |
+| `legality` | `array` |  |
+| `name` | `string` |  |
+| `printed_total` | `int` |  |
+| `ptcgo_code` | `string` |  |
+| `release_date` | `string` |  |
+| `series` | `string` |  |
+| `total` | `int` |  |
+| `updated_at` | `string` |  |
 
 #### Example: Load
 
@@ -469,7 +502,7 @@ Create an instance: `$subtype = $client->Subtype();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `array` |  |
 
 #### Example: List
 
@@ -493,7 +526,7 @@ Create an instance: `$supertype = $client->Supertype();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `array` |  |
 
 #### Example: List
 
@@ -517,7 +550,7 @@ Create an instance: `$type = $client->Type();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `array` |  |
 
 #### Example: List
 
@@ -527,12 +560,16 @@ $types = $client->Type()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -549,8 +586,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -594,15 +632,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $card = $client->Card();
-$card->load(["id" => "example_id"]);
+$card->list();
 
-// $card->dataGet() now returns the loaded card data
-// $card->matchGet() returns the last match criteria
+// $card->data_get() now returns the card data from the last list
+// $card->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

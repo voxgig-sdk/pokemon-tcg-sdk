@@ -4,6 +4,11 @@
 
 The Python SDK for the PokemonTcg API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Card()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,7 +46,7 @@ error — iterate it directly.
 
 ```python
 try:
-    cards = client.Card().list({})
+    cards = client.Card().list()
     for card in cards:
         print(card)
 except Exception as err:
@@ -58,6 +63,34 @@ try:
     print(card)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    cards = client.Card().list()
+    print(cards)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -78,7 +111,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -104,7 +140,7 @@ Create a mock client for unit testing — no server required:
 client = PokemonTcgSDK.test()
 
 # Entity ops return the bare record and raise on error.
-card = client.Card().load({"id": "test01"})
+card = client.Card().list()
 # card contains the mock response record
 ```
 
@@ -198,9 +234,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -335,38 +368,38 @@ Create an instance: `card = client.Card()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `artist` | ``$STRING`` |  |
-| `attack` | ``$ARRAY`` |  |
-| `cardmarket` | ``$OBJECT`` |  |
-| `converted_retreat_cost` | ``$INTEGER`` |  |
-| `data` | ``$OBJECT`` |  |
-| `evolves_from` | ``$STRING`` |  |
-| `evolves_to` | ``$ARRAY`` |  |
-| `flavor_text` | ``$STRING`` |  |
-| `hp` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$OBJECT`` |  |
-| `legality` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `national_pokedex_number` | ``$ARRAY`` |  |
-| `number` | ``$STRING`` |  |
-| `rarity` | ``$STRING`` |  |
-| `resistance` | ``$ARRAY`` |  |
-| `retreat_cost` | ``$ARRAY`` |  |
-| `rule` | ``$ARRAY`` |  |
-| `set` | ``$OBJECT`` |  |
-| `subtype` | ``$ARRAY`` |  |
-| `supertype` | ``$STRING`` |  |
-| `tcgplayer` | ``$OBJECT`` |  |
-| `type` | ``$ARRAY`` |  |
-| `weakness` | ``$ARRAY`` |  |
+| `artist` | `str` |  |
+| `attack` | `list` |  |
+| `cardmarket` | `dict` |  |
+| `converted_retreat_cost` | `int` |  |
+| `data` | `dict` |  |
+| `evolves_from` | `str` |  |
+| `evolves_to` | `list` |  |
+| `flavor_text` | `str` |  |
+| `hp` | `str` |  |
+| `id` | `str` |  |
+| `image` | `dict` |  |
+| `legality` | `dict` |  |
+| `name` | `str` |  |
+| `national_pokedex_number` | `list` |  |
+| `number` | `str` |  |
+| `rarity` | `str` |  |
+| `resistance` | `list` |  |
+| `retreat_cost` | `list` |  |
+| `rule` | `list` |  |
+| `set` | `dict` |  |
+| `subtype` | `list` |  |
+| `supertype` | `str` |  |
+| `tcgplayer` | `dict` |  |
+| `type` | `list` |  |
+| `weakness` | `list` |  |
 
 #### Example: Load
 
@@ -377,7 +410,7 @@ card = client.Card().load({"id": "card_id"})
 #### Example: List
 
 ```python
-cards = client.Card().list({})
+cards = client.Card().list()
 ```
 
 
@@ -389,18 +422,18 @@ Create an instance: `rarity = client.Rarity()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `list` |  |
 
 #### Example: List
 
 ```python
-raritys = client.Rarity().list({})
+raritys = client.Rarity().list()
 ```
 
 
@@ -412,24 +445,24 @@ Create an instance: `set = client.Set()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$OBJECT`` |  |
-| `id` | ``$STRING`` |  |
-| `image` | ``$OBJECT`` |  |
-| `legality` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `printed_total` | ``$INTEGER`` |  |
-| `ptcgo_code` | ``$STRING`` |  |
-| `release_date` | ``$STRING`` |  |
-| `series` | ``$STRING`` |  |
-| `total` | ``$INTEGER`` |  |
-| `updated_at` | ``$STRING`` |  |
+| `data` | `dict` |  |
+| `id` | `str` |  |
+| `image` | `dict` |  |
+| `legality` | `dict` |  |
+| `name` | `str` |  |
+| `printed_total` | `int` |  |
+| `ptcgo_code` | `str` |  |
+| `release_date` | `str` |  |
+| `series` | `str` |  |
+| `total` | `int` |  |
+| `updated_at` | `str` |  |
 
 #### Example: Load
 
@@ -440,7 +473,7 @@ set = client.Set().load({"id": "set_id"})
 #### Example: List
 
 ```python
-sets = client.Set().list({})
+sets = client.Set().list()
 ```
 
 
@@ -452,18 +485,18 @@ Create an instance: `subtype = client.Subtype()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `list` |  |
 
 #### Example: List
 
 ```python
-subtypes = client.Subtype().list({})
+subtypes = client.Subtype().list()
 ```
 
 
@@ -475,18 +508,18 @@ Create an instance: `supertype = client.Supertype()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `list` |  |
 
 #### Example: List
 
 ```python
-supertypes = client.Supertype().list({})
+supertypes = client.Supertype().list()
 ```
 
 
@@ -498,27 +531,31 @@ Create an instance: `type = client.Type()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | ``$ARRAY`` |  |
+| `data` | `list` |  |
 
 #### Example: List
 
 ```python
-types = client.Type().list({})
+types = client.Type().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -535,8 +572,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -579,14 +617,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 card = client.Card()
-card.load({"id": "example_id"})
+card.list()
 
-# card.data_get() now returns the loaded card data
+# card.data_get() now returns the card data from the last list
 # card.match_get() returns the last match criteria
 ```
 
