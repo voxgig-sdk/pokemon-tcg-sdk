@@ -112,6 +112,7 @@ same parameters as `Direct()`.
 
 ```go
 card := client.Card(nil)
+fmt.Println(card.GetName()) // "card"
 ```
 
 ### Fields
@@ -152,6 +153,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Card(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -160,6 +165,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Card(nil).Load(map[string]any{"id": "card_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -190,6 +199,7 @@ Return the entity name.
 
 ```go
 rarity := client.Rarity(nil)
+fmt.Println(rarity.GetName()) // "rarity"
 ```
 
 ### Fields
@@ -206,6 +216,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Rarity(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -236,6 +250,7 @@ Return the entity name.
 
 ```go
 set := client.Set(nil)
+fmt.Println(set.GetName()) // "set"
 ```
 
 ### Fields
@@ -262,6 +277,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Set(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -270,6 +289,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Set(nil).Load(map[string]any{"id": "set_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -300,6 +323,7 @@ Return the entity name.
 
 ```go
 subtype := client.Subtype(nil)
+fmt.Println(subtype.GetName()) // "subtype"
 ```
 
 ### Fields
@@ -316,6 +340,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Subtype(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -346,6 +374,7 @@ Return the entity name.
 
 ```go
 supertype := client.Supertype(nil)
+fmt.Println(supertype.GetName()) // "supertype"
 ```
 
 ### Fields
@@ -362,6 +391,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Supertype(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -391,7 +424,8 @@ Return the entity name.
 ## TypeEntity
 
 ```go
-type := client.Type(nil)
+type_ := client.Type(nil)
+fmt.Println(type_.GetName()) // "type"
 ```
 
 ### Fields
@@ -408,6 +442,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Type(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

@@ -63,7 +63,7 @@ func main() {
     }
 
     // Load a single card — the value is the loaded record.
-    card, err := client.Card(nil).Load(map[string]any{"id": "example"}, nil)
+    card, err := client.Card(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }

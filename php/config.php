@@ -21,7 +21,7 @@ class PokemonTcgConfig
             "options" => [
                 "base" => "https://api.pokemontcg.io/v2",
                 "auth" => [
-                    "prefix" => "Bearer",
+                    "prefix" => "",
                 ],
                 "headers" => [
           'content-type' => 'application/json',

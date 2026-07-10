@@ -1,0 +1,8 @@
+# Entity Models
+
+@"card.aontu"
+@"rarity.aontu"
+@"set.aontu"
+@"subtype.aontu"
+@"supertype.aontu"
+@"type.aontu"

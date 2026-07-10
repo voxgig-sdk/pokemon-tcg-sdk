@@ -1,8 +1,0 @@
-# Flows
-
-@"BasicCardFlow.jsonic"
-@"BasicRarityFlow.jsonic"
-@"BasicSetFlow.jsonic"
-@"BasicSubtypeFlow.jsonic"
-@"BasicSupertypeFlow.jsonic"
-@"BasicTypeFlow.jsonic"

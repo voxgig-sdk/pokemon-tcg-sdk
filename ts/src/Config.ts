@@ -39,7 +39,7 @@ class Config {
     base: 'https://api.pokemontcg.io/v2',
 
     auth: {
-      prefix: 'Bearer',
+      prefix: '',
     },
 
     headers: {

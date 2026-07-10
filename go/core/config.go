@@ -15,7 +15,7 @@ func MakeConfig() map[string]any {
 		"options": map[string]any{
 			"base": "https://api.pokemontcg.io/v2",
 			"auth": map[string]any{
-				"prefix": "Bearer",
+				"prefix": "",
 			},
 			"headers": map[string]any{
 				"content-type": "application/json",

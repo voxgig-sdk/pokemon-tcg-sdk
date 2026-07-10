@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -947,14 +944,24 @@
         "license": {
           "name": "MIT"
         },
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "header",
+          "name": "X-Api-Key",
+          "prefix": "",
+          "scheme": "ApiKeyAuth",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.pokemontcg.io/v2"
           }
         ],
+        "summary": "The Pokémon TCG API provides access to a variety of resources about Pokémon Trading Card Game cards, sets, types, subtypes, and rarities.",
         "title": "Pokémon TCG API",
-        "version": "2.0.0"
+        "version": "2.0.0",
+        "website": "https://pokemontcg.io"
       },
       "option": {},
       "target": {
@@ -1007,6 +1014,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1057,6 +1067,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

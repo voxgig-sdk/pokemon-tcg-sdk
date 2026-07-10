@@ -1,0 +1,8 @@
+# Flows
+
+@"BasicCardFlow.aontu"
+@"BasicRarityFlow.aontu"
+@"BasicSetFlow.aontu"
+@"BasicSubtypeFlow.aontu"
+@"BasicSupertypeFlow.aontu"
+@"BasicTypeFlow.aontu"
