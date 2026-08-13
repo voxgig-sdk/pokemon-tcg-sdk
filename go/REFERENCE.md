@@ -120,30 +120,29 @@ fmt.Println(card.GetName()) // "card"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `artist` | `string` | No |  |
-| `attack` | `[]any` | No |  |
+| `attacks` | `[]any` | No |  |
 | `cardmarket` | `map[string]any` | No |  |
-| `converted_retreat_cost` | `int` | No |  |
-| `data` | `map[string]any` | No |  |
-| `evolves_from` | `string` | No |  |
-| `evolves_to` | `[]any` | No |  |
-| `flavor_text` | `string` | No |  |
+| `convertedRetreatCost` | `int` | No |  |
+| `evolvesFrom` | `string` | No |  |
+| `evolvesTo` | `[]any` | No |  |
+| `flavorText` | `string` | No |  |
 | `hp` | `string` | No |  |
 | `id` | `string` | No |  |
-| `image` | `map[string]any` | No |  |
-| `legality` | `map[string]any` | No |  |
+| `images` | `map[string]any` | No |  |
+| `legalities` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
-| `national_pokedex_number` | `[]any` | No |  |
+| `nationalPokedexNumbers` | `[]any` | No |  |
 | `number` | `string` | No |  |
 | `rarity` | `string` | No |  |
-| `resistance` | `[]any` | No |  |
-| `retreat_cost` | `[]any` | No |  |
-| `rule` | `[]any` | No |  |
+| `resistances` | `[]any` | No |  |
+| `retreatCost` | `[]any` | No |  |
+| `rules` | `[]any` | No |  |
 | `set` | `map[string]any` | No |  |
-| `subtype` | `[]any` | No |  |
+| `subtypes` | `[]any` | No |  |
 | `supertype` | `string` | No |  |
 | `tcgplayer` | `map[string]any` | No |  |
-| `type` | `[]any` | No |  |
-| `weakness` | `[]any` | No |  |
+| `types` | `[]any` | No |  |
+| `weaknesses` | `[]any` | No |  |
 
 ### Operations
 
@@ -257,17 +256,16 @@ fmt.Println(set.GetName()) // "set"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `map[string]any` | No |  |
 | `id` | `string` | No |  |
-| `image` | `map[string]any` | No |  |
-| `legality` | `map[string]any` | No |  |
+| `images` | `map[string]any` | No |  |
+| `legalities` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
-| `printed_total` | `int` | No |  |
-| `ptcgo_code` | `string` | No |  |
-| `release_date` | `string` | No |  |
+| `printedTotal` | `int` | No |  |
+| `ptcgoCode` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `series` | `string` | No |  |
 | `total` | `int` | No |  |
-| `updated_at` | `string` | No |  |
+| `updatedAt` | `string` | No |  |
 
 ### Operations
 

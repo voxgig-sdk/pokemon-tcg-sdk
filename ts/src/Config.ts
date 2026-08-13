@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'PokemonTcg',
   }
 
 
@@ -82,7 +82,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "attack",
+          "name": "attacks",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -96,157 +96,150 @@ class Config {
         },
         {
           "active": true,
-          "name": "converted_retreat_cost",
+          "name": "convertedRetreatCost",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "data",
+          "name": "evolvesFrom",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "evolves_from",
+          "name": "evolvesTo",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$ARRAY`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "evolves_to",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 6
-        },
-        {
-          "active": true,
-          "name": "flavor_text",
+          "name": "flavorText",
           "req": false,
           "type": "`$STRING`",
-          "index$": 7
+          "index$": 6
         },
         {
           "active": true,
           "name": "hp",
           "req": false,
           "type": "`$STRING`",
-          "index$": 8
+          "index$": 7
         },
         {
           "active": true,
           "name": "id",
           "req": false,
           "type": "`$STRING`",
+          "index$": 8
+        },
+        {
+          "active": true,
+          "name": "images",
+          "req": false,
+          "type": "`$OBJECT`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "image",
+          "name": "legalities",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "legality",
+          "name": "name",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 12
-        },
-        {
-          "active": true,
-          "name": "national_pokedex_number",
+          "name": "nationalPokedexNumbers",
           "req": false,
           "type": "`$ARRAY`",
-          "index$": 13
+          "index$": 12
         },
         {
           "active": true,
           "name": "number",
           "req": false,
           "type": "`$STRING`",
-          "index$": 14
+          "index$": 13
         },
         {
           "active": true,
           "name": "rarity",
           "req": false,
           "type": "`$STRING`",
+          "index$": 14
+        },
+        {
+          "active": true,
+          "name": "resistances",
+          "req": false,
+          "type": "`$ARRAY`",
           "index$": 15
         },
         {
           "active": true,
-          "name": "resistance",
+          "name": "retreatCost",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 16
         },
         {
           "active": true,
-          "name": "retreat_cost",
+          "name": "rules",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 17
         },
         {
           "active": true,
-          "name": "rule",
+          "name": "set",
           "req": false,
-          "type": "`$ARRAY`",
+          "type": "`$OBJECT`",
           "index$": 18
         },
         {
           "active": true,
-          "name": "set",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 19
-        },
-        {
-          "active": true,
-          "name": "subtype",
+          "name": "subtypes",
           "req": false,
           "type": "`$ARRAY`",
-          "index$": 20
+          "index$": 19
         },
         {
           "active": true,
           "name": "supertype",
           "req": false,
           "type": "`$STRING`",
-          "index$": 21
+          "index$": 20
         },
         {
           "active": true,
           "name": "tcgplayer",
           "req": false,
           "type": "`$OBJECT`",
+          "index$": 21
+        },
+        {
+          "active": true,
+          "name": "types",
+          "req": false,
+          "type": "`$ARRAY`",
           "index$": 22
         },
         {
           "active": true,
-          "name": "type",
+          "name": "weaknesses",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 23
-        },
-        {
-          "active": true,
-          "name": "weakness",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 24
         }
       ],
       "name": "card",
@@ -303,6 +296,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/cards",
               "parts": [
@@ -319,7 +313,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -345,6 +339,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/cards/{id}",
               "parts": [
@@ -358,7 +353,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -389,6 +384,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/rarities",
               "parts": [
@@ -397,7 +393,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -413,80 +409,73 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "data",
+          "name": "id",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "id",
+          "name": "images",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$OBJECT`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "image",
+          "name": "legalities",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "legality",
+          "name": "name",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "name",
+          "name": "printedTotal",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "printed_total",
+          "name": "ptcgoCode",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "ptcgo_code",
+          "name": "releaseDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "release_date",
+          "name": "series",
           "req": false,
           "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "series",
+          "name": "total",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "total",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 9
-        },
-        {
-          "active": true,
-          "name": "updated_at",
+          "name": "updatedAt",
           "req": false,
           "type": "`$STRING`",
-          "index$": 10
+          "index$": 9
         }
       ],
       "name": "set",
@@ -535,6 +524,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/sets",
               "parts": [
@@ -550,7 +540,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -576,6 +566,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/sets/{id}",
               "parts": [
@@ -589,7 +580,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -620,6 +611,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/subtypes",
               "parts": [
@@ -628,7 +620,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -659,6 +651,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/supertypes",
               "parts": [
@@ -667,7 +660,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -698,6 +691,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/types",
               "parts": [
@@ -706,7 +700,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }

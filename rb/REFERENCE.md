@@ -115,30 +115,29 @@ card = client.Card
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `artist` | `String` | No |  |
-| `attack` | `Array` | No |  |
+| `attacks` | `Array` | No |  |
 | `cardmarket` | `Hash` | No |  |
-| `converted_retreat_cost` | `Integer` | No |  |
-| `data` | `Hash` | No |  |
-| `evolves_from` | `String` | No |  |
-| `evolves_to` | `Array` | No |  |
-| `flavor_text` | `String` | No |  |
+| `convertedRetreatCost` | `Integer` | No |  |
+| `evolvesFrom` | `String` | No |  |
+| `evolvesTo` | `Array` | No |  |
+| `flavorText` | `String` | No |  |
 | `hp` | `String` | No |  |
 | `id` | `String` | No |  |
-| `image` | `Hash` | No |  |
-| `legality` | `Hash` | No |  |
+| `images` | `Hash` | No |  |
+| `legalities` | `Hash` | No |  |
 | `name` | `String` | No |  |
-| `national_pokedex_number` | `Array` | No |  |
+| `nationalPokedexNumbers` | `Array` | No |  |
 | `number` | `String` | No |  |
 | `rarity` | `String` | No |  |
-| `resistance` | `Array` | No |  |
-| `retreat_cost` | `Array` | No |  |
-| `rule` | `Array` | No |  |
+| `resistances` | `Array` | No |  |
+| `retreatCost` | `Array` | No |  |
+| `rules` | `Array` | No |  |
 | `set` | `Hash` | No |  |
-| `subtype` | `Array` | No |  |
+| `subtypes` | `Array` | No |  |
 | `supertype` | `String` | No |  |
 | `tcgplayer` | `Hash` | No |  |
-| `type` | `Array` | No |  |
-| `weakness` | `Array` | No |  |
+| `types` | `Array` | No |  |
+| `weaknesses` | `Array` | No |  |
 
 ### Operations
 
@@ -250,17 +249,16 @@ set = client.Set
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Hash` | No |  |
 | `id` | `String` | No |  |
-| `image` | `Hash` | No |  |
-| `legality` | `Hash` | No |  |
+| `images` | `Hash` | No |  |
+| `legalities` | `Hash` | No |  |
 | `name` | `String` | No |  |
-| `printed_total` | `Integer` | No |  |
-| `ptcgo_code` | `String` | No |  |
-| `release_date` | `String` | No |  |
+| `printedTotal` | `Integer` | No |  |
+| `ptcgoCode` | `String` | No |  |
+| `releaseDate` | `String` | No |  |
 | `series` | `String` | No |  |
 | `total` | `Integer` | No |  |
-| `updated_at` | `String` | No |  |
+| `updatedAt` | `String` | No |  |
 
 ### Operations
 

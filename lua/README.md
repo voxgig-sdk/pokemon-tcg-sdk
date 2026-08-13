@@ -64,7 +64,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local cards, err = client:Card():list()
+local raritys, err = client:Rarity():list()
 if err then error(err) end
 ```
 
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Card():list()
+local result, err = client:Rarity():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -251,30 +251,29 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `artist` |  |
-| `attack` |  |
+| `attacks` |  |
 | `cardmarket` |  |
-| `converted_retreat_cost` |  |
-| `data` |  |
-| `evolves_from` |  |
-| `evolves_to` |  |
-| `flavor_text` |  |
+| `convertedRetreatCost` |  |
+| `evolvesFrom` |  |
+| `evolvesTo` |  |
+| `flavorText` |  |
 | `hp` |  |
 | `id` |  |
-| `image` |  |
-| `legality` |  |
+| `images` |  |
+| `legalities` |  |
 | `name` |  |
-| `national_pokedex_number` |  |
+| `nationalPokedexNumbers` |  |
 | `number` |  |
 | `rarity` |  |
-| `resistance` |  |
-| `retreat_cost` |  |
-| `rule` |  |
+| `resistances` |  |
+| `retreatCost` |  |
+| `rules` |  |
 | `set` |  |
-| `subtype` |  |
+| `subtypes` |  |
 | `supertype` |  |
 | `tcgplayer` |  |
-| `type` |  |
-| `weakness` |  |
+| `types` |  |
+| `weaknesses` |  |
 
 Operations: List, Load.
 
@@ -294,17 +293,16 @@ API path: `/rarities`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
 | `id` |  |
-| `image` |  |
-| `legality` |  |
+| `images` |  |
+| `legalities` |  |
 | `name` |  |
-| `printed_total` |  |
-| `ptcgo_code` |  |
-| `release_date` |  |
+| `printedTotal` |  |
+| `ptcgoCode` |  |
+| `releaseDate` |  |
 | `series` |  |
 | `total` |  |
-| `updated_at` |  |
+| `updatedAt` |  |
 
 Operations: List, Load.
 
@@ -361,30 +359,29 @@ Create an instance: `local card = client:Card(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `artist` | `string` |  |
-| `attack` | `table` |  |
+| `attacks` | `table` |  |
 | `cardmarket` | `table` |  |
-| `converted_retreat_cost` | `number` |  |
-| `data` | `table` |  |
-| `evolves_from` | `string` |  |
-| `evolves_to` | `table` |  |
-| `flavor_text` | `string` |  |
+| `convertedRetreatCost` | `number` |  |
+| `evolvesFrom` | `string` |  |
+| `evolvesTo` | `table` |  |
+| `flavorText` | `string` |  |
 | `hp` | `string` |  |
 | `id` | `string` |  |
-| `image` | `table` |  |
-| `legality` | `table` |  |
+| `images` | `table` |  |
+| `legalities` | `table` |  |
 | `name` | `string` |  |
-| `national_pokedex_number` | `table` |  |
+| `nationalPokedexNumbers` | `table` |  |
 | `number` | `string` |  |
 | `rarity` | `string` |  |
-| `resistance` | `table` |  |
-| `retreat_cost` | `table` |  |
-| `rule` | `table` |  |
+| `resistances` | `table` |  |
+| `retreatCost` | `table` |  |
+| `rules` | `table` |  |
 | `set` | `table` |  |
-| `subtype` | `table` |  |
+| `subtypes` | `table` |  |
 | `supertype` | `string` |  |
 | `tcgplayer` | `table` |  |
-| `type` | `table` |  |
-| `weakness` | `table` |  |
+| `types` | `table` |  |
+| `weaknesses` | `table` |  |
 
 #### Example: Load
 
@@ -437,17 +434,16 @@ Create an instance: `local set = client:Set(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `table` |  |
 | `id` | `string` |  |
-| `image` | `table` |  |
-| `legality` | `table` |  |
+| `images` | `table` |  |
+| `legalities` | `table` |  |
 | `name` | `string` |  |
-| `printed_total` | `number` |  |
-| `ptcgo_code` | `string` |  |
-| `release_date` | `string` |  |
+| `printedTotal` | `number` |  |
+| `ptcgoCode` | `string` |  |
+| `releaseDate` | `string` |  |
 | `series` | `string` |  |
 | `total` | `number` |  |
-| `updated_at` | `string` |  |
+| `updatedAt` | `string` |  |
 
 #### Example: Load
 
@@ -607,11 +603,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local card = client:Card()
-card:list()
+local rarity = client:Rarity()
+rarity:list()
 
--- card:data_get() now returns the card data from the last list
--- card:match_get() returns the last match criteria
+-- rarity:data_get() now returns the rarity data from the last list
+-- rarity:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

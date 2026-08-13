@@ -11,7 +11,7 @@ main: kit: entity: card: {
       type: "`$STRING`"
     }
     {
-      name: "attack"
+      name: "attacks"
       req: false
       type: "`$ARRAY`"
     }
@@ -21,27 +21,22 @@ main: kit: entity: card: {
       type: "`$OBJECT`"
     }
     {
-      name: "converted_retreat_cost"
+      name: "convertedRetreatCost"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "data"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "evolves_from"
+      name: "evolvesFrom"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "evolves_to"
+      name: "evolvesTo"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "flavor_text"
+      name: "flavorText"
       req: false
       type: "`$STRING`"
     }
@@ -56,12 +51,12 @@ main: kit: entity: card: {
       type: "`$STRING`"
     }
     {
-      name: "image"
+      name: "images"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "legality"
+      name: "legalities"
       req: false
       type: "`$OBJECT`"
     }
@@ -71,7 +66,7 @@ main: kit: entity: card: {
       type: "`$STRING`"
     }
     {
-      name: "national_pokedex_number"
+      name: "nationalPokedexNumbers"
       req: false
       type: "`$ARRAY`"
     }
@@ -86,17 +81,17 @@ main: kit: entity: card: {
       type: "`$STRING`"
     }
     {
-      name: "resistance"
+      name: "resistances"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "retreat_cost"
+      name: "retreatCost"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "rule"
+      name: "rules"
       req: false
       type: "`$ARRAY`"
     }
@@ -106,7 +101,7 @@ main: kit: entity: card: {
       type: "`$OBJECT`"
     }
     {
-      name: "subtype"
+      name: "subtypes"
       req: false
       type: "`$ARRAY`"
     }
@@ -121,12 +116,12 @@ main: kit: entity: card: {
       type: "`$OBJECT`"
     }
     {
-      name: "type"
+      name: "types"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "weakness"
+      name: "weaknesses"
       req: false
       type: "`$ARRAY`"
     }
@@ -200,7 +195,7 @@ main: kit: entity: card: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]
@@ -233,7 +228,7 @@ main: kit: entity: card: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

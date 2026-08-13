@@ -112,30 +112,29 @@ local card = client:Card(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `artist` | `string` | No |  |
-| `attack` | `table` | No |  |
+| `attacks` | `table` | No |  |
 | `cardmarket` | `table` | No |  |
-| `converted_retreat_cost` | `number` | No |  |
-| `data` | `table` | No |  |
-| `evolves_from` | `string` | No |  |
-| `evolves_to` | `table` | No |  |
-| `flavor_text` | `string` | No |  |
+| `convertedRetreatCost` | `number` | No |  |
+| `evolvesFrom` | `string` | No |  |
+| `evolvesTo` | `table` | No |  |
+| `flavorText` | `string` | No |  |
 | `hp` | `string` | No |  |
 | `id` | `string` | No |  |
-| `image` | `table` | No |  |
-| `legality` | `table` | No |  |
+| `images` | `table` | No |  |
+| `legalities` | `table` | No |  |
 | `name` | `string` | No |  |
-| `national_pokedex_number` | `table` | No |  |
+| `nationalPokedexNumbers` | `table` | No |  |
 | `number` | `string` | No |  |
 | `rarity` | `string` | No |  |
-| `resistance` | `table` | No |  |
-| `retreat_cost` | `table` | No |  |
-| `rule` | `table` | No |  |
+| `resistances` | `table` | No |  |
+| `retreatCost` | `table` | No |  |
+| `rules` | `table` | No |  |
 | `set` | `table` | No |  |
-| `subtype` | `table` | No |  |
+| `subtypes` | `table` | No |  |
 | `supertype` | `string` | No |  |
 | `tcgplayer` | `table` | No |  |
-| `type` | `table` | No |  |
-| `weakness` | `table` | No |  |
+| `types` | `table` | No |  |
+| `weaknesses` | `table` | No |  |
 
 ### Operations
 
@@ -247,17 +246,16 @@ local set = client:Set(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `table` | No |  |
 | `id` | `string` | No |  |
-| `image` | `table` | No |  |
-| `legality` | `table` | No |  |
+| `images` | `table` | No |  |
+| `legalities` | `table` | No |  |
 | `name` | `string` | No |  |
-| `printed_total` | `number` | No |  |
-| `ptcgo_code` | `string` | No |  |
-| `release_date` | `string` | No |  |
+| `printedTotal` | `number` | No |  |
+| `ptcgoCode` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `series` | `string` | No |  |
 | `total` | `number` | No |  |
-| `updated_at` | `string` | No |  |
+| `updatedAt` | `string` | No |  |
 
 ### Operations
 

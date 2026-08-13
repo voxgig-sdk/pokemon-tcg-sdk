@@ -109,30 +109,29 @@ card = client.Card()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `artist` | `str` | No |  |
-| `attack` | `list` | No |  |
+| `attacks` | `list` | No |  |
 | `cardmarket` | `dict` | No |  |
-| `converted_retreat_cost` | `int` | No |  |
-| `data` | `dict` | No |  |
-| `evolves_from` | `str` | No |  |
-| `evolves_to` | `list` | No |  |
-| `flavor_text` | `str` | No |  |
+| `convertedRetreatCost` | `int` | No |  |
+| `evolvesFrom` | `str` | No |  |
+| `evolvesTo` | `list` | No |  |
+| `flavorText` | `str` | No |  |
 | `hp` | `str` | No |  |
 | `id` | `str` | No |  |
-| `image` | `dict` | No |  |
-| `legality` | `dict` | No |  |
+| `images` | `dict` | No |  |
+| `legalities` | `dict` | No |  |
 | `name` | `str` | No |  |
-| `national_pokedex_number` | `list` | No |  |
+| `nationalPokedexNumbers` | `list` | No |  |
 | `number` | `str` | No |  |
 | `rarity` | `str` | No |  |
-| `resistance` | `list` | No |  |
-| `retreat_cost` | `list` | No |  |
-| `rule` | `list` | No |  |
+| `resistances` | `list` | No |  |
+| `retreatCost` | `list` | No |  |
+| `rules` | `list` | No |  |
 | `set` | `dict` | No |  |
-| `subtype` | `list` | No |  |
+| `subtypes` | `list` | No |  |
 | `supertype` | `str` | No |  |
 | `tcgplayer` | `dict` | No |  |
-| `type` | `list` | No |  |
-| `weakness` | `list` | No |  |
+| `types` | `list` | No |  |
+| `weaknesses` | `list` | No |  |
 
 ### Operations
 
@@ -246,17 +245,16 @@ set = client.Set()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `dict` | No |  |
 | `id` | `str` | No |  |
-| `image` | `dict` | No |  |
-| `legality` | `dict` | No |  |
+| `images` | `dict` | No |  |
+| `legalities` | `dict` | No |  |
 | `name` | `str` | No |  |
-| `printed_total` | `int` | No |  |
-| `ptcgo_code` | `str` | No |  |
-| `release_date` | `str` | No |  |
+| `printedTotal` | `int` | No |  |
+| `ptcgoCode` | `str` | No |  |
+| `releaseDate` | `str` | No |  |
 | `series` | `str` | No |  |
 | `total` | `int` | No |  |
-| `updated_at` | `str` | No |  |
+| `updatedAt` | `str` | No |  |
 
 ### Operations
 

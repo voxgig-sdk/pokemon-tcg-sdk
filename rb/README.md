@@ -50,7 +50,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Card record (raises on error).
+  # load returns the ENTITY — call data_get for the Card record (raises on error).
   card = client.Card.load({ "id" => "example_id" })
   puts card
 rescue => err
@@ -65,7 +65,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  cards = client.Card.list()
+  raritys = client.Rarity.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -128,17 +128,15 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = PokemonTcgSDK.test({
-  "entity" => { "card" => { "test01" => { "id" => "test01" } } },
-})
+client = PokemonTcgSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-card = client.Card.list()
-puts card
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+rarity = client.Rarity.list()
+puts rarity
 ```
 
 ### Use a custom fetch function
@@ -262,30 +260,29 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `artist` |  |
-| `attack` |  |
+| `attacks` |  |
 | `cardmarket` |  |
-| `converted_retreat_cost` |  |
-| `data` |  |
-| `evolves_from` |  |
-| `evolves_to` |  |
-| `flavor_text` |  |
+| `convertedRetreatCost` |  |
+| `evolvesFrom` |  |
+| `evolvesTo` |  |
+| `flavorText` |  |
 | `hp` |  |
 | `id` |  |
-| `image` |  |
-| `legality` |  |
+| `images` |  |
+| `legalities` |  |
 | `name` |  |
-| `national_pokedex_number` |  |
+| `nationalPokedexNumbers` |  |
 | `number` |  |
 | `rarity` |  |
-| `resistance` |  |
-| `retreat_cost` |  |
-| `rule` |  |
+| `resistances` |  |
+| `retreatCost` |  |
+| `rules` |  |
 | `set` |  |
-| `subtype` |  |
+| `subtypes` |  |
 | `supertype` |  |
 | `tcgplayer` |  |
-| `type` |  |
-| `weakness` |  |
+| `types` |  |
+| `weaknesses` |  |
 
 Operations: List, Load.
 
@@ -305,17 +302,16 @@ API path: `/rarities`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
 | `id` |  |
-| `image` |  |
-| `legality` |  |
+| `images` |  |
+| `legalities` |  |
 | `name` |  |
-| `printed_total` |  |
-| `ptcgo_code` |  |
-| `release_date` |  |
+| `printedTotal` |  |
+| `ptcgoCode` |  |
+| `releaseDate` |  |
 | `series` |  |
 | `total` |  |
-| `updated_at` |  |
+| `updatedAt` |  |
 
 Operations: List, Load.
 
@@ -372,35 +368,34 @@ Create an instance: `card = client.Card`
 | Field | Type | Description |
 | --- | --- | --- |
 | `artist` | `String` |  |
-| `attack` | `Array` |  |
+| `attacks` | `Array` |  |
 | `cardmarket` | `Hash` |  |
-| `converted_retreat_cost` | `Integer` |  |
-| `data` | `Hash` |  |
-| `evolves_from` | `String` |  |
-| `evolves_to` | `Array` |  |
-| `flavor_text` | `String` |  |
+| `convertedRetreatCost` | `Integer` |  |
+| `evolvesFrom` | `String` |  |
+| `evolvesTo` | `Array` |  |
+| `flavorText` | `String` |  |
 | `hp` | `String` |  |
 | `id` | `String` |  |
-| `image` | `Hash` |  |
-| `legality` | `Hash` |  |
+| `images` | `Hash` |  |
+| `legalities` | `Hash` |  |
 | `name` | `String` |  |
-| `national_pokedex_number` | `Array` |  |
+| `nationalPokedexNumbers` | `Array` |  |
 | `number` | `String` |  |
 | `rarity` | `String` |  |
-| `resistance` | `Array` |  |
-| `retreat_cost` | `Array` |  |
-| `rule` | `Array` |  |
+| `resistances` | `Array` |  |
+| `retreatCost` | `Array` |  |
+| `rules` | `Array` |  |
 | `set` | `Hash` |  |
-| `subtype` | `Array` |  |
+| `subtypes` | `Array` |  |
 | `supertype` | `String` |  |
 | `tcgplayer` | `Hash` |  |
-| `type` | `Array` |  |
-| `weakness` | `Array` |  |
+| `types` | `Array` |  |
+| `weaknesses` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Card record (raises on error).
+# load returns the ENTITY — call data_get for the Card record (raises on error).
 card = client.Card.load({ "id" => "card_id" })
 ```
 
@@ -451,22 +446,21 @@ Create an instance: `set = client.Set`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Hash` |  |
 | `id` | `String` |  |
-| `image` | `Hash` |  |
-| `legality` | `Hash` |  |
+| `images` | `Hash` |  |
+| `legalities` | `Hash` |  |
 | `name` | `String` |  |
-| `printed_total` | `Integer` |  |
-| `ptcgo_code` | `String` |  |
-| `release_date` | `String` |  |
+| `printedTotal` | `Integer` |  |
+| `ptcgoCode` | `String` |  |
+| `releaseDate` | `String` |  |
 | `series` | `String` |  |
 | `total` | `Integer` |  |
-| `updated_at` | `String` |  |
+| `updatedAt` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Set record (raises on error).
+# load returns the ENTITY — call data_get for the Set record (raises on error).
 set = client.Set.load({ "id" => "set_id" })
 ```
 
@@ -626,11 +620,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-card = client.Card
-card.list()
+rarity = client.Rarity
+rarity.list()
 
-# card.data_get now returns the card data from the last list
-# card.match_get returns the last match criteria
+# rarity.data_get now returns the rarity data from the last list
+# rarity.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

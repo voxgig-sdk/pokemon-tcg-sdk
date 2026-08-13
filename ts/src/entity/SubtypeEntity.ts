@@ -37,7 +37,7 @@ class SubtypeEntity extends PokemonTcgEntityBase<Subtype> {
 
 
 
-  async list(this: any, reqmatch?: SubtypeListMatch, ctrl?: Control): Promise<Subtype[]> {
+  async list(this: any, reqmatch?: SubtypeListMatch, ctrl?: Control): Promise<SubtypeEntity[]> {
 
     const utility = this._utility
 

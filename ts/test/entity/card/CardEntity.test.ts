@@ -26,8 +26,8 @@ import {
 describe('CardEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when POKEMONTCG_TEST_LIVE=TRUE.
-  afterEach(liveDelay('POKEMONTCG_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when POKEMON_TCG_TEST_LIVE=TRUE.
+  afterEach(liveDelay('POKEMON_TCG_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = PokemonTcgSDK.test()
@@ -63,13 +63,13 @@ describe('CardEntity', async () => {
     const card_ref01_ent = client.Card()
     const card_ref01_match: any = {}
 
-    const card_ref01_list = await card_ref01_ent.list(card_ref01_match)
+    const card_ref01_list = (await card_ref01_ent.list(card_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const card_ref01_match_dt0: any = {}
     card_ref01_match_dt0.id = card_ref01_data.id
-    const card_ref01_data_dt0 = await card_ref01_ent.load(card_ref01_match_dt0)
+    const card_ref01_data_dt0 = (await card_ref01_ent.load(card_ref01_match_dt0)).data()
     assert(card_ref01_data_dt0.id === card_ref01_data.id)
 
 

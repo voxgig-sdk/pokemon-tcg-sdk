@@ -8,60 +8,58 @@
 
 ---@class Card
 ---@field artist? string
----@field attack? table
+---@field attacks? table
 ---@field cardmarket? table
----@field converted_retreat_cost? number
----@field data? table
----@field evolves_from? string
----@field evolves_to? table
----@field flavor_text? string
+---@field convertedRetreatCost? number
+---@field evolvesFrom? string
+---@field evolvesTo? table
+---@field flavorText? string
 ---@field hp? string
 ---@field id? string
----@field image? table
----@field legality? table
+---@field images? table
+---@field legalities? table
 ---@field name? string
----@field national_pokedex_number? table
+---@field nationalPokedexNumbers? table
 ---@field number? string
 ---@field rarity? string
----@field resistance? table
----@field retreat_cost? table
----@field rule? table
+---@field resistances? table
+---@field retreatCost? table
+---@field rules? table
 ---@field set? table
----@field subtype? table
+---@field subtypes? table
 ---@field supertype? string
 ---@field tcgplayer? table
----@field type? table
----@field weakness? table
+---@field types? table
+---@field weaknesses? table
 
 ---@class CardLoadMatch
 ---@field id string
 
 ---@class CardListMatch
 ---@field artist? string
----@field attack? table
+---@field attacks? table
 ---@field cardmarket? table
----@field converted_retreat_cost? number
----@field data? table
----@field evolves_from? string
----@field evolves_to? table
----@field flavor_text? string
+---@field convertedRetreatCost? number
+---@field evolvesFrom? string
+---@field evolvesTo? table
+---@field flavorText? string
 ---@field hp? string
 ---@field id? string
----@field image? table
----@field legality? table
+---@field images? table
+---@field legalities? table
 ---@field name? string
----@field national_pokedex_number? table
+---@field nationalPokedexNumbers? table
 ---@field number? string
 ---@field rarity? string
----@field resistance? table
----@field retreat_cost? table
----@field rule? table
+---@field resistances? table
+---@field retreatCost? table
+---@field rules? table
 ---@field set? table
----@field subtype? table
+---@field subtypes? table
 ---@field supertype? string
 ---@field tcgplayer? table
----@field type? table
----@field weakness? table
+---@field types? table
+---@field weaknesses? table
 
 ---@class Rarity
 ---@field data? table
@@ -70,33 +68,31 @@
 ---@field data? table
 
 ---@class Set
----@field data? table
 ---@field id? string
----@field image? table
----@field legality? table
+---@field images? table
+---@field legalities? table
 ---@field name? string
----@field printed_total? number
----@field ptcgo_code? string
----@field release_date? string
+---@field printedTotal? number
+---@field ptcgoCode? string
+---@field releaseDate? string
 ---@field series? string
 ---@field total? number
----@field updated_at? string
+---@field updatedAt? string
 
 ---@class SetLoadMatch
 ---@field id string
 
 ---@class SetListMatch
----@field data? table
 ---@field id? string
----@field image? table
----@field legality? table
+---@field images? table
+---@field legalities? table
 ---@field name? string
----@field printed_total? number
----@field ptcgo_code? string
----@field release_date? string
+---@field printedTotal? number
+---@field ptcgoCode? string
+---@field releaseDate? string
 ---@field series? string
 ---@field total? number
----@field updated_at? string
+---@field updatedAt? string
 
 ---@class Subtype
 ---@field data? table

@@ -25,7 +25,7 @@ main: kit: entity: rarity: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

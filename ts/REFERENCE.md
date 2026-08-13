@@ -178,30 +178,29 @@ const card = client.Card()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `artist` | `string` | No |  |
-| `attack` | `any[]` | No |  |
+| `attacks` | `any[]` | No |  |
 | `cardmarket` | `Record<string, any>` | No |  |
-| `converted_retreat_cost` | `number` | No |  |
-| `data` | `Record<string, any>` | No |  |
-| `evolves_from` | `string` | No |  |
-| `evolves_to` | `any[]` | No |  |
-| `flavor_text` | `string` | No |  |
+| `convertedRetreatCost` | `number` | No |  |
+| `evolvesFrom` | `string` | No |  |
+| `evolvesTo` | `any[]` | No |  |
+| `flavorText` | `string` | No |  |
 | `hp` | `string` | No |  |
 | `id` | `string` | No |  |
-| `image` | `Record<string, any>` | No |  |
-| `legality` | `Record<string, any>` | No |  |
+| `images` | `Record<string, any>` | No |  |
+| `legalities` | `Record<string, any>` | No |  |
 | `name` | `string` | No |  |
-| `national_pokedex_number` | `any[]` | No |  |
+| `nationalPokedexNumbers` | `any[]` | No |  |
 | `number` | `string` | No |  |
 | `rarity` | `string` | No |  |
-| `resistance` | `any[]` | No |  |
-| `retreat_cost` | `any[]` | No |  |
-| `rule` | `any[]` | No |  |
+| `resistances` | `any[]` | No |  |
+| `retreatCost` | `any[]` | No |  |
+| `rules` | `any[]` | No |  |
 | `set` | `Record<string, any>` | No |  |
-| `subtype` | `any[]` | No |  |
+| `subtypes` | `any[]` | No |  |
 | `supertype` | `string` | No |  |
 | `tcgplayer` | `Record<string, any>` | No |  |
-| `type` | `any[]` | No |  |
-| `weakness` | `any[]` | No |  |
+| `types` | `any[]` | No |  |
+| `weaknesses` | `any[]` | No |  |
 
 ### Operations
 
@@ -309,17 +308,16 @@ const set = client.Set()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Record<string, any>` | No |  |
 | `id` | `string` | No |  |
-| `image` | `Record<string, any>` | No |  |
-| `legality` | `Record<string, any>` | No |  |
+| `images` | `Record<string, any>` | No |  |
+| `legalities` | `Record<string, any>` | No |  |
 | `name` | `string` | No |  |
-| `printed_total` | `number` | No |  |
-| `ptcgo_code` | `string` | No |  |
-| `release_date` | `string` | No |  |
+| `printedTotal` | `number` | No |  |
+| `ptcgoCode` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `series` | `string` | No |  |
 | `total` | `number` | No |  |
-| `updated_at` | `string` | No |  |
+| `updatedAt` | `string` | No |  |
 
 ### Operations
 

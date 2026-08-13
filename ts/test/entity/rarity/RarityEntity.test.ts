@@ -26,8 +26,8 @@ import {
 describe('RarityEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when POKEMONTCG_TEST_LIVE=TRUE.
-  afterEach(liveDelay('POKEMONTCG_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when POKEMON_TCG_TEST_LIVE=TRUE.
+  afterEach(liveDelay('POKEMON_TCG_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = PokemonTcgSDK.test()
@@ -63,7 +63,7 @@ describe('RarityEntity', async () => {
     const rarity_ref01_ent = client.Rarity()
     const rarity_ref01_match: any = {}
 
-    const rarity_ref01_list = await rarity_ref01_ent.list(rarity_ref01_match)
+    const rarity_ref01_list = (await rarity_ref01_ent.list(rarity_ref01_match)).map((e: any) => e.data())
 
 
   })

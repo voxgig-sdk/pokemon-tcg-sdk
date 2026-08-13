@@ -114,16 +114,16 @@ def card_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "POKEMONTCG_TEST_CARD_ENTID" => {},
-    "POKEMONTCG_TEST_LIVE" => "FALSE",
-    "POKEMONTCG_APIKEY" => "NONE",
+    "POKEMON_TCG_TEST_CARD_ENTID" => {},
+    "POKEMON_TCG_TEST_LIVE" => "FALSE",
+    "POKEMON_TCG_APIKEY" => "NONE",
   })
 
-  live = env["POKEMONTCG_TEST_LIVE"] == "TRUE"
+  live = env["POKEMON_TCG_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["POKEMONTCG_APIKEY"],
+      "apikey" => env["POKEMON_TCG_APIKEY"],
     }
     client = PokemonTcgSDK.new(merged_opts)
     return {

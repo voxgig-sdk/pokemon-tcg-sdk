@@ -1,0 +1,7 @@
+# PokemonTcg SDK utility: make_context
+
+from pokemontcg_sdk.core.context import PokemonTcgContext
+
+
+def make_context_util(ctxmap, basectx):
+    return PokemonTcgContext(ctxmap, basectx)

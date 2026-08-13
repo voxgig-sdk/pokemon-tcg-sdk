@@ -16,30 +16,29 @@ declare(strict_types=1);
 class Card
 {
     public ?string $artist = null;
-    public ?array $attack = null;
+    public ?array $attacks = null;
     public ?array $cardmarket = null;
-    public ?int $converted_retreat_cost = null;
-    public ?array $data = null;
-    public ?string $evolves_from = null;
-    public ?array $evolves_to = null;
-    public ?string $flavor_text = null;
+    public ?int $convertedRetreatCost = null;
+    public ?string $evolvesFrom = null;
+    public ?array $evolvesTo = null;
+    public ?string $flavorText = null;
     public ?string $hp = null;
     public ?string $id = null;
-    public ?array $image = null;
-    public ?array $legality = null;
+    public ?array $images = null;
+    public ?array $legalities = null;
     public ?string $name = null;
-    public ?array $national_pokedex_number = null;
+    public ?array $nationalPokedexNumbers = null;
     public ?string $number = null;
     public ?string $rarity = null;
-    public ?array $resistance = null;
-    public ?array $retreat_cost = null;
-    public ?array $rule = null;
+    public ?array $resistances = null;
+    public ?array $retreatCost = null;
+    public ?array $rules = null;
     public ?array $set = null;
-    public ?array $subtype = null;
+    public ?array $subtypes = null;
     public ?string $supertype = null;
     public ?array $tcgplayer = null;
-    public ?array $type = null;
-    public ?array $weakness = null;
+    public ?array $types = null;
+    public ?array $weaknesses = null;
 }
 
 /** Request payload for Card#load. */
@@ -52,30 +51,29 @@ class CardLoadMatch
 class CardListMatch
 {
     public ?string $artist = null;
-    public ?array $attack = null;
+    public ?array $attacks = null;
     public ?array $cardmarket = null;
-    public ?int $converted_retreat_cost = null;
-    public ?array $data = null;
-    public ?string $evolves_from = null;
-    public ?array $evolves_to = null;
-    public ?string $flavor_text = null;
+    public ?int $convertedRetreatCost = null;
+    public ?string $evolvesFrom = null;
+    public ?array $evolvesTo = null;
+    public ?string $flavorText = null;
     public ?string $hp = null;
     public ?string $id = null;
-    public ?array $image = null;
-    public ?array $legality = null;
+    public ?array $images = null;
+    public ?array $legalities = null;
     public ?string $name = null;
-    public ?array $national_pokedex_number = null;
+    public ?array $nationalPokedexNumbers = null;
     public ?string $number = null;
     public ?string $rarity = null;
-    public ?array $resistance = null;
-    public ?array $retreat_cost = null;
-    public ?array $rule = null;
+    public ?array $resistances = null;
+    public ?array $retreatCost = null;
+    public ?array $rules = null;
     public ?array $set = null;
-    public ?array $subtype = null;
+    public ?array $subtypes = null;
     public ?string $supertype = null;
     public ?array $tcgplayer = null;
-    public ?array $type = null;
-    public ?array $weakness = null;
+    public ?array $types = null;
+    public ?array $weaknesses = null;
 }
 
 /** Rarity entity data model. */
@@ -93,17 +91,16 @@ class RarityListMatch
 /** Set entity data model. */
 class Set
 {
-    public ?array $data = null;
     public ?string $id = null;
-    public ?array $image = null;
-    public ?array $legality = null;
+    public ?array $images = null;
+    public ?array $legalities = null;
     public ?string $name = null;
-    public ?int $printed_total = null;
-    public ?string $ptcgo_code = null;
-    public ?string $release_date = null;
+    public ?int $printedTotal = null;
+    public ?string $ptcgoCode = null;
+    public ?string $releaseDate = null;
     public ?string $series = null;
     public ?int $total = null;
-    public ?string $updated_at = null;
+    public ?string $updatedAt = null;
 }
 
 /** Request payload for Set#load. */
@@ -115,17 +112,16 @@ class SetLoadMatch
 /** Request payload for Set#list. */
 class SetListMatch
 {
-    public ?array $data = null;
     public ?string $id = null;
-    public ?array $image = null;
-    public ?array $legality = null;
+    public ?array $images = null;
+    public ?array $legalities = null;
     public ?string $name = null;
-    public ?int $printed_total = null;
-    public ?string $ptcgo_code = null;
-    public ?string $release_date = null;
+    public ?int $printedTotal = null;
+    public ?string $ptcgoCode = null;
+    public ?string $releaseDate = null;
     public ?string $series = null;
     public ?int $total = null;
-    public ?string $updated_at = null;
+    public ?string $updatedAt = null;
 }
 
 /** Subtype entity data model. */

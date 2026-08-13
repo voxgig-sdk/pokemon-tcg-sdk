@@ -13,25 +13,22 @@
 # @!attribute [rw] artist
 #   @return [String, nil]
 #
-# @!attribute [rw] attack
+# @!attribute [rw] attacks
 #   @return [Array, nil]
 #
 # @!attribute [rw] cardmarket
 #   @return [Hash, nil]
 #
-# @!attribute [rw] converted_retreat_cost
+# @!attribute [rw] convertedRetreatCost
 #   @return [Integer, nil]
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
-#
-# @!attribute [rw] evolves_from
+# @!attribute [rw] evolvesFrom
 #   @return [String, nil]
 #
-# @!attribute [rw] evolves_to
+# @!attribute [rw] evolvesTo
 #   @return [Array, nil]
 #
-# @!attribute [rw] flavor_text
+# @!attribute [rw] flavorText
 #   @return [String, nil]
 #
 # @!attribute [rw] hp
@@ -40,16 +37,16 @@
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] image
+# @!attribute [rw] images
 #   @return [Hash, nil]
 #
-# @!attribute [rw] legality
+# @!attribute [rw] legalities
 #   @return [Hash, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] national_pokedex_number
+# @!attribute [rw] nationalPokedexNumbers
 #   @return [Array, nil]
 #
 # @!attribute [rw] number
@@ -58,19 +55,19 @@
 # @!attribute [rw] rarity
 #   @return [String, nil]
 #
-# @!attribute [rw] resistance
+# @!attribute [rw] resistances
 #   @return [Array, nil]
 #
-# @!attribute [rw] retreat_cost
+# @!attribute [rw] retreatCost
 #   @return [Array, nil]
 #
-# @!attribute [rw] rule
+# @!attribute [rw] rules
 #   @return [Array, nil]
 #
 # @!attribute [rw] set
 #   @return [Hash, nil]
 #
-# @!attribute [rw] subtype
+# @!attribute [rw] subtypes
 #   @return [Array, nil]
 #
 # @!attribute [rw] supertype
@@ -79,37 +76,36 @@
 # @!attribute [rw] tcgplayer
 #   @return [Hash, nil]
 #
-# @!attribute [rw] type
+# @!attribute [rw] types
 #   @return [Array, nil]
 #
-# @!attribute [rw] weakness
+# @!attribute [rw] weaknesses
 #   @return [Array, nil]
 Card = Struct.new(
   :artist,
-  :attack,
+  :attacks,
   :cardmarket,
-  :converted_retreat_cost,
-  :data,
-  :evolves_from,
-  :evolves_to,
-  :flavor_text,
+  :convertedRetreatCost,
+  :evolvesFrom,
+  :evolvesTo,
+  :flavorText,
   :hp,
   :id,
-  :image,
-  :legality,
+  :images,
+  :legalities,
   :name,
-  :national_pokedex_number,
+  :nationalPokedexNumbers,
   :number,
   :rarity,
-  :resistance,
-  :retreat_cost,
-  :rule,
+  :resistances,
+  :retreatCost,
+  :rules,
   :set,
-  :subtype,
+  :subtypes,
   :supertype,
   :tcgplayer,
-  :type,
-  :weakness,
+  :types,
+  :weaknesses,
   keyword_init: true
 )
 
@@ -127,25 +123,22 @@ CardLoadMatch = Struct.new(
 # @!attribute [rw] artist
 #   @return [String, nil]
 #
-# @!attribute [rw] attack
+# @!attribute [rw] attacks
 #   @return [Array, nil]
 #
 # @!attribute [rw] cardmarket
 #   @return [Hash, nil]
 #
-# @!attribute [rw] converted_retreat_cost
+# @!attribute [rw] convertedRetreatCost
 #   @return [Integer, nil]
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
-#
-# @!attribute [rw] evolves_from
+# @!attribute [rw] evolvesFrom
 #   @return [String, nil]
 #
-# @!attribute [rw] evolves_to
+# @!attribute [rw] evolvesTo
 #   @return [Array, nil]
 #
-# @!attribute [rw] flavor_text
+# @!attribute [rw] flavorText
 #   @return [String, nil]
 #
 # @!attribute [rw] hp
@@ -154,16 +147,16 @@ CardLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] image
+# @!attribute [rw] images
 #   @return [Hash, nil]
 #
-# @!attribute [rw] legality
+# @!attribute [rw] legalities
 #   @return [Hash, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] national_pokedex_number
+# @!attribute [rw] nationalPokedexNumbers
 #   @return [Array, nil]
 #
 # @!attribute [rw] number
@@ -172,19 +165,19 @@ CardLoadMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [String, nil]
 #
-# @!attribute [rw] resistance
+# @!attribute [rw] resistances
 #   @return [Array, nil]
 #
-# @!attribute [rw] retreat_cost
+# @!attribute [rw] retreatCost
 #   @return [Array, nil]
 #
-# @!attribute [rw] rule
+# @!attribute [rw] rules
 #   @return [Array, nil]
 #
 # @!attribute [rw] set
 #   @return [Hash, nil]
 #
-# @!attribute [rw] subtype
+# @!attribute [rw] subtypes
 #   @return [Array, nil]
 #
 # @!attribute [rw] supertype
@@ -193,37 +186,36 @@ CardLoadMatch = Struct.new(
 # @!attribute [rw] tcgplayer
 #   @return [Hash, nil]
 #
-# @!attribute [rw] type
+# @!attribute [rw] types
 #   @return [Array, nil]
 #
-# @!attribute [rw] weakness
+# @!attribute [rw] weaknesses
 #   @return [Array, nil]
 CardListMatch = Struct.new(
   :artist,
-  :attack,
+  :attacks,
   :cardmarket,
-  :converted_retreat_cost,
-  :data,
-  :evolves_from,
-  :evolves_to,
-  :flavor_text,
+  :convertedRetreatCost,
+  :evolvesFrom,
+  :evolvesTo,
+  :flavorText,
   :hp,
   :id,
-  :image,
-  :legality,
+  :images,
+  :legalities,
   :name,
-  :national_pokedex_number,
+  :nationalPokedexNumbers,
   :number,
   :rarity,
-  :resistance,
-  :retreat_cost,
-  :rule,
+  :resistances,
+  :retreatCost,
+  :rules,
   :set,
-  :subtype,
+  :subtypes,
   :supertype,
   :tcgplayer,
-  :type,
-  :weakness,
+  :types,
+  :weaknesses,
   keyword_init: true
 )
 
@@ -247,28 +239,25 @@ RarityListMatch = Struct.new(
 
 # Set entity data model.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
-#
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] image
+# @!attribute [rw] images
 #   @return [Hash, nil]
 #
-# @!attribute [rw] legality
+# @!attribute [rw] legalities
 #   @return [Hash, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] printed_total
+# @!attribute [rw] printedTotal
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ptcgo_code
+# @!attribute [rw] ptcgoCode
 #   @return [String, nil]
 #
-# @!attribute [rw] release_date
+# @!attribute [rw] releaseDate
 #   @return [String, nil]
 #
 # @!attribute [rw] series
@@ -277,20 +266,19 @@ RarityListMatch = Struct.new(
 # @!attribute [rw] total
 #   @return [Integer, nil]
 #
-# @!attribute [rw] updated_at
+# @!attribute [rw] updatedAt
 #   @return [String, nil]
-Set = Struct.new(
-  :data,
+SetType = Struct.new(
   :id,
-  :image,
-  :legality,
+  :images,
+  :legalities,
   :name,
-  :printed_total,
-  :ptcgo_code,
-  :release_date,
+  :printedTotal,
+  :ptcgoCode,
+  :releaseDate,
   :series,
   :total,
-  :updated_at,
+  :updatedAt,
   keyword_init: true
 )
 
@@ -305,28 +293,25 @@ SetLoadMatch = Struct.new(
 
 # Request payload for Set#list.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
-#
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] image
+# @!attribute [rw] images
 #   @return [Hash, nil]
 #
-# @!attribute [rw] legality
+# @!attribute [rw] legalities
 #   @return [Hash, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] printed_total
+# @!attribute [rw] printedTotal
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ptcgo_code
+# @!attribute [rw] ptcgoCode
 #   @return [String, nil]
 #
-# @!attribute [rw] release_date
+# @!attribute [rw] releaseDate
 #   @return [String, nil]
 #
 # @!attribute [rw] series
@@ -335,20 +320,19 @@ SetLoadMatch = Struct.new(
 # @!attribute [rw] total
 #   @return [Integer, nil]
 #
-# @!attribute [rw] updated_at
+# @!attribute [rw] updatedAt
 #   @return [String, nil]
 SetListMatch = Struct.new(
-  :data,
   :id,
-  :image,
-  :legality,
+  :images,
+  :legalities,
   :name,
-  :printed_total,
-  :ptcgo_code,
-  :release_date,
+  :printedTotal,
+  :ptcgoCode,
+  :releaseDate,
   :series,
   :total,
-  :updated_at,
+  :updatedAt,
   keyword_init: true
 )
 

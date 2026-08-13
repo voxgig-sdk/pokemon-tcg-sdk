@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = PokemonTcgSDK.test()
-const cards = await client.Card().list()
-// cards is an array of bare Card records populated with mock data
-console.log(cards)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = PokemonTcgSDK.test({
+  entity: {
+    rarity: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const raritys = await client.Rarity().list()
+// raritys is an array of Rarity entities, populated with mock data
+// — call raritys[0].data() for the record itself
+console.log(raritys)
 ```
 
 ### Python
 
 ```python
 client = PokemonTcgSDK.test()
-cards = client.Card().list()
-print(cards)
+raritys = client.Rarity().list()
+print(raritys)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(cards)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = PokemonTcgSDK::test([
-    "entity" => ["card" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["rarity" => ["test01" => []]],
 ]);
-$cards = $client->Card()->list();
+$raritys = $client->Rarity()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Card(nil).List(
+result, err := client.Rarity(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Card(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = PokemonTcgSDK.test({
-  "entity" => { "card" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "rarity" => { "test01" => {} } },
 })
-cards = client.Card.list()
+raritys = client.Rarity.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Card():list()
+local results, err = client:Rarity():list()
 ```
 
 ## Packages
@@ -112,7 +121,7 @@ const client = new PokemonTcgSDK({
   apikey: process.env.POKEMON_TCG_APIKEY,
 })
 
-// List all cards (returns Card[])
+// List all cards (returns CardEntity[] — .data() for the record)
 const cards = await client.Card().list()
 for (const card of cards) {
   console.log(card)
@@ -203,7 +212,7 @@ $client = new PokemonTcgSDK([
 $cards = $client->Card()->list();
 print_r($cards);
 
-// Load a specific card (returns the bare record; throws on error)
+// Load a specific card (returns the ENTITY; call data_get() for the record; throws on error)
 $card = $client->Card()->load(["id" => "example_id"]);
 print_r($card);
 ```
@@ -238,7 +247,7 @@ client = PokemonTcgSDK.new({
 cards = client.Card.list
 puts cards
 
-# Load a specific card (returns the bare record; raises on error)
+# Load a specific card (returns the ENTITY; call data_get for the record)
 card = client.Card.load({ "id" => "example_id" })
 puts card
 ```
@@ -377,6 +386,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://docs.pokemontcg.io/](https://docs.pokemontcg.io/)
 

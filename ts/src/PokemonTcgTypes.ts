@@ -7,30 +7,29 @@
 
 export interface Card {
   artist?: string
-  attack?: any[]
+  attacks?: any[]
   cardmarket?: Record<string, any>
-  converted_retreat_cost?: number
-  data?: Record<string, any>
-  evolves_from?: string
-  evolves_to?: any[]
-  flavor_text?: string
+  convertedRetreatCost?: number
+  evolvesFrom?: string
+  evolvesTo?: any[]
+  flavorText?: string
   hp?: string
   id?: string
-  image?: Record<string, any>
-  legality?: Record<string, any>
+  images?: Record<string, any>
+  legalities?: Record<string, any>
   name?: string
-  national_pokedex_number?: any[]
+  nationalPokedexNumbers?: any[]
   number?: string
   rarity?: string
-  resistance?: any[]
-  retreat_cost?: any[]
-  rule?: any[]
+  resistances?: any[]
+  retreatCost?: any[]
+  rules?: any[]
   set?: Record<string, any>
-  subtype?: any[]
+  subtypes?: any[]
   supertype?: string
   tcgplayer?: Record<string, any>
-  type?: any[]
-  weakness?: any[]
+  types?: any[]
+  weaknesses?: any[]
 }
 
 export interface CardLoadMatch {
@@ -39,30 +38,29 @@ export interface CardLoadMatch {
 
 export interface CardListMatch {
   artist?: string
-  attack?: any[]
+  attacks?: any[]
   cardmarket?: Record<string, any>
-  converted_retreat_cost?: number
-  data?: Record<string, any>
-  evolves_from?: string
-  evolves_to?: any[]
-  flavor_text?: string
+  convertedRetreatCost?: number
+  evolvesFrom?: string
+  evolvesTo?: any[]
+  flavorText?: string
   hp?: string
   id?: string
-  image?: Record<string, any>
-  legality?: Record<string, any>
+  images?: Record<string, any>
+  legalities?: Record<string, any>
   name?: string
-  national_pokedex_number?: any[]
+  nationalPokedexNumbers?: any[]
   number?: string
   rarity?: string
-  resistance?: any[]
-  retreat_cost?: any[]
-  rule?: any[]
+  resistances?: any[]
+  retreatCost?: any[]
+  rules?: any[]
   set?: Record<string, any>
-  subtype?: any[]
+  subtypes?: any[]
   supertype?: string
   tcgplayer?: Record<string, any>
-  type?: any[]
-  weakness?: any[]
+  types?: any[]
+  weaknesses?: any[]
 }
 
 export interface Rarity {
@@ -74,17 +72,16 @@ export interface RarityListMatch {
 }
 
 export interface Set {
-  data?: Record<string, any>
   id?: string
-  image?: Record<string, any>
-  legality?: Record<string, any>
+  images?: Record<string, any>
+  legalities?: Record<string, any>
   name?: string
-  printed_total?: number
-  ptcgo_code?: string
-  release_date?: string
+  printedTotal?: number
+  ptcgoCode?: string
+  releaseDate?: string
   series?: string
   total?: number
-  updated_at?: string
+  updatedAt?: string
 }
 
 export interface SetLoadMatch {
@@ -92,17 +89,16 @@ export interface SetLoadMatch {
 }
 
 export interface SetListMatch {
-  data?: Record<string, any>
   id?: string
-  image?: Record<string, any>
-  legality?: Record<string, any>
+  images?: Record<string, any>
+  legalities?: Record<string, any>
   name?: string
-  printed_total?: number
-  ptcgo_code?: string
-  release_date?: string
+  printedTotal?: number
+  ptcgoCode?: string
+  releaseDate?: string
   series?: string
   total?: number
-  updated_at?: string
+  updatedAt?: string
 }
 
 export interface Subtype {

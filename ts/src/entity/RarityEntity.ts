@@ -37,7 +37,7 @@ class RarityEntity extends PokemonTcgEntityBase<Rarity> {
 
 
 
-  async list(this: any, reqmatch?: RarityListMatch, ctrl?: Control): Promise<Rarity[]> {
+  async list(this: any, reqmatch?: RarityListMatch, ctrl?: Control): Promise<RarityEntity[]> {
 
     const utility = this._utility
 

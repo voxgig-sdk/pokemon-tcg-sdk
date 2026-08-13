@@ -37,7 +37,9 @@ const client = new PokemonTcgSDK({
 
 ### 2. List card records
 
-`list()` resolves to an array of Card objects — iterate it directly:
+`list()` resolves to an array of Card ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const cards = await client.Card().list()
@@ -67,8 +69,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const cards = await client.Card().list()
-  console.log(cards)
+  const raritys = await client.Rarity().list()
+  console.log(raritys)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -134,9 +136,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = PokemonTcgSDK.test()
 
-const card = await client.Card().list()
-// card is a bare entity populated with mock response data
-console.log(card)
+const rarity = await client.Rarity().list()
+// rarity is the entity, populated with mock response data
+// — call rarity.data() for the record itself
+console.log(rarity)
 ```
 
 You can also use the instance method:
@@ -151,14 +154,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Card()
+const entity = client.Rarity()
 
 // First call runs the operation and stores its result
 await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id)
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -311,30 +314,29 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `artist` |  |
-| `attack` |  |
+| `attacks` |  |
 | `cardmarket` |  |
-| `converted_retreat_cost` |  |
-| `data` |  |
-| `evolves_from` |  |
-| `evolves_to` |  |
-| `flavor_text` |  |
+| `convertedRetreatCost` |  |
+| `evolvesFrom` |  |
+| `evolvesTo` |  |
+| `flavorText` |  |
 | `hp` |  |
 | `id` |  |
-| `image` |  |
-| `legality` |  |
+| `images` |  |
+| `legalities` |  |
 | `name` |  |
-| `national_pokedex_number` |  |
+| `nationalPokedexNumbers` |  |
 | `number` |  |
 | `rarity` |  |
-| `resistance` |  |
-| `retreat_cost` |  |
-| `rule` |  |
+| `resistances` |  |
+| `retreatCost` |  |
+| `rules` |  |
 | `set` |  |
-| `subtype` |  |
+| `subtypes` |  |
 | `supertype` |  |
 | `tcgplayer` |  |
-| `type` |  |
-| `weakness` |  |
+| `types` |  |
+| `weaknesses` |  |
 
 Operations: list, load.
 
@@ -354,17 +356,16 @@ API path: `/rarities`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
 | `id` |  |
-| `image` |  |
-| `legality` |  |
+| `images` |  |
+| `legalities` |  |
 | `name` |  |
-| `printed_total` |  |
-| `ptcgo_code` |  |
-| `release_date` |  |
+| `printedTotal` |  |
+| `ptcgoCode` |  |
+| `releaseDate` |  |
 | `series` |  |
 | `total` |  |
-| `updated_at` |  |
+| `updatedAt` |  |
 
 Operations: list, load.
 
@@ -421,30 +422,29 @@ Create an instance: `const card = client.Card()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `artist` | `string` |  |
-| `attack` | `any[]` |  |
+| `attacks` | `any[]` |  |
 | `cardmarket` | `Record<string, any>` |  |
-| `converted_retreat_cost` | `number` |  |
-| `data` | `Record<string, any>` |  |
-| `evolves_from` | `string` |  |
-| `evolves_to` | `any[]` |  |
-| `flavor_text` | `string` |  |
+| `convertedRetreatCost` | `number` |  |
+| `evolvesFrom` | `string` |  |
+| `evolvesTo` | `any[]` |  |
+| `flavorText` | `string` |  |
 | `hp` | `string` |  |
 | `id` | `string` |  |
-| `image` | `Record<string, any>` |  |
-| `legality` | `Record<string, any>` |  |
+| `images` | `Record<string, any>` |  |
+| `legalities` | `Record<string, any>` |  |
 | `name` | `string` |  |
-| `national_pokedex_number` | `any[]` |  |
+| `nationalPokedexNumbers` | `any[]` |  |
 | `number` | `string` |  |
 | `rarity` | `string` |  |
-| `resistance` | `any[]` |  |
-| `retreat_cost` | `any[]` |  |
-| `rule` | `any[]` |  |
+| `resistances` | `any[]` |  |
+| `retreatCost` | `any[]` |  |
+| `rules` | `any[]` |  |
 | `set` | `Record<string, any>` |  |
-| `subtype` | `any[]` |  |
+| `subtypes` | `any[]` |  |
 | `supertype` | `string` |  |
 | `tcgplayer` | `Record<string, any>` |  |
-| `type` | `any[]` |  |
-| `weakness` | `any[]` |  |
+| `types` | `any[]` |  |
+| `weaknesses` | `any[]` |  |
 
 #### Example: Load
 
@@ -497,17 +497,16 @@ Create an instance: `const set = client.Set()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Record<string, any>` |  |
 | `id` | `string` |  |
-| `image` | `Record<string, any>` |  |
-| `legality` | `Record<string, any>` |  |
+| `images` | `Record<string, any>` |  |
+| `legalities` | `Record<string, any>` |  |
 | `name` | `string` |  |
-| `printed_total` | `number` |  |
-| `ptcgo_code` | `string` |  |
-| `release_date` | `string` |  |
+| `printedTotal` | `number` |  |
+| `ptcgoCode` | `string` |  |
+| `releaseDate` | `string` |  |
 | `series` | `string` |  |
 | `total` | `number` |  |
-| `updated_at` | `string` |  |
+| `updatedAt` | `string` |  |
 
 #### Example: Load
 
@@ -660,11 +659,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const card = client.Card()
-await card.list()
+const rarity = client.Rarity()
+await rarity.list()
 
-// card.data() now returns the card data from the last `list`
-// card.match() returns the last match criteria
+// rarity.data() now returns the rarity data from the last `list`
+// rarity.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -78,12 +78,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-cards, err := client.Card(nil).List(nil, nil)
+raritys, err := client.Rarity(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = cards
+_ = raritys
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -147,13 +147,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-card, err := client.Card(nil).List(
+rarity, err := client.Rarity(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(card) // the returned mock data
+fmt.Println(rarity) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -280,30 +280,29 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"artist"` |  |
-| `"attack"` |  |
+| `"attacks"` |  |
 | `"cardmarket"` |  |
-| `"converted_retreat_cost"` |  |
-| `"data"` |  |
-| `"evolves_from"` |  |
-| `"evolves_to"` |  |
-| `"flavor_text"` |  |
+| `"convertedRetreatCost"` |  |
+| `"evolvesFrom"` |  |
+| `"evolvesTo"` |  |
+| `"flavorText"` |  |
 | `"hp"` |  |
 | `"id"` |  |
-| `"image"` |  |
-| `"legality"` |  |
+| `"images"` |  |
+| `"legalities"` |  |
 | `"name"` |  |
-| `"national_pokedex_number"` |  |
+| `"nationalPokedexNumbers"` |  |
 | `"number"` |  |
 | `"rarity"` |  |
-| `"resistance"` |  |
-| `"retreat_cost"` |  |
-| `"rule"` |  |
+| `"resistances"` |  |
+| `"retreatCost"` |  |
+| `"rules"` |  |
 | `"set"` |  |
-| `"subtype"` |  |
+| `"subtypes"` |  |
 | `"supertype"` |  |
 | `"tcgplayer"` |  |
-| `"type"` |  |
-| `"weakness"` |  |
+| `"types"` |  |
+| `"weaknesses"` |  |
 
 Operations: List, Load.
 
@@ -323,17 +322,16 @@ API path: `/rarities`
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
 | `"id"` |  |
-| `"image"` |  |
-| `"legality"` |  |
+| `"images"` |  |
+| `"legalities"` |  |
 | `"name"` |  |
-| `"printed_total"` |  |
-| `"ptcgo_code"` |  |
-| `"release_date"` |  |
+| `"printedTotal"` |  |
+| `"ptcgoCode"` |  |
+| `"releaseDate"` |  |
 | `"series"` |  |
 | `"total"` |  |
-| `"updated_at"` |  |
+| `"updatedAt"` |  |
 
 Operations: List, Load.
 
@@ -390,30 +388,29 @@ Create an instance: `card := client.Card(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `artist` | `string` |  |
-| `attack` | `[]any` |  |
+| `attacks` | `[]any` |  |
 | `cardmarket` | `map[string]any` |  |
-| `converted_retreat_cost` | `int` |  |
-| `data` | `map[string]any` |  |
-| `evolves_from` | `string` |  |
-| `evolves_to` | `[]any` |  |
-| `flavor_text` | `string` |  |
+| `convertedRetreatCost` | `int` |  |
+| `evolvesFrom` | `string` |  |
+| `evolvesTo` | `[]any` |  |
+| `flavorText` | `string` |  |
 | `hp` | `string` |  |
 | `id` | `string` |  |
-| `image` | `map[string]any` |  |
-| `legality` | `map[string]any` |  |
+| `images` | `map[string]any` |  |
+| `legalities` | `map[string]any` |  |
 | `name` | `string` |  |
-| `national_pokedex_number` | `[]any` |  |
+| `nationalPokedexNumbers` | `[]any` |  |
 | `number` | `string` |  |
 | `rarity` | `string` |  |
-| `resistance` | `[]any` |  |
-| `retreat_cost` | `[]any` |  |
-| `rule` | `[]any` |  |
+| `resistances` | `[]any` |  |
+| `retreatCost` | `[]any` |  |
+| `rules` | `[]any` |  |
 | `set` | `map[string]any` |  |
-| `subtype` | `[]any` |  |
+| `subtypes` | `[]any` |  |
 | `supertype` | `string` |  |
 | `tcgplayer` | `map[string]any` |  |
-| `type` | `[]any` |  |
-| `weakness` | `[]any` |  |
+| `types` | `[]any` |  |
+| `weaknesses` | `[]any` |  |
 
 #### Example: Load
 
@@ -478,17 +475,16 @@ Create an instance: `set := client.Set(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `map[string]any` |  |
 | `id` | `string` |  |
-| `image` | `map[string]any` |  |
-| `legality` | `map[string]any` |  |
+| `images` | `map[string]any` |  |
+| `legalities` | `map[string]any` |  |
 | `name` | `string` |  |
-| `printed_total` | `int` |  |
-| `ptcgo_code` | `string` |  |
-| `release_date` | `string` |  |
+| `printedTotal` | `int` |  |
+| `ptcgoCode` | `string` |  |
+| `releaseDate` | `string` |  |
 | `series` | `string` |  |
 | `total` | `int` |  |
-| `updated_at` | `string` |  |
+| `updatedAt` | `string` |  |
 
 #### Example: Load
 
@@ -665,11 +661,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-card := client.Card(nil)
-card.List(nil, nil)
+rarity := client.Rarity(nil)
+rarity.List(nil, nil)
 
-// card.Data() now returns the card data from the last list
-// card.Match() returns the last match criteria
+// rarity.Data() now returns the rarity data from the last list
+// rarity.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

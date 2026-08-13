@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from pokemontcg_sdk.utility.voxgig_struct import voxgig_struct as vs
 from pokemontcg_sdk import PokemonTcgSDK
-from core import helpers
+from pokemontcg_sdk.core import helpers
 from test import runner
 
 
@@ -105,16 +105,16 @@ def _card_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "POKEMONTCG_TEST_CARD_ENTID": {},
-        "POKEMONTCG_TEST_LIVE": "FALSE",
-        "POKEMONTCG_APIKEY": "NONE",
+        "POKEMON_TCG_TEST_CARD_ENTID": {},
+        "POKEMON_TCG_TEST_LIVE": "FALSE",
+        "POKEMON_TCG_APIKEY": "NONE",
     })
 
-    live = env.get("POKEMONTCG_TEST_LIVE") == "TRUE"
+    live = env.get("POKEMON_TCG_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("POKEMONTCG_APIKEY"),
+            "apikey": env.get("POKEMON_TCG_APIKEY"),
         }
         client = PokemonTcgSDK(merged_opts)
         return {

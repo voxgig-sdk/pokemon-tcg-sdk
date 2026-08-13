@@ -8,42 +8,50 @@ guide: {
   entity: card: {
     path: "/cards": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
     }
     path: "/cards/{id}": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
     }
   }
 
   entity: rarity: {
     path: "/rarities": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
     }
   }
 
   entity: set: {
     path: "/sets": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
     }
     path: "/sets/{id}": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
     }
   }
 
   entity: subtype: {
     path: "/subtypes": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
     }
   }
 
   entity: supertype: {
     path: "/supertypes": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
     }
   }
 
   entity: type: {
     path: "/types": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
     }
   }
 

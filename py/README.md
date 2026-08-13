@@ -55,7 +55,7 @@ except Exception as err:
 
 ### 3. Load a card
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -72,8 +72,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    cards = client.Card().list()
-    print(cards)
+    raritys = client.Rarity().list()
+    print(raritys)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -139,9 +139,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = PokemonTcgSDK.test()
 
-# Entity ops return the bare record and raise on error.
-card = client.Card().list()
-# card contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+rarity = client.Rarity().list()
+# rarity contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -243,7 +244,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -266,30 +267,29 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `artist` |  |
-| `attack` |  |
+| `attacks` |  |
 | `cardmarket` |  |
-| `converted_retreat_cost` |  |
-| `data` |  |
-| `evolves_from` |  |
-| `evolves_to` |  |
-| `flavor_text` |  |
+| `convertedRetreatCost` |  |
+| `evolvesFrom` |  |
+| `evolvesTo` |  |
+| `flavorText` |  |
 | `hp` |  |
 | `id` |  |
-| `image` |  |
-| `legality` |  |
+| `images` |  |
+| `legalities` |  |
 | `name` |  |
-| `national_pokedex_number` |  |
+| `nationalPokedexNumbers` |  |
 | `number` |  |
 | `rarity` |  |
-| `resistance` |  |
-| `retreat_cost` |  |
-| `rule` |  |
+| `resistances` |  |
+| `retreatCost` |  |
+| `rules` |  |
 | `set` |  |
-| `subtype` |  |
+| `subtypes` |  |
 | `supertype` |  |
 | `tcgplayer` |  |
-| `type` |  |
-| `weakness` |  |
+| `types` |  |
+| `weaknesses` |  |
 
 Operations: List, Load.
 
@@ -309,17 +309,16 @@ API path: `/rarities`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
 | `id` |  |
-| `image` |  |
-| `legality` |  |
+| `images` |  |
+| `legalities` |  |
 | `name` |  |
-| `printed_total` |  |
-| `ptcgo_code` |  |
-| `release_date` |  |
+| `printedTotal` |  |
+| `ptcgoCode` |  |
+| `releaseDate` |  |
 | `series` |  |
 | `total` |  |
-| `updated_at` |  |
+| `updatedAt` |  |
 
 Operations: List, Load.
 
@@ -376,30 +375,29 @@ Create an instance: `card = client.Card()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `artist` | `str` |  |
-| `attack` | `list` |  |
+| `attacks` | `list` |  |
 | `cardmarket` | `dict` |  |
-| `converted_retreat_cost` | `int` |  |
-| `data` | `dict` |  |
-| `evolves_from` | `str` |  |
-| `evolves_to` | `list` |  |
-| `flavor_text` | `str` |  |
+| `convertedRetreatCost` | `int` |  |
+| `evolvesFrom` | `str` |  |
+| `evolvesTo` | `list` |  |
+| `flavorText` | `str` |  |
 | `hp` | `str` |  |
 | `id` | `str` |  |
-| `image` | `dict` |  |
-| `legality` | `dict` |  |
+| `images` | `dict` |  |
+| `legalities` | `dict` |  |
 | `name` | `str` |  |
-| `national_pokedex_number` | `list` |  |
+| `nationalPokedexNumbers` | `list` |  |
 | `number` | `str` |  |
 | `rarity` | `str` |  |
-| `resistance` | `list` |  |
-| `retreat_cost` | `list` |  |
-| `rule` | `list` |  |
+| `resistances` | `list` |  |
+| `retreatCost` | `list` |  |
+| `rules` | `list` |  |
 | `set` | `dict` |  |
-| `subtype` | `list` |  |
+| `subtypes` | `list` |  |
 | `supertype` | `str` |  |
 | `tcgplayer` | `dict` |  |
-| `type` | `list` |  |
-| `weakness` | `list` |  |
+| `types` | `list` |  |
+| `weaknesses` | `list` |  |
 
 #### Example: Load
 
@@ -452,17 +450,16 @@ Create an instance: `set = client.Set()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `dict` |  |
 | `id` | `str` |  |
-| `image` | `dict` |  |
-| `legality` | `dict` |  |
+| `images` | `dict` |  |
+| `legalities` | `dict` |  |
 | `name` | `str` |  |
-| `printed_total` | `int` |  |
-| `ptcgo_code` | `str` |  |
-| `release_date` | `str` |  |
+| `printedTotal` | `int` |  |
+| `ptcgoCode` | `str` |  |
+| `releaseDate` | `str` |  |
 | `series` | `str` |  |
 | `total` | `int` |  |
-| `updated_at` | `str` |  |
+| `updatedAt` | `str` |  |
 
 #### Example: Load
 
@@ -621,11 +618,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-card = client.Card()
-card.list()
+rarity = client.Rarity()
+rarity.list()
 
-# card.data_get() now returns the card data from the last list
-# card.match_get() returns the last match criteria
+# rarity.data_get() now returns the rarity data from the last list
+# rarity.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

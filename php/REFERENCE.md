@@ -114,30 +114,29 @@ $card = $client->Card();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `artist` | `string` | No |  |
-| `attack` | `array` | No |  |
+| `attacks` | `array` | No |  |
 | `cardmarket` | `array` | No |  |
-| `converted_retreat_cost` | `int` | No |  |
-| `data` | `array` | No |  |
-| `evolves_from` | `string` | No |  |
-| `evolves_to` | `array` | No |  |
-| `flavor_text` | `string` | No |  |
+| `convertedRetreatCost` | `int` | No |  |
+| `evolvesFrom` | `string` | No |  |
+| `evolvesTo` | `array` | No |  |
+| `flavorText` | `string` | No |  |
 | `hp` | `string` | No |  |
 | `id` | `string` | No |  |
-| `image` | `array` | No |  |
-| `legality` | `array` | No |  |
+| `images` | `array` | No |  |
+| `legalities` | `array` | No |  |
 | `name` | `string` | No |  |
-| `national_pokedex_number` | `array` | No |  |
+| `nationalPokedexNumbers` | `array` | No |  |
 | `number` | `string` | No |  |
 | `rarity` | `string` | No |  |
-| `resistance` | `array` | No |  |
-| `retreat_cost` | `array` | No |  |
-| `rule` | `array` | No |  |
+| `resistances` | `array` | No |  |
+| `retreatCost` | `array` | No |  |
+| `rules` | `array` | No |  |
 | `set` | `array` | No |  |
-| `subtype` | `array` | No |  |
+| `subtypes` | `array` | No |  |
 | `supertype` | `string` | No |  |
 | `tcgplayer` | `array` | No |  |
-| `type` | `array` | No |  |
-| `weakness` | `array` | No |  |
+| `types` | `array` | No |  |
+| `weaknesses` | `array` | No |  |
 
 ### Operations
 
@@ -249,17 +248,16 @@ $set = $client->Set();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `array` | No |  |
 | `id` | `string` | No |  |
-| `image` | `array` | No |  |
-| `legality` | `array` | No |  |
+| `images` | `array` | No |  |
+| `legalities` | `array` | No |  |
 | `name` | `string` | No |  |
-| `printed_total` | `int` | No |  |
-| `ptcgo_code` | `string` | No |  |
-| `release_date` | `string` | No |  |
+| `printedTotal` | `int` | No |  |
+| `ptcgoCode` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 | `series` | `string` | No |  |
 | `total` | `int` | No |  |
-| `updated_at` | `string` | No |  |
+| `updatedAt` | `string` | No |  |
 
 ### Operations
 

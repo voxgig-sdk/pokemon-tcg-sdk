@@ -37,7 +37,7 @@ class SupertypeEntity extends PokemonTcgEntityBase<Supertype> {
 
 
 
-  async list(this: any, reqmatch?: SupertypeListMatch, ctrl?: Control): Promise<Supertype[]> {
+  async list(this: any, reqmatch?: SupertypeListMatch, ctrl?: Control): Promise<SupertypeEntity[]> {
 
     const utility = this._utility
 

@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import PokemonTcgControl
-from core.error import PokemonTcgError
-from core.result import PokemonTcgResult
-from core.spec import PokemonTcgSpec
+from pokemontcg_sdk.config import make_config
+from pokemontcg_sdk.features import _make_feature
+from pokemontcg_sdk.core.control import PokemonTcgControl
+from pokemontcg_sdk.core.error import PokemonTcgError
+from pokemontcg_sdk.core.result import PokemonTcgResult
+from pokemontcg_sdk.core.spec import PokemonTcgSpec
 
 
 # True when this SDK was generated with the named feature.

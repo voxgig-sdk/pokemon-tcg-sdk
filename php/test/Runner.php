@@ -43,8 +43,8 @@ class PokemonTcgTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('POKEMONTCG_TEST_LIVE');
-        $override = self::getenv('POKEMONTCG_TEST_OVERRIDE');
+        $live = self::getenv('POKEMON_TCG_TEST_LIVE');
+        $override = self::getenv('POKEMON_TCG_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class PokemonTcgTestRunner
             }
         }
 
-        $explain = self::getenv('POKEMONTCG_TEST_EXPLAIN');
+        $explain = self::getenv('POKEMON_TCG_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['POKEMONTCG_TEST_EXPLAIN'] = $explain;
+            $m['POKEMON_TCG_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

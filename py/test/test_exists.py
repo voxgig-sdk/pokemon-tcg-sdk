@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# PokemonTcg SDK exists test
 
 import pytest
 from pokemontcg_sdk import PokemonTcgSDK

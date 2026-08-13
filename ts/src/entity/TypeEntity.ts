@@ -37,7 +37,7 @@ class TypeEntity extends PokemonTcgEntityBase<Type> {
 
 
 
-  async list(this: any, reqmatch?: TypeListMatch, ctrl?: Control): Promise<Type[]> {
+  async list(this: any, reqmatch?: TypeListMatch, ctrl?: Control): Promise<TypeEntity[]> {
 
     const utility = this._utility
 

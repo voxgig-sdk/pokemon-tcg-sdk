@@ -23,8 +23,8 @@ module PokemonTcgTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("POKEMONTCG_TEST_LIVE")
-    override = getenv("POKEMONTCG_TEST_OVERRIDE")
+    live = getenv("POKEMON_TCG_TEST_LIVE")
+    override = getenv("POKEMON_TCG_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module PokemonTcgTestRunner
       end
     end
 
-    explain = getenv("POKEMONTCG_TEST_EXPLAIN")
-    m["POKEMONTCG_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("POKEMON_TCG_TEST_EXPLAIN")
+    m["POKEMON_TCG_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

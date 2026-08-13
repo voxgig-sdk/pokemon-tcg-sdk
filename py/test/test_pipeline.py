@@ -16,11 +16,11 @@
 import pytest
 
 from pokemontcg_sdk import PokemonTcgSDK
-from core.error import PokemonTcgError
-from core.result import PokemonTcgResult
-from core.response import PokemonTcgResponse
-from core.spec import PokemonTcgSpec
-from feature.base_feature import PokemonTcgBaseFeature
+from pokemontcg_sdk.core.error import PokemonTcgError
+from pokemontcg_sdk.core.result import PokemonTcgResult
+from pokemontcg_sdk.core.response import PokemonTcgResponse
+from pokemontcg_sdk.core.spec import PokemonTcgSpec
+from pokemontcg_sdk.feature.base_feature import PokemonTcgBaseFeature
 
 
 def _client():

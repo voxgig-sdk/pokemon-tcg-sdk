@@ -6,35 +6,38 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/pokemon-tcg-sdk/go/core"
+)
 
 // Card is the typed data model for the card entity.
 type Card struct {
 	Artist *string `json:"artist,omitempty"`
-	Attack *[]any `json:"attack,omitempty"`
+	Attacks *[]any `json:"attacks,omitempty"`
 	Cardmarket *map[string]any `json:"cardmarket,omitempty"`
-	ConvertedRetreatCost *int `json:"converted_retreat_cost,omitempty"`
-	Data *map[string]any `json:"data,omitempty"`
-	EvolvesFrom *string `json:"evolves_from,omitempty"`
-	EvolvesTo *[]any `json:"evolves_to,omitempty"`
-	FlavorText *string `json:"flavor_text,omitempty"`
+	ConvertedRetreatCost *int `json:"convertedRetreatCost,omitempty"`
+	EvolvesFrom *string `json:"evolvesFrom,omitempty"`
+	EvolvesTo *[]any `json:"evolvesTo,omitempty"`
+	FlavorText *string `json:"flavorText,omitempty"`
 	Hp *string `json:"hp,omitempty"`
 	Id *string `json:"id,omitempty"`
-	Image *map[string]any `json:"image,omitempty"`
-	Legality *map[string]any `json:"legality,omitempty"`
+	Images *map[string]any `json:"images,omitempty"`
+	Legalities *map[string]any `json:"legalities,omitempty"`
 	Name *string `json:"name,omitempty"`
-	NationalPokedexNumber *[]any `json:"national_pokedex_number,omitempty"`
+	NationalPokedexNumbers *[]any `json:"nationalPokedexNumbers,omitempty"`
 	Number *string `json:"number,omitempty"`
 	Rarity *string `json:"rarity,omitempty"`
-	Resistance *[]any `json:"resistance,omitempty"`
-	RetreatCost *[]any `json:"retreat_cost,omitempty"`
-	Rule *[]any `json:"rule,omitempty"`
+	Resistances *[]any `json:"resistances,omitempty"`
+	RetreatCost *[]any `json:"retreatCost,omitempty"`
+	Rules *[]any `json:"rules,omitempty"`
 	Set *map[string]any `json:"set,omitempty"`
-	Subtype *[]any `json:"subtype,omitempty"`
+	Subtypes *[]any `json:"subtypes,omitempty"`
 	Supertype *string `json:"supertype,omitempty"`
 	Tcgplayer *map[string]any `json:"tcgplayer,omitempty"`
-	Type *[]any `json:"type,omitempty"`
-	Weakness *[]any `json:"weakness,omitempty"`
+	Types *[]any `json:"types,omitempty"`
+	Weaknesses *[]any `json:"weaknesses,omitempty"`
 }
 
 // CardLoadMatch is the typed request payload for Card.LoadTyped.
@@ -45,30 +48,29 @@ type CardLoadMatch struct {
 // CardListMatch is the typed request payload for Card.ListTyped.
 type CardListMatch struct {
 	Artist *string `json:"artist,omitempty"`
-	Attack *[]any `json:"attack,omitempty"`
+	Attacks *[]any `json:"attacks,omitempty"`
 	Cardmarket *map[string]any `json:"cardmarket,omitempty"`
-	ConvertedRetreatCost *int `json:"converted_retreat_cost,omitempty"`
-	Data *map[string]any `json:"data,omitempty"`
-	EvolvesFrom *string `json:"evolves_from,omitempty"`
-	EvolvesTo *[]any `json:"evolves_to,omitempty"`
-	FlavorText *string `json:"flavor_text,omitempty"`
+	ConvertedRetreatCost *int `json:"convertedRetreatCost,omitempty"`
+	EvolvesFrom *string `json:"evolvesFrom,omitempty"`
+	EvolvesTo *[]any `json:"evolvesTo,omitempty"`
+	FlavorText *string `json:"flavorText,omitempty"`
 	Hp *string `json:"hp,omitempty"`
 	Id *string `json:"id,omitempty"`
-	Image *map[string]any `json:"image,omitempty"`
-	Legality *map[string]any `json:"legality,omitempty"`
+	Images *map[string]any `json:"images,omitempty"`
+	Legalities *map[string]any `json:"legalities,omitempty"`
 	Name *string `json:"name,omitempty"`
-	NationalPokedexNumber *[]any `json:"national_pokedex_number,omitempty"`
+	NationalPokedexNumbers *[]any `json:"nationalPokedexNumbers,omitempty"`
 	Number *string `json:"number,omitempty"`
 	Rarity *string `json:"rarity,omitempty"`
-	Resistance *[]any `json:"resistance,omitempty"`
-	RetreatCost *[]any `json:"retreat_cost,omitempty"`
-	Rule *[]any `json:"rule,omitempty"`
+	Resistances *[]any `json:"resistances,omitempty"`
+	RetreatCost *[]any `json:"retreatCost,omitempty"`
+	Rules *[]any `json:"rules,omitempty"`
 	Set *map[string]any `json:"set,omitempty"`
-	Subtype *[]any `json:"subtype,omitempty"`
+	Subtypes *[]any `json:"subtypes,omitempty"`
 	Supertype *string `json:"supertype,omitempty"`
 	Tcgplayer *map[string]any `json:"tcgplayer,omitempty"`
-	Type *[]any `json:"type,omitempty"`
-	Weakness *[]any `json:"weakness,omitempty"`
+	Types *[]any `json:"types,omitempty"`
+	Weaknesses *[]any `json:"weaknesses,omitempty"`
 }
 
 // Rarity is the typed data model for the rarity entity.
@@ -83,17 +85,16 @@ type RarityListMatch struct {
 
 // Set is the typed data model for the set entity.
 type Set struct {
-	Data *map[string]any `json:"data,omitempty"`
 	Id *string `json:"id,omitempty"`
-	Image *map[string]any `json:"image,omitempty"`
-	Legality *map[string]any `json:"legality,omitempty"`
+	Images *map[string]any `json:"images,omitempty"`
+	Legalities *map[string]any `json:"legalities,omitempty"`
 	Name *string `json:"name,omitempty"`
-	PrintedTotal *int `json:"printed_total,omitempty"`
-	PtcgoCode *string `json:"ptcgo_code,omitempty"`
-	ReleaseDate *string `json:"release_date,omitempty"`
+	PrintedTotal *int `json:"printedTotal,omitempty"`
+	PtcgoCode *string `json:"ptcgoCode,omitempty"`
+	ReleaseDate *string `json:"releaseDate,omitempty"`
 	Series *string `json:"series,omitempty"`
 	Total *int `json:"total,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
+	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
 
 // SetLoadMatch is the typed request payload for Set.LoadTyped.
@@ -103,17 +104,16 @@ type SetLoadMatch struct {
 
 // SetListMatch is the typed request payload for Set.ListTyped.
 type SetListMatch struct {
-	Data *map[string]any `json:"data,omitempty"`
 	Id *string `json:"id,omitempty"`
-	Image *map[string]any `json:"image,omitempty"`
-	Legality *map[string]any `json:"legality,omitempty"`
+	Images *map[string]any `json:"images,omitempty"`
+	Legalities *map[string]any `json:"legalities,omitempty"`
 	Name *string `json:"name,omitempty"`
-	PrintedTotal *int `json:"printed_total,omitempty"`
-	PtcgoCode *string `json:"ptcgo_code,omitempty"`
-	ReleaseDate *string `json:"release_date,omitempty"`
+	PrintedTotal *int `json:"printedTotal,omitempty"`
+	PtcgoCode *string `json:"ptcgoCode,omitempty"`
+	ReleaseDate *string `json:"releaseDate,omitempty"`
 	Series *string `json:"series,omitempty"`
 	Total *int `json:"total,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
+	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
 
 // Subtype is the typed data model for the subtype entity.
@@ -158,12 +158,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -175,12 +189,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

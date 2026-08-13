@@ -70,7 +70,7 @@ describe("CardEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set POKEMONTCG_TEST_CARD_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set POKEMON_TCG_TEST_CARD_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -97,7 +97,7 @@ describe("CardEntity", function()
     }
     local card_ref01_data_dt0_loaded, err = card_ref01_ent:load(card_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local card_ref01_data_dt0_load_result = helpers.to_map(card_ref01_data_dt0_loaded)
+    local card_ref01_data_dt0_load_result = helpers.to_map(type(card_ref01_data_dt0_loaded) == 'table' and card_ref01_data_dt0_loaded.data_get and card_ref01_data_dt0_loaded:data_get() or card_ref01_data_dt0_loaded)
     assert.is_not_nil(card_ref01_data_dt0_load_result)
     assert.are.equal(card_ref01_data_dt0_load_result["id"], card_ref01_data["id"])
 
@@ -136,39 +136,39 @@ function card_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("POKEMONTCG_TEST_CARD_ENTID")
+  local entid_env_raw = os.getenv("POKEMON_TCG_TEST_CARD_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["POKEMONTCG_TEST_CARD_ENTID"] = idmap,
-    ["POKEMONTCG_TEST_LIVE"] = "FALSE",
-    ["POKEMONTCG_TEST_EXPLAIN"] = "FALSE",
-    ["POKEMONTCG_APIKEY"] = "NONE",
+    ["POKEMON_TCG_TEST_CARD_ENTID"] = idmap,
+    ["POKEMON_TCG_TEST_LIVE"] = "FALSE",
+    ["POKEMON_TCG_TEST_EXPLAIN"] = "FALSE",
+    ["POKEMON_TCG_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["POKEMONTCG_TEST_CARD_ENTID"])
+    env["POKEMON_TCG_TEST_CARD_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["POKEMONTCG_TEST_LIVE"] == "TRUE" then
+  if env["POKEMON_TCG_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["POKEMONTCG_APIKEY"],
+        apikey = env["POKEMON_TCG_APIKEY"],
       },
       extra or {},
     })
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["POKEMONTCG_TEST_LIVE"] == "TRUE"
+  local live = env["POKEMON_TCG_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["POKEMONTCG_TEST_EXPLAIN"] == "TRUE",
+    explain = env["POKEMON_TCG_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,
