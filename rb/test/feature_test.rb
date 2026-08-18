@@ -15,7 +15,7 @@ require_relative "../PokemonTcg_sdk"
 module PokemonTcgFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = PokemonTcgConfig.make_config["feature"]
+    f = PokemonTcgConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

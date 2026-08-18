@@ -40,7 +40,7 @@ class PokemonTcgSDK
         $utility = new PokemonTcgUtility();
         $this->_utility = $utility;
 
-        $config = PokemonTcgConfig::make_config();
+        $config = PokemonTcgConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

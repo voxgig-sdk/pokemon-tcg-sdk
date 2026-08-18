@@ -28,7 +28,7 @@ class PokemonTcgSDK
     utility = PokemonTcgUtility.new
     @_utility = utility
 
-    config = PokemonTcgConfig.make_config
+    config = PokemonTcgConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

@@ -7,7 +7,7 @@
 # SDK Details.
 name: 'pokemon-tcg'
 origin: 'voxgig-sdk'
-def: 'pokémon-tcg_0.1.0.json'
+def: 'pokemon-tcg_0.1.0.json'
 
 
 # API Information
