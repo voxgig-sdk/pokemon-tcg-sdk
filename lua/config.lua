@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "PokemonTcg",
+      slug = "pokemon-tcg",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -37,98 +40,122 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "artist",
+            ["short"] = "Artist who illustrated the card",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "attacks",
+            ["short"] = "Attacks the Pokémon can perform",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "cardmarket",
+            ["short"] = "Cardmarket information",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "convertedRetreatCost",
+            ["short"] = "Numeric value of retreat cost",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "evolvesFrom",
+            ["short"] = "The Pokémon this card evolves from",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "evolvesTo",
+            ["short"] = "The Pokémon this card evolves to",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "flavorText",
+            ["short"] = "Flavor text on the card",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "hp",
+            ["short"] = "Hit points of the Pokémon",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
+            ["short"] = "Unique identifier for the card",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "images",
+            ["short"] = "Image URLs for the card",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "legalities",
+            ["short"] = "Legality of the card in different formats",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Name of the card",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "nationalPokedexNumbers",
+            ["short"] = "National Pokédex numbers",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "number",
+            ["short"] = "Card number within the set",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "rarity",
+            ["short"] = "Rarity of the card",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "resistances",
+            ["short"] = "Resistances of the Pokémon",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "retreatCost",
+            ["short"] = "Retreat cost of the Pokémon",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "rules",
+            ["short"] = "Special rules for the card",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "set",
+            ["short"] = "Set information for the card",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "subtypes",
+            ["short"] = "Subtypes of the card",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "supertype",
+            ["short"] = "Supertype of the card (e.g., Pokémon, Trainer, Energy)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "tcgplayer",
+            ["short"] = "TCGPlayer market information",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "types",
+            ["short"] = "Energy types of the card",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "weaknesses",
+            ["short"] = "Weaknesses of the Pokémon",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -275,42 +302,52 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "id",
+            ["short"] = "Unique identifier for the set",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "images",
+            ["short"] = "Image URLs for the set",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "legalities",
+            ["short"] = "Legality of the set in different formats",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Name of the set",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "printedTotal",
+            ["short"] = "Number of cards printed in the set",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "ptcgoCode",
+            ["short"] = "PTCGO code for the set",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "releaseDate",
+            ["short"] = "Release date of the set",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "series",
+            ["short"] = "Series the set belongs to",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "total",
+            ["short"] = "Total number of cards in the set including secret rares",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "updatedAt",
+            ["short"] = "Last updated timestamp",
             ["type"] = "`$STRING`",
           },
         },

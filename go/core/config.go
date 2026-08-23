@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "PokemonTcg",
+			"slug": "pokemon-tcg",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -41,98 +44,122 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "artist",
+						"short": "Artist who illustrated the card",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "attacks",
+						"short": "Attacks the Pokémon can perform",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "cardmarket",
+						"short": "Cardmarket information",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "convertedRetreatCost",
+						"short": "Numeric value of retreat cost",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "evolvesFrom",
+						"short": "The Pokémon this card evolves from",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "evolvesTo",
+						"short": "The Pokémon this card evolves to",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "flavorText",
+						"short": "Flavor text on the card",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "hp",
+						"short": "Hit points of the Pokémon",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the card",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "images",
+						"short": "Image URLs for the card",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "legalities",
+						"short": "Legality of the card in different formats",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the card",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "nationalPokedexNumbers",
+						"short": "National Pokédex numbers",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "number",
+						"short": "Card number within the set",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rarity",
+						"short": "Rarity of the card",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "resistances",
+						"short": "Resistances of the Pokémon",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "retreatCost",
+						"short": "Retreat cost of the Pokémon",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "rules",
+						"short": "Special rules for the card",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "set",
+						"short": "Set information for the card",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "subtypes",
+						"short": "Subtypes of the card",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "supertype",
+						"short": "Supertype of the card (e.g., Pokémon, Trainer, Energy)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tcgplayer",
+						"short": "TCGPlayer market information",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "types",
+						"short": "Energy types of the card",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "weaknesses",
+						"short": "Weaknesses of the Pokémon",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -279,42 +306,52 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the set",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "images",
+						"short": "Image URLs for the set",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "legalities",
+						"short": "Legality of the set in different formats",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the set",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "printedTotal",
+						"short": "Number of cards printed in the set",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "ptcgoCode",
+						"short": "PTCGO code for the set",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "releaseDate",
+						"short": "Release date of the set",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "series",
+						"short": "Series the set belongs to",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "total",
+						"short": "Total number of cards in the set including secret rares",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "updatedAt",
+						"short": "Last updated timestamp",
 						"type": "`$STRING`",
 					},
 				},

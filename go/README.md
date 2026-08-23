@@ -6,7 +6,7 @@ The Golang SDK for the PokemonTcg API — an entity-oriented client using standa
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Card(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -279,30 +279,30 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"artist"` |  |
-| `"attacks"` |  |
-| `"cardmarket"` |  |
-| `"convertedRetreatCost"` |  |
-| `"evolvesFrom"` |  |
-| `"evolvesTo"` |  |
-| `"flavorText"` |  |
-| `"hp"` |  |
-| `"id"` |  |
-| `"images"` |  |
-| `"legalities"` |  |
-| `"name"` |  |
-| `"nationalPokedexNumbers"` |  |
-| `"number"` |  |
-| `"rarity"` |  |
-| `"resistances"` |  |
-| `"retreatCost"` |  |
-| `"rules"` |  |
-| `"set"` |  |
-| `"subtypes"` |  |
-| `"supertype"` |  |
-| `"tcgplayer"` |  |
-| `"types"` |  |
-| `"weaknesses"` |  |
+| `"artist"` | Artist who illustrated the card |
+| `"attacks"` | Attacks the Pokémon can perform |
+| `"cardmarket"` | Cardmarket information |
+| `"convertedRetreatCost"` | Numeric value of retreat cost |
+| `"evolvesFrom"` | The Pokémon this card evolves from |
+| `"evolvesTo"` | The Pokémon this card evolves to |
+| `"flavorText"` | Flavor text on the card |
+| `"hp"` | Hit points of the Pokémon |
+| `"id"` | Unique identifier for the card |
+| `"images"` | Image URLs for the card |
+| `"legalities"` | Legality of the card in different formats |
+| `"name"` | Name of the card |
+| `"nationalPokedexNumbers"` | National Pokédex numbers |
+| `"number"` | Card number within the set |
+| `"rarity"` | Rarity of the card |
+| `"resistances"` | Resistances of the Pokémon |
+| `"retreatCost"` | Retreat cost of the Pokémon |
+| `"rules"` | Special rules for the card |
+| `"set"` | Set information for the card |
+| `"subtypes"` | Subtypes of the card |
+| `"supertype"` | Supertype of the card (e.g., Pokémon, Trainer, Energy) |
+| `"tcgplayer"` | TCGPlayer market information |
+| `"types"` | Energy types of the card |
+| `"weaknesses"` | Weaknesses of the Pokémon |
 
 Operations: List, Load.
 
@@ -322,16 +322,16 @@ API path: `/rarities`
 
 | Field | Description |
 | --- | --- |
-| `"id"` |  |
-| `"images"` |  |
-| `"legalities"` |  |
-| `"name"` |  |
-| `"printedTotal"` |  |
-| `"ptcgoCode"` |  |
-| `"releaseDate"` |  |
-| `"series"` |  |
-| `"total"` |  |
-| `"updatedAt"` |  |
+| `"id"` | Unique identifier for the set |
+| `"images"` | Image URLs for the set |
+| `"legalities"` | Legality of the set in different formats |
+| `"name"` | Name of the set |
+| `"printedTotal"` | Number of cards printed in the set |
+| `"ptcgoCode"` | PTCGO code for the set |
+| `"releaseDate"` | Release date of the set |
+| `"series"` | Series the set belongs to |
+| `"total"` | Total number of cards in the set including secret rares |
+| `"updatedAt"` | Last updated timestamp |
 
 Operations: List, Load.
 
@@ -387,30 +387,30 @@ Create an instance: `card := client.Card(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `artist` | `string` |  |
-| `attacks` | `[]any` |  |
-| `cardmarket` | `map[string]any` |  |
-| `convertedRetreatCost` | `int` |  |
-| `evolvesFrom` | `string` |  |
-| `evolvesTo` | `[]any` |  |
-| `flavorText` | `string` |  |
-| `hp` | `string` |  |
-| `id` | `string` |  |
-| `images` | `map[string]any` |  |
-| `legalities` | `map[string]any` |  |
-| `name` | `string` |  |
-| `nationalPokedexNumbers` | `[]any` |  |
-| `number` | `string` |  |
-| `rarity` | `string` |  |
-| `resistances` | `[]any` |  |
-| `retreatCost` | `[]any` |  |
-| `rules` | `[]any` |  |
-| `set` | `map[string]any` |  |
-| `subtypes` | `[]any` |  |
-| `supertype` | `string` |  |
-| `tcgplayer` | `map[string]any` |  |
-| `types` | `[]any` |  |
-| `weaknesses` | `[]any` |  |
+| `artist` | `string` | Artist who illustrated the card |
+| `attacks` | `[]any` | Attacks the Pokémon can perform |
+| `cardmarket` | `map[string]any` | Cardmarket information |
+| `convertedRetreatCost` | `int` | Numeric value of retreat cost |
+| `evolvesFrom` | `string` | The Pokémon this card evolves from |
+| `evolvesTo` | `[]any` | The Pokémon this card evolves to |
+| `flavorText` | `string` | Flavor text on the card |
+| `hp` | `string` | Hit points of the Pokémon |
+| `id` | `string` | Unique identifier for the card |
+| `images` | `map[string]any` | Image URLs for the card |
+| `legalities` | `map[string]any` | Legality of the card in different formats |
+| `name` | `string` | Name of the card |
+| `nationalPokedexNumbers` | `[]any` | National Pokédex numbers |
+| `number` | `string` | Card number within the set |
+| `rarity` | `string` | Rarity of the card |
+| `resistances` | `[]any` | Resistances of the Pokémon |
+| `retreatCost` | `[]any` | Retreat cost of the Pokémon |
+| `rules` | `[]any` | Special rules for the card |
+| `set` | `map[string]any` | Set information for the card |
+| `subtypes` | `[]any` | Subtypes of the card |
+| `supertype` | `string` | Supertype of the card (e.g., Pokémon, Trainer, Energy) |
+| `tcgplayer` | `map[string]any` | TCGPlayer market information |
+| `types` | `[]any` | Energy types of the card |
+| `weaknesses` | `[]any` | Weaknesses of the Pokémon |
 
 #### Example: Load
 
@@ -475,16 +475,16 @@ Create an instance: `set := client.Set(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
-| `images` | `map[string]any` |  |
-| `legalities` | `map[string]any` |  |
-| `name` | `string` |  |
-| `printedTotal` | `int` |  |
-| `ptcgoCode` | `string` |  |
-| `releaseDate` | `string` |  |
-| `series` | `string` |  |
-| `total` | `int` |  |
-| `updatedAt` | `string` |  |
+| `id` | `string` | Unique identifier for the set |
+| `images` | `map[string]any` | Image URLs for the set |
+| `legalities` | `map[string]any` | Legality of the set in different formats |
+| `name` | `string` | Name of the set |
+| `printedTotal` | `int` | Number of cards printed in the set |
+| `ptcgoCode` | `string` | PTCGO code for the set |
+| `releaseDate` | `string` | Release date of the set |
+| `series` | `string` | Series the set belongs to |
+| `total` | `int` | Total number of cards in the set including secret rares |
+| `updatedAt` | `string` | Last updated timestamp |
 
 #### Example: Load
 

@@ -71,7 +71,7 @@ export interface RarityListMatch {
   data?: any[]
 }
 
-export interface Set {
+export interface SetType {
   id?: string
   images?: Record<string, any>
   legalities?: Record<string, any>

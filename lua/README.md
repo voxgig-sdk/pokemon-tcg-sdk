@@ -250,30 +250,30 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `artist` |  |
-| `attacks` |  |
-| `cardmarket` |  |
-| `convertedRetreatCost` |  |
-| `evolvesFrom` |  |
-| `evolvesTo` |  |
-| `flavorText` |  |
-| `hp` |  |
-| `id` |  |
-| `images` |  |
-| `legalities` |  |
-| `name` |  |
-| `nationalPokedexNumbers` |  |
-| `number` |  |
-| `rarity` |  |
-| `resistances` |  |
-| `retreatCost` |  |
-| `rules` |  |
-| `set` |  |
-| `subtypes` |  |
-| `supertype` |  |
-| `tcgplayer` |  |
-| `types` |  |
-| `weaknesses` |  |
+| `artist` | Artist who illustrated the card |
+| `attacks` | Attacks the Pokémon can perform |
+| `cardmarket` | Cardmarket information |
+| `convertedRetreatCost` | Numeric value of retreat cost |
+| `evolvesFrom` | The Pokémon this card evolves from |
+| `evolvesTo` | The Pokémon this card evolves to |
+| `flavorText` | Flavor text on the card |
+| `hp` | Hit points of the Pokémon |
+| `id` | Unique identifier for the card |
+| `images` | Image URLs for the card |
+| `legalities` | Legality of the card in different formats |
+| `name` | Name of the card |
+| `nationalPokedexNumbers` | National Pokédex numbers |
+| `number` | Card number within the set |
+| `rarity` | Rarity of the card |
+| `resistances` | Resistances of the Pokémon |
+| `retreatCost` | Retreat cost of the Pokémon |
+| `rules` | Special rules for the card |
+| `set` | Set information for the card |
+| `subtypes` | Subtypes of the card |
+| `supertype` | Supertype of the card (e.g., Pokémon, Trainer, Energy) |
+| `tcgplayer` | TCGPlayer market information |
+| `types` | Energy types of the card |
+| `weaknesses` | Weaknesses of the Pokémon |
 
 Operations: List, Load.
 
@@ -293,16 +293,16 @@ API path: `/rarities`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `images` |  |
-| `legalities` |  |
-| `name` |  |
-| `printedTotal` |  |
-| `ptcgoCode` |  |
-| `releaseDate` |  |
-| `series` |  |
-| `total` |  |
-| `updatedAt` |  |
+| `id` | Unique identifier for the set |
+| `images` | Image URLs for the set |
+| `legalities` | Legality of the set in different formats |
+| `name` | Name of the set |
+| `printedTotal` | Number of cards printed in the set |
+| `ptcgoCode` | PTCGO code for the set |
+| `releaseDate` | Release date of the set |
+| `series` | Series the set belongs to |
+| `total` | Total number of cards in the set including secret rares |
+| `updatedAt` | Last updated timestamp |
 
 Operations: List, Load.
 
@@ -358,30 +358,30 @@ Create an instance: `local card = client:Card(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `artist` | `string` |  |
-| `attacks` | `table` |  |
-| `cardmarket` | `table` |  |
-| `convertedRetreatCost` | `number` |  |
-| `evolvesFrom` | `string` |  |
-| `evolvesTo` | `table` |  |
-| `flavorText` | `string` |  |
-| `hp` | `string` |  |
-| `id` | `string` |  |
-| `images` | `table` |  |
-| `legalities` | `table` |  |
-| `name` | `string` |  |
-| `nationalPokedexNumbers` | `table` |  |
-| `number` | `string` |  |
-| `rarity` | `string` |  |
-| `resistances` | `table` |  |
-| `retreatCost` | `table` |  |
-| `rules` | `table` |  |
-| `set` | `table` |  |
-| `subtypes` | `table` |  |
-| `supertype` | `string` |  |
-| `tcgplayer` | `table` |  |
-| `types` | `table` |  |
-| `weaknesses` | `table` |  |
+| `artist` | `string` | Artist who illustrated the card |
+| `attacks` | `table` | Attacks the Pokémon can perform |
+| `cardmarket` | `table` | Cardmarket information |
+| `convertedRetreatCost` | `number` | Numeric value of retreat cost |
+| `evolvesFrom` | `string` | The Pokémon this card evolves from |
+| `evolvesTo` | `table` | The Pokémon this card evolves to |
+| `flavorText` | `string` | Flavor text on the card |
+| `hp` | `string` | Hit points of the Pokémon |
+| `id` | `string` | Unique identifier for the card |
+| `images` | `table` | Image URLs for the card |
+| `legalities` | `table` | Legality of the card in different formats |
+| `name` | `string` | Name of the card |
+| `nationalPokedexNumbers` | `table` | National Pokédex numbers |
+| `number` | `string` | Card number within the set |
+| `rarity` | `string` | Rarity of the card |
+| `resistances` | `table` | Resistances of the Pokémon |
+| `retreatCost` | `table` | Retreat cost of the Pokémon |
+| `rules` | `table` | Special rules for the card |
+| `set` | `table` | Set information for the card |
+| `subtypes` | `table` | Subtypes of the card |
+| `supertype` | `string` | Supertype of the card (e.g., Pokémon, Trainer, Energy) |
+| `tcgplayer` | `table` | TCGPlayer market information |
+| `types` | `table` | Energy types of the card |
+| `weaknesses` | `table` | Weaknesses of the Pokémon |
 
 #### Example: Load
 
@@ -434,16 +434,16 @@ Create an instance: `local set = client:Set(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
-| `images` | `table` |  |
-| `legalities` | `table` |  |
-| `name` | `string` |  |
-| `printedTotal` | `number` |  |
-| `ptcgoCode` | `string` |  |
-| `releaseDate` | `string` |  |
-| `series` | `string` |  |
-| `total` | `number` |  |
-| `updatedAt` | `string` |  |
+| `id` | `string` | Unique identifier for the set |
+| `images` | `table` | Image URLs for the set |
+| `legalities` | `table` | Legality of the set in different formats |
+| `name` | `string` | Name of the set |
+| `printedTotal` | `number` | Number of cards printed in the set |
+| `ptcgoCode` | `string` | PTCGO code for the set |
+| `releaseDate` | `string` | Release date of the set |
+| `series` | `string` | Series the set belongs to |
+| `total` | `number` | Total number of cards in the set including secret rares |
+| `updatedAt` | `string` | Last updated timestamp |
 
 #### Example: Load
 

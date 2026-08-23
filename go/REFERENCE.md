@@ -119,30 +119,30 @@ fmt.Println(card.GetName()) // "card"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `artist` | `string` | No |  |
-| `attacks` | `[]any` | No |  |
-| `cardmarket` | `map[string]any` | No |  |
-| `convertedRetreatCost` | `int` | No |  |
-| `evolvesFrom` | `string` | No |  |
-| `evolvesTo` | `[]any` | No |  |
-| `flavorText` | `string` | No |  |
-| `hp` | `string` | No |  |
-| `id` | `string` | No |  |
-| `images` | `map[string]any` | No |  |
-| `legalities` | `map[string]any` | No |  |
-| `name` | `string` | No |  |
-| `nationalPokedexNumbers` | `[]any` | No |  |
-| `number` | `string` | No |  |
-| `rarity` | `string` | No |  |
-| `resistances` | `[]any` | No |  |
-| `retreatCost` | `[]any` | No |  |
-| `rules` | `[]any` | No |  |
-| `set` | `map[string]any` | No |  |
-| `subtypes` | `[]any` | No |  |
-| `supertype` | `string` | No |  |
-| `tcgplayer` | `map[string]any` | No |  |
-| `types` | `[]any` | No |  |
-| `weaknesses` | `[]any` | No |  |
+| `artist` | `string` | No | Artist who illustrated the card |
+| `attacks` | `[]any` | No | Attacks the Pokémon can perform |
+| `cardmarket` | `map[string]any` | No | Cardmarket information |
+| `convertedRetreatCost` | `int` | No | Numeric value of retreat cost |
+| `evolvesFrom` | `string` | No | The Pokémon this card evolves from |
+| `evolvesTo` | `[]any` | No | The Pokémon this card evolves to |
+| `flavorText` | `string` | No | Flavor text on the card |
+| `hp` | `string` | No | Hit points of the Pokémon |
+| `id` | `string` | No | Unique identifier for the card |
+| `images` | `map[string]any` | No | Image URLs for the card |
+| `legalities` | `map[string]any` | No | Legality of the card in different formats |
+| `name` | `string` | No | Name of the card |
+| `nationalPokedexNumbers` | `[]any` | No | National Pokédex numbers |
+| `number` | `string` | No | Card number within the set |
+| `rarity` | `string` | No | Rarity of the card |
+| `resistances` | `[]any` | No | Resistances of the Pokémon |
+| `retreatCost` | `[]any` | No | Retreat cost of the Pokémon |
+| `rules` | `[]any` | No | Special rules for the card |
+| `set` | `map[string]any` | No | Set information for the card |
+| `subtypes` | `[]any` | No | Subtypes of the card |
+| `supertype` | `string` | No | Supertype of the card (e.g., Pokémon, Trainer, Energy) |
+| `tcgplayer` | `map[string]any` | No | TCGPlayer market information |
+| `types` | `[]any` | No | Energy types of the card |
+| `weaknesses` | `[]any` | No | Weaknesses of the Pokémon |
 
 ### Operations
 
@@ -256,16 +256,16 @@ fmt.Println(set.GetName()) // "set"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | No |  |
-| `images` | `map[string]any` | No |  |
-| `legalities` | `map[string]any` | No |  |
-| `name` | `string` | No |  |
-| `printedTotal` | `int` | No |  |
-| `ptcgoCode` | `string` | No |  |
-| `releaseDate` | `string` | No |  |
-| `series` | `string` | No |  |
-| `total` | `int` | No |  |
-| `updatedAt` | `string` | No |  |
+| `id` | `string` | No | Unique identifier for the set |
+| `images` | `map[string]any` | No | Image URLs for the set |
+| `legalities` | `map[string]any` | No | Legality of the set in different formats |
+| `name` | `string` | No | Name of the set |
+| `printedTotal` | `int` | No | Number of cards printed in the set |
+| `ptcgoCode` | `string` | No | PTCGO code for the set |
+| `releaseDate` | `string` | No | Release date of the set |
+| `series` | `string` | No | Series the set belongs to |
+| `total` | `int` | No | Total number of cards in the set including secret rares |
+| `updatedAt` | `string` | No | Last updated timestamp |
 
 ### Operations
 

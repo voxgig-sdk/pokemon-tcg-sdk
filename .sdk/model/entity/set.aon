@@ -8,51 +8,61 @@ main: kit: entity: set: {
     {
       name: "id"
       req: false
+      short: "Unique identifier for the set"
       type: "`$STRING`"
     }
     {
       name: "images"
       req: false
+      short: "Image URLs for the set"
       type: "`$OBJECT`"
     }
     {
       name: "legalities"
       req: false
+      short: "Legality of the set in different formats"
       type: "`$OBJECT`"
     }
     {
       name: "name"
       req: false
+      short: "Name of the set"
       type: "`$STRING`"
     }
     {
       name: "printedTotal"
       req: false
+      short: "Number of cards printed in the set"
       type: "`$INTEGER`"
     }
     {
       name: "ptcgoCode"
       req: false
+      short: "PTCGO code for the set"
       type: "`$STRING`"
     }
     {
       name: "releaseDate"
       req: false
+      short: "Release date of the set"
       type: "`$STRING`"
     }
     {
       name: "series"
       req: false
+      short: "Series the set belongs to"
       type: "`$STRING`"
     }
     {
       name: "total"
       req: false
+      short: "Total number of cards in the set including secret rares"
       type: "`$INTEGER`"
     }
     {
       name: "updatedAt"
       req: false
+      short: "Last updated timestamp"
       type: "`$STRING`"
     }
   ]

@@ -108,30 +108,30 @@ card = client.Card()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `artist` | `str` | No |  |
-| `attacks` | `list` | No |  |
-| `cardmarket` | `dict` | No |  |
-| `convertedRetreatCost` | `int` | No |  |
-| `evolvesFrom` | `str` | No |  |
-| `evolvesTo` | `list` | No |  |
-| `flavorText` | `str` | No |  |
-| `hp` | `str` | No |  |
-| `id` | `str` | No |  |
-| `images` | `dict` | No |  |
-| `legalities` | `dict` | No |  |
-| `name` | `str` | No |  |
-| `nationalPokedexNumbers` | `list` | No |  |
-| `number` | `str` | No |  |
-| `rarity` | `str` | No |  |
-| `resistances` | `list` | No |  |
-| `retreatCost` | `list` | No |  |
-| `rules` | `list` | No |  |
-| `set` | `dict` | No |  |
-| `subtypes` | `list` | No |  |
-| `supertype` | `str` | No |  |
-| `tcgplayer` | `dict` | No |  |
-| `types` | `list` | No |  |
-| `weaknesses` | `list` | No |  |
+| `artist` | `str` | No | Artist who illustrated the card |
+| `attacks` | `list` | No | Attacks the Pokémon can perform |
+| `cardmarket` | `dict` | No | Cardmarket information |
+| `convertedRetreatCost` | `int` | No | Numeric value of retreat cost |
+| `evolvesFrom` | `str` | No | The Pokémon this card evolves from |
+| `evolvesTo` | `list` | No | The Pokémon this card evolves to |
+| `flavorText` | `str` | No | Flavor text on the card |
+| `hp` | `str` | No | Hit points of the Pokémon |
+| `id` | `str` | No | Unique identifier for the card |
+| `images` | `dict` | No | Image URLs for the card |
+| `legalities` | `dict` | No | Legality of the card in different formats |
+| `name` | `str` | No | Name of the card |
+| `nationalPokedexNumbers` | `list` | No | National Pokédex numbers |
+| `number` | `str` | No | Card number within the set |
+| `rarity` | `str` | No | Rarity of the card |
+| `resistances` | `list` | No | Resistances of the Pokémon |
+| `retreatCost` | `list` | No | Retreat cost of the Pokémon |
+| `rules` | `list` | No | Special rules for the card |
+| `set` | `dict` | No | Set information for the card |
+| `subtypes` | `list` | No | Subtypes of the card |
+| `supertype` | `str` | No | Supertype of the card (e.g., Pokémon, Trainer, Energy) |
+| `tcgplayer` | `dict` | No | TCGPlayer market information |
+| `types` | `list` | No | Energy types of the card |
+| `weaknesses` | `list` | No | Weaknesses of the Pokémon |
 
 ### Operations
 
@@ -245,16 +245,16 @@ set = client.Set()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `str` | No |  |
-| `images` | `dict` | No |  |
-| `legalities` | `dict` | No |  |
-| `name` | `str` | No |  |
-| `printedTotal` | `int` | No |  |
-| `ptcgoCode` | `str` | No |  |
-| `releaseDate` | `str` | No |  |
-| `series` | `str` | No |  |
-| `total` | `int` | No |  |
-| `updatedAt` | `str` | No |  |
+| `id` | `str` | No | Unique identifier for the set |
+| `images` | `dict` | No | Image URLs for the set |
+| `legalities` | `dict` | No | Legality of the set in different formats |
+| `name` | `str` | No | Name of the set |
+| `printedTotal` | `int` | No | Number of cards printed in the set |
+| `ptcgoCode` | `str` | No | PTCGO code for the set |
+| `releaseDate` | `str` | No | Release date of the set |
+| `series` | `str` | No | Series the set belongs to |
+| `total` | `int` | No | Total number of cards in the set including secret rares |
+| `updatedAt` | `str` | No | Last updated timestamp |
 
 ### Operations
 

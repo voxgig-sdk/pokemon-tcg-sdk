@@ -8,121 +8,145 @@ main: kit: entity: card: {
     {
       name: "artist"
       req: false
+      short: "Artist who illustrated the card"
       type: "`$STRING`"
     }
     {
       name: "attacks"
       req: false
+      short: "Attacks the Pokémon can perform"
       type: "`$ARRAY`"
     }
     {
       name: "cardmarket"
       req: false
+      short: "Cardmarket information"
       type: "`$OBJECT`"
     }
     {
       name: "convertedRetreatCost"
       req: false
+      short: "Numeric value of retreat cost"
       type: "`$INTEGER`"
     }
     {
       name: "evolvesFrom"
       req: false
+      short: "The Pokémon this card evolves from"
       type: "`$STRING`"
     }
     {
       name: "evolvesTo"
       req: false
+      short: "The Pokémon this card evolves to"
       type: "`$ARRAY`"
     }
     {
       name: "flavorText"
       req: false
+      short: "Flavor text on the card"
       type: "`$STRING`"
     }
     {
       name: "hp"
       req: false
+      short: "Hit points of the Pokémon"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier for the card"
       type: "`$STRING`"
     }
     {
       name: "images"
       req: false
+      short: "Image URLs for the card"
       type: "`$OBJECT`"
     }
     {
       name: "legalities"
       req: false
+      short: "Legality of the card in different formats"
       type: "`$OBJECT`"
     }
     {
       name: "name"
       req: false
+      short: "Name of the card"
       type: "`$STRING`"
     }
     {
       name: "nationalPokedexNumbers"
       req: false
+      short: "National Pokédex numbers"
       type: "`$ARRAY`"
     }
     {
       name: "number"
       req: false
+      short: "Card number within the set"
       type: "`$STRING`"
     }
     {
       name: "rarity"
       req: false
+      short: "Rarity of the card"
       type: "`$STRING`"
     }
     {
       name: "resistances"
       req: false
+      short: "Resistances of the Pokémon"
       type: "`$ARRAY`"
     }
     {
       name: "retreatCost"
       req: false
+      short: "Retreat cost of the Pokémon"
       type: "`$ARRAY`"
     }
     {
       name: "rules"
       req: false
+      short: "Special rules for the card"
       type: "`$ARRAY`"
     }
     {
       name: "set"
       req: false
+      short: "Set information for the card"
       type: "`$OBJECT`"
     }
     {
       name: "subtypes"
       req: false
+      short: "Subtypes of the card"
       type: "`$ARRAY`"
     }
     {
       name: "supertype"
       req: false
+      short: "Supertype of the card (e.g., Pokémon, Trainer, Energy)"
       type: "`$STRING`"
     }
     {
       name: "tcgplayer"
       req: false
+      short: "TCGPlayer market information"
       type: "`$OBJECT`"
     }
     {
       name: "types"
       req: false
+      short: "Energy types of the card"
       type: "`$ARRAY`"
     }
     {
       name: "weaknesses"
       req: false
+      short: "Weaknesses of the Pokémon"
       type: "`$ARRAY`"
     }
   ]

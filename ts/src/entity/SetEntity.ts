@@ -15,13 +15,13 @@ import type {
 } from '../types'
 
 import type {
-  Set,
+  SetType,
   SetLoadMatch,
   SetListMatch,
 } from '../PokemonTcgTypes'
 
 // TODO: needs Entity superclass
-class SetEntity extends PokemonTcgEntityBase<Set> {
+class SetEntity extends PokemonTcgEntityBase<SetType> {
 
   constructor(client: PokemonTcgSDK, entopts: any) {
     super(client, entopts)

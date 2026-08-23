@@ -36,144 +36,168 @@
               "active": true,
               "name": "artist",
               "req": false,
+              "short": "Artist who illustrated the card",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "attacks",
               "req": false,
+              "short": "Attacks the Pokémon can perform",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "cardmarket",
               "req": false,
+              "short": "Cardmarket information",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "convertedRetreatCost",
               "req": false,
+              "short": "Numeric value of retreat cost",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "evolvesFrom",
               "req": false,
+              "short": "The Pokémon this card evolves from",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "evolvesTo",
               "req": false,
+              "short": "The Pokémon this card evolves to",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "flavorText",
               "req": false,
+              "short": "Flavor text on the card",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "hp",
               "req": false,
+              "short": "Hit points of the Pokémon",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the card",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "images",
               "req": false,
+              "short": "Image URLs for the card",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "legalities",
               "req": false,
+              "short": "Legality of the card in different formats",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the card",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "nationalPokedexNumbers",
               "req": false,
+              "short": "National Pokédex numbers",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "number",
               "req": false,
+              "short": "Card number within the set",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rarity",
               "req": false,
+              "short": "Rarity of the card",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "resistances",
               "req": false,
+              "short": "Resistances of the Pokémon",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "retreatCost",
               "req": false,
+              "short": "Retreat cost of the Pokémon",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "rules",
               "req": false,
+              "short": "Special rules for the card",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "set",
               "req": false,
+              "short": "Set information for the card",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "subtypes",
               "req": false,
+              "short": "Subtypes of the card",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "supertype",
               "req": false,
+              "short": "Supertype of the card (e.g., Pokémon, Trainer, Energy)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tcgplayer",
               "req": false,
+              "short": "TCGPlayer market information",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "types",
               "req": false,
+              "short": "Energy types of the card",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "weaknesses",
               "req": false,
+              "short": "Weaknesses of the Pokémon",
               "type": "`$ARRAY`"
             }
           ],
@@ -350,60 +374,70 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the set",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "images",
               "req": false,
+              "short": "Image URLs for the set",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "legalities",
               "req": false,
+              "short": "Legality of the set in different formats",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the set",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "printedTotal",
               "req": false,
+              "short": "Number of cards printed in the set",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "ptcgoCode",
               "req": false,
+              "short": "PTCGO code for the set",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "releaseDate",
               "req": false,
+              "short": "Release date of the set",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "series",
               "req": false,
+              "short": "Series the set belongs to",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "total",
               "req": false,
+              "short": "Total number of cards in the set including secret rares",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "updatedAt",
               "req": false,
+              "short": "Last updated timestamp",
               "type": "`$STRING`"
             }
           ],

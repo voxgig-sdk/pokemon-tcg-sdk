@@ -269,30 +269,30 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `artist` |  |
-| `attacks` |  |
-| `cardmarket` |  |
-| `convertedRetreatCost` |  |
-| `evolvesFrom` |  |
-| `evolvesTo` |  |
-| `flavorText` |  |
-| `hp` |  |
-| `id` |  |
-| `images` |  |
-| `legalities` |  |
-| `name` |  |
-| `nationalPokedexNumbers` |  |
-| `number` |  |
-| `rarity` |  |
-| `resistances` |  |
-| `retreatCost` |  |
-| `rules` |  |
-| `set` |  |
-| `subtypes` |  |
-| `supertype` |  |
-| `tcgplayer` |  |
-| `types` |  |
-| `weaknesses` |  |
+| `artist` | Artist who illustrated the card |
+| `attacks` | Attacks the Pokémon can perform |
+| `cardmarket` | Cardmarket information |
+| `convertedRetreatCost` | Numeric value of retreat cost |
+| `evolvesFrom` | The Pokémon this card evolves from |
+| `evolvesTo` | The Pokémon this card evolves to |
+| `flavorText` | Flavor text on the card |
+| `hp` | Hit points of the Pokémon |
+| `id` | Unique identifier for the card |
+| `images` | Image URLs for the card |
+| `legalities` | Legality of the card in different formats |
+| `name` | Name of the card |
+| `nationalPokedexNumbers` | National Pokédex numbers |
+| `number` | Card number within the set |
+| `rarity` | Rarity of the card |
+| `resistances` | Resistances of the Pokémon |
+| `retreatCost` | Retreat cost of the Pokémon |
+| `rules` | Special rules for the card |
+| `set` | Set information for the card |
+| `subtypes` | Subtypes of the card |
+| `supertype` | Supertype of the card (e.g., Pokémon, Trainer, Energy) |
+| `tcgplayer` | TCGPlayer market information |
+| `types` | Energy types of the card |
+| `weaknesses` | Weaknesses of the Pokémon |
 
 Operations: List, Load.
 
@@ -312,16 +312,16 @@ API path: `/rarities`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `images` |  |
-| `legalities` |  |
-| `name` |  |
-| `printedTotal` |  |
-| `ptcgoCode` |  |
-| `releaseDate` |  |
-| `series` |  |
-| `total` |  |
-| `updatedAt` |  |
+| `id` | Unique identifier for the set |
+| `images` | Image URLs for the set |
+| `legalities` | Legality of the set in different formats |
+| `name` | Name of the set |
+| `printedTotal` | Number of cards printed in the set |
+| `ptcgoCode` | PTCGO code for the set |
+| `releaseDate` | Release date of the set |
+| `series` | Series the set belongs to |
+| `total` | Total number of cards in the set including secret rares |
+| `updatedAt` | Last updated timestamp |
 
 Operations: List, Load.
 
@@ -377,30 +377,30 @@ Create an instance: `$card = $client->Card();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `artist` | `string` |  |
-| `attacks` | `array` |  |
-| `cardmarket` | `array` |  |
-| `convertedRetreatCost` | `int` |  |
-| `evolvesFrom` | `string` |  |
-| `evolvesTo` | `array` |  |
-| `flavorText` | `string` |  |
-| `hp` | `string` |  |
-| `id` | `string` |  |
-| `images` | `array` |  |
-| `legalities` | `array` |  |
-| `name` | `string` |  |
-| `nationalPokedexNumbers` | `array` |  |
-| `number` | `string` |  |
-| `rarity` | `string` |  |
-| `resistances` | `array` |  |
-| `retreatCost` | `array` |  |
-| `rules` | `array` |  |
-| `set` | `array` |  |
-| `subtypes` | `array` |  |
-| `supertype` | `string` |  |
-| `tcgplayer` | `array` |  |
-| `types` | `array` |  |
-| `weaknesses` | `array` |  |
+| `artist` | `string` | Artist who illustrated the card |
+| `attacks` | `array` | Attacks the Pokémon can perform |
+| `cardmarket` | `array` | Cardmarket information |
+| `convertedRetreatCost` | `int` | Numeric value of retreat cost |
+| `evolvesFrom` | `string` | The Pokémon this card evolves from |
+| `evolvesTo` | `array` | The Pokémon this card evolves to |
+| `flavorText` | `string` | Flavor text on the card |
+| `hp` | `string` | Hit points of the Pokémon |
+| `id` | `string` | Unique identifier for the card |
+| `images` | `array` | Image URLs for the card |
+| `legalities` | `array` | Legality of the card in different formats |
+| `name` | `string` | Name of the card |
+| `nationalPokedexNumbers` | `array` | National Pokédex numbers |
+| `number` | `string` | Card number within the set |
+| `rarity` | `string` | Rarity of the card |
+| `resistances` | `array` | Resistances of the Pokémon |
+| `retreatCost` | `array` | Retreat cost of the Pokémon |
+| `rules` | `array` | Special rules for the card |
+| `set` | `array` | Set information for the card |
+| `subtypes` | `array` | Subtypes of the card |
+| `supertype` | `string` | Supertype of the card (e.g., Pokémon, Trainer, Energy) |
+| `tcgplayer` | `array` | TCGPlayer market information |
+| `types` | `array` | Energy types of the card |
+| `weaknesses` | `array` | Weaknesses of the Pokémon |
 
 #### Example: Load
 
@@ -456,16 +456,16 @@ Create an instance: `$set = $client->Set();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
-| `images` | `array` |  |
-| `legalities` | `array` |  |
-| `name` | `string` |  |
-| `printedTotal` | `int` |  |
-| `ptcgoCode` | `string` |  |
-| `releaseDate` | `string` |  |
-| `series` | `string` |  |
-| `total` | `int` |  |
-| `updatedAt` | `string` |  |
+| `id` | `string` | Unique identifier for the set |
+| `images` | `array` | Image URLs for the set |
+| `legalities` | `array` | Legality of the set in different formats |
+| `name` | `string` | Name of the set |
+| `printedTotal` | `int` | Number of cards printed in the set |
+| `ptcgoCode` | `string` | PTCGO code for the set |
+| `releaseDate` | `string` | Release date of the set |
+| `series` | `string` | Series the set belongs to |
+| `total` | `int` | Total number of cards in the set including secret rares |
+| `updatedAt` | `string` | Last updated timestamp |
 
 #### Example: Load
 
