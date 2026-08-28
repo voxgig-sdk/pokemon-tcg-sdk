@@ -47,30 +47,11 @@ type CardLoadMatch struct {
 
 // CardListMatch is the typed request payload for Card.ListTyped.
 type CardListMatch struct {
-	Artist *string `json:"artist,omitempty"`
-	Attacks *[]any `json:"attacks,omitempty"`
-	Cardmarket *map[string]any `json:"cardmarket,omitempty"`
-	ConvertedRetreatCost *int `json:"convertedRetreatCost,omitempty"`
-	EvolvesFrom *string `json:"evolvesFrom,omitempty"`
-	EvolvesTo *[]any `json:"evolvesTo,omitempty"`
-	FlavorText *string `json:"flavorText,omitempty"`
-	Hp *string `json:"hp,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Images *map[string]any `json:"images,omitempty"`
-	Legalities *map[string]any `json:"legalities,omitempty"`
-	Name *string `json:"name,omitempty"`
-	NationalPokedexNumbers *[]any `json:"nationalPokedexNumbers,omitempty"`
-	Number *string `json:"number,omitempty"`
-	Rarity *string `json:"rarity,omitempty"`
-	Resistances *[]any `json:"resistances,omitempty"`
-	RetreatCost *[]any `json:"retreatCost,omitempty"`
-	Rules *[]any `json:"rules,omitempty"`
-	Set *map[string]any `json:"set,omitempty"`
-	Subtypes *[]any `json:"subtypes,omitempty"`
-	Supertype *string `json:"supertype,omitempty"`
-	Tcgplayer *map[string]any `json:"tcgplayer,omitempty"`
-	Types *[]any `json:"types,omitempty"`
-	Weaknesses *[]any `json:"weaknesses,omitempty"`
+	OrderBy *string `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
+	Q *string `json:"q,omitempty"`
+	Select *string `json:"select,omitempty"`
 }
 
 // Rarity is the typed data model for the rarity entity.
@@ -104,16 +85,10 @@ type SetLoadMatch struct {
 
 // SetListMatch is the typed request payload for Set.ListTyped.
 type SetListMatch struct {
-	Id *string `json:"id,omitempty"`
-	Images *map[string]any `json:"images,omitempty"`
-	Legalities *map[string]any `json:"legalities,omitempty"`
-	Name *string `json:"name,omitempty"`
-	PrintedTotal *int `json:"printedTotal,omitempty"`
-	PtcgoCode *string `json:"ptcgoCode,omitempty"`
-	ReleaseDate *string `json:"releaseDate,omitempty"`
-	Series *string `json:"series,omitempty"`
-	Total *int `json:"total,omitempty"`
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	OrderBy *string `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
+	Q *string `json:"q,omitempty"`
 }
 
 // Subtype is the typed data model for the subtype entity.

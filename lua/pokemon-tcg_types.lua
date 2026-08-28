@@ -36,30 +36,11 @@
 ---@field id string
 
 ---@class CardListMatch
----@field artist? string
----@field attacks? table
----@field cardmarket? table
----@field convertedRetreatCost? number
----@field evolvesFrom? string
----@field evolvesTo? table
----@field flavorText? string
----@field hp? string
----@field id? string
----@field images? table
----@field legalities? table
----@field name? string
----@field nationalPokedexNumbers? table
----@field number? string
----@field rarity? string
----@field resistances? table
----@field retreatCost? table
----@field rules? table
----@field set? table
----@field subtypes? table
----@field supertype? string
----@field tcgplayer? table
----@field types? table
----@field weaknesses? table
+---@field order_by? string
+---@field page? number
+---@field page_size? number
+---@field q? string
+---@field select? string
 
 ---@class Rarity
 ---@field data? table
@@ -83,16 +64,10 @@
 ---@field id string
 
 ---@class SetListMatch
----@field id? string
----@field images? table
----@field legalities? table
----@field name? string
----@field printedTotal? number
----@field ptcgoCode? string
----@field releaseDate? string
----@field series? string
----@field total? number
----@field updatedAt? string
+---@field order_by? string
+---@field page? number
+---@field page_size? number
+---@field q? string
 
 ---@class Subtype
 ---@field data? table

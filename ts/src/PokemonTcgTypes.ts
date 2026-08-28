@@ -37,30 +37,11 @@ export interface CardLoadMatch {
 }
 
 export interface CardListMatch {
-  artist?: string
-  attacks?: any[]
-  cardmarket?: Record<string, any>
-  convertedRetreatCost?: number
-  evolvesFrom?: string
-  evolvesTo?: any[]
-  flavorText?: string
-  hp?: string
-  id?: string
-  images?: Record<string, any>
-  legalities?: Record<string, any>
-  name?: string
-  nationalPokedexNumbers?: any[]
-  number?: string
-  rarity?: string
-  resistances?: any[]
-  retreatCost?: any[]
-  rules?: any[]
-  set?: Record<string, any>
-  subtypes?: any[]
-  supertype?: string
-  tcgplayer?: Record<string, any>
-  types?: any[]
-  weaknesses?: any[]
+  order_by?: string
+  page?: number
+  page_size?: number
+  q?: string
+  select?: string
 }
 
 export interface Rarity {
@@ -89,16 +70,10 @@ export interface SetLoadMatch {
 }
 
 export interface SetListMatch {
-  id?: string
-  images?: Record<string, any>
-  legalities?: Record<string, any>
-  name?: string
-  printedTotal?: number
-  ptcgoCode?: string
-  releaseDate?: string
-  series?: string
-  total?: number
-  updatedAt?: string
+  order_by?: string
+  page?: number
+  page_size?: number
+  q?: string
 }
 
 export interface Subtype {

@@ -48,30 +48,11 @@ class CardLoadMatch(TypedDict):
 
 
 class CardListMatch(TypedDict, total=False):
-    artist: str
-    attacks: list
-    cardmarket: dict
-    convertedRetreatCost: int
-    evolvesFrom: str
-    evolvesTo: list
-    flavorText: str
-    hp: str
-    id: str
-    images: dict
-    legalities: dict
-    name: str
-    nationalPokedexNumbers: list
-    number: str
-    rarity: str
-    resistances: list
-    retreatCost: list
-    rules: list
-    set: dict
-    subtypes: list
-    supertype: str
-    tcgplayer: dict
-    types: list
-    weaknesses: list
+    order_by: str
+    page: int
+    page_size: int
+    q: str
+    select: str
 
 
 class Rarity(TypedDict, total=False):
@@ -100,16 +81,10 @@ class SetLoadMatch(TypedDict):
 
 
 class SetListMatch(TypedDict, total=False):
-    id: str
-    images: dict
-    legalities: dict
-    name: str
-    printedTotal: int
-    ptcgoCode: str
-    releaseDate: str
-    series: str
-    total: int
-    updatedAt: str
+    order_by: str
+    page: int
+    page_size: int
+    q: str
 
 
 class Subtype(TypedDict, total=False):

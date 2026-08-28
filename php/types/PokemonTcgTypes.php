@@ -50,30 +50,11 @@ class CardLoadMatch
 /** Request payload for Card#list. */
 class CardListMatch
 {
-    public ?string $artist = null;
-    public ?array $attacks = null;
-    public ?array $cardmarket = null;
-    public ?int $convertedRetreatCost = null;
-    public ?string $evolvesFrom = null;
-    public ?array $evolvesTo = null;
-    public ?string $flavorText = null;
-    public ?string $hp = null;
-    public ?string $id = null;
-    public ?array $images = null;
-    public ?array $legalities = null;
-    public ?string $name = null;
-    public ?array $nationalPokedexNumbers = null;
-    public ?string $number = null;
-    public ?string $rarity = null;
-    public ?array $resistances = null;
-    public ?array $retreatCost = null;
-    public ?array $rules = null;
-    public ?array $set = null;
-    public ?array $subtypes = null;
-    public ?string $supertype = null;
-    public ?array $tcgplayer = null;
-    public ?array $types = null;
-    public ?array $weaknesses = null;
+    public ?string $order_by = null;
+    public ?int $page = null;
+    public ?int $page_size = null;
+    public ?string $q = null;
+    public ?string $select = null;
 }
 
 /** Rarity entity data model. */
@@ -112,16 +93,10 @@ class SetLoadMatch
 /** Request payload for Set#list. */
 class SetListMatch
 {
-    public ?string $id = null;
-    public ?array $images = null;
-    public ?array $legalities = null;
-    public ?string $name = null;
-    public ?int $printedTotal = null;
-    public ?string $ptcgoCode = null;
-    public ?string $releaseDate = null;
-    public ?string $series = null;
-    public ?int $total = null;
-    public ?string $updatedAt = null;
+    public ?string $order_by = null;
+    public ?int $page = null;
+    public ?int $page_size = null;
+    public ?string $q = null;
 }
 
 /** Subtype entity data model. */

@@ -120,102 +120,26 @@ CardLoadMatch = Struct.new(
 
 # Request payload for Card#list.
 #
-# @!attribute [rw] artist
+# @!attribute [rw] order_by
 #   @return [String, nil]
 #
-# @!attribute [rw] attacks
-#   @return [Array, nil]
-#
-# @!attribute [rw] cardmarket
-#   @return [Hash, nil]
-#
-# @!attribute [rw] convertedRetreatCost
+# @!attribute [rw] page
 #   @return [Integer, nil]
 #
-# @!attribute [rw] evolvesFrom
+# @!attribute [rw] page_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] q
 #   @return [String, nil]
 #
-# @!attribute [rw] evolvesTo
-#   @return [Array, nil]
-#
-# @!attribute [rw] flavorText
+# @!attribute [rw] select
 #   @return [String, nil]
-#
-# @!attribute [rw] hp
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] images
-#   @return [Hash, nil]
-#
-# @!attribute [rw] legalities
-#   @return [Hash, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] nationalPokedexNumbers
-#   @return [Array, nil]
-#
-# @!attribute [rw] number
-#   @return [String, nil]
-#
-# @!attribute [rw] rarity
-#   @return [String, nil]
-#
-# @!attribute [rw] resistances
-#   @return [Array, nil]
-#
-# @!attribute [rw] retreatCost
-#   @return [Array, nil]
-#
-# @!attribute [rw] rules
-#   @return [Array, nil]
-#
-# @!attribute [rw] set
-#   @return [Hash, nil]
-#
-# @!attribute [rw] subtypes
-#   @return [Array, nil]
-#
-# @!attribute [rw] supertype
-#   @return [String, nil]
-#
-# @!attribute [rw] tcgplayer
-#   @return [Hash, nil]
-#
-# @!attribute [rw] types
-#   @return [Array, nil]
-#
-# @!attribute [rw] weaknesses
-#   @return [Array, nil]
 CardListMatch = Struct.new(
-  :artist,
-  :attacks,
-  :cardmarket,
-  :convertedRetreatCost,
-  :evolvesFrom,
-  :evolvesTo,
-  :flavorText,
-  :hp,
-  :id,
-  :images,
-  :legalities,
-  :name,
-  :nationalPokedexNumbers,
-  :number,
-  :rarity,
-  :resistances,
-  :retreatCost,
-  :rules,
-  :set,
-  :subtypes,
-  :supertype,
-  :tcgplayer,
-  :types,
-  :weaknesses,
+  :order_by,
+  :page,
+  :page_size,
+  :q,
+  :select,
   keyword_init: true
 )
 
@@ -293,46 +217,22 @@ SetLoadMatch = Struct.new(
 
 # Request payload for Set#list.
 #
-# @!attribute [rw] id
+# @!attribute [rw] order_by
 #   @return [String, nil]
 #
-# @!attribute [rw] images
-#   @return [Hash, nil]
-#
-# @!attribute [rw] legalities
-#   @return [Hash, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] printedTotal
+# @!attribute [rw] page
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ptcgoCode
-#   @return [String, nil]
-#
-# @!attribute [rw] releaseDate
-#   @return [String, nil]
-#
-# @!attribute [rw] series
-#   @return [String, nil]
-#
-# @!attribute [rw] total
+# @!attribute [rw] page_size
 #   @return [Integer, nil]
 #
-# @!attribute [rw] updatedAt
+# @!attribute [rw] q
 #   @return [String, nil]
 SetListMatch = Struct.new(
-  :id,
-  :images,
-  :legalities,
-  :name,
-  :printedTotal,
-  :ptcgoCode,
-  :releaseDate,
-  :series,
-  :total,
-  :updatedAt,
+  :order_by,
+  :page,
+  :page_size,
+  :q,
   keyword_init: true
 )
 
