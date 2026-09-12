@@ -160,6 +160,10 @@ local function make_config()
             ["type"] = "`$ARRAY`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "card",
         ["op"] = {
           ["list"] = {
@@ -206,8 +210,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/cards",
-                ["parts"] = {
-                  "cards",
+                ["segments"] = {
+                  {
+                    ["lit"] = "cards",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -221,6 +227,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "cards",
                 },
               },
             },
@@ -244,9 +253,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/cards/{id}",
-                ["parts"] = {
-                  "cards",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "cards",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -256,6 +269,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "cards",
+                  "{id}",
                 },
               },
             },
@@ -283,13 +300,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/rarities",
-                ["parts"] = {
-                  "rarities",
+                ["segments"] = {
+                  {
+                    ["lit"] = "rarities",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "rarities",
                 },
               },
             },
@@ -332,6 +354,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date",
             ["name"] = "releaseDate",
             ["short"] = "Release date of the set",
             ["type"] = "`$STRING`",
@@ -347,10 +370,15 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "updatedAt",
             ["short"] = "Last updated timestamp",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "set",
         ["op"] = {
@@ -392,8 +420,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/sets",
-                ["parts"] = {
-                  "sets",
+                ["segments"] = {
+                  {
+                    ["lit"] = "sets",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -406,6 +436,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "sets",
                 },
               },
             },
@@ -429,9 +462,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/sets/{id}",
-                ["parts"] = {
-                  "sets",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "sets",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -441,6 +478,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "sets",
+                  "{id}",
                 },
               },
             },
@@ -468,13 +509,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/subtypes",
-                ["parts"] = {
-                  "subtypes",
+                ["segments"] = {
+                  {
+                    ["lit"] = "subtypes",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "subtypes",
                 },
               },
             },
@@ -502,13 +548,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/supertypes",
-                ["parts"] = {
-                  "supertypes",
+                ["segments"] = {
+                  {
+                    ["lit"] = "supertypes",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "supertypes",
                 },
               },
             },
@@ -536,13 +587,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/types",
-                ["parts"] = {
-                  "types",
+                ["segments"] = {
+                  {
+                    ["lit"] = "types",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "types",
                 },
               },
             },

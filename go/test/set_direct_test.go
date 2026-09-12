@@ -196,14 +196,22 @@ func setDirectSetup(mockres any) *setDirectSetupResult {
 	env := envOverride(map[string]any{
 		"POKEMON_TCG_TEST_SET_ENTID": map[string]any{},
 		"POKEMON_TCG_TEST_LIVE":    "FALSE",
-		"POKEMON_TCG_APIKEY":       "NONE",
+		"POKEMON_TCG_APIKEY":       "",
 	})
 
 	live := env["POKEMON_TCG_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["POKEMON_TCG_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewPokemonTcgSDK(mergedOpts)
 

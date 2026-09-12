@@ -186,6 +186,10 @@ class PokemonTcgConfig
               'type' => '`$ARRAY`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'card',
           'op' => [
             'list' => [
@@ -232,8 +236,10 @@ class PokemonTcgConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/cards',
-                  'parts' => [
-                    'cards',
+                  'segments' => [
+                    [
+                      'lit' => 'cards',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -247,6 +253,9 @@ class PokemonTcgConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'cards',
                   ],
                 ],
               ],
@@ -270,9 +279,13 @@ class PokemonTcgConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/cards/{id}',
-                  'parts' => [
-                    'cards',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'cards',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -282,6 +295,10 @@ class PokemonTcgConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'cards',
+                    '{id}',
                   ],
                 ],
               ],
@@ -309,13 +326,18 @@ class PokemonTcgConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/rarities',
-                  'parts' => [
-                    'rarities',
+                  'segments' => [
+                    [
+                      'lit' => 'rarities',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'rarities',
                   ],
                 ],
               ],
@@ -358,6 +380,7 @@ class PokemonTcgConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date',
               'name' => 'releaseDate',
               'short' => 'Release date of the set',
               'type' => '`$STRING`',
@@ -373,10 +396,15 @@ class PokemonTcgConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'updatedAt',
               'short' => 'Last updated timestamp',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'set',
           'op' => [
@@ -418,8 +446,10 @@ class PokemonTcgConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/sets',
-                  'parts' => [
-                    'sets',
+                  'segments' => [
+                    [
+                      'lit' => 'sets',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -432,6 +462,9 @@ class PokemonTcgConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'sets',
                   ],
                 ],
               ],
@@ -455,9 +488,13 @@ class PokemonTcgConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/sets/{id}',
-                  'parts' => [
-                    'sets',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'sets',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -467,6 +504,10 @@ class PokemonTcgConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'sets',
+                    '{id}',
                   ],
                 ],
               ],
@@ -494,13 +535,18 @@ class PokemonTcgConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/subtypes',
-                  'parts' => [
-                    'subtypes',
+                  'segments' => [
+                    [
+                      'lit' => 'subtypes',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'subtypes',
                   ],
                 ],
               ],
@@ -528,13 +574,18 @@ class PokemonTcgConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/supertypes',
-                  'parts' => [
-                    'supertypes',
+                  'segments' => [
+                    [
+                      'lit' => 'supertypes',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'supertypes',
                   ],
                 ],
               ],
@@ -562,13 +613,18 @@ class PokemonTcgConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/types',
-                  'parts' => [
-                    'types',
+                  'segments' => [
+                    [
+                      'lit' => 'types',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'types',
                   ],
                 ],
               ],

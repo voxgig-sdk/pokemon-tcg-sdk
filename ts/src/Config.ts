@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -206,6 +217,10 @@ class Config {
           "type": "`$ARRAY`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "card",
       "op": {
         "list": {
@@ -252,8 +267,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/cards",
-              "parts": [
-                "cards"
+              "segments": [
+                {
+                  "lit": "cards"
+                }
               ],
               "select": {
                 "exist": [
@@ -267,7 +284,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "cards"
+              ]
             }
           ]
         },
@@ -290,9 +310,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/cards/{id}",
-              "parts": [
-                "cards",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "cards"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -302,7 +326,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "cards",
+                "{id}"
+              ]
             }
           ]
         }
@@ -329,14 +357,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/rarities",
-              "parts": [
-                "rarities"
+              "segments": [
+                {
+                  "lit": "rarities"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "rarities"
+              ]
             }
           ]
         }
@@ -378,6 +411,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date",
           "name": "releaseDate",
           "short": "Release date of the set",
           "type": "`$STRING`"
@@ -393,11 +427,16 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date-time",
           "name": "updatedAt",
           "short": "Last updated timestamp",
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "set",
       "op": {
         "list": {
@@ -438,8 +477,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/sets",
-              "parts": [
-                "sets"
+              "segments": [
+                {
+                  "lit": "sets"
+                }
               ],
               "select": {
                 "exist": [
@@ -452,7 +493,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "sets"
+              ]
             }
           ]
         },
@@ -475,9 +519,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/sets/{id}",
-              "parts": [
-                "sets",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "sets"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -487,7 +535,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "sets",
+                "{id}"
+              ]
             }
           ]
         }
@@ -514,14 +566,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/subtypes",
-              "parts": [
-                "subtypes"
+              "segments": [
+                {
+                  "lit": "subtypes"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "subtypes"
+              ]
             }
           ]
         }
@@ -548,14 +605,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/supertypes",
-              "parts": [
-                "supertypes"
+              "segments": [
+                {
+                  "lit": "supertypes"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "supertypes"
+              ]
             }
           ]
         }
@@ -582,14 +644,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/types",
-              "parts": [
-                "types"
+              "segments": [
+                {
+                  "lit": "types"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "types"
+              ]
             }
           ]
         }
@@ -605,6 +672,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

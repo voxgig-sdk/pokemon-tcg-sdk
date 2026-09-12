@@ -1,6 +1,14 @@
 # PokemonTcg SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -181,6 +189,10 @@ def make_config():
             "type": "`$ARRAY`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "card",
         "op": {
           "list": {
@@ -227,8 +239,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/cards",
-                "parts": [
-                  "cards",
+                "segments": [
+                  {
+                    "lit": "cards",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -243,6 +257,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "cards",
+                ],
               },
             ],
           },
@@ -265,9 +282,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/cards/{id}",
-                "parts": [
-                  "cards",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "cards",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -278,6 +299,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "cards",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -304,14 +329,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/rarities",
-                "parts": [
-                  "rarities",
+                "segments": [
+                  {
+                    "lit": "rarities",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "rarities",
+                ],
               },
             ],
           },
@@ -353,6 +383,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "releaseDate",
             "short": "Release date of the set",
             "type": "`$STRING`",
@@ -368,11 +399,16 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "date-time",
             "name": "updatedAt",
             "short": "Last updated timestamp",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "set",
         "op": {
           "list": {
@@ -413,8 +449,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/sets",
-                "parts": [
-                  "sets",
+                "segments": [
+                  {
+                    "lit": "sets",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -428,6 +466,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "sets",
+                ],
               },
             ],
           },
@@ -450,9 +491,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/sets/{id}",
-                "parts": [
-                  "sets",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "sets",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -463,6 +508,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "sets",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -489,14 +538,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/subtypes",
-                "parts": [
-                  "subtypes",
+                "segments": [
+                  {
+                    "lit": "subtypes",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "subtypes",
+                ],
               },
             ],
           },
@@ -523,14 +577,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/supertypes",
-                "parts": [
-                  "supertypes",
+                "segments": [
+                  {
+                    "lit": "supertypes",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "supertypes",
+                ],
               },
             ],
           },
@@ -557,14 +616,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/types",
-                "parts": [
-                  "types",
+                "segments": [
+                  {
+                    "lit": "types",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "types",
+                ],
               },
             ],
           },

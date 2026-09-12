@@ -20,8 +20,10 @@ main: kit: entity: supertype: {
         {
           method: "GET"
           orig: "/supertypes"
-          parts: [
-            "supertypes"
+          segments: [
+            {
+              lit: "supertypes"
+            }
           ]
           transform: {
             req: "`reqdata`"

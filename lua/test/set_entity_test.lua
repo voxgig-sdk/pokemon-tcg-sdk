@@ -143,7 +143,7 @@ function set_basic_setup(extra)
     ["POKEMON_TCG_TEST_SET_ENTID"] = idmap,
     ["POKEMON_TCG_TEST_LIVE"] = "FALSE",
     ["POKEMON_TCG_TEST_EXPLAIN"] = "FALSE",
-    ["POKEMON_TCG_APIKEY"] = "NONE",
+    ["POKEMON_TCG_APIKEY"] = "",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -154,6 +154,9 @@ function set_basic_setup(extra)
 
   if env["POKEMON_TCG_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
         apikey = env["POKEMON_TCG_APIKEY"],
       },

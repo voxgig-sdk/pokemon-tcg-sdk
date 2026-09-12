@@ -127,7 +127,7 @@ def card_basic_setup(extra)
     "POKEMON_TCG_TEST_CARD_ENTID" => idmap,
     "POKEMON_TCG_TEST_LIVE" => "FALSE",
     "POKEMON_TCG_TEST_EXPLAIN" => "FALSE",
-    "POKEMON_TCG_APIKEY" => "NONE",
+    "POKEMON_TCG_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -138,6 +138,9 @@ def card_basic_setup(extra)
 
   if env["POKEMON_TCG_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["POKEMON_TCG_APIKEY"],
       },

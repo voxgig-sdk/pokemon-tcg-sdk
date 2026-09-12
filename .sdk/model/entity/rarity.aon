@@ -20,8 +20,10 @@ main: kit: entity: rarity: {
         {
           method: "GET"
           orig: "/rarities"
-          parts: [
-            "rarities"
+          segments: [
+            {
+              lit: "rarities"
+            }
           ]
           transform: {
             req: "`reqdata`"

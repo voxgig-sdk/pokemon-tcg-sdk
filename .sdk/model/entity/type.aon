@@ -20,8 +20,10 @@ main: kit: entity: type: {
         {
           method: "GET"
           orig: "/types"
-          parts: [
-            "types"
+          segments: [
+            {
+              lit: "types"
+            }
           ]
           transform: {
             req: "`reqdata`"

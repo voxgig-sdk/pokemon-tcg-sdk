@@ -20,8 +20,10 @@ main: kit: entity: subtype: {
         {
           method: "GET"
           orig: "/subtypes"
-          parts: [
-            "subtypes"
+          segments: [
+            {
+              lit: "subtypes"
+            }
           ]
           transform: {
             req: "`reqdata`"
