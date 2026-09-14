@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { PokemonTcgSDK } from '@voxgig-sdk/pokemon-tcg'
+import { PokemonTcgSDK } from '@voxgig-sdk/pokemon-tcg-sdk'
 
 const client = new PokemonTcgSDK({
   apikey: process.env.POKEMON_TCG_APIKEY,
@@ -672,7 +672,7 @@ pokemon-tcg/
 Import the SDK from the package root:
 
 ```ts
-import { PokemonTcgSDK } from '@voxgig-sdk/pokemon-tcg'
+import { PokemonTcgSDK } from '@voxgig-sdk/pokemon-tcg-sdk'
 ```
 
 ### Entity state

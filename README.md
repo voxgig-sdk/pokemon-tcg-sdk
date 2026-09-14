@@ -105,7 +105,7 @@ local results, err = client:Rarity():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/pokemon-tcg` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases) |
+| TypeScript | `@voxgig-sdk/pokemon-tcg-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases) |
 | Python | `voxgig-sdk-pokemon-tcg` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases) |
 | PHP | `voxgig-sdk/pokemon-tcg` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/pokemon-tcg-sdk/go` | `go get github.com/voxgig-sdk/pokemon-tcg-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Rarity():list()
 ### TypeScript
 
 ```ts
-import { PokemonTcgSDK } from '@voxgig-sdk/pokemon-tcg'
+import { PokemonTcgSDK } from '@voxgig-sdk/pokemon-tcg-sdk'
 
 const client = new PokemonTcgSDK({
   apikey: process.env.POKEMON_TCG_APIKEY,
