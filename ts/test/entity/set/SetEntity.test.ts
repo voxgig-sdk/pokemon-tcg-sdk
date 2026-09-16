@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { PokemonTcgSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('SetEntity', async () => {
 
     const live = 'TRUE' === process.env.POKEMON_TCG_TEST_LIVE
     for (const op of ['list', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'set.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'set.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set POKEMON_TCG_TEST_SET_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"id","req":false,"short":"Unique identifier for the set","type":"`$STRING`","index$":0},{"active":true,"name":"images","req":false,"short":"Image URLs for the set","type":"`$OBJECT`","index$":1},{"active":true,"name":"legalities","req":false,"short":"Legality of the set in different formats","type":"`$OBJECT`","index$":2},{"active":true,"name":"name","req":false,"short":"Name of the set","type":"`$STRING`","index$":3},{"active":true,"name":"printedTotal","req":false,"short":"Number of cards printed in the set","type":"`$INTEGER`","index$":4},{"active":true,"name":"ptcgoCode","req":false,"short":"PTCGO code for the set","type":"`$STRING`","index$":5},{"active":true,"format":"date","name":"releaseDate","req":false,"short":"Release date of the set","type":"`$STRING`","index$":6},{"active":true,"name":"series","req":false,"short":"Series the set belongs to","type":"`$STRING`","index$":7},{"active":true,"name":"total","req":false,"short":"Total number of cards in the set including secret rares","type":"`$INTEGER`","index$":8},{"active":true,"format":"date-time","name":"updatedAt","req":false,"short":"Last updated timestamp","type":"`$STRING`","index$":9}],"id":{"field":"id","name":"id"},"name":"set","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"query":[{"active":true,"kind":"query","name":"order_by","orig":"order_by","reqd":false,"type":"`$STRING`","index$":0},{"active":true,"example":1,"kind":"query","name":"page","orig":"page","reqd":false,"type":"`$INTEGER`","index$":1},{"active":true,"example":250,"kind":"query","name":"page_size","orig":"page_size","reqd":false,"type":"`$INTEGER`","index$":2},{"active":true,"kind":"query","name":"q","orig":"q","reqd":false,"type":"`$STRING`","index$":3}]},"contract":{"id":"GET /sets","json":"{\"operationId\":\"searchSets\",\"parameters\":[{\"description\":\"Query string for searching sets\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Number of results per page\",\"in\":\"query\",\"name\":\"pageSize\",\"required\":false,\"schema\":{\"default\":250,\"maximum\":250,\"type\":\"integer\"}},{\"description\":\"Field to order results by\",\"in\":\"query\",\"name\":\"orderBy\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"data\":{\"items\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the set\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the set\",\"properties\":{\"logo\":{\"format\":\"uri\",\"type\":\"string\"},\"symbol\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the set in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the set\",\"type\":\"string\"},\"printedTotal\":{\"description\":\"Number of cards printed in the set\",\"type\":\"integer\"},\"ptcgoCode\":{\"description\":\"PTCGO code for the set\",\"type\":\"string\"},\"releaseDate\":{\"description\":\"Release date of the set\",\"format\":\"date\",\"type\":\"string\"},\"series\":{\"description\":\"Series the set belongs to\",\"type\":\"string\"},\"total\":{\"description\":\"Total number of cards in the set including secret rares\",\"type\":\"integer\"},\"updatedAt\":{\"description\":\"Last updated timestamp\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"page\":{\"type\":\"integer\"},\"pageSize\":{\"type\":\"integer\"},\"totalCount\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of sets\"},\"400\":{\"description\":\"Bad request\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/sets","segments":[{"lit":"sets"}],"select":{"exist":["order_by","page","page_size","q"]},"transform":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /sets/{id}","json":"{\"operationId\":\"getSet\",\"parameters\":[{\"description\":\"The unique identifier for the set\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the set\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the set\",\"properties\":{\"logo\":{\"format\":\"uri\",\"type\":\"string\"},\"symbol\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the set in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the set\",\"type\":\"string\"},\"printedTotal\":{\"description\":\"Number of cards printed in the set\",\"type\":\"integer\"},\"ptcgoCode\":{\"description\":\"PTCGO code for the set\",\"type\":\"string\"},\"releaseDate\":{\"description\":\"Release date of the set\",\"format\":\"date\",\"type\":\"string\"},\"series\":{\"description\":\"Series the set belongs to\",\"type\":\"string\"},\"total\":{\"description\":\"Total number of cards in the set including secret rares\",\"type\":\"integer\"},\"updatedAt\":{\"description\":\"Last updated timestamp\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with set details\"},\"404\":{\"description\":\"Set not found\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/sets/{id}","segments":[{"lit":"sets"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"set","name__orig":"set","Name":"Set","name_":"set","name-":"set","NAME":"SET","index$":2}, {"active":true,"entity":"set","key$":"BasicSetFlow","kind":"basic","name":"BasicSetFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"set_ref01"}}],"index$":0},{"active":true,"data":{},"input":{"ref":"set_ref01","srcdatavar":"set_ref01_data","suffix":"_dt0"},"match":{"id":"set01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-set_ref01"}}],"index$":1}]}, 'Set')
     }
     const client = setup.client
     const struct = setup.struct
@@ -116,13 +115,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['POKEMON_TCG_TEST_SET_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'POKEMON_TCG_TEST_SET_ENTID': idmap,
     'POKEMON_TCG_TEST_LIVE': 'FALSE',
@@ -134,7 +126,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.POKEMON_TCG_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['POKEMON_TCG_TEST_SET_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new PokemonTcgSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -147,7 +145,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -160,7 +159,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.POKEMON_TCG_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

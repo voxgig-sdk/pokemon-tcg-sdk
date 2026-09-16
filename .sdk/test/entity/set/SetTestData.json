@@ -6,11 +6,11 @@
         "images": {},
         "legalities": {},
         "name": "s67",
-        "printedTotal": "s68",
+        "printedTotal": 104,
         "ptcgoCode": "s69",
         "releaseDate": "s6a",
         "series": "s6b",
-        "total": "s6c",
+        "total": 108,
         "updatedAt": "s6d"
       },
       "SET01": {
@@ -18,11 +18,11 @@
         "images": {},
         "legalities": {},
         "name": "scb",
-        "printedTotal": "scc",
+        "printedTotal": 204,
         "ptcgoCode": "scd",
         "releaseDate": "sce",
         "series": "scf",
-        "total": "sd0",
+        "total": 208,
         "updatedAt": "sd1"
       },
       "SET02": {
@@ -30,11 +30,11 @@
         "images": {},
         "legalities": {},
         "name": "s12f",
-        "printedTotal": "s130",
+        "printedTotal": 304,
         "ptcgoCode": "s131",
         "releaseDate": "s132",
         "series": "s133",
-        "total": "s134",
+        "total": 308,
         "updatedAt": "s135"
       }
     }
@@ -45,12 +45,307 @@
         "images": {},
         "legalities": {},
         "name": "s193",
-        "printedTotal": "s194",
+        "printedTotal": 404,
         "ptcgoCode": "s195",
         "releaseDate": "s196",
         "series": "s197",
-        "total": "s198",
+        "total": 408,
         "updatedAt": "s199"
+      }
+    }
+  },
+  "requests": {
+    "GET /sets": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "searchSets",
+        "parameters": [
+          {
+            "description": "Query string for searching sets",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Page number for pagination",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of results per page",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "schema": {
+              "default": 250,
+              "maximum": 250,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Field to order results by",
+            "in": "query",
+            "name": "orderBy",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "description": "Unique identifier for the set",
+                            "type": "string"
+                          },
+                          "images": {
+                            "description": "Image URLs for the set",
+                            "properties": {
+                              "logo": {
+                                "format": "uri",
+                                "type": "string"
+                              },
+                              "symbol": {
+                                "format": "uri",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "legalities": {
+                            "description": "Legality of the set in different formats",
+                            "properties": {
+                              "expanded": {
+                                "type": "string"
+                              },
+                              "standard": {
+                                "type": "string"
+                              },
+                              "unlimited": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "name": {
+                            "description": "Name of the set",
+                            "type": "string"
+                          },
+                          "printedTotal": {
+                            "description": "Number of cards printed in the set",
+                            "type": "integer"
+                          },
+                          "ptcgoCode": {
+                            "description": "PTCGO code for the set",
+                            "type": "string"
+                          },
+                          "releaseDate": {
+                            "description": "Release date of the set",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "series": {
+                            "description": "Series the set belongs to",
+                            "type": "string"
+                          },
+                          "total": {
+                            "description": "Total number of cards in the set including secret rares",
+                            "type": "integer"
+                          },
+                          "updatedAt": {
+                            "description": "Last updated timestamp",
+                            "format": "date-time",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "pageSize": {
+                      "type": "integer"
+                    },
+                    "totalCount": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with list of sets"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {}
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key for authentication. Register at the Developer Portal for higher rate limits.",
+            "in": "header",
+            "name": "X-Api-Key",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "GET /sets/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSet",
+        "parameters": [
+          {
+            "description": "The unique identifier for the set",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "id": {
+                          "description": "Unique identifier for the set",
+                          "type": "string"
+                        },
+                        "images": {
+                          "description": "Image URLs for the set",
+                          "properties": {
+                            "logo": {
+                              "format": "uri",
+                              "type": "string"
+                            },
+                            "symbol": {
+                              "format": "uri",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "legalities": {
+                          "description": "Legality of the set in different formats",
+                          "properties": {
+                            "expanded": {
+                              "type": "string"
+                            },
+                            "standard": {
+                              "type": "string"
+                            },
+                            "unlimited": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "name": {
+                          "description": "Name of the set",
+                          "type": "string"
+                        },
+                        "printedTotal": {
+                          "description": "Number of cards printed in the set",
+                          "type": "integer"
+                        },
+                        "ptcgoCode": {
+                          "description": "PTCGO code for the set",
+                          "type": "string"
+                        },
+                        "releaseDate": {
+                          "description": "Release date of the set",
+                          "format": "date",
+                          "type": "string"
+                        },
+                        "series": {
+                          "description": "Series the set belongs to",
+                          "type": "string"
+                        },
+                        "total": {
+                          "description": "Total number of cards in the set including secret rares",
+                          "type": "integer"
+                        },
+                        "updatedAt": {
+                          "description": "Last updated timestamp",
+                          "format": "date-time",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with set details"
+          },
+          "404": {
+            "description": "Set not found"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {}
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key for authentication. Register at the Developer Portal for higher rate limits.",
+            "in": "header",
+            "name": "X-Api-Key",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
       }
     }
   }

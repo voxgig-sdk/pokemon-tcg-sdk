@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "card": {
           "active": true,
@@ -259,6 +323,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /cards",
+                    "json": "{\"operationId\":\"searchCards\",\"parameters\":[{\"description\":\"Query string for searching cards (e.g., 'name:charizard', 'types:fire')\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Number of results per page\",\"in\":\"query\",\"name\":\"pageSize\",\"required\":false,\"schema\":{\"default\":250,\"maximum\":250,\"type\":\"integer\"}},{\"description\":\"Field to order results by\",\"in\":\"query\",\"name\":\"orderBy\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Comma-separated list of fields to return\",\"in\":\"query\",\"name\":\"select\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"data\":{\"items\":{\"properties\":{\"artist\":{\"description\":\"Artist who illustrated the card\",\"type\":\"string\"},\"attacks\":{\"description\":\"Attacks the Pokémon can perform\",\"items\":{\"properties\":{\"convertedEnergyCost\":{\"type\":\"integer\"},\"cost\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"damage\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"text\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"cardmarket\":{\"description\":\"Cardmarket information\",\"type\":\"object\"},\"convertedRetreatCost\":{\"description\":\"Numeric value of retreat cost\",\"type\":\"integer\"},\"evolvesFrom\":{\"description\":\"The Pokémon this card evolves from\",\"type\":\"string\"},\"evolvesTo\":{\"description\":\"The Pokémon this card evolves to\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"flavorText\":{\"description\":\"Flavor text on the card\",\"type\":\"string\"},\"hp\":{\"description\":\"Hit points of the Pokémon\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the card\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the card\",\"properties\":{\"large\":{\"format\":\"uri\",\"type\":\"string\"},\"small\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the card in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the card\",\"type\":\"string\"},\"nationalPokedexNumbers\":{\"description\":\"National Pokédex numbers\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"number\":{\"description\":\"Card number within the set\",\"type\":\"string\"},\"rarity\":{\"description\":\"Rarity of the card\",\"type\":\"string\"},\"resistances\":{\"description\":\"Resistances of the Pokémon\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"retreatCost\":{\"description\":\"Retreat cost of the Pokémon\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"rules\":{\"description\":\"Special rules for the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"set\":{\"description\":\"Set information for the card\",\"properties\":{\"id\":{\"description\":\"Unique identifier for the set\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the set\",\"properties\":{\"logo\":{\"format\":\"uri\",\"type\":\"string\"},\"symbol\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the set in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the set\",\"type\":\"string\"},\"printedTotal\":{\"description\":\"Number of cards printed in the set\",\"type\":\"integer\"},\"ptcgoCode\":{\"description\":\"PTCGO code for the set\",\"type\":\"string\"},\"releaseDate\":{\"description\":\"Release date of the set\",\"format\":\"date\",\"type\":\"string\"},\"series\":{\"description\":\"Series the set belongs to\",\"type\":\"string\"},\"total\":{\"description\":\"Total number of cards in the set including secret rares\",\"type\":\"integer\"},\"updatedAt\":{\"description\":\"Last updated timestamp\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"},\"subtypes\":{\"description\":\"Subtypes of the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"supertype\":{\"description\":\"Supertype of the card (e.g., Pokémon, Trainer, Energy)\",\"type\":\"string\"},\"tcgplayer\":{\"description\":\"TCGPlayer market information\",\"type\":\"object\"},\"types\":{\"description\":\"Energy types of the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"weaknesses\":{\"description\":\"Weaknesses of the Pokémon\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"},\"page\":{\"type\":\"integer\"},\"pageSize\":{\"type\":\"integer\"},\"totalCount\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of cards\"},\"400\":{\"description\":\"Bad request\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/cards",
@@ -300,6 +370,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /cards/{id}",
+                    "json": "{\"operationId\":\"getCard\",\"parameters\":[{\"description\":\"The unique identifier for the card\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"artist\":{\"description\":\"Artist who illustrated the card\",\"type\":\"string\"},\"attacks\":{\"description\":\"Attacks the Pokémon can perform\",\"items\":{\"properties\":{\"convertedEnergyCost\":{\"type\":\"integer\"},\"cost\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"damage\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"text\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"cardmarket\":{\"description\":\"Cardmarket information\",\"type\":\"object\"},\"convertedRetreatCost\":{\"description\":\"Numeric value of retreat cost\",\"type\":\"integer\"},\"evolvesFrom\":{\"description\":\"The Pokémon this card evolves from\",\"type\":\"string\"},\"evolvesTo\":{\"description\":\"The Pokémon this card evolves to\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"flavorText\":{\"description\":\"Flavor text on the card\",\"type\":\"string\"},\"hp\":{\"description\":\"Hit points of the Pokémon\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the card\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the card\",\"properties\":{\"large\":{\"format\":\"uri\",\"type\":\"string\"},\"small\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the card in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the card\",\"type\":\"string\"},\"nationalPokedexNumbers\":{\"description\":\"National Pokédex numbers\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"number\":{\"description\":\"Card number within the set\",\"type\":\"string\"},\"rarity\":{\"description\":\"Rarity of the card\",\"type\":\"string\"},\"resistances\":{\"description\":\"Resistances of the Pokémon\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"retreatCost\":{\"description\":\"Retreat cost of the Pokémon\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"rules\":{\"description\":\"Special rules for the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"set\":{\"description\":\"Set information for the card\",\"properties\":{\"id\":{\"description\":\"Unique identifier for the set\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the set\",\"properties\":{\"logo\":{\"format\":\"uri\",\"type\":\"string\"},\"symbol\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the set in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the set\",\"type\":\"string\"},\"printedTotal\":{\"description\":\"Number of cards printed in the set\",\"type\":\"integer\"},\"ptcgoCode\":{\"description\":\"PTCGO code for the set\",\"type\":\"string\"},\"releaseDate\":{\"description\":\"Release date of the set\",\"format\":\"date\",\"type\":\"string\"},\"series\":{\"description\":\"Series the set belongs to\",\"type\":\"string\"},\"total\":{\"description\":\"Total number of cards in the set including secret rares\",\"type\":\"integer\"},\"updatedAt\":{\"description\":\"Last updated timestamp\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"},\"subtypes\":{\"description\":\"Subtypes of the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"supertype\":{\"description\":\"Supertype of the card (e.g., Pokémon, Trainer, Energy)\",\"type\":\"string\"},\"tcgplayer\":{\"description\":\"TCGPlayer market information\",\"type\":\"object\"},\"types\":{\"description\":\"Energy types of the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"weaknesses\":{\"description\":\"Weaknesses of the Pokémon\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with card details\"},\"404\":{\"description\":\"Card not found\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -351,6 +427,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /rarities",
+                    "json": "{\"operationId\":\"getRarities\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of rarities\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/rarities",
@@ -501,6 +583,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /sets",
+                    "json": "{\"operationId\":\"searchSets\",\"parameters\":[{\"description\":\"Query string for searching sets\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Number of results per page\",\"in\":\"query\",\"name\":\"pageSize\",\"required\":false,\"schema\":{\"default\":250,\"maximum\":250,\"type\":\"integer\"}},{\"description\":\"Field to order results by\",\"in\":\"query\",\"name\":\"orderBy\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"data\":{\"items\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the set\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the set\",\"properties\":{\"logo\":{\"format\":\"uri\",\"type\":\"string\"},\"symbol\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the set in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the set\",\"type\":\"string\"},\"printedTotal\":{\"description\":\"Number of cards printed in the set\",\"type\":\"integer\"},\"ptcgoCode\":{\"description\":\"PTCGO code for the set\",\"type\":\"string\"},\"releaseDate\":{\"description\":\"Release date of the set\",\"format\":\"date\",\"type\":\"string\"},\"series\":{\"description\":\"Series the set belongs to\",\"type\":\"string\"},\"total\":{\"description\":\"Total number of cards in the set including secret rares\",\"type\":\"integer\"},\"updatedAt\":{\"description\":\"Last updated timestamp\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"page\":{\"type\":\"integer\"},\"pageSize\":{\"type\":\"integer\"},\"totalCount\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of sets\"},\"400\":{\"description\":\"Bad request\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/sets",
@@ -541,6 +629,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /sets/{id}",
+                    "json": "{\"operationId\":\"getSet\",\"parameters\":[{\"description\":\"The unique identifier for the set\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the set\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the set\",\"properties\":{\"logo\":{\"format\":\"uri\",\"type\":\"string\"},\"symbol\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the set in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the set\",\"type\":\"string\"},\"printedTotal\":{\"description\":\"Number of cards printed in the set\",\"type\":\"integer\"},\"ptcgoCode\":{\"description\":\"PTCGO code for the set\",\"type\":\"string\"},\"releaseDate\":{\"description\":\"Release date of the set\",\"format\":\"date\",\"type\":\"string\"},\"series\":{\"description\":\"Series the set belongs to\",\"type\":\"string\"},\"total\":{\"description\":\"Total number of cards in the set including secret rares\",\"type\":\"integer\"},\"updatedAt\":{\"description\":\"Last updated timestamp\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with set details\"},\"404\":{\"description\":\"Set not found\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -592,6 +686,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /subtypes",
+                    "json": "{\"operationId\":\"getSubtypes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of subtypes\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/subtypes",
@@ -635,6 +735,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /supertypes",
+                    "json": "{\"operationId\":\"getSupertypes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of supertypes\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/supertypes",
@@ -678,6 +784,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /types",
+                    "json": "{\"operationId\":\"getTypes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of types\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/types",
@@ -701,13 +813,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -797,6 +1119,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -1030,6 +1448,48 @@
         "website": "https://pokemontcg.io"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -1584,6 +2044,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -1625,7 +2086,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

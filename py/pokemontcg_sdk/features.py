@@ -1,12 +1,18 @@
 # PokemonTcg SDK feature factory
 
 from pokemontcg_sdk.feature.base_feature import PokemonTcgBaseFeature
+from pokemontcg_sdk.feature.ratelimit_feature import PokemonTcgRatelimitFeature
+from pokemontcg_sdk.feature.retry_feature import PokemonTcgRetryFeature
 from pokemontcg_sdk.feature.test_feature import PokemonTcgTestFeature
+from pokemontcg_sdk.feature.timeout_feature import PokemonTcgTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: PokemonTcgBaseFeature(),
+    "ratelimit": lambda: PokemonTcgRatelimitFeature(),
+    "retry": lambda: PokemonTcgRetryFeature(),
     "test": lambda: PokemonTcgTestFeature(),
+    "timeout": lambda: PokemonTcgTimeoutFeature(),
 }
 
 

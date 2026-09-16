@@ -4,7 +4,10 @@ declare(strict_types=1);
 // PokemonTcg SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class PokemonTcgFeatures
@@ -14,8 +17,14 @@ class PokemonTcgFeatures
         switch ($name) {
             case "base":
                 return new PokemonTcgBaseFeature();
+            case "ratelimit":
+                return new PokemonTcgRatelimitFeature();
+            case "retry":
+                return new PokemonTcgRetryFeature();
             case "test":
                 return new PokemonTcgTestFeature();
+            case "timeout":
+                return new PokemonTcgTimeoutFeature();
             default:
                 return new PokemonTcgBaseFeature();
         }
@@ -31,7 +40,10 @@ class PokemonTcgFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
