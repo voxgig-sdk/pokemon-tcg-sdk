@@ -123,6 +123,7 @@ class Config {
 
     auth: {
       prefix: '',
+      name: 'X-Api-Key',
     },
 
     headers: {
@@ -131,24 +132,24 @@ class Config {
 
     entity: {
       
-      card: {
-      },
-
-      rarity: {
-      },
-
-      set: {
-      },
-
-      subtype: {
-      },
-
-      supertype: {
-      },
-
-      type: {
-      },
-
+        card: {
+        },
+  
+        rarity: {
+        },
+  
+        set: {
+        },
+  
+        subtype: {
+        },
+  
+        supertype: {
+        },
+  
+        type: {
+        },
+  
     }
   }
 

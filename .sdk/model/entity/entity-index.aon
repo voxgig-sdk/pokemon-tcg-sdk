@@ -1,8 +1,8 @@
 # Entity Models
 
-@"card.aon"
-@"rarity.aon"
-@"set.aon"
-@"subtype.aon"
-@"supertype.aon"
-@"type.aon"
+@"./card.aon"
+@"./rarity.aon"
+@"./set.aon"
+@"./subtype.aon"
+@"./supertype.aon"
+@"./type.aon"

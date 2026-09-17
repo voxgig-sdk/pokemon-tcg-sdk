@@ -77,6 +77,7 @@ local function make_config()
       base = "https://api.pokemontcg.io/v2",
       auth = {
         prefix = "",
+        name = "X-Api-Key",
       },
       headers = {
         ["content-type"] = "application/json",

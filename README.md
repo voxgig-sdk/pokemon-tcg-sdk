@@ -105,12 +105,12 @@ local results, err = client:Rarity():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/pokemon-tcg-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases) |
-| Python | `voxgig-sdk-pokemon-tcg` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases) |
-| PHP | `voxgig-sdk/pokemon-tcg` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases) |
+| TypeScript | `@voxgig-sdk/pokemon-tcg-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/tags) |
+| Python | `voxgig-sdk-pokemon-tcg` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/tags) |
+| PHP | `voxgig-sdk/pokemon-tcg` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/pokemon-tcg-sdk/go` | `go get github.com/voxgig-sdk/pokemon-tcg-sdk/go@latest` |
-| Ruby | `voxgig-sdk-pokemon-tcg` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases) |
-| Lua | `voxgig-sdk-pokemon-tcg` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases) |
+| Ruby | `voxgig-sdk-pokemon-tcg` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/tags) |
+| Lua | `voxgig-sdk-pokemon-tcg` | publish pending — [install from git tag](https://github.com/voxgig-sdk/pokemon-tcg-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/pokemon-tcg-sdk/go-cli` | `go install github.com/voxgig-sdk/pokemon-tcg-sdk/go-cli/cmd/pokemon-tcg@latest` |
 | Go MCP server | `github.com/voxgig-sdk/pokemon-tcg-sdk/go-mcp` | `go get github.com/voxgig-sdk/pokemon-tcg-sdk/go-mcp@latest` |
 
