@@ -19,7 +19,6 @@ import type {
   RarityListMatch,
 } from '../PokemonTcgTypes'
 
-// TODO: needs Entity superclass
 class RarityEntity extends PokemonTcgEntityBase<Rarity> {
 
   constructor(client: PokemonTcgSDK, entopts: any) {

@@ -45,7 +45,7 @@ local cards, err = client:Card():list()
 if err then error(err) end
 
 for _, item in ipairs(cards) do
-  print(item["id"], item["artist"])
+  print(item["id"])
 end
 ```
 

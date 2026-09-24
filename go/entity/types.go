@@ -1,7 +1,7 @@
 // Typed models for the PokemonTcg SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,30 +14,6 @@ import (
 
 // Card is the typed data model for the card entity.
 type Card struct {
-	Artist *string `json:"artist,omitempty"`
-	Attacks *[]any `json:"attacks,omitempty"`
-	Cardmarket *map[string]any `json:"cardmarket,omitempty"`
-	ConvertedRetreatCost *int `json:"convertedRetreatCost,omitempty"`
-	EvolvesFrom *string `json:"evolvesFrom,omitempty"`
-	EvolvesTo *[]any `json:"evolvesTo,omitempty"`
-	FlavorText *string `json:"flavorText,omitempty"`
-	Hp *string `json:"hp,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Images *map[string]any `json:"images,omitempty"`
-	Legalities *map[string]any `json:"legalities,omitempty"`
-	Name *string `json:"name,omitempty"`
-	NationalPokedexNumbers *[]any `json:"nationalPokedexNumbers,omitempty"`
-	Number *string `json:"number,omitempty"`
-	Rarity *string `json:"rarity,omitempty"`
-	Resistances *[]any `json:"resistances,omitempty"`
-	RetreatCost *[]any `json:"retreatCost,omitempty"`
-	Rules *[]any `json:"rules,omitempty"`
-	Set *map[string]any `json:"set,omitempty"`
-	Subtypes *[]any `json:"subtypes,omitempty"`
-	Supertype *string `json:"supertype,omitempty"`
-	Tcgplayer *map[string]any `json:"tcgplayer,omitempty"`
-	Types *[]any `json:"types,omitempty"`
-	Weaknesses *[]any `json:"weaknesses,omitempty"`
 }
 
 // CardLoadMatch is the typed request payload for Card.LoadTyped.
@@ -56,7 +32,6 @@ type CardListMatch struct {
 
 // Rarity is the typed data model for the rarity entity.
 type Rarity struct {
-	Data *[]any `json:"data,omitempty"`
 }
 
 // RarityListMatch is the typed request payload for Rarity.ListTyped.
@@ -66,16 +41,6 @@ type RarityListMatch struct {
 
 // Set is the typed data model for the set entity.
 type Set struct {
-	Id *string `json:"id,omitempty"`
-	Images *map[string]any `json:"images,omitempty"`
-	Legalities *map[string]any `json:"legalities,omitempty"`
-	Name *string `json:"name,omitempty"`
-	PrintedTotal *int `json:"printedTotal,omitempty"`
-	PtcgoCode *string `json:"ptcgoCode,omitempty"`
-	ReleaseDate *string `json:"releaseDate,omitempty"`
-	Series *string `json:"series,omitempty"`
-	Total *int `json:"total,omitempty"`
-	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
 
 // SetLoadMatch is the typed request payload for Set.LoadTyped.
@@ -93,7 +58,6 @@ type SetListMatch struct {
 
 // Subtype is the typed data model for the subtype entity.
 type Subtype struct {
-	Data *[]any `json:"data,omitempty"`
 }
 
 // SubtypeListMatch is the typed request payload for Subtype.ListTyped.
@@ -103,7 +67,6 @@ type SubtypeListMatch struct {
 
 // Supertype is the typed data model for the supertype entity.
 type Supertype struct {
-	Data *[]any `json:"data,omitempty"`
 }
 
 // SupertypeListMatch is the typed request payload for Supertype.ListTyped.
@@ -113,7 +76,6 @@ type SupertypeListMatch struct {
 
 // Type is the typed data model for the type entity.
 type Type struct {
-	Data *[]any `json:"data,omitempty"`
 }
 
 // TypeListMatch is the typed request payload for Type.ListTyped.

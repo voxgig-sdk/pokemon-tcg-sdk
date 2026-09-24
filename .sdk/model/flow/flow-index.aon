@@ -1,8 +1,0 @@
-# Flows
-
-@"./BasicCardFlow.aon"
-@"./BasicRarityFlow.aon"
-@"./BasicSetFlow.aon"
-@"./BasicSubtypeFlow.aon"
-@"./BasicSupertypeFlow.aon"
-@"./BasicTypeFlow.aon"

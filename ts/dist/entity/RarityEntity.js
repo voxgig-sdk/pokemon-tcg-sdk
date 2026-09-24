@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RarityEntity = void 0;
 const PokemonTcgEntityBase_1 = require("../PokemonTcgEntityBase");
-// TODO: needs Entity superclass
 class RarityEntity extends PokemonTcgEntityBase_1.PokemonTcgEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

@@ -1,0 +1,200 @@
+# Entity: set
+
+main: kit: entity: set: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier for the set"
+      t: "`$STRING`"
+    }
+    images: {
+      h: "Images"
+      n: "images"
+      r: false
+      sh: "Image URLs for the set"
+      t: "`$OBJECT`"
+    }
+    legalities: {
+      h: "Legalities"
+      n: "legalities"
+      r: false
+      sh: "Legality of the set in different formats"
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the set"
+      t: "`$STRING`"
+    }
+    printedTotal: {
+      h: "Printed Total"
+      n: "printedTotal"
+      r: false
+      sh: "Number of cards printed in the set"
+      t: "`$INTEGER`"
+    }
+    ptcgoCode: {
+      h: "Ptcgo Code"
+      n: "ptcgoCode"
+      r: false
+      sh: "PTCGO code for the set"
+      t: "`$STRING`"
+    }
+    releaseDate: {
+      fo: "date"
+      h: "Release Date"
+      n: "releaseDate"
+      r: false
+      sh: "Release date of the set"
+      t: "`$STRING`"
+    }
+    series: {
+      h: "Series"
+      n: "series"
+      r: false
+      sh: "Series the set belongs to"
+      t: "`$STRING`"
+    }
+    total: {
+      h: "Total"
+      n: "total"
+      r: false
+      sh: "Total number of cards in the set including secret rares"
+      t: "`$INTEGER`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "Last updated timestamp"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "set"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /sets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "order_by"
+                or: "order_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 250
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/sets"
+          q: {
+            exist: [
+              "order_by"
+              "page"
+              "page_size"
+              "q"
+            ]
+          }
+          s: [
+            {
+              lit: "sets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /sets/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/sets/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "sets"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

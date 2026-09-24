@@ -24,182 +24,272 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "card": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "artist",
-              "req": false,
-              "short": "Artist who illustrated the card",
-              "type": "`$STRING`"
+          "fields": {
+            "artist": {
+              "a": true,
+              "h": "Artist",
+              "n": "artist",
+              "r": false,
+              "sh": "Artist who illustrated the card",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "attacks",
-              "req": false,
-              "short": "Attacks the Pokémon can perform",
-              "type": "`$ARRAY`"
+            "attacks": {
+              "a": true,
+              "h": "Attacks",
+              "n": "attacks",
+              "r": false,
+              "sh": "Attacks the Pokémon can perform",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "cardmarket",
-              "req": false,
-              "short": "Cardmarket information",
-              "type": "`$OBJECT`"
+            "cardmarket": {
+              "a": true,
+              "h": "Cardmarket",
+              "n": "cardmarket",
+              "r": false,
+              "sh": "Cardmarket information",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "convertedRetreatCost",
-              "req": false,
-              "short": "Numeric value of retreat cost",
-              "type": "`$INTEGER`"
+            "convertedRetreatCost": {
+              "a": true,
+              "h": "Converted Retreat Cost",
+              "n": "convertedRetreatCost",
+              "r": false,
+              "sh": "Numeric value of retreat cost",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "evolvesFrom",
-              "req": false,
-              "short": "The Pokémon this card evolves from",
-              "type": "`$STRING`"
+            "evolvesFrom": {
+              "a": true,
+              "h": "Evolves From",
+              "n": "evolvesFrom",
+              "r": false,
+              "sh": "The Pokémon this card evolves from",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "evolvesTo",
-              "req": false,
-              "short": "The Pokémon this card evolves to",
-              "type": "`$ARRAY`"
+            "evolvesTo": {
+              "a": true,
+              "h": "Evolves To",
+              "n": "evolvesTo",
+              "r": false,
+              "sh": "The Pokémon this card evolves to",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "flavorText",
-              "req": false,
-              "short": "Flavor text on the card",
-              "type": "`$STRING`"
+            "flavorText": {
+              "a": true,
+              "h": "Flavor Text",
+              "n": "flavorText",
+              "r": false,
+              "sh": "Flavor text on the card",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "hp",
-              "req": false,
-              "short": "Hit points of the Pokémon",
-              "type": "`$STRING`"
+            "hp": {
+              "a": true,
+              "h": "Hp",
+              "n": "hp",
+              "r": false,
+              "sh": "Hit points of the Pokémon",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the card",
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the card",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "images",
-              "req": false,
-              "short": "Image URLs for the card",
-              "type": "`$OBJECT`"
+            "images": {
+              "a": true,
+              "h": "Images",
+              "n": "images",
+              "r": false,
+              "sh": "Image URLs for the card",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "legalities",
-              "req": false,
-              "short": "Legality of the card in different formats",
-              "type": "`$OBJECT`"
+            "legalities": {
+              "a": true,
+              "h": "Legalities",
+              "n": "legalities",
+              "r": false,
+              "sh": "Legality of the card in different formats",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the card",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the card",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "nationalPokedexNumbers",
-              "req": false,
-              "short": "National Pokédex numbers",
-              "type": "`$ARRAY`"
+            "nationalPokedexNumbers": {
+              "a": true,
+              "h": "National Pokedex Numbers",
+              "n": "nationalPokedexNumbers",
+              "r": false,
+              "sh": "National Pokédex numbers",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "number",
-              "req": false,
-              "short": "Card number within the set",
-              "type": "`$STRING`"
+            "number": {
+              "a": true,
+              "h": "Number",
+              "n": "number",
+              "r": false,
+              "sh": "Card number within the set",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "rarity",
-              "req": false,
-              "short": "Rarity of the card",
-              "type": "`$STRING`"
+            "rarity": {
+              "a": true,
+              "h": "Rarity",
+              "n": "rarity",
+              "r": false,
+              "sh": "Rarity of the card",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "resistances",
-              "req": false,
-              "short": "Resistances of the Pokémon",
-              "type": "`$ARRAY`"
+            "resistances": {
+              "a": true,
+              "h": "Resistances",
+              "n": "resistances",
+              "r": false,
+              "sh": "Resistances of the Pokémon",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "retreatCost",
-              "req": false,
-              "short": "Retreat cost of the Pokémon",
-              "type": "`$ARRAY`"
+            "retreatCost": {
+              "a": true,
+              "h": "Retreat Cost",
+              "n": "retreatCost",
+              "r": false,
+              "sh": "Retreat cost of the Pokémon",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "rules",
-              "req": false,
-              "short": "Special rules for the card",
-              "type": "`$ARRAY`"
+            "rules": {
+              "a": true,
+              "h": "Rules",
+              "n": "rules",
+              "r": false,
+              "sh": "Special rules for the card",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "set",
-              "req": false,
-              "short": "Set information for the card",
-              "type": "`$OBJECT`"
+            "set": {
+              "a": true,
+              "h": "Set",
+              "n": "set",
+              "r": false,
+              "sh": "Set information for the card",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "subtypes",
-              "req": false,
-              "short": "Subtypes of the card",
-              "type": "`$ARRAY`"
+            "subtypes": {
+              "a": true,
+              "h": "Subtypes",
+              "n": "subtypes",
+              "r": false,
+              "sh": "Subtypes of the card",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "supertype",
-              "req": false,
-              "short": "Supertype of the card (e.g., Pokémon, Trainer, Energy)",
-              "type": "`$STRING`"
+            "supertype": {
+              "a": true,
+              "h": "Supertype",
+              "n": "supertype",
+              "r": false,
+              "sh": "Supertype of the card (e.g., Pokémon, Trainer, Energy)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "tcgplayer",
-              "req": false,
-              "short": "TCGPlayer market information",
-              "type": "`$OBJECT`"
+            "tcgplayer": {
+              "a": true,
+              "h": "Tcgplayer",
+              "n": "tcgplayer",
+              "r": false,
+              "sh": "TCGPlayer market information",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "types",
-              "req": false,
-              "short": "Energy types of the card",
-              "type": "`$ARRAY`"
+            "types": {
+              "a": true,
+              "h": "Types",
+              "n": "types",
+              "r": false,
+              "sh": "Energy types of the card",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "weaknesses",
-              "req": false,
-              "short": "Weaknesses of the Pokémon",
-              "type": "`$ARRAY`"
+            "weaknesses": {
+              "a": true,
+              "h": "Weaknesses",
+              "n": "weaknesses",
+              "r": false,
+              "sh": "Weaknesses of the Pokémon",
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -211,68 +301,62 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /cards",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "order_by",
-                        "orig": "order_by",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "order_by",
+                        "or": "order_by",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 250,
-                        "kind": "query",
-                        "name": "page_size",
-                        "orig": "page_size",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 250,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "page_size",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "select",
-                        "orig": "select",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "select",
+                        "or": "select",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /cards",
-                    "json": "{\"operationId\":\"searchCards\",\"parameters\":[{\"description\":\"Query string for searching cards (e.g., 'name:charizard', 'types:fire')\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Number of results per page\",\"in\":\"query\",\"name\":\"pageSize\",\"required\":false,\"schema\":{\"default\":250,\"maximum\":250,\"type\":\"integer\"}},{\"description\":\"Field to order results by\",\"in\":\"query\",\"name\":\"orderBy\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Comma-separated list of fields to return\",\"in\":\"query\",\"name\":\"select\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"data\":{\"items\":{\"properties\":{\"artist\":{\"description\":\"Artist who illustrated the card\",\"type\":\"string\"},\"attacks\":{\"description\":\"Attacks the Pokémon can perform\",\"items\":{\"properties\":{\"convertedEnergyCost\":{\"type\":\"integer\"},\"cost\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"damage\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"text\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"cardmarket\":{\"description\":\"Cardmarket information\",\"type\":\"object\"},\"convertedRetreatCost\":{\"description\":\"Numeric value of retreat cost\",\"type\":\"integer\"},\"evolvesFrom\":{\"description\":\"The Pokémon this card evolves from\",\"type\":\"string\"},\"evolvesTo\":{\"description\":\"The Pokémon this card evolves to\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"flavorText\":{\"description\":\"Flavor text on the card\",\"type\":\"string\"},\"hp\":{\"description\":\"Hit points of the Pokémon\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the card\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the card\",\"properties\":{\"large\":{\"format\":\"uri\",\"type\":\"string\"},\"small\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the card in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the card\",\"type\":\"string\"},\"nationalPokedexNumbers\":{\"description\":\"National Pokédex numbers\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"number\":{\"description\":\"Card number within the set\",\"type\":\"string\"},\"rarity\":{\"description\":\"Rarity of the card\",\"type\":\"string\"},\"resistances\":{\"description\":\"Resistances of the Pokémon\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"retreatCost\":{\"description\":\"Retreat cost of the Pokémon\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"rules\":{\"description\":\"Special rules for the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"set\":{\"description\":\"Set information for the card\",\"properties\":{\"id\":{\"description\":\"Unique identifier for the set\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the set\",\"properties\":{\"logo\":{\"format\":\"uri\",\"type\":\"string\"},\"symbol\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the set in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the set\",\"type\":\"string\"},\"printedTotal\":{\"description\":\"Number of cards printed in the set\",\"type\":\"integer\"},\"ptcgoCode\":{\"description\":\"PTCGO code for the set\",\"type\":\"string\"},\"releaseDate\":{\"description\":\"Release date of the set\",\"format\":\"date\",\"type\":\"string\"},\"series\":{\"description\":\"Series the set belongs to\",\"type\":\"string\"},\"total\":{\"description\":\"Total number of cards in the set including secret rares\",\"type\":\"integer\"},\"updatedAt\":{\"description\":\"Last updated timestamp\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"},\"subtypes\":{\"description\":\"Subtypes of the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"supertype\":{\"description\":\"Supertype of the card (e.g., Pokémon, Trainer, Energy)\",\"type\":\"string\"},\"tcgplayer\":{\"description\":\"TCGPlayer market information\",\"type\":\"object\"},\"types\":{\"description\":\"Energy types of the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"weaknesses\":{\"description\":\"Weaknesses of the Pokémon\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"},\"page\":{\"type\":\"integer\"},\"pageSize\":{\"type\":\"integer\"},\"totalCount\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of cards\"},\"400\":{\"description\":\"Bad request\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/cards",
-                  "segments": [
-                    {
-                      "lit": "cards"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/cards",
+                  "q": {
                     "exist": [
                       "order_by",
                       "page",
@@ -281,7 +365,13 @@
                       "select"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "cards"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -293,29 +383,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /cards/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /cards/{id}",
-                    "json": "{\"operationId\":\"getCard\",\"parameters\":[{\"description\":\"The unique identifier for the card\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"artist\":{\"description\":\"Artist who illustrated the card\",\"type\":\"string\"},\"attacks\":{\"description\":\"Attacks the Pokémon can perform\",\"items\":{\"properties\":{\"convertedEnergyCost\":{\"type\":\"integer\"},\"cost\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"damage\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"text\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"cardmarket\":{\"description\":\"Cardmarket information\",\"type\":\"object\"},\"convertedRetreatCost\":{\"description\":\"Numeric value of retreat cost\",\"type\":\"integer\"},\"evolvesFrom\":{\"description\":\"The Pokémon this card evolves from\",\"type\":\"string\"},\"evolvesTo\":{\"description\":\"The Pokémon this card evolves to\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"flavorText\":{\"description\":\"Flavor text on the card\",\"type\":\"string\"},\"hp\":{\"description\":\"Hit points of the Pokémon\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the card\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the card\",\"properties\":{\"large\":{\"format\":\"uri\",\"type\":\"string\"},\"small\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the card in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the card\",\"type\":\"string\"},\"nationalPokedexNumbers\":{\"description\":\"National Pokédex numbers\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"number\":{\"description\":\"Card number within the set\",\"type\":\"string\"},\"rarity\":{\"description\":\"Rarity of the card\",\"type\":\"string\"},\"resistances\":{\"description\":\"Resistances of the Pokémon\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"retreatCost\":{\"description\":\"Retreat cost of the Pokémon\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"rules\":{\"description\":\"Special rules for the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"set\":{\"description\":\"Set information for the card\",\"properties\":{\"id\":{\"description\":\"Unique identifier for the set\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the set\",\"properties\":{\"logo\":{\"format\":\"uri\",\"type\":\"string\"},\"symbol\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the set in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the set\",\"type\":\"string\"},\"printedTotal\":{\"description\":\"Number of cards printed in the set\",\"type\":\"integer\"},\"ptcgoCode\":{\"description\":\"PTCGO code for the set\",\"type\":\"string\"},\"releaseDate\":{\"description\":\"Release date of the set\",\"format\":\"date\",\"type\":\"string\"},\"series\":{\"description\":\"Series the set belongs to\",\"type\":\"string\"},\"total\":{\"description\":\"Total number of cards in the set including secret rares\",\"type\":\"integer\"},\"updatedAt\":{\"description\":\"Last updated timestamp\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"},\"subtypes\":{\"description\":\"Subtypes of the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"supertype\":{\"description\":\"Supertype of the card (e.g., Pokémon, Trainer, Energy)\",\"type\":\"string\"},\"tcgplayer\":{\"description\":\"TCGPlayer market information\",\"type\":\"object\"},\"types\":{\"description\":\"Energy types of the card\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"weaknesses\":{\"description\":\"Weaknesses of the Pokémon\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with card details\"},\"404\":{\"description\":\"Card not found\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/cards/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/cards/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "cards"
                     },
@@ -323,12 +418,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -345,14 +435,15 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "data",
-              "req": false,
-              "type": "`$ARRAY`"
+          "fields": {
+            "data": {
+              "a": true,
+              "h": "Data",
+              "n": "data",
+              "r": false,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "name": "rarity",
           "op": {
             "list": {
@@ -360,24 +451,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /rarities",
-                    "json": "{\"operationId\":\"getRarities\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of rarities\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/rarities",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/rarities",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "rarities"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -394,80 +485,90 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the set",
-              "type": "`$STRING`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the set",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "images",
-              "req": false,
-              "short": "Image URLs for the set",
-              "type": "`$OBJECT`"
+            "images": {
+              "a": true,
+              "h": "Images",
+              "n": "images",
+              "r": false,
+              "sh": "Image URLs for the set",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "legalities",
-              "req": false,
-              "short": "Legality of the set in different formats",
-              "type": "`$OBJECT`"
+            "legalities": {
+              "a": true,
+              "h": "Legalities",
+              "n": "legalities",
+              "r": false,
+              "sh": "Legality of the set in different formats",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the set",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the set",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "printedTotal",
-              "req": false,
-              "short": "Number of cards printed in the set",
-              "type": "`$INTEGER`"
+            "printedTotal": {
+              "a": true,
+              "h": "Printed Total",
+              "n": "printedTotal",
+              "r": false,
+              "sh": "Number of cards printed in the set",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "ptcgoCode",
-              "req": false,
-              "short": "PTCGO code for the set",
-              "type": "`$STRING`"
+            "ptcgoCode": {
+              "a": true,
+              "h": "Ptcgo Code",
+              "n": "ptcgoCode",
+              "r": false,
+              "sh": "PTCGO code for the set",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "releaseDate",
-              "req": false,
-              "short": "Release date of the set",
-              "type": "`$STRING`"
+            "releaseDate": {
+              "a": true,
+              "fo": "date",
+              "h": "Release Date",
+              "n": "releaseDate",
+              "r": false,
+              "sh": "Release date of the set",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "series",
-              "req": false,
-              "short": "Series the set belongs to",
-              "type": "`$STRING`"
+            "series": {
+              "a": true,
+              "h": "Series",
+              "n": "series",
+              "r": false,
+              "sh": "Series the set belongs to",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "total",
-              "req": false,
-              "short": "Total number of cards in the set including secret rares",
-              "type": "`$INTEGER`"
+            "total": {
+              "a": true,
+              "h": "Total",
+              "n": "total",
+              "r": false,
+              "sh": "Total number of cards in the set including secret rares",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "updatedAt",
-              "req": false,
-              "short": "Last updated timestamp",
-              "type": "`$STRING`"
+            "updatedAt": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Updated At",
+              "n": "updatedAt",
+              "r": false,
+              "sh": "Last updated timestamp",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -479,60 +580,54 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /sets",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "order_by",
-                        "orig": "order_by",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "order_by",
+                        "or": "order_by",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 250,
-                        "kind": "query",
-                        "name": "page_size",
-                        "orig": "page_size",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 250,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "page_size",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /sets",
-                    "json": "{\"operationId\":\"searchSets\",\"parameters\":[{\"description\":\"Query string for searching sets\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Number of results per page\",\"in\":\"query\",\"name\":\"pageSize\",\"required\":false,\"schema\":{\"default\":250,\"maximum\":250,\"type\":\"integer\"}},{\"description\":\"Field to order results by\",\"in\":\"query\",\"name\":\"orderBy\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"data\":{\"items\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the set\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the set\",\"properties\":{\"logo\":{\"format\":\"uri\",\"type\":\"string\"},\"symbol\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the set in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the set\",\"type\":\"string\"},\"printedTotal\":{\"description\":\"Number of cards printed in the set\",\"type\":\"integer\"},\"ptcgoCode\":{\"description\":\"PTCGO code for the set\",\"type\":\"string\"},\"releaseDate\":{\"description\":\"Release date of the set\",\"format\":\"date\",\"type\":\"string\"},\"series\":{\"description\":\"Series the set belongs to\",\"type\":\"string\"},\"total\":{\"description\":\"Total number of cards in the set including secret rares\",\"type\":\"integer\"},\"updatedAt\":{\"description\":\"Last updated timestamp\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"page\":{\"type\":\"integer\"},\"pageSize\":{\"type\":\"integer\"},\"totalCount\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of sets\"},\"400\":{\"description\":\"Bad request\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/sets",
-                  "segments": [
-                    {
-                      "lit": "sets"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/sets",
+                  "q": {
                     "exist": [
                       "order_by",
                       "page",
@@ -540,7 +635,13 @@
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "sets"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -552,29 +653,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /sets/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /sets/{id}",
-                    "json": "{\"operationId\":\"getSet\",\"parameters\":[{\"description\":\"The unique identifier for the set\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the set\",\"type\":\"string\"},\"images\":{\"description\":\"Image URLs for the set\",\"properties\":{\"logo\":{\"format\":\"uri\",\"type\":\"string\"},\"symbol\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"legalities\":{\"description\":\"Legality of the set in different formats\",\"properties\":{\"expanded\":{\"type\":\"string\"},\"standard\":{\"type\":\"string\"},\"unlimited\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the set\",\"type\":\"string\"},\"printedTotal\":{\"description\":\"Number of cards printed in the set\",\"type\":\"integer\"},\"ptcgoCode\":{\"description\":\"PTCGO code for the set\",\"type\":\"string\"},\"releaseDate\":{\"description\":\"Release date of the set\",\"format\":\"date\",\"type\":\"string\"},\"series\":{\"description\":\"Series the set belongs to\",\"type\":\"string\"},\"total\":{\"description\":\"Total number of cards in the set including secret rares\",\"type\":\"integer\"},\"updatedAt\":{\"description\":\"Last updated timestamp\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with set details\"},\"404\":{\"description\":\"Set not found\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/sets/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/sets/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "sets"
                     },
@@ -582,12 +688,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -604,14 +705,15 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "data",
-              "req": false,
-              "type": "`$ARRAY`"
+          "fields": {
+            "data": {
+              "a": true,
+              "h": "Data",
+              "n": "data",
+              "r": false,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "name": "subtype",
           "op": {
             "list": {
@@ -619,24 +721,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /subtypes",
-                    "json": "{\"operationId\":\"getSubtypes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of subtypes\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/subtypes",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/subtypes",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "subtypes"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -653,14 +755,15 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "data",
-              "req": false,
-              "type": "`$ARRAY`"
+          "fields": {
+            "data": {
+              "a": true,
+              "h": "Data",
+              "n": "data",
+              "r": false,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "name": "supertype",
           "op": {
             "list": {
@@ -668,24 +771,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /supertypes",
-                    "json": "{\"operationId\":\"getSupertypes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of supertypes\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/supertypes",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/supertypes",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "supertypes"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -702,14 +805,15 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "data",
-              "req": false,
-              "type": "`$ARRAY`"
+          "fields": {
+            "data": {
+              "a": true,
+              "h": "Data",
+              "n": "data",
+              "r": false,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "name": "type",
           "op": {
             "list": {
@@ -717,24 +821,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /types",
-                    "json": "{\"operationId\":\"getTypes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of types\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/types",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/types",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "types"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -1163,13 +1267,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1179,19 +1283,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "card_ref01",
                 "srcdatavar": "card_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "card01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1211,13 +1315,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1237,13 +1341,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1253,19 +1357,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "set_ref01",
                 "srcdatavar": "set_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "set01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1285,13 +1389,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1311,13 +1415,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1337,13 +1441,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

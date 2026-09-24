@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -159,123 +152,147 @@ class Config {
       "fields": [
         {
           "name": "artist",
-          "short": "Artist who illustrated the card",
-          "type": "`$STRING`"
+          "title": "Artist",
+          "type": "`$STRING`",
+          "short": "Artist who illustrated the card"
         },
         {
           "name": "attacks",
-          "short": "Attacks the Pokémon can perform",
-          "type": "`$ARRAY`"
+          "title": "Attacks",
+          "type": "`$ARRAY`",
+          "short": "Attacks the Pokémon can perform"
         },
         {
           "name": "cardmarket",
-          "short": "Cardmarket information",
-          "type": "`$OBJECT`"
+          "title": "Cardmarket",
+          "type": "`$OBJECT`",
+          "short": "Cardmarket information"
         },
         {
           "name": "convertedRetreatCost",
-          "short": "Numeric value of retreat cost",
-          "type": "`$INTEGER`"
+          "title": "Converted Retreat Cost",
+          "type": "`$INTEGER`",
+          "short": "Numeric value of retreat cost"
         },
         {
           "name": "evolvesFrom",
-          "short": "The Pokémon this card evolves from",
-          "type": "`$STRING`"
+          "title": "Evolves From",
+          "type": "`$STRING`",
+          "short": "The Pokémon this card evolves from"
         },
         {
           "name": "evolvesTo",
-          "short": "The Pokémon this card evolves to",
-          "type": "`$ARRAY`"
+          "title": "Evolves To",
+          "type": "`$ARRAY`",
+          "short": "The Pokémon this card evolves to"
         },
         {
           "name": "flavorText",
-          "short": "Flavor text on the card",
-          "type": "`$STRING`"
+          "title": "Flavor Text",
+          "type": "`$STRING`",
+          "short": "Flavor text on the card"
         },
         {
           "name": "hp",
-          "short": "Hit points of the Pokémon",
-          "type": "`$STRING`"
+          "title": "Hp",
+          "type": "`$STRING`",
+          "short": "Hit points of the Pokémon"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the card",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the card"
         },
         {
           "name": "images",
-          "short": "Image URLs for the card",
-          "type": "`$OBJECT`"
+          "title": "Images",
+          "type": "`$OBJECT`",
+          "short": "Image URLs for the card"
         },
         {
           "name": "legalities",
-          "short": "Legality of the card in different formats",
-          "type": "`$OBJECT`"
+          "title": "Legalities",
+          "type": "`$OBJECT`",
+          "short": "Legality of the card in different formats"
         },
         {
           "name": "name",
-          "short": "Name of the card",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the card"
         },
         {
           "name": "nationalPokedexNumbers",
-          "short": "National Pokédex numbers",
-          "type": "`$ARRAY`"
+          "title": "National Pokedex Numbers",
+          "type": "`$ARRAY`",
+          "short": "National Pokédex numbers"
         },
         {
           "name": "number",
-          "short": "Card number within the set",
-          "type": "`$STRING`"
+          "title": "Number",
+          "type": "`$STRING`",
+          "short": "Card number within the set"
         },
         {
           "name": "rarity",
-          "short": "Rarity of the card",
-          "type": "`$STRING`"
+          "title": "Rarity",
+          "type": "`$STRING`",
+          "short": "Rarity of the card"
         },
         {
           "name": "resistances",
-          "short": "Resistances of the Pokémon",
-          "type": "`$ARRAY`"
+          "title": "Resistances",
+          "type": "`$ARRAY`",
+          "short": "Resistances of the Pokémon"
         },
         {
           "name": "retreatCost",
-          "short": "Retreat cost of the Pokémon",
-          "type": "`$ARRAY`"
+          "title": "Retreat Cost",
+          "type": "`$ARRAY`",
+          "short": "Retreat cost of the Pokémon"
         },
         {
           "name": "rules",
-          "short": "Special rules for the card",
-          "type": "`$ARRAY`"
+          "title": "Rules",
+          "type": "`$ARRAY`",
+          "short": "Special rules for the card"
         },
         {
           "name": "set",
-          "short": "Set information for the card",
-          "type": "`$OBJECT`"
+          "title": "Set",
+          "type": "`$OBJECT`",
+          "short": "Set information for the card"
         },
         {
           "name": "subtypes",
-          "short": "Subtypes of the card",
-          "type": "`$ARRAY`"
+          "title": "Subtypes",
+          "type": "`$ARRAY`",
+          "short": "Subtypes of the card"
         },
         {
           "name": "supertype",
-          "short": "Supertype of the card (e.g., Pokémon, Trainer, Energy)",
-          "type": "`$STRING`"
+          "title": "Supertype",
+          "type": "`$STRING`",
+          "short": "Supertype of the card (e.g., Pokémon, Trainer, Energy)"
         },
         {
           "name": "tcgplayer",
-          "short": "TCGPlayer market information",
-          "type": "`$OBJECT`"
+          "title": "Tcgplayer",
+          "type": "`$OBJECT`",
+          "short": "TCGPlayer market information"
         },
         {
           "name": "types",
-          "short": "Energy types of the card",
-          "type": "`$ARRAY`"
+          "title": "Types",
+          "type": "`$ARRAY`",
+          "short": "Energy types of the card"
         },
         {
           "name": "weaknesses",
-          "short": "Weaknesses of the Pokémon",
-          "type": "`$ARRAY`"
+          "title": "Weaknesses",
+          "type": "`$ARRAY`",
+          "short": "Weaknesses of the Pokémon"
         }
       ],
       "id": {
@@ -289,42 +306,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "order_by",
-                    "orig": "order_by",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 250,
-                    "kind": "query",
-                    "name": "page_size",
-                    "orig": "page_size",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "q",
-                    "orig": "q",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "select",
-                    "orig": "select",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/cards",
@@ -333,6 +314,50 @@ class Config {
                   "lit": "cards"
                 }
               ],
+              "parts": [
+                "cards"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.data`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "order_by",
+                    "orig": "order_by",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  },
+                  {
+                    "name": "page_size",
+                    "orig": "page_size",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 250
+                  },
+                  {
+                    "name": "q",
+                    "orig": "q",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "select",
+                    "orig": "select",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "order_by",
@@ -341,14 +366,7 @@ class Config {
                   "q",
                   "select"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.data`"
-              },
-              "parts": [
-                "cards"
-              ]
+              }
             }
           ]
         },
@@ -357,17 +375,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/cards/{id}",
@@ -379,19 +386,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "cards",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
               },
-              "parts": [
-                "cards",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -404,6 +423,7 @@ class Config {
       "fields": [
         {
           "name": "data",
+          "title": "Data",
           "type": "`$ARRAY`"
         }
       ],
@@ -414,7 +434,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/rarities",
@@ -423,14 +442,16 @@ class Config {
                   "lit": "rarities"
                 }
               ],
-              "select": {},
+              "parts": [
+                "rarities"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
               },
-              "parts": [
-                "rarities"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -443,55 +464,65 @@ class Config {
       "fields": [
         {
           "name": "id",
-          "short": "Unique identifier for the set",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the set"
         },
         {
           "name": "images",
-          "short": "Image URLs for the set",
-          "type": "`$OBJECT`"
+          "title": "Images",
+          "type": "`$OBJECT`",
+          "short": "Image URLs for the set"
         },
         {
           "name": "legalities",
-          "short": "Legality of the set in different formats",
-          "type": "`$OBJECT`"
+          "title": "Legalities",
+          "type": "`$OBJECT`",
+          "short": "Legality of the set in different formats"
         },
         {
           "name": "name",
-          "short": "Name of the set",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Name of the set"
         },
         {
           "name": "printedTotal",
-          "short": "Number of cards printed in the set",
-          "type": "`$INTEGER`"
+          "title": "Printed Total",
+          "type": "`$INTEGER`",
+          "short": "Number of cards printed in the set"
         },
         {
           "name": "ptcgoCode",
-          "short": "PTCGO code for the set",
-          "type": "`$STRING`"
+          "title": "Ptcgo Code",
+          "type": "`$STRING`",
+          "short": "PTCGO code for the set"
         },
         {
-          "format": "date",
           "name": "releaseDate",
+          "title": "Release Date",
+          "type": "`$STRING`",
           "short": "Release date of the set",
-          "type": "`$STRING`"
+          "format": "date"
         },
         {
           "name": "series",
-          "short": "Series the set belongs to",
-          "type": "`$STRING`"
+          "title": "Series",
+          "type": "`$STRING`",
+          "short": "Series the set belongs to"
         },
         {
           "name": "total",
-          "short": "Total number of cards in the set including secret rares",
-          "type": "`$INTEGER`"
+          "title": "Total",
+          "type": "`$INTEGER`",
+          "short": "Total number of cards in the set including secret rares"
         },
         {
-          "format": "date-time",
           "name": "updatedAt",
+          "title": "Updated At",
+          "type": "`$STRING`",
           "short": "Last updated timestamp",
-          "type": "`$STRING`"
+          "format": "date-time"
         }
       ],
       "id": {
@@ -505,36 +536,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "order_by",
-                    "orig": "order_by",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 250,
-                    "kind": "query",
-                    "name": "page_size",
-                    "orig": "page_size",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "q",
-                    "orig": "q",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/sets",
@@ -543,6 +544,44 @@ class Config {
                   "lit": "sets"
                 }
               ],
+              "parts": [
+                "sets"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.data`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "order_by",
+                    "orig": "order_by",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  },
+                  {
+                    "name": "page_size",
+                    "orig": "page_size",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 250
+                  },
+                  {
+                    "name": "q",
+                    "orig": "q",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "order_by",
@@ -550,14 +589,7 @@ class Config {
                   "page_size",
                   "q"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.data`"
-              },
-              "parts": [
-                "sets"
-              ]
+              }
             }
           ]
         },
@@ -566,17 +598,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/sets/{id}",
@@ -588,19 +609,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "sets",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
               },
-              "parts": [
-                "sets",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -613,6 +646,7 @@ class Config {
       "fields": [
         {
           "name": "data",
+          "title": "Data",
           "type": "`$ARRAY`"
         }
       ],
@@ -623,7 +657,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/subtypes",
@@ -632,14 +665,16 @@ class Config {
                   "lit": "subtypes"
                 }
               ],
-              "select": {},
+              "parts": [
+                "subtypes"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
               },
-              "parts": [
-                "subtypes"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -652,6 +687,7 @@ class Config {
       "fields": [
         {
           "name": "data",
+          "title": "Data",
           "type": "`$ARRAY`"
         }
       ],
@@ -662,7 +698,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/supertypes",
@@ -671,14 +706,16 @@ class Config {
                   "lit": "supertypes"
                 }
               ],
-              "select": {},
+              "parts": [
+                "supertypes"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
               },
-              "parts": [
-                "supertypes"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -691,6 +728,7 @@ class Config {
       "fields": [
         {
           "name": "data",
+          "title": "Data",
           "type": "`$ARRAY`"
         }
       ],
@@ -701,7 +739,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/types",
@@ -710,14 +747,16 @@ class Config {
                   "lit": "types"
                 }
               ],
-              "select": {},
+              "parts": [
+                "types"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
               },
-              "parts": [
-                "types"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }

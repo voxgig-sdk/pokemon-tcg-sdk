@@ -1,0 +1,45 @@
+# Entity: subtype
+
+main: kit: entity: subtype: {
+
+  alias: field: {}
+
+  fields: {
+    data: {
+      h: "Data"
+      n: "data"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "subtype"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /subtypes"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/subtypes"
+          s: [
+            {
+              lit: "subtypes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

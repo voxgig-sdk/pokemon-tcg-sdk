@@ -1,0 +1,22 @@
+# BasicSubtypeFlow
+
+main: kit: flow: BasicSubtypeFlow:
+{
+  entity: "subtype",
+  kind: "basic",
+  name: "BasicSubtypeFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "subtype_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSubtypeFlow"
+}

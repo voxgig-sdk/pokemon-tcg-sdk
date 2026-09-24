@@ -19,7 +19,6 @@ import type {
   SubtypeListMatch,
 } from '../PokemonTcgTypes'
 
-// TODO: needs Entity superclass
 class SubtypeEntity extends PokemonTcgEntityBase<Subtype> {
 
   constructor(client: PokemonTcgSDK, entopts: any) {

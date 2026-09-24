@@ -1,0 +1,304 @@
+# Entity: card
+
+main: kit: entity: card: {
+
+  alias: field: {}
+
+  fields: {
+    artist: {
+      h: "Artist"
+      n: "artist"
+      r: false
+      sh: "Artist who illustrated the card"
+      t: "`$STRING`"
+    }
+    attacks: {
+      h: "Attacks"
+      n: "attacks"
+      r: false
+      sh: "Attacks the Pokémon can perform"
+      t: "`$ARRAY`"
+    }
+    cardmarket: {
+      h: "Cardmarket"
+      n: "cardmarket"
+      r: false
+      sh: "Cardmarket information"
+      t: "`$OBJECT`"
+    }
+    convertedRetreatCost: {
+      h: "Converted Retreat Cost"
+      n: "convertedRetreatCost"
+      r: false
+      sh: "Numeric value of retreat cost"
+      t: "`$INTEGER`"
+    }
+    evolvesFrom: {
+      h: "Evolves From"
+      n: "evolvesFrom"
+      r: false
+      sh: "The Pokémon this card evolves from"
+      t: "`$STRING`"
+    }
+    evolvesTo: {
+      h: "Evolves To"
+      n: "evolvesTo"
+      r: false
+      sh: "The Pokémon this card evolves to"
+      t: "`$ARRAY`"
+    }
+    flavorText: {
+      h: "Flavor Text"
+      n: "flavorText"
+      r: false
+      sh: "Flavor text on the card"
+      t: "`$STRING`"
+    }
+    hp: {
+      h: "Hp"
+      n: "hp"
+      r: false
+      sh: "Hit points of the Pokémon"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier for the card"
+      t: "`$STRING`"
+    }
+    images: {
+      h: "Images"
+      n: "images"
+      r: false
+      sh: "Image URLs for the card"
+      t: "`$OBJECT`"
+    }
+    legalities: {
+      h: "Legalities"
+      n: "legalities"
+      r: false
+      sh: "Legality of the card in different formats"
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the card"
+      t: "`$STRING`"
+    }
+    nationalPokedexNumbers: {
+      h: "National Pokedex Numbers"
+      n: "nationalPokedexNumbers"
+      r: false
+      sh: "National Pokédex numbers"
+      t: "`$ARRAY`"
+    }
+    number: {
+      h: "Number"
+      n: "number"
+      r: false
+      sh: "Card number within the set"
+      t: "`$STRING`"
+    }
+    rarity: {
+      h: "Rarity"
+      n: "rarity"
+      r: false
+      sh: "Rarity of the card"
+      t: "`$STRING`"
+    }
+    resistances: {
+      h: "Resistances"
+      n: "resistances"
+      r: false
+      sh: "Resistances of the Pokémon"
+      t: "`$ARRAY`"
+    }
+    retreatCost: {
+      h: "Retreat Cost"
+      n: "retreatCost"
+      r: false
+      sh: "Retreat cost of the Pokémon"
+      t: "`$ARRAY`"
+    }
+    rules: {
+      h: "Rules"
+      n: "rules"
+      r: false
+      sh: "Special rules for the card"
+      t: "`$ARRAY`"
+    }
+    set: {
+      h: "Set"
+      n: "set"
+      r: false
+      sh: "Set information for the card"
+      t: "`$OBJECT`"
+    }
+    subtypes: {
+      h: "Subtypes"
+      n: "subtypes"
+      r: false
+      sh: "Subtypes of the card"
+      t: "`$ARRAY`"
+    }
+    supertype: {
+      h: "Supertype"
+      n: "supertype"
+      r: false
+      sh: "Supertype of the card (e.g., Pokémon, Trainer, Energy)"
+      t: "`$STRING`"
+    }
+    tcgplayer: {
+      h: "Tcgplayer"
+      n: "tcgplayer"
+      r: false
+      sh: "TCGPlayer market information"
+      t: "`$OBJECT`"
+    }
+    types: {
+      h: "Types"
+      n: "types"
+      r: false
+      sh: "Energy types of the card"
+      t: "`$ARRAY`"
+    }
+    weaknesses: {
+      h: "Weaknesses"
+      n: "weaknesses"
+      r: false
+      sh: "Weaknesses of the Pokémon"
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "card"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /cards"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "order_by"
+                or: "order_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 250
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "select"
+                or: "select"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/cards"
+          q: {
+            exist: [
+              "order_by"
+              "page"
+              "page_size"
+              "q"
+              "select"
+            ]
+          }
+          s: [
+            {
+              lit: "cards"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /cards/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/cards/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "cards"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

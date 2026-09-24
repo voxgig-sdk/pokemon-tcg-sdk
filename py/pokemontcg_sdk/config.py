@@ -125,123 +125,147 @@ def make_config():
         "fields": [
           {
             "name": "artist",
-            "short": "Artist who illustrated the card",
+            "title": "Artist",
             "type": "`$STRING`",
+            "short": "Artist who illustrated the card",
           },
           {
             "name": "attacks",
-            "short": "Attacks the Pokémon can perform",
+            "title": "Attacks",
             "type": "`$ARRAY`",
+            "short": "Attacks the Pokémon can perform",
           },
           {
             "name": "cardmarket",
-            "short": "Cardmarket information",
+            "title": "Cardmarket",
             "type": "`$OBJECT`",
+            "short": "Cardmarket information",
           },
           {
             "name": "convertedRetreatCost",
-            "short": "Numeric value of retreat cost",
+            "title": "Converted Retreat Cost",
             "type": "`$INTEGER`",
+            "short": "Numeric value of retreat cost",
           },
           {
             "name": "evolvesFrom",
-            "short": "The Pokémon this card evolves from",
+            "title": "Evolves From",
             "type": "`$STRING`",
+            "short": "The Pokémon this card evolves from",
           },
           {
             "name": "evolvesTo",
-            "short": "The Pokémon this card evolves to",
+            "title": "Evolves To",
             "type": "`$ARRAY`",
+            "short": "The Pokémon this card evolves to",
           },
           {
             "name": "flavorText",
-            "short": "Flavor text on the card",
+            "title": "Flavor Text",
             "type": "`$STRING`",
+            "short": "Flavor text on the card",
           },
           {
             "name": "hp",
-            "short": "Hit points of the Pokémon",
+            "title": "Hp",
             "type": "`$STRING`",
+            "short": "Hit points of the Pokémon",
           },
           {
             "name": "id",
-            "short": "Unique identifier for the card",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Unique identifier for the card",
           },
           {
             "name": "images",
-            "short": "Image URLs for the card",
+            "title": "Images",
             "type": "`$OBJECT`",
+            "short": "Image URLs for the card",
           },
           {
             "name": "legalities",
-            "short": "Legality of the card in different formats",
+            "title": "Legalities",
             "type": "`$OBJECT`",
+            "short": "Legality of the card in different formats",
           },
           {
             "name": "name",
-            "short": "Name of the card",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the card",
           },
           {
             "name": "nationalPokedexNumbers",
-            "short": "National Pokédex numbers",
+            "title": "National Pokedex Numbers",
             "type": "`$ARRAY`",
+            "short": "National Pokédex numbers",
           },
           {
             "name": "number",
-            "short": "Card number within the set",
+            "title": "Number",
             "type": "`$STRING`",
+            "short": "Card number within the set",
           },
           {
             "name": "rarity",
-            "short": "Rarity of the card",
+            "title": "Rarity",
             "type": "`$STRING`",
+            "short": "Rarity of the card",
           },
           {
             "name": "resistances",
-            "short": "Resistances of the Pokémon",
+            "title": "Resistances",
             "type": "`$ARRAY`",
+            "short": "Resistances of the Pokémon",
           },
           {
             "name": "retreatCost",
-            "short": "Retreat cost of the Pokémon",
+            "title": "Retreat Cost",
             "type": "`$ARRAY`",
+            "short": "Retreat cost of the Pokémon",
           },
           {
             "name": "rules",
-            "short": "Special rules for the card",
+            "title": "Rules",
             "type": "`$ARRAY`",
+            "short": "Special rules for the card",
           },
           {
             "name": "set",
-            "short": "Set information for the card",
+            "title": "Set",
             "type": "`$OBJECT`",
+            "short": "Set information for the card",
           },
           {
             "name": "subtypes",
-            "short": "Subtypes of the card",
+            "title": "Subtypes",
             "type": "`$ARRAY`",
+            "short": "Subtypes of the card",
           },
           {
             "name": "supertype",
-            "short": "Supertype of the card (e.g., Pokémon, Trainer, Energy)",
+            "title": "Supertype",
             "type": "`$STRING`",
+            "short": "Supertype of the card (e.g., Pokémon, Trainer, Energy)",
           },
           {
             "name": "tcgplayer",
-            "short": "TCGPlayer market information",
+            "title": "Tcgplayer",
             "type": "`$OBJECT`",
+            "short": "TCGPlayer market information",
           },
           {
             "name": "types",
-            "short": "Energy types of the card",
+            "title": "Types",
             "type": "`$ARRAY`",
+            "short": "Energy types of the card",
           },
           {
             "name": "weaknesses",
-            "short": "Weaknesses of the Pokémon",
+            "title": "Weaknesses",
             "type": "`$ARRAY`",
+            "short": "Weaknesses of the Pokémon",
           },
         ],
         "id": {
@@ -255,42 +279,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "order_by",
-                      "orig": "order_by",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 250,
-                      "kind": "query",
-                      "name": "page_size",
-                      "orig": "page_size",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "q",
-                      "orig": "q",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "select",
-                      "orig": "select",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/cards",
@@ -299,6 +287,50 @@ def make_config():
                     "lit": "cards",
                   },
                 ],
+                "parts": [
+                  "cards",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.data`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "order_by",
+                      "orig": "order_by",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "page_size",
+                      "orig": "page_size",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 250,
+                    },
+                    {
+                      "name": "q",
+                      "orig": "q",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "select",
+                      "orig": "select",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "order_by",
@@ -308,13 +340,6 @@ def make_config():
                     "select",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.data`",
-                },
-                "parts": [
-                  "cards",
-                ],
               },
             ],
           },
@@ -323,17 +348,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/cards/{id}",
@@ -345,19 +359,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "cards",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.data`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.data`",
-                },
-                "parts": [
-                  "cards",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -370,6 +396,7 @@ def make_config():
         "fields": [
           {
             "name": "data",
+            "title": "Data",
             "type": "`$ARRAY`",
           },
         ],
@@ -380,7 +407,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/rarities",
@@ -389,14 +415,16 @@ def make_config():
                     "lit": "rarities",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "rarities",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
-                "parts": [
-                  "rarities",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -409,55 +437,65 @@ def make_config():
         "fields": [
           {
             "name": "id",
-            "short": "Unique identifier for the set",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Unique identifier for the set",
           },
           {
             "name": "images",
-            "short": "Image URLs for the set",
+            "title": "Images",
             "type": "`$OBJECT`",
+            "short": "Image URLs for the set",
           },
           {
             "name": "legalities",
-            "short": "Legality of the set in different formats",
+            "title": "Legalities",
             "type": "`$OBJECT`",
+            "short": "Legality of the set in different formats",
           },
           {
             "name": "name",
-            "short": "Name of the set",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the set",
           },
           {
             "name": "printedTotal",
-            "short": "Number of cards printed in the set",
+            "title": "Printed Total",
             "type": "`$INTEGER`",
+            "short": "Number of cards printed in the set",
           },
           {
             "name": "ptcgoCode",
-            "short": "PTCGO code for the set",
+            "title": "Ptcgo Code",
             "type": "`$STRING`",
+            "short": "PTCGO code for the set",
           },
           {
-            "format": "date",
             "name": "releaseDate",
-            "short": "Release date of the set",
+            "title": "Release Date",
             "type": "`$STRING`",
+            "short": "Release date of the set",
+            "format": "date",
           },
           {
             "name": "series",
-            "short": "Series the set belongs to",
+            "title": "Series",
             "type": "`$STRING`",
+            "short": "Series the set belongs to",
           },
           {
             "name": "total",
-            "short": "Total number of cards in the set including secret rares",
+            "title": "Total",
             "type": "`$INTEGER`",
+            "short": "Total number of cards in the set including secret rares",
           },
           {
-            "format": "date-time",
             "name": "updatedAt",
-            "short": "Last updated timestamp",
+            "title": "Updated At",
             "type": "`$STRING`",
+            "short": "Last updated timestamp",
+            "format": "date-time",
           },
         ],
         "id": {
@@ -471,36 +509,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "order_by",
-                      "orig": "order_by",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 250,
-                      "kind": "query",
-                      "name": "page_size",
-                      "orig": "page_size",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "q",
-                      "orig": "q",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/sets",
@@ -509,6 +517,44 @@ def make_config():
                     "lit": "sets",
                   },
                 ],
+                "parts": [
+                  "sets",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.data`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "order_by",
+                      "orig": "order_by",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "page_size",
+                      "orig": "page_size",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 250,
+                    },
+                    {
+                      "name": "q",
+                      "orig": "q",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "order_by",
@@ -517,13 +563,6 @@ def make_config():
                     "q",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.data`",
-                },
-                "parts": [
-                  "sets",
-                ],
               },
             ],
           },
@@ -532,17 +571,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/sets/{id}",
@@ -554,19 +582,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "sets",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.data`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.data`",
-                },
-                "parts": [
-                  "sets",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -579,6 +619,7 @@ def make_config():
         "fields": [
           {
             "name": "data",
+            "title": "Data",
             "type": "`$ARRAY`",
           },
         ],
@@ -589,7 +630,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/subtypes",
@@ -598,14 +638,16 @@ def make_config():
                     "lit": "subtypes",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "subtypes",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
-                "parts": [
-                  "subtypes",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -618,6 +660,7 @@ def make_config():
         "fields": [
           {
             "name": "data",
+            "title": "Data",
             "type": "`$ARRAY`",
           },
         ],
@@ -628,7 +671,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/supertypes",
@@ -637,14 +679,16 @@ def make_config():
                     "lit": "supertypes",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "supertypes",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
-                "parts": [
-                  "supertypes",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -657,6 +701,7 @@ def make_config():
         "fields": [
           {
             "name": "data",
+            "title": "Data",
             "type": "`$ARRAY`",
           },
         ],
@@ -667,7 +712,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/types",
@@ -676,14 +720,16 @@ def make_config():
                     "lit": "types",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "types",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
-                "parts": [
-                  "types",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },

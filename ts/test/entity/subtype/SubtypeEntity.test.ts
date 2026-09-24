@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('SubtypeEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"data","req":false,"type":"`$ARRAY`","index$":0}],"name":"subtype","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /subtypes","json":"{\"operationId\":\"getSubtypes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of subtypes\"},\"429\":{\"description\":\"Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Register at the Developer Portal for higher rate limits.\",\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/subtypes","segments":[{"lit":"subtypes"}],"select":{},"transform":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"subtype","name__orig":"subtype","Name":"Subtype","name_":"subtype","name-":"subtype","NAME":"SUBTYPE","index$":3}, {"active":true,"entity":"subtype","key$":"BasicSubtypeFlow","kind":"basic","name":"BasicSubtypeFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"subtype_ref01"}}],"index$":0}]}, 'Subtype')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"data":{"a":true,"h":"Data","n":"data","r":false,"t":"`$ARRAY`","key$":"data","index$":0}},"name":"subtype","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /subtypes","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/subtypes","q":{},"r":{},"s":[{"lit":"subtypes"}],"t":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"subtype","name__orig":"subtype","Name":"Subtype","name_":"subtype","name-":"subtype","NAME":"SUBTYPE","index$":3}, {"active":true,"entity":"subtype","key$":"BasicSubtypeFlow","kind":"basic","name":"BasicSubtypeFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"subtype_ref01"}}],"index$":0}]}, 'Subtype', {"GET /subtypes":{"protocol":"http","operationId":"getSubtypes","responses":{"200":{"description":"Successful response with list of subtypes","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"items":{"type":"string"},"key$":"data","type":"array"}},"index$":0}}}},"429":{"description":"Rate limit exceeded"},"500":{"description":"Internal server error"}},"parameters":[],"security":[{"ApiKeyAuth":[]},{}],"securitySource":"operation","securitySchemes":{"ApiKeyAuth":{"type":"apiKey","in":"header","name":"X-Api-Key","description":"API key for authentication. Register at the Developer Portal for higher rate limits."}}}})
     }
     const client = setup.client
     const struct = setup.struct
