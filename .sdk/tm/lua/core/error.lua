@@ -1,7 +1,13 @@
 -- PokemonTcg SDK error
 
+local json = require("dkjson")
+
 local PokemonTcgError = {}
 PokemonTcgError.__index = PokemonTcgError
+
+-- Reachable for a debugger, absent from the table itself: the context holds
+-- the live spec and options, and an error is what gets dumped or encoded.
+local CONTEXT = setmetatable({}, { __mode = "k" })
 
 
 function PokemonTcgError.new(code, msg, ctx)
@@ -10,10 +16,15 @@ function PokemonTcgError.new(code, msg, ctx)
   self.sdk = "PokemonTcg"
   self.code = code or ""
   self.msg = msg or ""
-  self.ctx = ctx
   self.result = nil
   self.spec = nil
+  CONTEXT[self] = ctx
   return self
+end
+
+
+function PokemonTcgError:context()
+  return CONTEXT[self]
 end
 
 
@@ -22,8 +33,32 @@ function PokemonTcgError:error()
 end
 
 
+-- What make_error attached is already cleaned; the context is not part of
+-- the record.
+function PokemonTcgError:to_table()
+  return {
+    sdk = self.sdk,
+    code = self.code,
+    msg = self.msg,
+    status = self.status,
+    result = self.result,
+    spec = self.spec,
+  }
+end
+
+
+function PokemonTcgError:to_json()
+  return json.encode(self:to_table())
+end
+
+
 function PokemonTcgError:__tostring()
   return self.msg
+end
+
+
+function PokemonTcgError.__tojson(self)
+  return self:to_json()
 end
 
 

@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 PokemonTcgUtility::setRegistrar(function (PokemonTcgUtility $u): void {
     $u->clean = [PokemonTcgClean::class, 'call'];
+    $u->clean_add = [PokemonTcgClean::class, 'add'];
+    $u->clean_explain = [PokemonTcgDone::class, 'clean_explain'];
     $u->done = [PokemonTcgDone::class, 'call'];
     $u->make_error = [PokemonTcgMakeError::class, 'call'];
     $u->feature_add = [PokemonTcgFeatureAdd::class, 'call'];

@@ -290,7 +290,7 @@ class Config {
                                 "query": [
                                     {
                                         "name": "order_by",
-                                        "orig": "order_by",
+                                        "orig": "orderBy",
                                         "type": "`$STRING`",
                                         "kind": "query"
                                     },
@@ -303,7 +303,7 @@ class Config {
                                     },
                                     {
                                         "name": "page_size",
-                                        "orig": "page_size",
+                                        "orig": "pageSize",
                                         "type": "`$INTEGER`",
                                         "kind": "query",
                                         "example": 250
@@ -520,7 +520,7 @@ class Config {
                                 "query": [
                                     {
                                         "name": "order_by",
-                                        "orig": "order_by",
+                                        "orig": "orderBy",
                                         "type": "`$STRING`",
                                         "kind": "query"
                                     },
@@ -533,7 +533,7 @@ class Config {
                                     },
                                     {
                                         "name": "page_size",
-                                        "orig": "page_size",
+                                        "orig": "pageSize",
                                         "type": "`$INTEGER`",
                                         "kind": "query",
                                         "example": 250

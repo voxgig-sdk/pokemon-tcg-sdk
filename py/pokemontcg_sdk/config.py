@@ -299,7 +299,7 @@ def make_config():
                   "query": [
                     {
                       "name": "order_by",
-                      "orig": "order_by",
+                      "orig": "orderBy",
                       "type": "`$STRING`",
                       "kind": "query",
                     },
@@ -312,7 +312,7 @@ def make_config():
                     },
                     {
                       "name": "page_size",
-                      "orig": "page_size",
+                      "orig": "pageSize",
                       "type": "`$INTEGER`",
                       "kind": "query",
                       "example": 250,
@@ -529,7 +529,7 @@ def make_config():
                   "query": [
                     {
                       "name": "order_by",
-                      "orig": "order_by",
+                      "orig": "orderBy",
                       "type": "`$STRING`",
                       "kind": "query",
                     },
@@ -542,7 +542,7 @@ def make_config():
                     },
                     {
                       "name": "page_size",
-                      "orig": "page_size",
+                      "orig": "pageSize",
                       "type": "`$INTEGER`",
                       "kind": "query",
                       "example": 250,

@@ -274,7 +274,7 @@ func MakeConfig() map[string]any {
 									"query": []any{
 										map[string]any{
 											"name": "order_by",
-											"orig": "order_by",
+											"orig": "orderBy",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -287,7 +287,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "page_size",
-											"orig": "page_size",
+											"orig": "pageSize",
 											"type": "`$INTEGER`",
 											"kind": "query",
 											"example": 250,
@@ -504,7 +504,7 @@ func MakeConfig() map[string]any {
 									"query": []any{
 										map[string]any{
 											"name": "order_by",
-											"orig": "order_by",
+											"orig": "orderBy",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -517,7 +517,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "page_size",
-											"orig": "page_size",
+											"orig": "pageSize",
 											"type": "`$INTEGER`",
 											"kind": "query",
 											"example": 250,

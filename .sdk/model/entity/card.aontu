@@ -196,7 +196,7 @@ main: kit: entity: card: {
               {
                 k: "query"
                 n: "order_by"
-                or: "order_by"
+                or: "orderBy"
                 r: false
                 t: "`$STRING`"
               }
@@ -212,7 +212,7 @@ main: kit: entity: card: {
                 ex: 250
                 k: "query"
                 n: "page_size"
-                or: "page_size"
+                or: "pageSize"
                 r: false
                 t: "`$INTEGER`"
               }

@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 PokemonTcgUtility.registrar = ->(u) {
   u.clean = PokemonTcgUtilities::Clean
+  u.clean_add = PokemonTcgUtilities::CleanAdd
+  u.clean_explain = PokemonTcgUtilities::CleanExplain
   u.done = PokemonTcgUtilities::Done
   u.make_error = PokemonTcgUtilities::MakeError
   u.feature_add = PokemonTcgUtilities::FeatureAdd
