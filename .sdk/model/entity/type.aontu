@@ -26,6 +26,10 @@ main: kit: entity: type: {
           }
           m: "GET"
           o: "/types"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "types"

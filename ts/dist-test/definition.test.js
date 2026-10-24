@@ -17,12 +17,16 @@ const PLAN = [
         "args": [],
         "select": {
             "order_by": "v1",
-            "page": "v1",
-            "page_size": "v1",
+            "page": 1,
+            "page_size": 250,
             "q": "v1",
             "select": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "q",
             "page",
@@ -30,47 +34,67 @@ const PLAN = [
             "orderBy",
             "select"
         ],
+        "queryArgs": [
+            {
+                "name": "order_by",
+                "wire": "orderBy"
+            },
+            {
+                "name": "page",
+                "wire": "page"
+            },
+            {
+                "name": "page_size",
+                "wire": "pageSize"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            },
+            {
+                "name": "select",
+                "wire": "select"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "data": [
                 {
-                    "artist": "x",
-                    "attacks": [
-                        {
-                            "convertedEnergyCost": 1,
-                            "cost": [
-                                "x"
-                            ],
-                            "damage": "x",
-                            "name": "x",
-                            "text": "x"
-                        }
+                    "id": "x",
+                    "name": "x",
+                    "supertype": "x",
+                    "subtypes": [
+                        "x"
                     ],
-                    "cardmarket": {},
-                    "convertedRetreatCost": 1,
+                    "hp": "x",
+                    "types": [
+                        "x"
+                    ],
                     "evolvesFrom": "x",
                     "evolvesTo": [
                         "x"
                     ],
-                    "flavorText": "x",
-                    "hp": "x",
-                    "id": "x",
-                    "images": {
-                        "large": "x",
-                        "small": "x"
-                    },
-                    "legalities": {
-                        "expanded": "x",
-                        "standard": "x",
-                        "unlimited": "x"
-                    },
-                    "name": "x",
-                    "nationalPokedexNumbers": [
-                        1
+                    "rules": [
+                        "x"
                     ],
-                    "number": "x",
-                    "rarity": "x",
+                    "attacks": [
+                        {
+                            "name": "x",
+                            "cost": [
+                                "x"
+                            ],
+                            "convertedEnergyCost": 1,
+                            "damage": "x",
+                            "text": "x"
+                        }
+                    ],
+                    "weaknesses": [
+                        {
+                            "type": "x",
+                            "value": "x"
+                        }
+                    ],
                     "resistances": [
                         {
                             "type": "x",
@@ -80,42 +104,44 @@ const PLAN = [
                     "retreatCost": [
                         "x"
                     ],
-                    "rules": [
-                        "x"
-                    ],
+                    "convertedRetreatCost": 1,
                     "set": {
                         "id": "x",
-                        "images": {
-                            "logo": "x",
-                            "symbol": "x"
-                        },
-                        "legalities": {
-                            "expanded": "x",
-                            "standard": "x",
-                            "unlimited": "x"
-                        },
                         "name": "x",
+                        "series": "x",
                         "printedTotal": 1,
+                        "total": 1,
+                        "legalities": {
+                            "unlimited": "x",
+                            "standard": "x",
+                            "expanded": "x"
+                        },
                         "ptcgoCode": "x",
                         "releaseDate": "2026-01-01",
-                        "series": "x",
-                        "total": 1,
-                        "updatedAt": "2026-01-01T00:00:00Z"
-                    },
-                    "subtypes": [
-                        "x"
-                    ],
-                    "supertype": "x",
-                    "tcgplayer": {},
-                    "types": [
-                        "x"
-                    ],
-                    "weaknesses": [
-                        {
-                            "type": "x",
-                            "value": "x"
+                        "updatedAt": "2026-01-01T00:00:00Z",
+                        "images": {
+                            "symbol": "x",
+                            "logo": "x"
                         }
-                    ]
+                    },
+                    "number": "x",
+                    "artist": "x",
+                    "rarity": "x",
+                    "flavorText": "x",
+                    "nationalPokedexNumbers": [
+                        1
+                    ],
+                    "legalities": {
+                        "unlimited": "x",
+                        "standard": "x",
+                        "expanded": "x"
+                    },
+                    "images": {
+                        "small": "x",
+                        "large": "x"
+                    },
+                    "tcgplayer": {},
+                    "cardmarket": {}
                 }
             ],
             "page": 1,
@@ -140,7 +166,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": [],
         "status": 200,
         "sample": {
@@ -164,12 +195,12 @@ const PLAN = [
                 ],
                 "attacks": [
                     {
-                        "convertedEnergyCost": 1,
+                        "name": "x",
                         "cost": [
                             "x"
                         ],
+                        "convertedEnergyCost": 1,
                         "damage": "x",
-                        "name": "x",
                         "text": "x"
                     }
                 ],
@@ -191,22 +222,22 @@ const PLAN = [
                 "convertedRetreatCost": 1,
                 "set": {
                     "id": "x",
-                    "images": {
-                        "logo": "x",
-                        "symbol": "x"
-                    },
-                    "legalities": {
-                        "expanded": "x",
-                        "standard": "x",
-                        "unlimited": "x"
-                    },
                     "name": "x",
+                    "series": "x",
                     "printedTotal": 1,
+                    "total": 1,
+                    "legalities": {
+                        "unlimited": "x",
+                        "standard": "x",
+                        "expanded": "x"
+                    },
                     "ptcgoCode": "x",
                     "releaseDate": "2026-01-01",
-                    "series": "x",
-                    "total": 1,
-                    "updatedAt": "2026-01-01T00:00:00Z"
+                    "updatedAt": "2026-01-01T00:00:00Z",
+                    "images": {
+                        "symbol": "x",
+                        "logo": "x"
+                    }
                 },
                 "number": "x",
                 "artist": "x",
@@ -216,13 +247,13 @@ const PLAN = [
                     1
                 ],
                 "legalities": {
-                    "expanded": "x",
+                    "unlimited": "x",
                     "standard": "x",
-                    "unlimited": "x"
+                    "expanded": "x"
                 },
                 "images": {
-                    "large": "x",
-                    "small": "x"
+                    "small": "x",
+                    "large": "x"
                 },
                 "tcgplayer": {},
                 "cardmarket": {}
@@ -239,7 +270,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": [],
         "status": 200,
         "sample": {
@@ -258,16 +294,38 @@ const PLAN = [
         "args": [],
         "select": {
             "order_by": "v1",
-            "page": "v1",
-            "page_size": "v1",
+            "page": 1,
+            "page_size": 250,
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "q",
             "page",
             "pageSize",
             "orderBy"
+        ],
+        "queryArgs": [
+            {
+                "name": "order_by",
+                "wire": "orderBy"
+            },
+            {
+                "name": "page",
+                "wire": "page"
+            },
+            {
+                "name": "page_size",
+                "wire": "pageSize"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": [],
         "status": 200,
@@ -275,22 +333,22 @@ const PLAN = [
             "data": [
                 {
                     "id": "x",
-                    "images": {
-                        "logo": "x",
-                        "symbol": "x"
-                    },
-                    "legalities": {
-                        "expanded": "x",
-                        "standard": "x",
-                        "unlimited": "x"
-                    },
                     "name": "x",
+                    "series": "x",
                     "printedTotal": 1,
+                    "total": 1,
+                    "legalities": {
+                        "unlimited": "x",
+                        "standard": "x",
+                        "expanded": "x"
+                    },
                     "ptcgoCode": "x",
                     "releaseDate": "2026-01-01",
-                    "series": "x",
-                    "total": 1,
-                    "updatedAt": "2026-01-01T00:00:00Z"
+                    "updatedAt": "2026-01-01T00:00:00Z",
+                    "images": {
+                        "symbol": "x",
+                        "logo": "x"
+                    }
                 }
             ],
             "page": 1,
@@ -315,7 +373,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": [],
         "status": 200,
         "sample": {
@@ -326,16 +389,16 @@ const PLAN = [
                 "printedTotal": 1,
                 "total": 1,
                 "legalities": {
-                    "expanded": "x",
+                    "unlimited": "x",
                     "standard": "x",
-                    "unlimited": "x"
+                    "expanded": "x"
                 },
                 "ptcgoCode": "x",
                 "releaseDate": "2026-01-01",
                 "updatedAt": "2026-01-01T00:00:00Z",
                 "images": {
-                    "logo": "x",
-                    "symbol": "x"
+                    "symbol": "x",
+                    "logo": "x"
                 }
             }
         },
@@ -350,7 +413,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": [],
         "status": 200,
         "sample": {
@@ -369,7 +437,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": [],
         "status": 200,
         "sample": {
@@ -388,7 +461,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": [],
         "status": 200,
         "sample": {

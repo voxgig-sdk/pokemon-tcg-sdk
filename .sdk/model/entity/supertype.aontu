@@ -26,6 +26,10 @@ main: kit: entity: supertype: {
           }
           m: "GET"
           o: "/supertypes"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "supertypes"

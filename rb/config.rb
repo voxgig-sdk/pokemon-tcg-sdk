@@ -79,6 +79,7 @@ module PokemonTcgConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -314,14 +315,10 @@ module PokemonTcgConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "order_by",
-                      "page",
-                      "page_size",
-                      "q",
-                      "select",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -367,6 +364,10 @@ module PokemonTcgConfig
                       "id",
                     ],
                   },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },
@@ -408,6 +409,10 @@ module PokemonTcgConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },
@@ -538,13 +543,10 @@ module PokemonTcgConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "order_by",
-                      "page",
-                      "page_size",
-                      "q",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -590,6 +592,10 @@ module PokemonTcgConfig
                       "id",
                     ],
                   },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },
@@ -631,6 +637,10 @@ module PokemonTcgConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },
@@ -672,6 +682,10 @@ module PokemonTcgConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },
@@ -713,6 +727,10 @@ module PokemonTcgConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },

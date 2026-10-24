@@ -26,6 +26,10 @@ main: kit: entity: subtype: {
           }
           m: "GET"
           o: "/subtypes"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "subtypes"

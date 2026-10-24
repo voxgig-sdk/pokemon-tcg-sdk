@@ -3,5 +3,30 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "API key for authentication. Register at the Developer Portal for higher rate limits.",
+      "Artist who illustrated the card",
+      "Attacks the Pokémon can perform",
+      "Cardmarket information",
+      "Image URLs for the set",
+      "Legality of the set in different formats",
+      "Name of the set",
+      "Number of cards printed in the set",
+      "Numeric value of retreat cost",
+      "Production server",
+      "Successful response with card details",
+      "Successful response with list of cards",
+      "Successful response with list of rarities",
+      "Successful response with list of sets",
+      "Successful response with list of subtypes",
+      "Successful response with list of supertypes",
+      "Successful response with list of types",
+      "Successful response with set details",
+      "The Pokémon TCG API provides access to a variety of resources about Pokémon Trading Card Game cards, sets, types, subtypes, and rarities. It allows users to retrieve card details, search for cards, and access up-to-date information without requiring an API key, albeit with lower rate limits.",
+      "The Pokémon this card evolves from",
+      "Unique identifier for the set"
+    ]
+  }
 }

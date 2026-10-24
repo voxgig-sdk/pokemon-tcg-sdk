@@ -26,6 +26,10 @@ main: kit: entity: rarity: {
           }
           m: "GET"
           o: "/rarities"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "rarities"

@@ -16,7 +16,7 @@ go get github.com/voxgig-sdk/pokemon-tcg-sdk/go@latest
 ```
 
 The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
-release tag — see [Releases](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases) for the available versions.
+release tag — see [Tags](https://github.com/voxgig-sdk/pokemon-tcg-sdk/tags) for the available versions.
 
 To vendor from a local checkout instead, clone this repo alongside your
 project and add a `replace` directive pointing at the checked-out
@@ -30,14 +30,15 @@ go mod edit -replace github.com/voxgig-sdk/pokemon-tcg-sdk/go=../pokemon-tcg-sdk
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
-loading a specific record.
+loading a specific record. The client sends the API key in the `X-Api-Key` header.
 
 ### Quickstart
 
 A complete program: create a client, then call the entity operations.
-Each operation returns `(value, error)` — the value is the data itself
-(there is no `{ok, data}` wrapper), so check `err` and use the value
-directly.
+Each operation returns `(value, error)` — the value is the entity, and for
+`List` a `[]any` of entities, one per record (there is no `{ok, data}`
+wrapper), so check `err` and read a record through the entity's
+`Data()`.
 
 ```go
 package main
@@ -53,21 +54,21 @@ func main() {
         "apikey": os.Getenv("POKEMON_TCG_APIKEY"),
     })
 
-    // List card records — the value is the array of records itself.
+    // List card records — the value is a []any of entities, one per record.
     cards, err := client.Card(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
     for _, item := range cards.([]any) {
-        fmt.Println(item)
+        fmt.Println(item.(sdk.Entity).Data())
     }
 
-    // Load a single card — the value is the loaded record.
+    // Load a single card — the value is the entity; Data() reads its record.
     card, err := client.Card(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(card)
+    fmt.Println(card.(sdk.Entity).Data())
 }
 ```
 
@@ -147,13 +148,16 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-rarity, err := client.Rarity(nil).List(
+raritys, err := client.Rarity(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(rarity) // the returned mock data
+// A []any of entities, one per mock record.
+for _, item := range raritys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ### Use a custom fetch function
@@ -245,8 +249,8 @@ All entities implement the `PokemonTcgEntity` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
-| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
+| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria, and return it. |
+| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria, one per record. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -254,21 +258,21 @@ All entities implement the `PokemonTcgEntity` interface.
 
 ### Result shape
 
-Entity operations return `(value, error)`. The `value` is the
-operation's data **directly** — there is no wrapper:
+Entity operations return `(value, error)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` | the entity record (`map[string]any`) |
-| `List` | a `[]any` of entity records |
+| `Load` | the entity, whose `Data()` reads its record (`map[string]any`) |
+| `List` | a `[]any` of entities, one per record |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    card, err := client.Card(nil).List(map[string]any{/* fields */}, nil)
+    card, err := client.Card(nil).List(nil, nil)
     if err != nil { /* handle */ }
-    // card is the returned record
+    // card is a []any of entities, one per record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -419,7 +423,7 @@ card, err := client.Card(nil).Load(map[string]any{"id": "card_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(card) // the loaded record
+fmt.Println(card.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -429,7 +433,10 @@ cards, err := client.Card(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(cards) // the array of records
+// A []any of entities, one per record.
+for _, item := range cards.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -456,7 +463,10 @@ raritys, err := client.Rarity(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(raritys) // the array of records
+// A []any of entities, one per record.
+for _, item := range raritys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -493,7 +503,7 @@ set, err := client.Set(nil).Load(map[string]any{"id": "set_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(set) // the loaded record
+fmt.Println(set.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -503,7 +513,10 @@ sets, err := client.Set(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(sets) // the array of records
+// A []any of entities, one per record.
+for _, item := range sets.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -530,7 +543,10 @@ subtypes, err := client.Subtype(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(subtypes) // the array of records
+// A []any of entities, one per record.
+for _, item := range subtypes.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -557,7 +573,10 @@ supertypes, err := client.Supertype(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(supertypes) // the array of records
+// A []any of entities, one per record.
+for _, item := range supertypes.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -584,7 +603,10 @@ type_s, err := client.Type(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(type_s) // the array of records
+// A []any of entities, one per record.
+for _, item := range type_s.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ## Features
@@ -721,7 +743,9 @@ The Go SDK uses `map[string]any` throughout rather than typed structs.
 This mirrors the dynamic nature of the API and keeps the SDK
 flexible — no code generation is needed when the API schema changes.
 
-Use `core.ToMapAny()` to safely cast results and nested data.
+An operation returns the entity, and its `Data()` returns the record. Use
+`core.ToMapAny()` to safely cast that record, or data nested in it, to
+`map[string]any`: it returns `nil` for anything else, an entity included.
 
 ### Package structure
 

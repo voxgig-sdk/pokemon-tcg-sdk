@@ -234,14 +234,9 @@ main: kit: entity: card: {
           }
           m: "GET"
           o: "/cards"
-          q: {
-            exist: [
-              "order_by"
-              "page"
-              "page_size"
-              "q"
-              "select"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -281,6 +276,10 @@ main: kit: entity: card: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

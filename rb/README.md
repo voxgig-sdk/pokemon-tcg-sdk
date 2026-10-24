@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/pokemon-tcg-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -29,7 +29,7 @@ gem "voxgig-sdk-pokemon-tcg-sdk", path: "./pokemon-tcg-sdk/rb"
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
-loading a specific record.
+loading a specific record. The client sends the API key in the `X-Api-Key` header.
 
 ### 1. Create a client
 
@@ -45,10 +45,11 @@ client = PokemonTcgSDK.new({
 
 ```ruby
 begin
-  # list returns an Array of Card records — iterate directly.
+  # list returns an Array of Card entities, one per record; data_get reads the record.
   cards = client.Card.list
   cards.each do |item|
-    puts "#{item["id"]} #{item["artist"]}"
+    record = item.data_get
+    puts "#{record["id"]} #{record["artist"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -61,7 +62,7 @@ end
 begin
   # load returns the ENTITY — call data_get for the Card record (raises on error).
   card = client.Card.load({ "id" => "example_id" })
-  puts card
+  puts card.data_get
 rescue => err
   warn "load failed: #{err}"
 end
@@ -142,10 +143,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = PokemonTcgSDK.test
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-rarity = client.Rarity.list()
-puts rarity
+# list returns an Array of Rarity entities, one per mock record (raises on
+# error); data_get reads each record.
+raritys = client.Rarity.list()
+raritys.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -236,8 +237,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -247,9 +248,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `PokemonTcgError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`PokemonTcgError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -411,8 +413,9 @@ card = client.Card.load({ "id" => "card_id" })
 #### Example: List
 
 ```ruby
-# list returns an Array of Card records (raises on error).
+# list returns an Array of Card entities, one per record (raises on error).
 cards = client.Card.list
+cards.each { |item| puts item.data_get }
 ```
 
 
@@ -435,8 +438,9 @@ Create an instance: `rarity = client.Rarity`
 #### Example: List
 
 ```ruby
-# list returns an Array of Rarity records (raises on error).
+# list returns an Array of Rarity entities, one per record (raises on error).
 raritys = client.Rarity.list
+raritys.each { |item| puts item.data_get }
 ```
 
 
@@ -476,8 +480,9 @@ set = client.Set.load({ "id" => "set_id" })
 #### Example: List
 
 ```ruby
-# list returns an Array of Set records (raises on error).
+# list returns an Array of Set entities, one per record (raises on error).
 sets = client.Set.list
+sets.each { |item| puts item.data_get }
 ```
 
 
@@ -500,8 +505,9 @@ Create an instance: `subtype = client.Subtype`
 #### Example: List
 
 ```ruby
-# list returns an Array of Subtype records (raises on error).
+# list returns an Array of Subtype entities, one per record (raises on error).
 subtypes = client.Subtype.list
+subtypes.each { |item| puts item.data_get }
 ```
 
 
@@ -524,8 +530,9 @@ Create an instance: `supertype = client.Supertype`
 #### Example: List
 
 ```ruby
-# list returns an Array of Supertype records (raises on error).
+# list returns an Array of Supertype entities, one per record (raises on error).
 supertypes = client.Supertype.list
+supertypes.each { |item| puts item.data_get }
 ```
 
 
@@ -548,8 +555,9 @@ Create an instance: `type = client.Type`
 #### Example: List
 
 ```ruby
-# list returns an Array of Type records (raises on error).
+# list returns an Array of Type entities, one per record (raises on error).
 types = client.Type.list
+types.each { |item| puts item.data_get }
 ```
 
 ## Features

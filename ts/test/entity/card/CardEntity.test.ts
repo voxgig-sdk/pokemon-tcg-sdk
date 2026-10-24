@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { PokemonTcgSDK, BaseFeature, stdutil } from '../../..'
+import { PokemonTcgSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('CardEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('card hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of PokemonTcgSDK.test(offline).Card().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of PokemonTcgSDK.test(offline).Card()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = PokemonTcgSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Card().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of PokemonTcgSDK.test().Card().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new PokemonTcgSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Card().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Card().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = PokemonTcgSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Card().list({"order_by":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.POKEMON_TCG_TEST_LIVE
@@ -51,7 +109,7 @@ describe('CardEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"artist":{"a":true,"h":"Artist","n":"artist","r":false,"sh":"Artist who illustrated the card","t":"`$STRING`","key$":"artist","index$":0},"attacks":{"a":true,"h":"Attacks","n":"attacks","r":false,"sh":"Attacks the Pokémon can perform","t":"`$ARRAY`","key$":"attacks","index$":1},"cardmarket":{"a":true,"h":"Cardmarket","n":"cardmarket","r":false,"sh":"Cardmarket information","t":"`$OBJECT`","key$":"cardmarket","index$":2},"convertedRetreatCost":{"a":true,"h":"Converted Retreat Cost","n":"convertedRetreatCost","r":false,"sh":"Numeric value of retreat cost","t":"`$INTEGER`","key$":"convertedRetreatCost","index$":3},"evolvesFrom":{"a":true,"h":"Evolves From","n":"evolvesFrom","r":false,"sh":"The Pokémon this card evolves from","t":"`$STRING`","key$":"evolvesFrom","index$":4},"evolvesTo":{"a":true,"h":"Evolves To","n":"evolvesTo","r":false,"sh":"The Pokémon this card evolves to","t":"`$ARRAY`","key$":"evolvesTo","index$":5},"flavorText":{"a":true,"h":"Flavor Text","n":"flavorText","r":false,"sh":"Flavor text on the card","t":"`$STRING`","key$":"flavorText","index$":6},"hp":{"a":true,"h":"Hp","n":"hp","r":false,"sh":"Hit points of the Pokémon","t":"`$STRING`","key$":"hp","index$":7},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Unique identifier for the card","t":"`$STRING`","key$":"id","index$":8},"images":{"a":true,"h":"Images","n":"images","r":false,"sh":"Image URLs for the card","t":"`$OBJECT`","key$":"images","index$":9},"legalities":{"a":true,"h":"Legalities","n":"legalities","r":false,"sh":"Legality of the card in different formats","t":"`$OBJECT`","key$":"legalities","index$":10},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Name of the card","t":"`$STRING`","key$":"name","index$":11},"nationalPokedexNumbers":{"a":true,"h":"National Pokedex Numbers","n":"nationalPokedexNumbers","r":false,"sh":"National Pokédex numbers","t":"`$ARRAY`","key$":"nationalPokedexNumbers","index$":12},"number":{"a":true,"h":"Number","n":"number","r":false,"sh":"Card number within the set","t":"`$STRING`","key$":"number","index$":13},"rarity":{"a":true,"h":"Rarity","n":"rarity","r":false,"sh":"Rarity of the card","t":"`$STRING`","key$":"rarity","index$":14},"resistances":{"a":true,"h":"Resistances","n":"resistances","r":false,"sh":"Resistances of the Pokémon","t":"`$ARRAY`","key$":"resistances","index$":15},"retreatCost":{"a":true,"h":"Retreat Cost","n":"retreatCost","r":false,"sh":"Retreat cost of the Pokémon","t":"`$ARRAY`","key$":"retreatCost","index$":16},"rules":{"a":true,"h":"Rules","n":"rules","r":false,"sh":"Special rules for the card","t":"`$ARRAY`","key$":"rules","index$":17},"set":{"a":true,"h":"Set","n":"set","r":false,"sh":"Set information for the card","t":"`$OBJECT`","key$":"set","index$":18},"subtypes":{"a":true,"h":"Subtypes","n":"subtypes","r":false,"sh":"Subtypes of the card","t":"`$ARRAY`","key$":"subtypes","index$":19},"supertype":{"a":true,"h":"Supertype","n":"supertype","r":false,"sh":"Supertype of the card (e.g., Pokémon, Trainer, Energy)","t":"`$STRING`","key$":"supertype","index$":20},"tcgplayer":{"a":true,"h":"Tcgplayer","n":"tcgplayer","r":false,"sh":"TCGPlayer market information","t":"`$OBJECT`","key$":"tcgplayer","index$":21},"types":{"a":true,"h":"Types","n":"types","r":false,"sh":"Energy types of the card","t":"`$ARRAY`","key$":"types","index$":22},"weaknesses":{"a":true,"h":"Weaknesses","n":"weaknesses","r":false,"sh":"Weaknesses of the Pokémon","t":"`$ARRAY`","key$":"weaknesses","index$":23}},"id":{"field":"id","name":"id"},"name":"card","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /cards","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"order_by","or":"orderBy","r":false,"t":"`$STRING`","index$":0},{"a":true,"ex":1,"k":"query","n":"page","or":"page","r":false,"t":"`$INTEGER`","index$":1},{"a":true,"ex":250,"k":"query","n":"page_size","or":"pageSize","r":false,"t":"`$INTEGER`","index$":2},{"a":true,"k":"query","n":"q","or":"q","r":false,"t":"`$STRING`","index$":3},{"a":true,"k":"query","n":"select","or":"select","r":false,"t":"`$STRING`","index$":4}]},"k":"http","m":"GET","o":"/cards","q":{"exist":["order_by","page","page_size","q","select"]},"r":{},"s":[{"lit":"cards"}],"t":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /cards/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/cards/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"cards"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"card","name__orig":"card","Name":"Card","name_":"card","name-":"card","NAME":"CARD","index$":0}, {"active":true,"entity":"card","key$":"BasicCardFlow","kind":"basic","name":"BasicCardFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"card_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"card_ref01","srcdatavar":"card_ref01_data","suffix":"_dt0"},"m":{"id":"card01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-card_ref01"}}],"index$":1}]}, 'Card', {"GET /cards":{"protocol":"http","parameters":[{"name":"q","in":"query","description":"Query string for searching cards (e.g., 'name:charizard', 'types:fire')","required":false,"schema":{"type":"string"},"index$":0},{"name":"page","in":"query","description":"Page number for pagination","required":false,"schema":{"type":"integer","default":1},"index$":1},{"name":"pageSize","in":"query","description":"Number of results per page","required":false,"schema":{"type":"integer","default":250,"maximum":250},"index$":2},{"name":"orderBy","in":"query","description":"Field to order results by","required":false,"schema":{"type":"string"},"index$":3},{"name":"select","in":"query","description":"Comma-separated list of fields to return","required":false,"schema":{"type":"string"},"index$":4}]},"GET /cards/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","description":"The unique identifier for the card","required":true,"schema":{"type":"string"},"index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"artist":{"a":true,"h":"Artist","n":"artist","r":false,"sh":"Artist who illustrated the card","t":"`$STRING`","key$":"artist","index$":0},"attacks":{"a":true,"h":"Attacks","n":"attacks","r":false,"sh":"Attacks the Pokémon can perform","t":"`$ARRAY`","key$":"attacks","index$":1},"cardmarket":{"a":true,"h":"Cardmarket","n":"cardmarket","r":false,"sh":"Cardmarket information","t":"`$OBJECT`","key$":"cardmarket","index$":2},"convertedRetreatCost":{"a":true,"h":"Converted Retreat Cost","n":"convertedRetreatCost","r":false,"sh":"Numeric value of retreat cost","t":"`$INTEGER`","key$":"convertedRetreatCost","index$":3},"evolvesFrom":{"a":true,"h":"Evolves From","n":"evolvesFrom","r":false,"sh":"The Pokémon this card evolves from","t":"`$STRING`","key$":"evolvesFrom","index$":4},"evolvesTo":{"a":true,"h":"Evolves To","n":"evolvesTo","r":false,"sh":"The Pokémon this card evolves to","t":"`$ARRAY`","key$":"evolvesTo","index$":5},"flavorText":{"a":true,"h":"Flavor Text","n":"flavorText","r":false,"sh":"Flavor text on the card","t":"`$STRING`","key$":"flavorText","index$":6},"hp":{"a":true,"h":"Hp","n":"hp","r":false,"sh":"Hit points of the Pokémon","t":"`$STRING`","key$":"hp","index$":7},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Unique identifier for the card","t":"`$STRING`","key$":"id","index$":8},"images":{"a":true,"h":"Images","n":"images","r":false,"sh":"Image URLs for the card","t":"`$OBJECT`","key$":"images","index$":9},"legalities":{"a":true,"h":"Legalities","n":"legalities","r":false,"sh":"Legality of the card in different formats","t":"`$OBJECT`","key$":"legalities","index$":10},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Name of the card","t":"`$STRING`","key$":"name","index$":11},"nationalPokedexNumbers":{"a":true,"h":"National Pokedex Numbers","n":"nationalPokedexNumbers","r":false,"sh":"National Pokédex numbers","t":"`$ARRAY`","key$":"nationalPokedexNumbers","index$":12},"number":{"a":true,"h":"Number","n":"number","r":false,"sh":"Card number within the set","t":"`$STRING`","key$":"number","index$":13},"rarity":{"a":true,"h":"Rarity","n":"rarity","r":false,"sh":"Rarity of the card","t":"`$STRING`","key$":"rarity","index$":14},"resistances":{"a":true,"h":"Resistances","n":"resistances","r":false,"sh":"Resistances of the Pokémon","t":"`$ARRAY`","key$":"resistances","index$":15},"retreatCost":{"a":true,"h":"Retreat Cost","n":"retreatCost","r":false,"sh":"Retreat cost of the Pokémon","t":"`$ARRAY`","key$":"retreatCost","index$":16},"rules":{"a":true,"h":"Rules","n":"rules","r":false,"sh":"Special rules for the card","t":"`$ARRAY`","key$":"rules","index$":17},"set":{"a":true,"h":"Set","n":"set","r":false,"sh":"Set information for the card","t":"`$OBJECT`","key$":"set","index$":18},"subtypes":{"a":true,"h":"Subtypes","n":"subtypes","r":false,"sh":"Subtypes of the card","t":"`$ARRAY`","key$":"subtypes","index$":19},"supertype":{"a":true,"h":"Supertype","n":"supertype","r":false,"sh":"Supertype of the card (e.g., Pokémon, Trainer, Energy)","t":"`$STRING`","key$":"supertype","index$":20},"tcgplayer":{"a":true,"h":"Tcgplayer","n":"tcgplayer","r":false,"sh":"TCGPlayer market information","t":"`$OBJECT`","key$":"tcgplayer","index$":21},"types":{"a":true,"h":"Types","n":"types","r":false,"sh":"Energy types of the card","t":"`$ARRAY`","key$":"types","index$":22},"weaknesses":{"a":true,"h":"Weaknesses","n":"weaknesses","r":false,"sh":"Weaknesses of the Pokémon","t":"`$ARRAY`","key$":"weaknesses","index$":23}},"id":{"field":"id","name":"id"},"name":"card","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /cards","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"order_by","or":"orderBy","r":false,"t":"`$STRING`","index$":0},{"a":true,"ex":1,"k":"query","n":"page","or":"page","r":false,"t":"`$INTEGER`","index$":1},{"a":true,"ex":250,"k":"query","n":"page_size","or":"pageSize","r":false,"t":"`$INTEGER`","index$":2},{"a":true,"k":"query","n":"q","or":"q","r":false,"t":"`$STRING`","index$":3},{"a":true,"k":"query","n":"select","or":"select","r":false,"t":"`$STRING`","index$":4}]},"k":"http","m":"GET","o":"/cards","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"cards"}],"t":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /cards/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/cards/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"cards"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"card","name__orig":"card","Name":"Card","name_":"card","name-":"card","NAME":"CARD","index$":0}, {"active":true,"entity":"card","key$":"BasicCardFlow","kind":"basic","name":"BasicCardFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"card_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"card_ref01","srcdatavar":"card_ref01_data","suffix":"_dt0"},"m":{"id":"card01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-card_ref01"}}],"index$":1}]}, 'Card', {"GET /cards":{"protocol":"http","parameters":[{"name":"q","in":"query","description":"Query string for searching cards (e.g., 'name:charizard', 'types:fire')","required":false,"schema":{"type":"string"},"index$":0},{"name":"page","in":"query","description":"Page number for pagination","required":false,"schema":{"type":"integer","default":1},"index$":1},{"name":"pageSize","in":"query","description":"Number of results per page","required":false,"schema":{"type":"integer","default":250,"maximum":250},"index$":2},{"name":"orderBy","in":"query","description":"Field to order results by","required":false,"schema":{"type":"string"},"index$":3},{"name":"select","in":"query","description":"Comma-separated list of fields to return","required":false,"schema":{"type":"string"},"index$":4}]},"GET /cards/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","description":"The unique identifier for the card","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('CardEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/pokemon-tcg-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/pokemon-tcg-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -25,7 +25,7 @@ composer require voxgig-sdk/pokemon-tcg-sdk:@dev
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
-loading a specific record.
+loading a specific record. The client sends the API key in the `X-Api-Key` header.
 
 ### 1. Create a client
 
@@ -245,8 +245,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
+| `load` | `($reqmatch, $ctrl): mixed` | Load a single entity by match criteria, and return it. |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -256,9 +256,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -421,7 +421,7 @@ $card = $client->Card()->load(["id" => "card_id"]);
 #### Example: List
 
 ```php
-// list() returns an array of Card records (throws on error).
+// list() returns an array of Card entities, one per record (throws on error).
 $cards = $client->Card()->list();
 ```
 
@@ -445,7 +445,7 @@ Create an instance: `$rarity = $client->Rarity();`
 #### Example: List
 
 ```php
-// list() returns an array of Rarity records (throws on error).
+// list() returns an array of Rarity entities, one per record (throws on error).
 $raritys = $client->Rarity()->list();
 ```
 
@@ -486,7 +486,7 @@ $set = $client->Set()->load(["id" => "set_id"]);
 #### Example: List
 
 ```php
-// list() returns an array of Set records (throws on error).
+// list() returns an array of Set entities, one per record (throws on error).
 $sets = $client->Set()->list();
 ```
 
@@ -510,7 +510,7 @@ Create an instance: `$subtype = $client->Subtype();`
 #### Example: List
 
 ```php
-// list() returns an array of Subtype records (throws on error).
+// list() returns an array of Subtype entities, one per record (throws on error).
 $subtypes = $client->Subtype()->list();
 ```
 
@@ -534,7 +534,7 @@ Create an instance: `$supertype = $client->Supertype();`
 #### Example: List
 
 ```php
-// list() returns an array of Supertype records (throws on error).
+// list() returns an array of Supertype entities, one per record (throws on error).
 $supertypes = $client->Supertype()->list();
 ```
 
@@ -558,7 +558,7 @@ Create an instance: `$type = $client->Type();`
 #### Example: List
 
 ```php
-// list() returns an array of Type records (throws on error).
+// list() returns an array of Type entities, one per record (throws on error).
 $types = $client->Type()->list();
 ```
 

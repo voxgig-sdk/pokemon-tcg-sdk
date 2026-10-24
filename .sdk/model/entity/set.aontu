@@ -131,13 +131,9 @@ main: kit: entity: set: {
           }
           m: "GET"
           o: "/sets"
-          q: {
-            exist: [
-              "order_by"
-              "page"
-              "page_size"
-              "q"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -177,6 +173,10 @@ main: kit: entity: set: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
